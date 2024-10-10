@@ -15,6 +15,7 @@ import { i18n } from "../../translate/i18n";
 import { nomeEmpresa } from "../../../package.json";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import logo from "../../assets/logo.png";
+import bgimage from "../../assets/bgimage.png";
 
 
 const Copyright = () => {
@@ -35,8 +36,8 @@ const useStyles = makeStyles(theme => ({
 		width: "100vw",
 		height: "100vh",
 		//background: "linear-gradient(to right, #682EE3 , #682EE3 , #682EE3)",
-		//backgroundImage: "url(https://i.imgur.com/CGby9tN.png)",
-		backgroundColor: theme.palette.primary.main,
+		backgroundImage: "url(https://i.imgur.com/uTcKDrB.jpeg)",
+		backgroundColor: "#ffffff",
 		backgroundRepeat: "no-repeat",
 		backgroundSize: "100% 100%",
 		backgroundPosition: "center",
@@ -158,7 +159,6 @@ const Login = () => {
 				</form>
 			
 			</div>
-			<Box mt={8}><Copyright /></Box>
 		</Container>
 		</div>
 	);
