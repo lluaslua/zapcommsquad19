@@ -33,6 +33,7 @@ import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
 
 import logo from "../assets/logo.png";
+import logoclara from "../assets/logoclara.png";
 import { SocketContext } from "../context/Socket/SocketContext";
 import ChatPopover from "../pages/Chat/ChatPopover";
 
@@ -110,6 +111,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   drawerPaper: {
+    background: "#0C2C54",
+    color : "#FFFFFF",
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
@@ -345,7 +348,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} className={classes.logo} alt="logo" />
+          <img src={logoclara} className={classes.logo} alt="logo" />
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
             <ChevronLeftIcon />
           </IconButton>
