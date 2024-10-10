@@ -163,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
-  NotificationsPopOver: {
+  NotificationsPopOver: {   
     // color: theme.barraSuperior.secondary.main,
   },
   logo: {
