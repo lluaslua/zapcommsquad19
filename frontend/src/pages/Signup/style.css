@@ -7,6 +7,7 @@
 body {
   font-family: "Poppins", sans-serif;
   /* overflow: hidden; */
+  
 }
 
 .geral-signup {
@@ -97,6 +98,7 @@ body {
   }
   .paper {
     width: 300px;
+    
   }
   .img-logo-signup {
     width: 200px;

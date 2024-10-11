@@ -2,7 +2,7 @@ services:
   postgres:
     image: postgres:16
     ports:
-      - '5432:5432'
+      - "5432:5432"
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
@@ -16,11 +16,11 @@ services:
     image: redis:alpine
     container_name: redis
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes 
+      - ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
-      - 'polls_redis_data:/alpine/redis/data'
+      - "polls_redis_data:/alpine/redis/data"
     networks:
       - app-network
 
@@ -59,8 +59,9 @@ services:
       - REACT_APP_HOURS_CLOSE_TICKETS_AUTO=24
       - NODE_OPTIONS=--openssl-legacy-provider
       - CHOKIDAR_USEPOLLING=true
+      
     stdin_open: true
-    tty: true  
+    tty: true
 
     depends_on:
       - backend

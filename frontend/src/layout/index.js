@@ -432,7 +432,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-              style={{ color: "white" }}
+              style={{ color: "#FFFFFF" }}
             >
               <AccountCircle />
             </IconButton>

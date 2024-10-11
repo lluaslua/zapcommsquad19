@@ -121,6 +121,7 @@ const messages = {
         title: {
           add: "Adicionar WhatsApp",
           edit: "Editar WhatsApp",
+          
         },		
 		 tabs: {
           general: "Geral",
