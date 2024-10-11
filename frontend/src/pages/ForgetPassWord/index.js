@@ -30,18 +30,20 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100vw",
     height: "100vh",
-    background: "black", //Cor de fundo
+    backgroundImage: "url(https://i.imgur.com/uTcKDrB_d.webp?maxwidth=760&fidelity=grand)",
+    background: "white", //Cor de fundo
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% 100%",
     backgroundPosition: "center",
-    display: "flex",
-    flexDirection: "column",
+    display: "grid",
+    flexDirection: "comlumn",
     alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    justifyContent: "left",
+    textAlign: "left",
+    paddingLeft: "10%"
   },
   paper: {
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
