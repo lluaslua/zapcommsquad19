@@ -832,7 +832,7 @@ const messages = {
           actions: "Ações",
         },
         buttons: {
-          add: "Nova Tag",
+          add: "Adicionar",
 		  deleteAll: "Deletar Todas",
         },
         toasts: {

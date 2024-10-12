@@ -246,17 +246,23 @@ return (
         className={classes.mainPaper}
         variant="outlined"
         onScroll={handleScroll}
+        style={{
+          borderRadius: '5px'
+        }}
       >
         <Table size="small">
-          <TableHead style={{backgroundColor: '#0C2454',}}>
-            <TableRow>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>{i18n.t("tags.table.name")}</TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
-                {i18n.t("tags.table.tickets")}
-              </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
-                {i18n.t("tags.table.actions")}
-              </TableCell>
+          <TableHead>
+            <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
+              <TableCell align="center"style={{
+                color: '#FFFFFF',}}>
+                  {i18n.t("tags.table.tickets")}
+                </TableCell>
+              <TableCell align="center"style={{
+                color: '#FFFFFF',
+                borderRadius: '0px 5px 5px 0px'}}
+                >{i18n.t("tags.table.actions")}
+                </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
