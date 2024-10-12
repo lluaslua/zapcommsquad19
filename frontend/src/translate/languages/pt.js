@@ -828,7 +828,7 @@ const messages = {
         table: {
           name: "Nome",
           color: "Cor",
-          tickets: "Registros Tagdos",
+          tickets: "Registros",
           actions: "Ações",
         },
         buttons: {

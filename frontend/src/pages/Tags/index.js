@@ -37,6 +37,7 @@ import { Chip } from "@material-ui/core";
 import { Tooltip } from "@material-ui/core";
 import { SocketContext } from "../../context/Socket/SocketContext";
 import { AuthContext } from "../../context/Auth/AuthContext";
+import { blue } from "@material-ui/core/colors";
 
 const reducer = (state, action) => {
   if (action.type === "LOAD_TAGS") {
@@ -247,13 +248,13 @@ return (
         onScroll={handleScroll}
       >
         <Table size="small">
-          <TableHead>
+          <TableHead style={{backgroundColor: '#0C2454',}}>
             <TableRow>
-              <TableCell align="center">{i18n.t("tags.table.name")}</TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>{i18n.t("tags.table.name")}</TableCell>
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("tags.table.tickets")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("tags.table.actions")}
               </TableCell>
             </TableRow>
