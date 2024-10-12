@@ -34,11 +34,13 @@ import moment from "moment";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    backgroundColor: "#D0DEED",
   },
   mainPaper: {
     width: "100%",
     flex: 1,
     padding: theme.spacing(2),
+    backgroundColor: "#e6edf5",
   },
   fullWidth: {
     width: "100%",
@@ -47,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     overflowX: "scroll",
     ...theme.scrollbarStyles,
+    backgroundColor: "#D0DEED",
   },
   textfield: {
     width: "100%",

@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 		width: '100%'
 	},
     mainPaper: {
+        backgroundColor: "#e6edf5",
 		width: '100%',
 		flex: 1,
 		padding: theme.spacing(2)
@@ -34,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 		width: '100%'
 	},
     tableContainer: {
+        backgroundColor: "#D0DEED",
 		width: '100%',
 		overflowX: "scroll",
 		...theme.scrollbarStyles

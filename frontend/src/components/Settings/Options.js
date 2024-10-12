@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.options,  //DARK MODE PLW DESIGN//
     borderRadius: 4,
     width: "100%",
+    backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
       color: theme.palette.fontecor,
     },   //DARK MODE PLW DESIGN//
@@ -551,7 +552,6 @@ export default function Options(props) {
           }}
         >
           <Tab
-
             label="INTEGRAÇÕES" />
 
         </Tabs>
