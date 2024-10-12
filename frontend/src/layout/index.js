@@ -177,6 +177,17 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: theme.logo
   },
+  footer: {
+    width: "80%",
+    height: "auto",
+    maxWidth: 180,
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      height: "80%",
+      maxWidth: 180,
+    },
+    footer: theme.logo
+  },
 }));
 
 const LoggedInLayout = ({ children, themeToggle }) => {
@@ -348,13 +359,13 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logoclara} className={classes.logo} alt="logo" />
+          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <ChevronLeftIcon />
+            <MenuIcon style={{color:"#FFFFFF"}}/>
           </IconButton>
         </div>
         <Divider />
-        <List className={classes.containerWithScroll}>
+        <List className={classes.containerWithScroll }>
           <MainListItems drawerClose={drawerClose} collapsed={!drawerOpen} />
         </List>
         <Divider />
@@ -366,10 +377,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
-        color="primary"
-      >
-        <Toolbar variant="dense" className={classes.toolbar}>
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
+        color="primary">
+
+        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
           <IconButton
             edge="start"
             variant="contained"
@@ -380,7 +391,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               drawerOpen && classes.menuButtonHidden
             )}
           >
-            <MenuIcon />
+            <MenuIcon style={{color:"#FFFFFF"}}/>
           </IconButton>
 
           <Typography
@@ -390,7 +401,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
             noWrap
             className={classes.title}
           >
-            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( */}
+            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( 
             {greaterThenSm && user?.profile === "admin" && user?.company?.dueDate ? (
               <>
                 Olá <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>! (Ativo até {dateToClient(user?.company?.dueDate)})
@@ -399,10 +410,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               <>
                 Olá  <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>!
               </>
-            )}
+            )} */}
           </Typography>
 
-          <IconButton edge="start" onClick={toggleColorMode}>
+          {/*<IconButton edge="start" onClick={toggleColorMode}>
             {theme.mode === 'dark' ? <Brightness7Icon style={{ color: "white" }} /> : <Brightness4Icon style={{ color: "white" }} />}
           </IconButton>
 
@@ -418,6 +429,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
           >
             <CachedIcon style={{ color: "white" }} />
           </IconButton>
+            */}
 
           {user.id && <NotificationsPopOver volume={volume} />}
 

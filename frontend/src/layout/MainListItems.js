@@ -45,6 +45,7 @@ import { AllInclusive, AttachFile, BlurCircular, DeviceHubOutlined, Schedule } f
 import usePlans from "../hooks/usePlans";
 import Typography from "@material-ui/core/Typography";
 import useVersion from "../hooks/useVersion";
+import LoggedInLayout from ".";
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -298,7 +299,7 @@ const MainListItems = (props) => {
 
       <ListItemLink
         to="/tickets"
-        primary={i18n.t("mainDrawer.listItems.tickets")}
+        primary={i18n.t("Chamados")}
         icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}
       />
 	  
@@ -351,7 +352,7 @@ const MainListItems = (props) => {
         }
       />
 
-      <ListItemLink
+     <ListItemLink
         to="/helps"
         primary={i18n.t("mainDrawer.listItems.helps")}
         icon={<HelpOutlineIcon style={{color : "#34D3A3"}} />}
@@ -389,9 +390,9 @@ const MainListItems = (props) => {
                     primary={i18n.t("mainDrawer.listItems.campaigns")}
                   />
                   {openCampaignSubmenu ? (
-                    <ExpandLessIcon />
+                    <ExpandLessIcon style={{color:"#FFFFFF"}} />
                   ) : (
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon style={{color:"#FFFFFF"}} />
                   )}
                 </ListItem>
                 <Collapse
@@ -484,11 +485,11 @@ const MainListItems = (props) => {
                 />
               </>
             )}
-            <ListItemLink
+            {/*<ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}
               icon={<LocalAtmIcon style={{color : "#34D3A3"}} />}
-            />
+            />*/}
 
             <ListItemLink
               to="/settings"
@@ -505,10 +506,10 @@ const MainListItems = (props) => {
                 <img style={{ width: "100%", padding: "10px" }} src={logo} alt="image" />            
               </Hidden> 
               */}
-              <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
+              
+              {/*<Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
                 {`6.0.0`}
-
-              </Typography>
+              </Typography>*/}
             </React.Fragment>
             }
 			
