@@ -220,7 +220,7 @@ return (
       <MainHeader>
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
-          <TextField
+        <TextField
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             value={searchParam}
