@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     height: "100vh",
     background: "black", //Cor de fundo
+    backgroundImage: "url(https://i.imgur.com/uTcKDrB.jpeg)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "100% 100%",
     backgroundPosition: "center",

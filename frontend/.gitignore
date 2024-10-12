@@ -1,6 +1,16 @@
 node_modules
+<<<<<<< Updated upstream
 dist
 .env.test
+=======
+public/*
+dist
+!public/.gitkeep
+.env
+.env.test
+
+package-lock.json
+>>>>>>> Stashed changes
 yarn.lock
 yarn-error.log
 

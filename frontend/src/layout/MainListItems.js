@@ -485,11 +485,11 @@ const MainListItems = (props) => {
                 />
               </>
             )}
-            {/*<ListItemLink
+            <ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}
-              icon={<LocalAtmIcon style={{color : "#34D3A3"}} />}
-            />*/}
+              icon={<LocalAtmIcon />}
+            />
 
             <ListItemLink
               to="/settings"

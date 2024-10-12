@@ -127,13 +127,13 @@ const Login = () => {
 						autoComplete="current-password"
 					/>
 					
-					{/* <Grid container justify="flex-end">
+					<Grid container justify="flex-end">
 					  <Grid item xs={6} style={{ textAlign: "right" }}>
 						<Link component={RouterLink} to="/forgetpsw" variant="body2">
 						  Esqueceu sua senha?
 						</Link>
 					  </Grid>
-					</Grid>*/}
+					</Grid>
 					
 					<Button
 						type="submit"

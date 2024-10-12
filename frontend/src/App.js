@@ -51,7 +51,11 @@ const App = () => {
             },
             palette: {
                 type: mode,
+<<<<<<< Updated upstream
                 primary: { main: mode === "light" ? "#0C2454" : "#FFFFFF" },
+=======
+                primary: { main: mode === "light" ? "#0C2C4C" : "#FFFFFF" },
+>>>>>>> Stashed changes
                 textPrimary: mode === "light" ? "#682EE3" : "#FFFFFF",
                 borderPrimary: mode === "light" ? "#682EE3" : "#FFFFFF",
                 dark: { main: mode === "light" ? "#333333" : "#F3F3F3" },
