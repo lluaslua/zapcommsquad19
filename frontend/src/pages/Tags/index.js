@@ -254,15 +254,9 @@ return (
           <TableHead>
             <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
               <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
-              <TableCell align="center"style={{
-                color: '#FFFFFF',}}>
-                  {i18n.t("tags.table.tickets")}
-                </TableCell>
-              <TableCell align="center"style={{
-                color: '#FFFFFF',
-                borderRadius: '0px 5px 5px 0px'}}
-                >{i18n.t("tags.table.actions")}
-                </TableCell>
+              <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
+              <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("tags.table.actions")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -271,14 +265,18 @@ return (
                 <TableRow key={tag.id}>
                   <TableCell align="center">
                     <Chip
-                      variant="outlined"
+                      variant="default"
                       style={{
-                        backgroundColor: tag.color,
-                        textShadow: "1px 1px 1px #000",
-                        color: "white",
+                        backgroundColor: '#FFFFFF',
+                        color: "black",
                       }}
                       label={tag.name}
                       size="small"
+                    />
+                  </TableCell>
+                  <TableCell>
+                  <Chip
+                    style={{backgroundColor: tag.color,borderRadius:'100%',height: '25px'}}
                     />
                   </TableCell>
                   <TableCell align="center">{tag.ticketsCount}</TableCell>
