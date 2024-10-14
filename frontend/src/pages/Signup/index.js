@@ -26,6 +26,7 @@ import { i18n } from "../../translate/i18n";
 import { openApi } from "../../services/api";
 import toastError from "../../errors/toastError";
 import moment from "moment";
+
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -41,11 +42,29 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
 
+  root: {
+		width: "100vw",
+		height: "100vh",
+		//background: "linear-gradient(to right, #682EE3 , #682EE3 , #682EE3)",
+		backgroundImage: "url(https://i.imgur.com/a3ZWHX4.png)",
+		backgroundColor: "#ffffff",
+		backgroundRepeat: "no-repeat",
+		backgroundSize: "58.6% 100%",
+		backgroundPosition: "left",
+		display: "grid",
+		alignItems: "center",
+		justifyContent: "right",
+		textAlign: "right",
+    transition: "backgroundImage 0.3s ease-in-out right",
+	},
+
   paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    backgroundColor: "white",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		padding: "55px 30px",
+		borderRadius: "15px",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -116,9 +135,10 @@ const SignUp = () => {
   }, []);
 
   return (
+    <div className={classes.root}> 
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
+      <CssBaseline /> 
+        <div className={classes.paper}>
         <div>
           <center>
             <img
@@ -127,7 +147,6 @@ const SignUp = () => {
               alt="Whats"
             />
           </center>
-        </div>
         {/*<Typography component="h1" variant="h5">
 					{i18n.t("signup.title")}
 				<</Typography>*/}
@@ -259,9 +278,11 @@ const SignUp = () => {
             </Form>
           )}
         </Formik>
+        </div>
       </div>
       <Box mt={5}>{/* <Copyright /> */}</Box>
     </Container>
+    </div>
   );
 };
 
