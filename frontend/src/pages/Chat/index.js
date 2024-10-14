@@ -137,7 +137,7 @@ export function ChatModal({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleClose} color="black">
           Fechar
         </Button>
         <Button onClick={handleSave} color="primary" variant="contained">
@@ -344,7 +344,7 @@ function Chat(props) {
                 color="primary"
                 variant="contained"
               >
-                Nova
+                Novo Chat
               </Button>
             </div>
           
