@@ -308,31 +308,32 @@ const Campaigns = () => {
         onScroll={handleScroll}
       >
         <Table size="small">
-          <TableHead>
+          <TableHead style={{backgroundColor: '#0C2454'}}>
             <TableRow>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF', borderRadius: '5px 0px 0px 5px'}}>
                 {i18n.t("campaigns.table.name")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.status")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.contactList")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.whatsapp")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.scheduledAt")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.completedAt")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{color: '#FFFFFF'}}>
                 {i18n.t("campaigns.table.confirmation")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("campaigns.table.actions")}
+              <TableCell align="center" style={{color: '#FFFFFF', borderRadius: '0px 5px 5px 0px'}}>
+                {/*Para adicionar o texto de volta, insira "campaigns.table.actions" na função*/ }
+                {i18n.t()}
               </TableCell>
             </TableRow>
           </TableHead>
