@@ -255,7 +255,7 @@ const QueueIntegration = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon color="primary" />
+                  <SearchIcon style={{ color: "gray"}}/>
                 </InputAdornment>
               ),
             }}
@@ -310,7 +310,7 @@ const QueueIntegration = () => {
                       size="small"
                       onClick={() => handleEditIntegration(integration)}
                     >
-                      <Edit color="primary" />
+                      <Edit color="tertiary" />
                     </IconButton>
 
                     <IconButton
@@ -320,7 +320,7 @@ const QueueIntegration = () => {
                         setDeletingUser(integration);
                       }}
                     >
-                      <DeleteOutline color="primary" />
+                      <DeleteOutline color="tertiary" />
                     </IconButton>
                   </TableCell>
                 </TableRow>
