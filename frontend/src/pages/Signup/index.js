@@ -56,6 +56,20 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "right",
 		textAlign: "right",
     transition: "backgroundImage 0.3s ease-in-out right",
+
+    [theme.breakpoints.down('1920')]: {
+        backgroundSize: '56% 100%',    
+    },
+    
+    [theme.breakpoints.down('1668')]: {
+        backgroundSize: '52% 100%', 
+        display:"grid"  
+    },
+
+    [theme.breakpoints.down("1120")]: {
+      backgroundSize:"100% 100%",
+      backgroundImage: "url(https://i.imgur.com/vcu0yBs.png)",  
+    },
 	},
 
   paper: {
