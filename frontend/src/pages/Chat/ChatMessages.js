@@ -24,10 +24,13 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     flex: 1,
     overflow: "hidden",
-    borderRadius: 0,
+    borderRadius: 15,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     height: "100%",
     borderLeft: "1px solid rgba(0, 0, 0, 0.12)",
     backgroundColor: "white",
+    
   },
   // Local onde estarão as mensagens
   messageList: {
@@ -60,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid rgba(0, 0, 0, 0.12)",
     fontSize: "1rem",
     color: "white",
+    fontWeight: "300px",
   },
   boxRight: {
     padding: "10px 10px 5px",
@@ -72,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: 0,
     border: "1px solid rgba(0, 0, 0, 0.12)",
     fontSize: "1rem",
+    color: "white",
   },
   contato: {
     backgroundColor: "#0C2C4C",
@@ -132,7 +137,7 @@ export default function ChatMessages({
     <Paper className={classes.mainContainer}>
       
       <Box variant='body' display="block" padding='30px' bgcolor='#0C2C4C' color="white" fontSize='1.5rem' borderRadius='15'>
-      <Typography variant="h6" display="inline" margin='unset' color='#34D3A3'>{chat.title}</Typography>
+      <Typography variant="h7" display="inline" margin='unset' color='#34D3A3'>{chat.title}</Typography>
       </Box>
       <div onScroll={handleScroll} className={classes.messageList}>
         {Array.isArray(messages) &&

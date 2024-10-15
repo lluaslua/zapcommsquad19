@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     overflowY: "scroll",
     ...theme.scrollbarStyles,
+    backgroundColor: "#E6EDF5",
   },
   listItem: {
     cursor: "pointer",
@@ -153,7 +154,8 @@ export default function ChatList({
                         edge="end"
                         aria-label="delete"
                         size="small"
-                        style={{ marginRight: 5 }}
+                        color="blue"
+                        style={{ marginRight: 5, }}
                       >
                         <EditIcon />
                       </IconButton>
