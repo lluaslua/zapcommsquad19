@@ -255,7 +255,7 @@ const QueueIntegration = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon color="secondary" />
+                  <SearchIcon color="primary" />
                 </InputAdornment>
               ),
             }}
@@ -277,9 +277,15 @@ const QueueIntegration = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox"></TableCell>
-              <TableCell align="center">{i18n.t("queueIntegration.table.id")}</TableCell>
-              <TableCell align="center">{i18n.t("queueIntegration.table.name")}</TableCell>
+              <TableCell padding="checkbox" style={{
+                backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+              </TableCell>
+              <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.id")}</TableCell>
+              <TableCell align="center" style={{
+                backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}
+              </TableCell>
+              <TableCell style={{
+                backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -304,7 +310,7 @@ const QueueIntegration = () => {
                       size="small"
                       onClick={() => handleEditIntegration(integration)}
                     >
-                      <Edit color="secondary" />
+                      <Edit color="primary" />
                     </IconButton>
 
                     <IconButton
@@ -314,7 +320,7 @@ const QueueIntegration = () => {
                         setDeletingUser(integration);
                       }}
                     >
-                      <DeleteOutline color="secondary" />
+                      <DeleteOutline color="primary" />
                     </IconButton>
                   </TableCell>
                 </TableRow>
