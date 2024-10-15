@@ -638,7 +638,7 @@ const messages = {
         },
       },
       campaigns: {
-        title: "Campanhas",
+        title: "Listagem",
         searchPlaceholder: "Pesquisa",
         buttons: {
           add: "Nova Campanha",
