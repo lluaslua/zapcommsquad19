@@ -210,13 +210,14 @@ const Users = () => {
         <Title>{i18n.t("users.title")}</Title>
         <MainHeaderButtonsWrapper>
           <TextField
+            style={{border:"1px,solid", borderRadius:"5px"}}
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
+              endAdornment: (
+                <InputAdornment position="end">
                   <SearchIcon style={{ color: "gray" }} />
                 </InputAdornment>
               ),
@@ -237,19 +238,19 @@ const Users = () => {
         onScroll={handleScroll}
       >
         <Table size="small">
-          <TableHead>
-            <TableRow>
-			<TableCell align="center">
+          <TableHead>"
+            <TableRow style={{ backgroundColor: "#0C2454"}}>
+			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px"  }}>
                 {i18n.t("users.table.id")}
               </TableCell>
-              <TableCell align="center">{i18n.t("users.table.name")}</TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>{i18n.t("users.table.name")}</TableCell>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
                 {i18n.t("users.table.email")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
                 {i18n.t("users.table.profile")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"5px", borderBottomRightRadius:"5px" }}>
                 {i18n.t("users.table.actions")}
               </TableCell>
             </TableRow>
