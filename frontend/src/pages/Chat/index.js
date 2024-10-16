@@ -343,6 +343,7 @@ function Chat(props) {
                 }}
                 color="primary"
                 variant="contained"
+                style={{color: "white", borderRadius: "8px"}}
               >
                 Novo Chat
               </Button>
