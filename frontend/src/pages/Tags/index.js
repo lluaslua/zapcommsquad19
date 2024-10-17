@@ -221,14 +221,20 @@ return (
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
         <TextField
-            placeholder={i18n.t("contacts.searchPlaceholder")}
+            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+            color='primary'
+            variant="outlined"
             type="search"
+            size="small"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon style={{ color: "gray" }} />
+              style: {
+                borderRadius: '20px'
+              },
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon style={{ color: "gray"}}/>
                 </InputAdornment>
               ),
             }}

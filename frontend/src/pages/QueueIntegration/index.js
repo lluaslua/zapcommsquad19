@@ -249,12 +249,18 @@ const QueueIntegration = () => {
         <MainHeaderButtonsWrapper>
           <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+            color='primary'
+            variant="outlined"
             type="search"
+            size="small"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
+              style: {
+                borderRadius: '20px'
+              },
+              endAdornment: (
+                <InputAdornment position="end">
                   <SearchIcon style={{ color: "gray"}}/>
                 </InputAdornment>
               ),

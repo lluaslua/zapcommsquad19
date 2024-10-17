@@ -273,19 +273,24 @@ const Campaigns = () => {
           <Grid xs={12} sm={4} item>
             <Grid spacing={2} container>
               <Grid xs={6} sm={6} item>
-                <TextField
-                  fullWidth
-                  placeholder={i18n.t("campaigns.searchPlaceholder")}
-                  type="search"
-                  value={searchParam}
-                  onChange={handleSearch}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon style={{ color: "gray" }} />
-                      </InputAdornment>
-                    ),
-                  }}
+          <TextField
+            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+            color='primary'
+            variant="outlined"
+            type="search"
+            size="small"
+            value={searchParam}
+            onChange={handleSearch}
+            InputProps={{
+              style: {
+                borderRadius: '20px'
+              },
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon style={{ color: "gray"}}/>
+                </InputAdornment>
+              ),
+            }}
                 />
               </Grid>
               <Grid xs={6} sm={6} item>
