@@ -1,3 +1,5 @@
+import { styled } from "@material-ui/core";
+
 const messages = {
   pt: {
     translations: {
@@ -84,7 +86,7 @@ const messages = {
           add: "Adicionar WhatsApp",
           disconnect: "desconectar",
           tryAgain: "Tentar novamente",
-          qrcode: "QR CODE",
+          qrcode: "Mostrar QR CODE",
           newQr: "Novo QR CODE",
           connecting: "Conectando",
         },
@@ -638,7 +640,7 @@ const messages = {
         },
       },
       campaigns: {
-        title: "Campanhas",
+        title: "Listagem",
         searchPlaceholder: "Pesquisa",
         buttons: {
           add: "Nova Campanha",
@@ -706,6 +708,7 @@ const messages = {
         title: "Informativos",
         searchPlaceholder: "Pesquisa",
         buttons: {
+          color:"white",
           add: "Novo Informativo",
           contactLists: "Listas de Informativos",
         },
@@ -828,11 +831,11 @@ const messages = {
         table: {
           name: "Nome",
           color: "Cor",
-          tickets: "Registros Tagdos",
+          tickets: "Registros",
           actions: "Ações",
         },
         buttons: {
-          add: "Nova Tag",
+          add: "+ Adicionar",
 		  deleteAll: "Deletar Todas",
         },
         toasts: {

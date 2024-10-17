@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     overflowY: "scroll",
     ...theme.scrollbarStyles,
+    backgroundColor: "#E6EDF5",
   },
   listItem: {
     cursor: "pointer",
@@ -94,7 +95,7 @@ export default function ChatList({
             size="small"
             style={{ marginLeft: 5 }}
             label={unreads}
-            color="secondary"
+            color="secondary" 
           />
         )}
       </>
@@ -106,11 +107,12 @@ export default function ChatList({
       ? `${datetimeToClient(chat.updatedAt)}: ${chat.lastMessage}`
       : "";
   };
-
+  //Parte em que fica as pessoas 
   const getItemStyle = (chat) => {
     return {
-      borderLeft: chat.uuid === id ? "6px solid #002d6e" : null,
-      backgroundColor: chat.uuid === id ? "theme.palette.chatlist" : null,
+      backgroundColor: chat.uuid === id ? "#D7DAE2" : null,
+      borderRadius: "10px",
+      
     };
   };
 
@@ -152,7 +154,8 @@ export default function ChatList({
                         edge="end"
                         aria-label="delete"
                         size="small"
-                        style={{ marginRight: 5 }}
+                        color="blue"
+                        style={{ marginRight: 5, }}
                       >
                         <EditIcon />
                       </IconButton>
