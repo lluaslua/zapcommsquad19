@@ -121,7 +121,8 @@ const ToDoList = () => {
           variant="contained"
           style={{
             backgroundColor: "#0C2C4C",
-            color: "white"
+            color: "black",
+            borderRadius: "8px",
           }}
           onClick={handleAddTask}
         >

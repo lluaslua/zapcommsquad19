@@ -182,6 +182,9 @@ const MessagesAPI = () => {
                   color="primary"
                   variant="contained"
                   className={classes.btnWrapper}
+                  style={{
+                    borderRadius: '8px', 
+                  }}
                 >
                   {isSubmitting ? (
                     <CircularProgress
@@ -254,6 +257,9 @@ const MessagesAPI = () => {
                   color="primary"
                   variant="contained"
                   className= {`${classes.btnWrapper} ${classes.buttonMargin}`}
+                  style={{
+                    borderRadius: '8px', 
+                  }}
                 >
                   {isSubmitting ? (
                     <CircularProgress
