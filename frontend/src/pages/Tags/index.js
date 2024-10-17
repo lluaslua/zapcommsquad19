@@ -243,6 +243,7 @@ return (
             variant="contained"
             color="primary"
             onClick={handleOpenTagModal}
+            style={{borderRadius:'8px'}}
           >
             {i18n.t("tags.buttons.add")}
           </Button>		  

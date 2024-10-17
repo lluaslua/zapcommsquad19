@@ -299,6 +299,7 @@ const Campaigns = () => {
                   variant="contained"
                   onClick={handleOpenCampaignModal}
                   color="primary"
+                  style={{borderRadius:'8px'}}
                 >
                   {i18n.t("campaigns.buttons.add")}
                 </Button>

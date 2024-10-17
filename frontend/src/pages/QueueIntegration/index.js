@@ -270,6 +270,7 @@ const QueueIntegration = () => {
             variant="contained"
             color="primary"
             onClick={handleOpenUserModal}
+            style={{borderRadius:'8px'}}
           >
             {i18n.t("queueIntegration.buttons.add")}
           </Button>
