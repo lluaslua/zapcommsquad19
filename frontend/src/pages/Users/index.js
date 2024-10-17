@@ -210,23 +210,19 @@ const Users = () => {
         <Title>{i18n.t("users.title")}</Title>
         <MainHeaderButtonsWrapper>
           <TextField
-            variant="outlined"
-            size="small"
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              style:{borderRadius:"15px"},
-              endAdornment: (
-                <InputAdornment position="end">
+              startAdornment: (
+                <InputAdornment position="start">
                   <SearchIcon style={{ color: "gray" }} />
                 </InputAdornment>
               ),
             }}
           />
           <Button
-            style={{color:"white", borderRadius:"8px"}}
             variant="contained"
             color="primary"
             onClick={handleOpenUserModal}
@@ -242,18 +238,18 @@ const Users = () => {
       >
         <Table size="small">
           <TableHead>
-            <TableRow style={{ backgroundColor: "#0C2454"}}>
-			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"  }}>
+            <TableRow>
+			<TableCell align="center">
                 {i18n.t("users.table.id")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>{i18n.t("users.table.name")}</TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center">{i18n.t("users.table.name")}</TableCell>
+              <TableCell align="center">
                 {i18n.t("users.table.email")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center">
                 {i18n.t("users.table.profile")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+              <TableCell align="center">
                 {i18n.t("users.table.actions")}
               </TableCell>
             </TableRow>
@@ -296,5 +292,3 @@ const Users = () => {
 };
 
 export default Users;
-
-// import handleOpenUserModal from "../../layout/index.js"

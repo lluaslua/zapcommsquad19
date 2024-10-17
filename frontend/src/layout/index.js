@@ -15,10 +15,12 @@ import {
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
+
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import CachedIcon from "@material-ui/icons/Cached";
+
 import MainListItems from "./MainListItems";
 import NotificationsPopOver from "../components/NotificationsPopOver";
 import NotificationsVolume from "../components/NotificationsVolume";
@@ -29,12 +31,14 @@ import DarkMode from "../components/DarkMode";
 import { i18n } from "../translate/i18n";
 import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
-import footer from "../assets/footer.png"
+
 import logo from "../assets/logo.png";
 import logoclara from "../assets/logoclara.png";
 import { SocketContext } from "../context/Socket/SocketContext";
 import ChatPopover from "../pages/Chat/ChatPopover";
+
 import { useDate } from "../hooks/useDate";
+
 import ColorModeContext from "../layout/themeContext";
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
@@ -163,8 +167,6 @@ const useStyles = makeStyles((theme) => ({
     // color: theme.barraSuperior.secondary.main,
   },
   logo: {
-    display:"block",
-    float:"right",
     width: "80%",
     height: "auto",
     maxWidth: 180,
@@ -176,9 +178,6 @@ const useStyles = makeStyles((theme) => ({
     logo: theme.logo
   },
   footer: {
-    position:"absolute",
-    top: 10,
-    right: 20,
     width: "80%",
     height: "auto",
     maxWidth: 180,
@@ -187,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
       height: "80%",
       maxWidth: 180,
     },
-    footer: theme.footer
+    footer: theme.logo
   },
 }));
 
@@ -360,7 +359,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          {/*<img src={logo} className={classes.logo} alt="logo" />*/}
+          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
             <MenuIcon style={{color:"#FFFFFF"}}/>
           </IconButton>
@@ -474,9 +473,6 @@ const LoggedInLayout = ({ children, themeToggle }) => {
           </div>
         </Toolbar>
       </AppBar>
-      <div className={classes.toolbarIcon}>
-        <img src={footer} className={classes.footer} alt="logo"/>
-      </div>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
 

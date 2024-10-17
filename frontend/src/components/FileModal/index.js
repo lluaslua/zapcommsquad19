@@ -313,7 +313,6 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                 </FieldArray>
                             </DialogContent>
                             <DialogActions>
-                                {/* botao cancelar */}
                                 <Button
                                     onClick={handleClose}
                                     color="secondary"
@@ -322,7 +321,6 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                 >
                                     {i18n.t("fileModal.buttons.cancel")}
                                 </Button>
-                                {/* botao de salvar */}
                                 <Button
                                     type="submit"
                                     color="primary"

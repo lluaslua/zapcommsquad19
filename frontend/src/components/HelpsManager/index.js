@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 		width: '100%'
 	},
     mainPaper: {
-        backgroundColor: "#e6edf5",
 		width: '100%',
 		flex: 1,
 		padding: theme.spacing(2)
@@ -35,17 +34,13 @@ const useStyles = makeStyles(theme => ({
 		width: '100%'
 	},
     tableContainer: {
-        backgroundColor: "#D0DEED",
 		width: '100%',
 		overflowX: "scroll",
 		...theme.scrollbarStyles
     },
-    textfield: {
-        width: "100%",
-        backgroundColor: "white",
-        borderRadius: "5px",
-        padding: "1px",
-      },
+	textfield: {
+		width: '100%'
+	},
     textRight: {
         textAlign: 'right'
     },
@@ -60,12 +55,7 @@ const useStyles = makeStyles(theme => ({
     buttonContainer: {
         textAlign: 'right',
 		padding: theme.spacing(1)
-	},
-    selectField: {
-        backgroundColor: "#ffffff", 
-        borderRadius: "4px",
-        padding: "10px",
-      },
+	}
 }));
 
 export function HelpManagerForm (props) {
@@ -103,7 +93,7 @@ export function HelpManagerForm (props) {
                                 label="Título"
                                 name="title"
                                 variant="outlined"
-                                className={`${classes.fullWidth} ${classes.textfield}`}
+                                className={classes.fullWidth}
                                 margin="dense"
                             />
                         </Grid>
@@ -113,7 +103,7 @@ export function HelpManagerForm (props) {
                                 label="Código do Vídeo"
                                 name="video"
                                 variant="outlined"
-                                className={`${classes.fullWidth} ${classes.textfield}`}
+                                className={classes.fullWidth}
                                 margin="dense"
                             />
                         </Grid>
@@ -123,7 +113,7 @@ export function HelpManagerForm (props) {
                                 label="Descrição"
                                 name="description"
                                 variant="outlined"
-                                className={`${classes.fullWidth} ${classes.textfield}`}
+                                className={classes.fullWidth}
                                 margin="dense"
                             />
                         </Grid>

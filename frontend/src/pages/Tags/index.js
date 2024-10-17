@@ -37,7 +37,6 @@ import { Chip } from "@material-ui/core";
 import { Tooltip } from "@material-ui/core";
 import { SocketContext } from "../../context/Socket/SocketContext";
 import { AuthContext } from "../../context/Auth/AuthContext";
-import { blue } from "@material-ui/core/colors";
 
 const reducer = (state, action) => {
   if (action.type === "LOAD_TAGS") {
@@ -220,21 +219,15 @@ return (
       <MainHeader>
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
-        <TextField
-            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
-            color='primary'
-            variant="outlined"
+          <TextField
+            placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
-            size="small"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              style: {
-                borderRadius: '20px'
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon style={{ color: "gray"}}/>
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon style={{ color: "gray" }} />
                 </InputAdornment>
               ),
             }}
@@ -243,7 +236,6 @@ return (
             variant="contained"
             color="primary"
             onClick={handleOpenTagModal}
-            style={{borderRadius:'8px'}}
           >
             {i18n.t("tags.buttons.add")}
           </Button>		  
@@ -253,17 +245,17 @@ return (
         className={classes.mainPaper}
         variant="outlined"
         onScroll={handleScroll}
-        style={{
-          borderRadius: '5px'
-        }}
       >
         <Table size="small">
           <TableHead>
-            <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
-              <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("tags.table.actions")}</TableCell>
+            <TableRow>
+              <TableCell align="center">{i18n.t("tags.table.name")}</TableCell>
+              <TableCell align="center">
+                {i18n.t("tags.table.tickets")}
+              </TableCell>
+              <TableCell align="center">
+                {i18n.t("tags.table.actions")}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -272,18 +264,14 @@ return (
                 <TableRow key={tag.id}>
                   <TableCell align="center">
                     <Chip
-                      variant="default"
+                      variant="outlined"
                       style={{
-                        backgroundColor: '#FFFFFF',
-                        color: "black",
+                        backgroundColor: tag.color,
+                        textShadow: "1px 1px 1px #000",
+                        color: "white",
                       }}
                       label={tag.name}
                       size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                  <Chip
-                    style={{backgroundColor: tag.color,borderRadius:'100%',height: '25px'}}
                     />
                   </TableCell>
                   <TableCell align="center">{tag.ticketsCount}</TableCell>
