@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textfield: {
     width: "100%",
+    backgroundColor: "white",
+    borderRadius: "5px",
+    padding: "1px",
   },
   textRight: {
     textAlign: "right",
@@ -68,6 +71,11 @@ const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     textAlign: "right",
     padding: theme.spacing(1),
+  },
+  selectField: {
+    backgroundColor: "#ffffff", 
+    borderRadius: "5px",
+    padding: "10px",
   },
 }));
 
@@ -208,7 +216,7 @@ export function CompanyForm(props) {
                   label="Nome"
                   name="name"
                   variant="outlined"
-                  className={classes.fullWidth}
+                  className={`${classes.fullWidth} ${classes.textfield}`}
                   margin="dense"
                 />
               </Grid>
@@ -218,7 +226,7 @@ export function CompanyForm(props) {
                   label="E-mail"
                   name="email"
                   variant="outlined"
-                  className={classes.fullWidth}
+                  className={`${classes.fullWidth} ${classes.textfield}`}
                   margin="dense"
                   required
                 />
@@ -229,7 +237,7 @@ export function CompanyForm(props) {
                   label="Telefone"
                   name="phone"
                   variant="outlined"
-                  className={classes.fullWidth}
+                  className={`${classes.fullWidth} ${classes.textfield}`}
                   margin="dense"
                 />
               </Grid>
@@ -244,6 +252,7 @@ export function CompanyForm(props) {
                     name="planId"
                     margin="dense"
                     required
+                    className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     {plans.map((plan, key) => (
                       <MenuItem key={key} value={plan.id}>
@@ -263,6 +272,7 @@ export function CompanyForm(props) {
                     labelId="status-selection-label"
                     name="status"
                     margin="dense"
+                    className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     <MenuItem value={true}>Sim</MenuItem>
                     <MenuItem value={false}>Não</MenuItem>
@@ -279,6 +289,7 @@ export function CompanyForm(props) {
                     labelId="campaigns-selection-label"
                     name="campaignsEnabled"
                     margin="dense"
+                    className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     <MenuItem value={true}>Habilitadas</MenuItem>
                     <MenuItem value={false}>Desabilitadas</MenuItem>
@@ -292,12 +303,13 @@ export function CompanyForm(props) {
                     label="Data de Vencimento"
                     type="date"
                     name="dueDate"
+                    variant="outlined"
                     InputLabelProps={{
                       shrink: true,
                     }}
-                    variant="outlined"
                     fullWidth
                     margin="dense"
+                    className={`${classes.fullWidth} ${classes.textfield}`}
                   />
                 </FormControl>
               </Grid>
@@ -313,6 +325,7 @@ export function CompanyForm(props) {
                     id="recurrence"
                     name="recurrence"
                     margin="dense"
+                    className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     <MenuItem value="MENSAL">Mensal</MenuItem>
                     {/*<MenuItem value="BIMESTRAL">Bimestral</MenuItem>*/}
