@@ -259,13 +259,15 @@ const Announcements = () => {
             <Grid spacing={2} container>
               <Grid xs={6} sm={6} item>
                 <TextField
-                  style={{border:"1px,solid", borderRadius:"5px"}}
+                  variant="outlined"
+                  size="small"
                   fullWidth
                   placeholder={i18n.t("announcements.searchPlaceholder")}
                   type="search"
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
+                    style:{borderRadius:"15px"},
                     endAdornment: (
                       <InputAdornment position="end">
                         <SearchIcon style={{ color: "gray"}} />
@@ -276,6 +278,7 @@ const Announcements = () => {
               </Grid>
               <Grid xs={6} sm={6} item>
                 <Button
+                  style={{color:"white", borderRadius:"8px"}}
                   fullWidth
                   variant="contained"
                   onClick={handleOpenAnnouncementModal}
@@ -297,7 +300,7 @@ const Announcements = () => {
         <Table size="small">
           <TableHead >
             <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px" }}>
                 {i18n.t("Anexado")}
               </TableCell>
               <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
@@ -309,7 +312,7 @@ const Announcements = () => {
               <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
                 {i18n.t("Status")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"5px", borderBottomRightRadius:"5px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
                 {i18n.t("Ações")}
               </TableCell>
             </TableRow>

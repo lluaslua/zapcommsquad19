@@ -210,12 +210,14 @@ const Users = () => {
         <Title>{i18n.t("users.title")}</Title>
         <MainHeaderButtonsWrapper>
           <TextField
-            style={{border:"1px,solid", borderRadius:"5px"}}
+            variant="outlined"
+            size="small"
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
+              style:{borderRadius:"15px"},
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon style={{ color: "gray" }} />
@@ -224,6 +226,7 @@ const Users = () => {
             }}
           />
           <Button
+            style={{color:"white", borderRadius:"8px"}}
             variant="contained"
             color="primary"
             onClick={handleOpenUserModal}
@@ -238,9 +241,9 @@ const Users = () => {
         onScroll={handleScroll}
       >
         <Table size="small">
-          <TableHead>"
+          <TableHead>
             <TableRow style={{ backgroundColor: "#0C2454"}}>
-			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"5px", borderBottomLeftRadius:"5px"  }}>
+			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"  }}>
                 {i18n.t("users.table.id")}
               </TableCell>
               <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>{i18n.t("users.table.name")}</TableCell>
@@ -250,7 +253,7 @@ const Users = () => {
               <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
                 {i18n.t("users.table.profile")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"5px", borderBottomRightRadius:"5px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
                 {i18n.t("users.table.actions")}
               </TableCell>
             </TableRow>
