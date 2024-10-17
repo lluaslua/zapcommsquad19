@@ -85,7 +85,7 @@ const CustomToolTip = ({ title, content, children }) => {
 			title={
 				<React.Fragment>
 					<Typography gutterBottom color="inherit">
-						{title}
+						{title}	
 					</Typography>
 					{content && <Typography>{content}</Typography>}
 				</React.Fragment>
@@ -289,8 +289,8 @@ const Connections = () => {
 						title={i18n.t("connections.toolTips.timeout.title")}
 						content={i18n.t("connections.toolTips.timeout.content")}
 					>
-						<SignalCellularConnectedNoInternet2Bar color="secondary" />
-					</CustomToolTip>
+							<SignalCellularConnectedNoInternet2Bar color="secondary" />
+						</CustomToolTip>
 				)}
 			</div>
 		);
@@ -327,6 +327,7 @@ const Connections = () => {
 								variant="contained"
 								color="primary"
 								onClick={handleOpenWhatsAppModal}
+								style={{color: "white"}}
 							>
 								{i18n.t("connections.buttons.add")}
 							</Button>
