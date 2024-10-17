@@ -638,7 +638,7 @@ const messages = {
         },
       },
       campaigns: {
-        title: "Campanhas",
+        title: "Listagem",
         searchPlaceholder: "Pesquisa",
         buttons: {
           add: "Nova Campanha",
@@ -828,11 +828,11 @@ const messages = {
         table: {
           name: "Nome",
           color: "Cor",
-          tickets: "Registros Tagdos",
+          tickets: "Registros",
           actions: "Ações",
         },
         buttons: {
-          add: "Nova Tag",
+          add: "+ Adicionar",
 		  deleteAll: "Deletar Todas",
         },
         toasts: {
