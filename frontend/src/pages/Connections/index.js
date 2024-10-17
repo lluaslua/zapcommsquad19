@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
 		alignItems: "center",
 		justifyContent: "center",
 	},
+	//Abaixo tem o tooltip que abre quando clica no quadradinho abaixo de Status
 	tooltip: {
 		backgroundColor: "#f5f5f9",
 		color: "rgba(0, 0, 0, 0.87)",
@@ -84,7 +85,7 @@ const CustomToolTip = ({ title, content, children }) => {
 			title={
 				<React.Fragment>
 					<Typography gutterBottom color="inherit">
-						{title}
+						{title}	
 					</Typography>
 					{content && <Typography>{content}</Typography>}
 				</React.Fragment>
@@ -207,6 +208,7 @@ const Connections = () => {
 						variant="contained"
 						color="primary"
 						onClick={() => handleOpenQrModal(whatsApp)}
+						style={{color: "white"}}
 					>
 						{i18n.t("connections.buttons.qrcode")}
 					</Button>
@@ -237,6 +239,7 @@ const Connections = () => {
 					<Button
 						size="small"
 						variant="outlined"
+						style={{color: "white"}}
 						color="secondary"
 						onClick={() => {
 							handleOpenConfirmationModal("disconnect", whatsApp.id);
@@ -286,8 +289,8 @@ const Connections = () => {
 						title={i18n.t("connections.toolTips.timeout.title")}
 						content={i18n.t("connections.toolTips.timeout.content")}
 					>
-						<SignalCellularConnectedNoInternet2Bar color="secondary" />
-					</CustomToolTip>
+							<SignalCellularConnectedNoInternet2Bar color="secondary" />
+						</CustomToolTip>
 				)}
 			</div>
 		);
@@ -324,6 +327,7 @@ const Connections = () => {
 								variant="contained"
 								color="primary"
 								onClick={handleOpenWhatsAppModal}
+								style={{color: "white"}}
 							>
 								{i18n.t("connections.buttons.add")}
 							</Button>
@@ -334,33 +338,34 @@ const Connections = () => {
 			<Paper className={classes.mainPaper} variant="outlined">
 				<Table size="small">
 					<TableHead>
+						{/* nome(parte de baixo) */}
 						<TableRow>
-							<TableCell align="center">
+							<TableCell align="center" bgColor= "#0C2454" style={{color: "white", borderTopLeftRadius: "5px", borderBottomLeftRadius: "5px"}}>
 								{i18n.t("connections.table.name")}
 							</TableCell>
-							<TableCell align="center">
+							<TableCell align="center" bgColor= "#0C2454" style={{color: "white"}}>
 								{i18n.t("connections.table.status")}
 							</TableCell>
 							<Can
 								role={user.profile}
 								perform="connections-page:actionButtons"
 								yes={() => (
-									<TableCell align="center">
+									<TableCell align="center" bgColor= "#0C2454" style={{color: "white"}}>
 										{i18n.t("connections.table.session")}
 									</TableCell>
 								)}
 							/>
-							<TableCell align="center">
+							<TableCell align="center" bgColor="#0C2454" style={{color: "white"}}>
 								{i18n.t("connections.table.lastUpdate")}
 							</TableCell>
-							<TableCell align="center">
+							<TableCell align="center" bgColor= "#0C2454" style={{color: "white"}}>
 								{i18n.t("connections.table.default")}
 							</TableCell>
 							<Can
 								role={user.profile}
 								perform="connections-page:editOrDeleteConnection"
 								yes={() => (
-									<TableCell align="center">
+									<TableCell align="center" bgColor= "#0C2454" style={{color: "white", borderBottomRightRadius: "5px", borderTopRightRadius: "5px"}}>
 										{i18n.t("connections.table.actions")}
 									</TableCell>
 								)}

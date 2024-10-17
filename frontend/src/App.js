@@ -73,7 +73,7 @@ const App = () => {
 				announcements: mode === "light" ? "#ededed" : "#333",
 				login: mode === "light" ? "#fff" : "#1C1C1C",
 				announcementspopover: mode === "light" ? "#fff" : "#666",
-				chatlist: mode === "light" ? "#eee" : "#666",
+				chatlist: mode === "light" ? "white" : "#666",
 				boxlist: mode === "light" ? "#ededed" : "#666",
 				boxchatlist: mode === "light" ? "#ededed" : "#333",
                 total: mode === "light" ? "#fff" : "#222",
