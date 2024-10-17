@@ -263,7 +263,8 @@ return (
               <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
               <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
               <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("tags.table.actions")}</TableCell>
+              {/*Adicionar {i18n.t("tags.table.actions")} para inserir o texto de volta*/ }
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
