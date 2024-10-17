@@ -25,15 +25,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
     backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#e6edf5",
   },
   mainPaper: {
     ...theme.scrollbarStyles,
     overflowY: "scroll",
     flex: 1,
+    backgroundColor: "#e6edf5",
   },
   tab: {
     backgroundColor: theme.palette.options,
     borderRadius: 4,
+    backgroundColor: "#e6edf5",
   },
   paper: {
     ...theme.scrollbarStyles,
@@ -42,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     width: "100%",
+    backgroundColor: "#e6edf5",
   },
   container: {
     width: "100%",
@@ -165,9 +169,9 @@ const SettingsCustom = () => {
           className={classes.tab}
         >
           <Tab label="Opções" value={"options"} />
-          {schedulesEnabled && <Tab label="Horários" value={"schedules"} />}
+          {/*schedulesEnabled && <Tab label="Horários" value={"schedules"} />*/}
           {isSuper() ? <Tab label="Empresas" value={"companies"} /> : null}
-          {isSuper() ? <Tab label="Planos" value={"plans"} /> : null}
+          {/*isSuper() ? <Tab label="Planos" value={"plans"} /> : null*/}
           {isSuper() ? <Tab label="Ajuda" value={"helps"} /> : null}
         </Tabs>
         <Paper className={classes.paper} elevation={0}>
