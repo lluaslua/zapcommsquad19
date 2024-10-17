@@ -15,12 +15,10 @@ import {
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import CachedIcon from "@material-ui/icons/Cached";
-
 import MainListItems from "./MainListItems";
 import NotificationsPopOver from "../components/NotificationsPopOver";
 import NotificationsVolume from "../components/NotificationsVolume";
@@ -31,13 +29,12 @@ import DarkMode from "../components/DarkMode";
 import { i18n } from "../translate/i18n";
 import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
-
+import footer from "../assets/footer.png"
 import logo from "../assets/logo.png";
+import logoclara from "../assets/logoclara.png";
 import { SocketContext } from "../context/Socket/SocketContext";
 import ChatPopover from "../pages/Chat/ChatPopover";
-
 import { useDate } from "../hooks/useDate";
-
 import ColorModeContext from "../layout/themeContext";
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
@@ -110,6 +107,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   drawerPaper: {
+    background: "#0C2C54",
+    color : "#FFFFFF",
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
@@ -160,10 +159,12 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
-  NotificationsPopOver: {
+  NotificationsPopOver: {   
     // color: theme.barraSuperior.secondary.main,
   },
   logo: {
+    display:"block",
+    float:"right",
     width: "80%",
     height: "auto",
     maxWidth: 180,
@@ -173,6 +174,20 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 180,
     },
     logo: theme.logo
+  },
+  footer: {
+    position:"absolute",
+    top: 10,
+    right: 20,
+    width: "80%",
+    height: "auto",
+    maxWidth: 180,
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      height: "80%",
+      maxWidth: 180,
+    },
+    footer: theme.footer
   },
 }));
 
@@ -345,13 +360,13 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} className={classes.logo} alt="logo" />
+          {/*<img src={logo} className={classes.logo} alt="logo" />*/}
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <ChevronLeftIcon />
+            <MenuIcon style={{color:"#FFFFFF"}}/>
           </IconButton>
         </div>
         <Divider />
-        <List className={classes.containerWithScroll}>
+        <List className={classes.containerWithScroll }>
           <MainListItems drawerClose={drawerClose} collapsed={!drawerOpen} />
         </List>
         <Divider />
@@ -363,10 +378,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
-        color="primary"
-      >
-        <Toolbar variant="dense" className={classes.toolbar}>
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
+        color="primary">
+
+        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
           <IconButton
             edge="start"
             variant="contained"
@@ -377,7 +392,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               drawerOpen && classes.menuButtonHidden
             )}
           >
-            <MenuIcon />
+            <MenuIcon style={{color:"#FFFFFF"}}/>
           </IconButton>
 
           <Typography
@@ -387,7 +402,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
             noWrap
             className={classes.title}
           >
-            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( */}
+            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( 
             {greaterThenSm && user?.profile === "admin" && user?.company?.dueDate ? (
               <>
                 Olá <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>! (Ativo até {dateToClient(user?.company?.dueDate)})
@@ -396,10 +411,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               <>
                 Olá  <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>!
               </>
-            )}
+            )} */}
           </Typography>
 
-          <IconButton edge="start" onClick={toggleColorMode}>
+          {/*<IconButton edge="start" onClick={toggleColorMode}>
             {theme.mode === 'dark' ? <Brightness7Icon style={{ color: "white" }} /> : <Brightness4Icon style={{ color: "white" }} />}
           </IconButton>
 
@@ -415,6 +430,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
           >
             <CachedIcon style={{ color: "white" }} />
           </IconButton>
+            */}
 
           {user.id && <NotificationsPopOver volume={volume} />}
 
@@ -429,7 +445,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-              style={{ color: "white" }}
+              style={{ color: "#FFFFFF" }}
             >
               <AccountCircle />
             </IconButton>
@@ -458,6 +474,9 @@ const LoggedInLayout = ({ children, themeToggle }) => {
           </div>
         </Toolbar>
       </AppBar>
+      <div className={classes.toolbarIcon}>
+        <img src={footer} className={classes.footer} alt="logo"/>
+      </div>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
 

@@ -6,7 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
-import { Badge, Collapse, List } from "@material-ui/core";
+import { Badge, Collapse, List, MenuItem } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -34,7 +34,7 @@ import { AuthContext } from "../context/Auth/AuthContext";
 import LoyaltyRoundedIcon from '@material-ui/icons/LoyaltyRounded';
 import { Can } from "../components/Can";
 import { SocketContext } from "../context/Socket/SocketContext";
-import { isArray } from "lodash";
+import { fromPairs, isArray } from "lodash";
 import TableChartIcon from '@material-ui/icons/TableChart';
 import api from "../services/api";
 import BorderColorIcon from '@material-ui/icons/BorderColor';
@@ -52,8 +52,191 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-15px",
     marginBottom: "-10px",
   },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+    color: theme.palette.dark.main,
+    background: theme.palette.barraSuperior,
+  },
+  toolbarIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0 8px",
+    minHeight: "48px",
+    [theme.breakpoints.down("sm")]: {
+      height: "48px"
+    }
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    [theme.breakpoints.down("sm")]: {
+      display: "none"
+    }
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: "none",
+  },
+  title: {
+    flexGrow: 1,
+    fontSize: 14,
+    color: "white",
+  },
+  drawerPaper: {
+    background: "#0C2C54",
+    color : "#FFFFFF",
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    },
+    ...theme.scrollbarStylesSoft
+  },
+  drawerPaperClose: {
+    overflowX: "hidden",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(9),
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
+    }
+  },
+  appBarSpacer: {
+    minHeight: "48px",
+  },
+  content: {
+    flex: 1,
+    overflow: "auto",
+
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column"
+  },
+  containerWithScroll: {
+    flex: 1,
+    padding: theme.spacing(1),
+    overflowY: "scroll",
+    ...theme.scrollbarStyles,
+  },
+  NotificationsPopOver: {   
+    // color: theme.barraSuperior.secondary.main,
+  },
 }));
 
+const socketManager = useContext(SocketContext);
+
+useEffect(() => {
+  if (document.body.offsetWidth > 1200) {
+    setDrawerOpen(true);
+  }
+}, []);
+
+useEffect(() => {
+  if (document.body.offsetWidth < 600) {
+    setDrawerVariant("temporary");
+  } else {
+    setDrawerVariant("permanent");
+  }
+}, [drawerOpen]);
+
+useEffect(() => {
+  const companyId = localStorage.getItem("companyId");
+  const userId = localStorage.getItem("userId");
+
+  const socket = socketManager.getSocket(companyId);
+
+  socket.on(`company-${companyId}-auth`, (data) => {
+    if (data.user.id === +userId) {
+      toastError("Sua conta foi acessada em outro computador.");
+      setTimeout(() => {
+        localStorage.clear();
+        window.location.reload();
+      }, 1000);
+    }
+  });
+
+  socket.emit("userStatus");
+  const interval = setInterval(() => {
+    socket.emit("userStatus");
+  }, 1000 * 60 * 5);
+
+  return () => {
+    socket.disconnect();
+    clearInterval(interval);
+  };
+}, [socketManager]);
+
+const handleMenu = (event) => {
+  setAnchorEl(event.currentTarget);
+  setMenuOpen(true);
+};
+
+const handleCloseMenu = () => {
+  setAnchorEl(null);
+  setMenuOpen(false);
+};
+
+const handleOpenUserModal = () => {
+  setUserModalOpen(true);
+  handleCloseMenu();
+};
+
+const handleClickLogout = () => {
+  handleCloseMenu();
+  handleLogout();
+};
+
+const drawerClose = () => {
+  if (document.body.offsetWidth < 600) {
+    setDrawerOpen(false);
+  }
+};
+
+const handleRefreshPage = () => {
+  window.location.reload(false);
+}
+
+const handleMenuItemClick = () => {
+  const { innerWidth: width } = window;
+  if (width <= 600) {
+    setDrawerOpen(false);
+  }
+};
+
+const toggleColorMode = () => {
+  colorMode.toggleColorMode();
+}
 
 function ListItemLink(props) {
   const { icon, primary, to, className } = props;
@@ -147,6 +330,9 @@ const MainListItems = (props) => {
   const [showInternalChat, setShowInternalChat] = useState(false);
   const [showExternalApi, setShowExternalApi] = useState(false);
 
+  const [userModalOpen, setUserModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [invisible, setInvisible] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
@@ -169,7 +355,16 @@ const MainListItems = (props) => {
     fetchVersion();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
- 
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+    setMenuOpen(false);
+  };
+  
+  const handleOpenUserModal = () => {
+    setUserModalOpen(true);
+    handleCloseMenu();
+  };
 
   useEffect(() => {
     dispatch({ type: "RESET" });
