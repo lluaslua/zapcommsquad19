@@ -84,8 +84,8 @@ const reducer = (state, action) => {
 const useStyles = makeStyles((theme) => ({
   mainPaper: {
     flex: 1,
-    // padding: theme.spacing(1),
-    padding: theme.padding,
+    padding: theme.spacing(1),
+    // padding: theme.padding,
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
@@ -259,15 +259,18 @@ const Announcements = () => {
             <Grid spacing={2} container>
               <Grid xs={6} sm={6} item>
                 <TextField
+                  variant="outlined"
+                  size="small"
                   fullWidth
                   placeholder={i18n.t("announcements.searchPlaceholder")}
                   type="search"
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon style={{ color: "gray" }} />
+                    style:{borderRadius:"15px"},
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon style={{ color: "gray"}} />
                       </InputAdornment>
                     ),
                   }}
@@ -275,6 +278,7 @@ const Announcements = () => {
               </Grid>
               <Grid xs={6} sm={6} item>
                 <Button
+                  style={{color:"white", borderRadius:"8px"}}
                   fullWidth
                   variant="contained"
                   onClick={handleOpenAnnouncementModal}
@@ -292,23 +296,24 @@ const Announcements = () => {
         variant="outlined"
         onScroll={handleScroll}
       >
+        
         <Table size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">
-                {i18n.t("announcements.table.title")}
+          <TableHead >
+            <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px" }}>
+                {i18n.t("Anexado")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("announcements.table.priority")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+                {i18n.t("Prioridade")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("announcements.table.mediaName")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+                {i18n.t("Arquivo")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("announcements.table.status")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+                {i18n.t("Status")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("announcements.table.actions")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+                {i18n.t("Ações")}
               </TableCell>
             </TableRow>
           </TableHead>

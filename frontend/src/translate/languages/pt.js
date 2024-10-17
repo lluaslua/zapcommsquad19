@@ -1,3 +1,5 @@
+import { styled } from "@material-ui/core";
+
 const messages = {
   pt: {
     translations: {
@@ -706,6 +708,7 @@ const messages = {
         title: "Informativos",
         searchPlaceholder: "Pesquisa",
         buttons: {
+          color:"white",
           add: "Novo Informativo",
           contactLists: "Listas de Informativos",
         },
