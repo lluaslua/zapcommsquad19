@@ -26,7 +26,7 @@ import toastError from '../../errors/toastError';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
-import Component7 from "../../assets/Component 7.png";
+import Component7 from "../../assets/cadeado.png";
 
 const useStyles = makeStyles((theme) => ({
   root: { //fundo da página
