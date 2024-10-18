@@ -86,7 +86,7 @@ const messages = {
           add: "Adicionar WhatsApp",
           disconnect: "desconectar",
           tryAgain: "Tentar novamente",
-          qrcode: "QR CODE",
+          qrcode: "Mostrar QR CODE",
           newQr: "Novo QR CODE",
           connecting: "Conectando",
         },
@@ -640,7 +640,7 @@ const messages = {
         },
       },
       campaigns: {
-        title: "Campanhas",
+        title: "Listagem",
         searchPlaceholder: "Pesquisa",
         buttons: {
           add: "Nova Campanha",
@@ -831,11 +831,11 @@ const messages = {
         table: {
           name: "Nome",
           color: "Cor",
-          tickets: "Registros Tagdos",
+          tickets: "Registros",
           actions: "Ações",
         },
         buttons: {
-          add: "Nova Tag",
+          add: "+ Adicionar",
 		  deleteAll: "Deletar Todas",
         },
         toasts: {
