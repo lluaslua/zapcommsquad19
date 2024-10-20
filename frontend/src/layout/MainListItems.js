@@ -298,7 +298,7 @@ const MainListItems = (props) => {
 
       <ListItemLink
         to="/tickets"
-        primary={i18n.t("mainDrawer.listItems.tickets")}
+        primary={i18n.t("Chamados")}
         icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}
       />
 	  
@@ -484,11 +484,11 @@ const MainListItems = (props) => {
                 />
               </>
             )}
-            <ListItemLink
+            {/*<ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}
               icon={<LocalAtmIcon style={{color : "#34D3A3"}} />}
-            />
+            />*/}
 
             <ListItemLink
               to="/settings"
@@ -505,10 +505,10 @@ const MainListItems = (props) => {
                 <img style={{ width: "100%", padding: "10px" }} src={logo} alt="image" />            
               </Hidden> 
               */}
-              <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
+              {/*<Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
                 {`6.0.0`}
 
-              </Typography>
+              </Typography>*/}
             </React.Fragment>
             }
 			
