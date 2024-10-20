@@ -9,7 +9,6 @@ import MainHeader from "../../components/MainHeader";
 import Title from "../../components/Title";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import api from "../../services/api";
-
 import { i18n } from "../../translate/i18n";
 import {
   Box,
@@ -37,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
+    roundedButton: {
+      borderRadius: '8px',
+    },
   textRight: {
     textAlign: "right",
   },
@@ -131,7 +133,7 @@ const CampaignsConfig = () => {
       </MainHeader>
       <Paper className={classes.mainPaper} variant="outlined">
         <Box className={classes.tabPanelsContainer}>
-          <Grid spacing={2} container>
+        
             <Grid xs={12} item>
               <Typography component={"h3"}>Intervalos</Typography>
             </Grid>
@@ -224,22 +226,34 @@ const CampaignsConfig = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid xs={12} className={classes.textRight} item>
+
+            <Grid container spacing={2} className={classes.textRight}>
+            <Grid xs={6} className={classes.textRight}>
               <Button
                 onClick={() => setShowVariablesForm(!showVariablesForm)}
                 color="primary"
-                style={{ marginRight: 10 }}
+                style={{ marginRight: 10, borderRadius: '8px', }}
               >
                 Adicionar Variável
               </Button>
-              <Button
-                onClick={saveSettings}
-                color="primary"
-                variant="contained"
-              >
-                Salvar Configurações
-              </Button>
             </Grid>
+            <Grid container spacing={2} className={classes.textRight}>
+              <Grid item xs={6} className={classes.textLeft}>
+                <Button
+                  onClick={saveSettings}
+                  color="primary"
+                  variant="contained"
+                  className={classes.roundedButton}
+                  style={{
+                    borderRadius: '8px', 
+                  }}
+                >
+                  Salvar Configurações
+                </Button>
+              </Grid>
+            </Grid>
+
+
             {showVariablesForm && (
               <>
                 <Grid xs={12} md={6} item>
@@ -250,6 +264,7 @@ const CampaignsConfig = () => {
                     name="key"
                     onChange={handleOnChangeVariable}
                     fullWidth
+                  
                   />
                 </Grid>
                 <Grid xs={12} md={6} item>
@@ -266,7 +281,7 @@ const CampaignsConfig = () => {
                   <Button
                     onClick={() => setShowVariablesForm(!showVariablesForm)}
                     color="primary"
-                    style={{ marginRight: 10 }}
+                    style={{ marginRight: 10, borderRadius: '8px',}}
                   >
                     Fechar
                   </Button>
@@ -274,6 +289,9 @@ const CampaignsConfig = () => {
                     onClick={addVariable}
                     color="primary"
                     variant="contained"
+                    style={{
+                      borderRadius: '8px', 
+                    }}
                   >
                     Adicionar
                   </Button>
@@ -283,7 +301,7 @@ const CampaignsConfig = () => {
             {settings.variables.length > 0 && (
               <Grid xs={12} className={classes.textRight} item>
                 <Table size="small">
-                  <TableHead>
+                  <TableHead >
                     <TableRow>
                       <TableCell style={{ width: "1%" }}></TableCell>
                       <TableCell>Atalho</TableCell>
