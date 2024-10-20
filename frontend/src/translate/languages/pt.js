@@ -751,7 +751,7 @@ const messages = {
         },
       },
       campaignsConfig: {
-        title: "Configurações de Campanhas",
+        title: "Configurações",
       },
       queues: {
         title: "Filas & Chatbot",

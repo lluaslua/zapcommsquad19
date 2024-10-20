@@ -35,8 +35,15 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     overflowY: "scroll",
     ...theme.scrollbarStyles,
+    backgroundColor:"transparent"
   },
-    roundedButton: {
+  formControl: {
+    backgroundColor: "#fff",  // Fundo branquinho
+  },
+  textField: {
+    backgroundColor: "#fff", 
+  },
+  roundedButton: {
       borderRadius: '8px',
     },
   textRight: {
@@ -127,16 +134,19 @@ const CampaignsConfig = () => {
       <MainHeader>
         <Grid style={{ width: "99.6%" }} container>
           <Grid xs={12} item>
-            <Title>{i18n.t("campaignsConfig.title")}</Title>
+          <Typography variant="h4" style={{ color: '#0C2454', fontWeight: 500 }} className={classes.elementMargin}>
+          CONFIGURAÇÕES
+        </Typography>
           </Grid>
         </Grid>
       </MainHeader>
-      <Paper className={classes.mainPaper} variant="outlined">
+      <Paper className={classes.mainPaper} variant="outlined" >
         <Box className={classes.tabPanelsContainer}>
         
             <Grid xs={12} item>
               <Typography component={"h3"}>Intervalos</Typography>
             </Grid>
+            <Grid container spacing={2} alignItems="flex-start">
             <Grid xs={12} md={4} item>
               <FormControl
                 variant="outlined"
@@ -226,6 +236,7 @@ const CampaignsConfig = () => {
                 </Select>
               </FormControl>
             </Grid>
+            </Grid>
 
             <Grid container spacing={2} className={classes.textRight}>
             <Grid xs={6} className={classes.textRight}>
@@ -264,6 +275,7 @@ const CampaignsConfig = () => {
                     name="key"
                     onChange={handleOnChangeVariable}
                     fullWidth
+                    style={{backgroundColor:"white"}}
                   
                   />
                 </Grid>
@@ -275,6 +287,7 @@ const CampaignsConfig = () => {
                     name="value"
                     onChange={handleOnChangeVariable}
                     fullWidth
+                    style={{backgroundColor:"white"}}
                   />
                 </Grid>
                 <Grid xs={12} className={classes.textRight} item>
