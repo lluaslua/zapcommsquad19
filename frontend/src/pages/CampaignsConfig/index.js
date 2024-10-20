@@ -35,10 +35,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     overflowY: "scroll",
     ...theme.scrollbarStyles,
-    backgroundColor:"transparent"
+    backgroundColor:"transparent",
+    border: "none"
   },
   formControl: {
-    backgroundColor: "#fff",  // Fundo branquinho
+    backgroundColor: "#fff",  
   },
   textField: {
     backgroundColor: "#fff", 
@@ -238,29 +239,31 @@ const CampaignsConfig = () => {
             </Grid>
             </Grid>
 
-            <Grid container spacing={2} className={classes.textRight}>
+            <Grid container spacing={2} className={classes.textRight} justifyContent="flex-end" style={{ marginTop: '10px',  }}>            
             <Grid xs={6} className={classes.textRight}>
-              <Button
-                onClick={() => setShowVariablesForm(!showVariablesForm)}
-                color="primary"
-                style={{ marginRight: 10, borderRadius: '8px', }}
-              >
-                Adicionar Variável
-              </Button>
-            </Grid>
-            <Grid container spacing={2} className={classes.textRight}>
-              <Grid item xs={6} className={classes.textLeft}>
-                <Button
+            <Button
                   onClick={saveSettings}
                   color="primary"
                   variant="contained"
                   className={classes.roundedButton}
                   style={{
                     borderRadius: '8px', 
+                    marginRight: '10px'
                   }}
                 >
-                  Salvar Configurações
-                </Button>
+                  Salvar 
+            </Button>
+              
+            </Grid>
+            <Grid container spacing={2} className={classes.textRight} justifyContent="flex-end">
+              <Grid item xs={6} className={classes.textLeft}>
+              <Button
+                onClick={() => setShowVariablesForm(!showVariablesForm)}
+                color="primary"
+                style={{ marginRight: 10, borderRadius: '8px', border: '1px solid #0C2454', marginTop: "50px"}}
+              >
+                Adicionar Variável
+              </Button>
               </Grid>
             </Grid>
 
@@ -291,6 +294,8 @@ const CampaignsConfig = () => {
                   />
                 </Grid>
                 <Grid xs={12} className={classes.textRight} item>
+
+                  
                   <Button
                     onClick={() => setShowVariablesForm(!showVariablesForm)}
                     color="primary"
@@ -298,6 +303,8 @@ const CampaignsConfig = () => {
                   >
                     Fechar
                   </Button>
+
+
                   <Button
                     onClick={addVariable}
                     color="primary"
@@ -314,18 +321,20 @@ const CampaignsConfig = () => {
             {settings.variables.length > 0 && (
               <Grid xs={12} className={classes.textRight} item>
                 <Table size="small">
-                  <TableHead >
+                  <TableHead style={{ backgroundColor: '#0C2454', borderTopLeftRadius: '5px', borderTopRightRadius: '5px', overflow: 'hidden'}}>
                     <TableRow>
                       <TableCell style={{ width: "1%" }}></TableCell>
-                      <TableCell>Atalho</TableCell>
-                      <TableCell>Conteúdo</TableCell>
+                      <TableCell style={{ color: 'white' }}>Atalho</TableCell>
+                      <TableCell style={{ color: 'white' }} align="center" justifyContent="center">Conteúdo</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {Array.isArray(settings.variables) &&
                       settings.variables.map((v, k) => (
-                        <TableRow key={k}>
-                          <TableCell>
+                        <TableRow key={k} style={{ backgroundColor: 'white' }}>
+                          <TableCell align="left">{"{" + v.key + "}"}</TableCell>
+                          <TableCell align="center">{v.value}</TableCell>
+                          <TableCell align="right">
                             <IconButton
                               size="small"
                               onClick={() => {
@@ -336,8 +345,7 @@ const CampaignsConfig = () => {
                               <DeleteOutlineIcon />
                             </IconButton>
                           </TableCell>
-                          <TableCell>{"{" + v.key + "}"}</TableCell>
-                          <TableCell>{v.value}</TableCell>
+                          
                         </TableRow>
                       ))}
                   </TableBody>
