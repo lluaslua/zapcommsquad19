@@ -345,9 +345,9 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} className={classes.logo} alt="logo" />
+          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <ChevronLeftIcon />
+            <MenuIcon style={{ color: "white" }}     />
           </IconButton>
         </div>
         <Divider />
@@ -363,10 +363,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift /* && classes.menuButtonHidden */)}
         color="primary"
       >
-        <Toolbar variant="dense" className={classes.toolbar}>
+        <Toolbar variant="dense" className={classes.toolbar /* && classes.menuButtonHidden */}>
           <IconButton
             edge="start"
             variant="contained"
@@ -377,7 +377,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               drawerOpen && classes.menuButtonHidden
             )}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "white" }}/>
           </IconButton>
 
           <Typography
@@ -413,7 +413,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
             aria-label={i18n.t("mainDrawer.appBar.refresh")}
             color="inherit"
           >
-            <CachedIcon style={{ color: "white" }} />
+            <MenuIcon  style={{ color: "white" }} />
           </IconButton>
 
           {user.id && <NotificationsPopOver volume={volume} />}
