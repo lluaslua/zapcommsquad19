@@ -168,6 +168,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                         <Form style={{ width: "100%" }}>
                             <DialogContent dividers>
                                 <Field
+                                // NOME
                                     as={TextField}
                                     label={i18n.t("promptModal.form.name")}
                                     name="name"
@@ -178,6 +179,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                     fullWidth
                                 />
                                 <FormControl fullWidth margin="dense" variant="outlined">
+                                    {/* APIKEY */}
                                     <Field
                                         as={TextField}
                                         label={i18n.t("promptModal.form.apikey")}
@@ -200,6 +202,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                     />
                                 </FormControl>
                                 <Field
+                                // prompt
                                     as={TextField}
                                     label={i18n.t("promptModal.form.prompt")}
                                     name="prompt"
@@ -211,6 +214,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                     rows={10}
                                     multiline={true}
                                 />
+                                {/* filas(embaixo) */}
                                 <QueueSelectSingle />
                                 <div className={classes.multFieldLine}>
                                     <FormControl fullWidth margin="dense" variant="outlined">
@@ -223,6 +227,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                             onChange={handleChangeVoice}
                                             multiple={false}
                                         >
+                                            {/* TIPOS DE VOZ */}
                                             <MenuItem key={"texto"} value={"texto"}>
                                                 Texto
                                             </MenuItem>
@@ -274,6 +279,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         </Select>
                                     </FormControl>
                                     <Field
+                                    // CHAVE DA VOZ
                                         as={TextField}
                                         label={i18n.t("promptModal.form.voiceKey")}
                                         name="voiceKey"
@@ -284,6 +290,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         fullWidth
                                     />
                                     <Field
+                                    //REGIAO DA VOZ
                                         as={TextField}
                                         label={i18n.t("promptModal.form.voiceRegion")}
                                         name="voiceRegion"
@@ -297,6 +304,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                 
                                 <div className={classes.multFieldLine}>
                                     <Field
+                                    //TEMPERATURA
                                         as={TextField}
                                         label={i18n.t("promptModal.form.temperature")}
                                         name="temperature"
@@ -307,6 +315,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         fullWidth
                                     />
                                     <Field
+                                    // MAXIMO DE TOKENS
                                         as={TextField}
                                         label={i18n.t("promptModal.form.max_tokens")}
                                         name="maxTokens"
@@ -317,6 +326,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         fullWidth
                                     />
                                     <Field
+                                    //MAXIMO DE MENSAGENS POR HISTORICO
                                         as={TextField}
                                         label={i18n.t("promptModal.form.max_messages")}
                                         name="maxMessages"
@@ -331,9 +341,9 @@ const PromptModal = ({ open, onClose, promptId }) => {
                             <DialogActions>
                                 <Button
                                     onClick={handleClose}
-                                    color="secondary"
+                                    color="primary"
                                     disabled={isSubmitting}
-                                    variant="outlined"
+                                    variant="text"
                                 >
                                     {i18n.t("promptModal.buttons.cancel")}
                                 </Button>
