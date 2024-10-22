@@ -143,11 +143,11 @@ const PromptModal = ({ open, onClose, promptId }) => {
 
     return (
         <div className={classes.root}>
-            {/* essa caixa "dialog" é o proprio paper que abre quando clica em adicionar */}
+            {/* essa caixa "dialog" é o proprio paper que abre quando clica em adicionar 1429 892*/}
             <Dialog
                 open={open}
                 onClose={handleClose}
-                maxWidth="500px"
+                maxWidth="md"
                 scroll="paper"
                 fullWidth
             >
@@ -169,7 +169,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                     {({ touched, errors, isSubmitting, values }) => (
                         <Form style={{ width: "100%" }}>
                             {/* embaixo(no dialog content) está a área dos inputs */}
-                            <DialogContent dividers style={{display: "flex", flexDirection: "row"}}>  
+                            <DialogContent dividers>  
                             <div>
 
                                 <Field
@@ -204,6 +204,19 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                                 </InputAdornment>
                                             ),
                                         }}
+                                        />
+                                        <Field
+                                        // promptinput
+                                        as={TextField}
+                                        label={i18n.t("promptModal.form.prompt")}
+                                        name="prompt"
+                                        error={touched.prompt && Boolean(errors.prompt)}
+                                        helperText={touched.prompt && errors.prompt}
+                                        variant="outlined"
+                                        margin="dense"
+                                        fullWidth
+                                        rows={10}
+                                        multiline={true}
                                         />
                                 </FormControl>
                                 {/* filas(embaixo) */}
@@ -330,22 +343,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                     />
                                 </div>
                                 </div>
-                                <div>
                                 {/* essa div serve para deixar o prompt enorme ao lado */}
-                                <Field
-                                // promptinput
-                                as={TextField}
-                                label={i18n.t("promptModal.form.prompt")}
-                                name="prompt"
-                                error={touched.prompt && Boolean(errors.prompt)}
-                                helperText={touched.prompt && errors.prompt}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
-                                rows={10}
-                                multiline={true}
-                                />
-                                </div>
                             </DialogContent>
                             <DialogActions>
                                 <Button
