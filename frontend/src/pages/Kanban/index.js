@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
   },
   button: {
-    background: "#10a110",
+    background: "#0C2C54",
     border: "none",
     padding: "10px",
     color: "white",
