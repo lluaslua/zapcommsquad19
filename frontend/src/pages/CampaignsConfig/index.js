@@ -53,6 +53,16 @@ const useStyles = makeStyles((theme) => ({
   tabPanelsContainer: {
     padding: theme.spacing(2),
   },
+  tableHeader: {
+    backgroundColor: '#0C2454', 
+    color: 'white',
+    borderRadius: '5px 5px 0 0', // Para arredondar os cantos superiores
+    textAlign: "center",
+  },
+  tableRow: {
+    backgroundColor: 'white',
+    textAlign: 'center', // Centralizando o conteúdo da célula
+  },
 }));
 
 const initialSettings = {
@@ -145,7 +155,7 @@ const CampaignsConfig = () => {
         <Box className={classes.tabPanelsContainer}>
         
             <Grid xs={12} item>
-              <Typography component={"h3"}>Intervalos</Typography>
+              <Typography component={"h3"} style={{padding:"10px"}}>Intervalos</Typography>
             </Grid>
             <Grid container spacing={2} alignItems="flex-start">
             <Grid xs={12} md={4} item>
@@ -299,7 +309,7 @@ const CampaignsConfig = () => {
                   <Button
                     onClick={() => setShowVariablesForm(!showVariablesForm)}
                     color="primary"
-                    style={{ marginRight: 10, borderRadius: '8px',}}
+                    style={{ marginRight: 10, borderRadius: '8px', border: '1px solid'}}
                   >
                     Fechar
                   </Button>
@@ -320,22 +330,26 @@ const CampaignsConfig = () => {
             )}
             {settings.variables.length > 0 && (
               <Grid xs={12} className={classes.textRight} item>
+                
                 <Table size="small">
-                  <TableHead style={{ backgroundColor: '#0C2454', borderTopLeftRadius: '5px', borderTopRightRadius: '5px', overflow: 'hidden'}}>
-                    <TableRow>
-                      <TableCell style={{ width: "1%" }}></TableCell>
-                      <TableCell style={{ color: 'white' }}>Atalho</TableCell>
-                      <TableCell style={{ color: 'white' }} align="center" justifyContent="center">Conteúdo</TableCell>
+                  <TableHead>
+                    <TableRow className={classes.tableHeader}>
+                      <TableCell align="center" style={{borderRadius: '5px 0px 0px 5px', color:'white'}}>Atalho</TableCell>
+                      <TableCell align="center"> </TableCell>
+                      <TableCell align="center"style={{color:'white'}}>Conteúdo</TableCell>
+                      <TableCell style={{backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px', width:"150px"}}></TableCell>
+                      
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {Array.isArray(settings.variables) &&
                       settings.variables.map((v, k) => (
-                        <TableRow key={k} style={{ backgroundColor: 'white' }}>
-                          <TableCell align="left">{"{" + v.key + "}"}</TableCell>
+                        <TableRow key={k} className={classes.tableRow}>
+                          <TableCell align="center">{"{" + v.key + "}"}</TableCell>
+                          <TableCell align="center"> </TableCell>
                           <TableCell align="center">{v.value}</TableCell>
-                          <TableCell align="right">
-                            <IconButton
+                          <TableCell align="center">
+                            <IconButton 
                               size="small"
                               onClick={() => {
                                 setSelectedKey(v.key);
@@ -350,6 +364,7 @@ const CampaignsConfig = () => {
                       ))}
                   </TableBody>
                 </Table>
+                
               </Grid>
             )}
           </Grid>
