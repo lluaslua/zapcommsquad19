@@ -315,6 +315,7 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                 </FieldArray>
                             </DialogContent>
                             <DialogActions> 
+                                {/* botao cancelar */}
                                 <Button
                                     onClick={handleClose}
                                     color="primary" //botão CANCELAR na cor primary para a padronização.
@@ -322,6 +323,7 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                 >
                                     {i18n.t("fileModal.buttons.cancel")}
                                 </Button>
+                                {/* botao de salvar */}
                                 <Button
                                     type="submit"
                                     color="primary"
