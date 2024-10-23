@@ -209,13 +209,12 @@ const Prompts = () => {
         promptId={selectedPrompt?.id}
       />
       <MainHeader>
-        <Title>{i18n.t("Open AI")}</Title>
+        <Title>{i18n.t("prompts.title")}</Title>
         <MainHeaderButtonsWrapper>
           <Button
             variant="contained"
             color="primary"
             onClick={handleOpenPromptModal}
-            style={{borderRadius: "8px"}}
           >
             {i18n.t("prompts.buttons.add")}
           </Button>
@@ -225,16 +224,16 @@ const Prompts = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell align="left" bgcolor="#0C2454" style={{color: "white", borderBottomLeftRadius: "5px", borderTopLeftRadius: "5px"}}>
+              <TableCell align="left">
                 {i18n.t("prompts.table.name")}
               </TableCell>
-              <TableCell align="left" bgcolor="#0C2454" style={{color: "white"}}>
+              <TableCell align="left">
                 {i18n.t("prompts.table.queue")}
               </TableCell>
-              <TableCell align="left" bgcolor="#0C2454" style={{color: "white"}}>
+              <TableCell align="left">
                 {i18n.t("prompts.table.max_tokens")}
               </TableCell>
-              <TableCell align="center" bgcolor="#0C2454" style={{color: "white", borderTopRightRadius: "5px", borderBottomRightRadius: "5px"}}>
+              <TableCell align="center">
                 {i18n.t("prompts.table.actions")}
               </TableCell>
             </TableRow>

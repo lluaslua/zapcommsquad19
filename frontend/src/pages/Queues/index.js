@@ -196,24 +196,16 @@ const Queues = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-			   <TableCell align="center">
-                {i18n.t("queues.table.id")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.name")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.color")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.orderQueue")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.greeting")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.actions")}
-              </TableCell>
+            <TableCell padding="checkbox" style={{backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+            </TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.id")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.name")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.color")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.orderQueue")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.greeting")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white'}}>{i18n.t("queues.table.actions")}</TableCell>
+            <TableCell style={{backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}>
+            </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

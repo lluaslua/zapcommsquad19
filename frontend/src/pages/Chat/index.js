@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
     height: `calc(100% - 48px)`,
     overflowY: "hidden",
     border: "1px solid rgba(0, 0, 0, 0.12)",
-    backgroundColor: "#E6EDF5",
   },
   gridContainer: {
     flex: 1,
     height: "100%",
+    border: "1px solid rgba(0, 0, 0, 0.12)",
     backgroundColor: theme.palette.dark,
   },
   gridItem: {
@@ -137,7 +137,7 @@ export function ChatModal({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="black">
+        <Button onClick={handleClose} color="primary">
           Fechar
         </Button>
         <Button onClick={handleSave} color="primary" variant="contained">
@@ -343,9 +343,8 @@ function Chat(props) {
                 }}
                 color="primary"
                 variant="contained"
-                style={{color: "white", borderRadius: "8px"}}
               >
-                Novo Chat
+                Nova
               </Button>
             </div>
           

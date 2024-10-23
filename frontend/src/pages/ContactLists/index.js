@@ -226,17 +226,14 @@ const ContactLists = () => {
             <Grid spacing={2} container>
               <Grid xs={7} sm={6} item>
                 <TextField
-                  variant="outlined"
-                  size="small"
                   fullWidth
                   placeholder={i18n.t("contacts.searchPlaceholder")}
                   type="search"
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
-                    style:{borderRadius:"15px"},
-                    endAdornment: (
-                      <InputAdornment position="end">
+                    startAdornment: (
+                      <InputAdornment position="start">
                         <SearchIcon style={{ color: "gray" }} />
                       </InputAdornment>
                     ),
@@ -245,7 +242,6 @@ const ContactLists = () => {
               </Grid>
               <Grid xs={5} sm={6} item>
                 <Button
-                  style={{color:"white", borderRadius:"8px"}}
                   fullWidth
                   variant="contained"
                   color="primary"
@@ -265,14 +261,14 @@ const ContactLists = () => {
       >
         <Table size="small">
           <TableHead>
-            <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px" }}>
+            <TableRow>
+              <TableCell align="center">
                 {i18n.t("contactLists.table.name")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+              <TableCell align="center">
                 {i18n.t("contactLists.table.contacts")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+              <TableCell align="center">
                 {i18n.t("contactLists.table.actions")}
               </TableCell>
             </TableRow>

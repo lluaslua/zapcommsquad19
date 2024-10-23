@@ -12,20 +12,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import usePlans from "../../hooks/usePlans";
 
-
 const useStyles = makeStyles((theme) => ({
   mainPaper: {
     flex: 1,
-    padding: theme.spacing(0),
-    paddingBottom: 0,
-    color: '#0C2454',
-    margin: 0,
-    border: 'none',
-    backgroundColor: 'transparent',
+    padding: theme.spacing(2),
+    paddingBottom: 100
   },
-  buttonMargin: {
-    marginTop: '30px',
-  },  
   mainHeader: {
     marginTop: theme.spacing(1),
   },
@@ -37,15 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textRight: {
     textAlign: "right"
-  },
-  rectangleBackground: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: '10px',
-    padding: '10px',
-    marginBottom: '21px',
-    height: '350px',
-    flex: true, 
-  },
+  }
 }));
 
 const MessagesAPI = () => {
@@ -134,9 +118,8 @@ const MessagesAPI = () => {
       >
         {({ isSubmitting }) => (
           <Form className={classes.formContainer}>
-            <Grid container spacing={2} justifyContent="center">
+            <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-
                 <Field
                   as={TextField}
                   label={i18n.t("messagesAPI.textMessage.token")}
@@ -147,11 +130,7 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
-                  style= {{
-                    backgroundColor:"white"
-                  }}
                 />
-              
               </Grid>
               <Grid item xs={12} md={6}>
                 <Field
@@ -164,9 +143,6 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
-                  style= {{
-                    backgroundColor:"white"
-                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -180,20 +156,14 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
-                  style= {{
-                    backgroundColor:"white"
-                  }}
                 />
               </Grid>
-              <Grid item xs={12} justifyContent="center" className={classes.textRight}>
+              <Grid item xs={12} className={classes.textRight}>
                 <Button
                   type="submit"
                   color="primary"
                   variant="contained"
                   className={classes.btnWrapper}
-                  style={{
-                    borderRadius: '8px', 
-                  }}
                 >
                   {isSubmitting ? (
                     <CircularProgress
@@ -210,7 +180,6 @@ const MessagesAPI = () => {
     )
   }
 
-  
   const renderFormMessageMedia = () => {
     return (
       <Formik
@@ -241,7 +210,6 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
-                  style= {{ backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -255,22 +223,17 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
-                  style= {{backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12}>
                 <input type="file" name="medias" id="medias" required onChange={(e) => setFile(e.target.files)} />
               </Grid>
               <Grid item xs={12} className={classes.textRight}>
-              <Grid container justifyContent="center">
                 <Button
                   type="submit"
                   color="primary"
                   variant="contained"
-                  className= {`${classes.btnWrapper} ${classes.buttonMargin}`}
-                  style={{
-                    borderRadius: '8px', 
-                  }}
+                  className={classes.btnWrapper}
                 >
                   {isSubmitting ? (
                     <CircularProgress
@@ -279,7 +242,6 @@ const MessagesAPI = () => {
                     />
                   ) : 'Enviar'}
                 </Button>
-              </Grid>
               </Grid>
             </Grid>
           </Form>
@@ -294,61 +256,62 @@ const MessagesAPI = () => {
       style={{marginLeft: "5px"}}
       // className={classes.elementMargin}
       variant="outlined"
-      color="0C2454"
     >
-      <Typography variant="h3" style={{ color: '#0C2454' }} className={classes.elementMargin}>
-        API
+      <Typography variant="h5">
+        Documentação para envio de mensagens
       </Typography>
-      <Typography variant="h6" style={{ color: '#0C2454' }} className={classes.elementMargin}>
-        Métodos de envio
+      <Typography variant="h6" color="primary" className={classes.elementMargin}>
+        Métodos de Envio
       </Typography>
-      <Typography component="div" style={{ color: '#0C2454' }}>
+      <Typography component="div">
         <ol>
-          <li>Mensagens de texto</li>
-          <li>Mensagens de media</li>
+          <li>Mensagens de Texto</li>
+          <li>Mensagens de Media</li>
         </ol>
       </Typography>
-      <div className={classes.rectangleBackground}>
-      <Typography variant="h6" style={{ color: '#0C2454' }} className={classes.elementMargin}>
+      <Typography variant="h6" color="primary" className={classes.elementMargin}>
         Instruções
       </Typography>
-      
-      <Typography className={classes.elementMargin} component="div" style={{ color: '#0C2454' }}>
+      <Typography className={classes.elementMargin} component="div">
+        <b>Observações importantes</b><br />
         <ul>
-          <p>Antes de enviar mensagens, é necessário o cadastro do token vinculado à conexão que enviará as mensagens. <br />Para realizar o cadastro acesse o menu "Conexões", clique no botão editar da conexão e insira o token no devido campo.</p>
-          
-            <p>O número para envio não deve ter mascara ou caracteres especiais e deve ser composto por:</p>
-            
-              <ul>
-                <li>Código do país</li>
-                <li>DDD</li>
-                <li>Número</li>
-              </ul>
+          <li>Antes de enviar mensagens, é necessário o cadastro do token vinculado à conexão que enviará as mensagens. <br />Para realizar o cadastro acesse o menu "Conexões", clique no botão editar da conexão e insira o token no devido campo.</li>
+          <li>
+            O número para envio não deve ter mascara ou caracteres especiais e deve ser composto por:
+            <ul>
+              <li>Código do país</li>
+              <li>DDD</li>
+              <li>Número</li>
+            </ul>
+          </li>
         </ul>
       </Typography>
-      </div>
-
-      <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}>
-      <div className={classes.rectangleBackground}>
-      <Typography variant="h6" style={{ color: '#0C2454' }} className={classes.elementMargin}>
-         Mensagens de texto
+      <Typography variant="h6" color="primary" className={classes.elementMargin}>
+        1. Mensagens de Texto
       </Typography>
-          <Typography className={classes.elementMargin} component="div" style={{ color: '#0C2454' }}>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <Typography className={classes.elementMargin} component="div">
             <p>Seguem abaixo a lista de informações necessárias para envio das mensagens de texto:</p>
             <b>Endpoint: </b> {getEndpoint()} <br />
             <b>Método: </b> POST <br />
             <b>Headers: </b> Authorization (Bearer token) e Content-Type (application/json) <br />
             <b>Body: </b> {"{ \"number\": \"5599999999999\", \"body\": \"Sua mensagem\" }"}
           </Typography>
-      </div>
         </Grid>
-    <Grid item xs={12} sm={6}>
-    <div className={classes.rectangleBackground}>
-      <Typography variant="h6" style={{ color: '#0C2454' }} className={classes.elementMargin}>
-         Mensagens de media
+        <Grid item xs={12} sm={6}>
+          <Typography className={classes.elementMargin}>
+            <b>Teste de Envio</b>
+          </Typography>
+          {renderFormMessageText()}
+        </Grid>
+      </Grid>
+      <Typography variant="h6" color="primary" className={classes.elementMargin}>
+        2. Mensagens de Media
       </Typography>
-          <Typography className={classes.elementMargin} component="div" style={{ color: '#0C2454' }}>
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <Typography className={classes.elementMargin} component="div">
             <p>Seguem abaixo a lista de informações necessárias para envio das mensagens de texto:</p>
             <b>Endpoint: </b> {getEndpoint()} <br />
             <b>Método: </b> POST <br />
@@ -363,29 +326,14 @@ const MessagesAPI = () => {
               </li>
             </ul>
           </Typography>
-      </div>
         </Grid>
-      
-      </Grid>
-      
-      <Grid container spacing={2}>
-
-      <Grid item xs={12} sm={6}>
-          <Typography className={classes.elementMargin} style={{ color: '#0C2454'}}> 
-            <b>Teste de Envio</b> 
-          </Typography>
-          {renderFormMessageText()}
-        </Grid>
-
         <Grid item xs={12} sm={6}>
-          <Typography className={classes.elementMargin} style={{ color: '#0C2454' }}>
+          <Typography className={classes.elementMargin}>
             <b>Teste de Envio</b>
           </Typography>
           {renderFormMessageMedia()}
         </Grid>
-        
       </Grid>
-      
     </Paper>
   );
 };

@@ -1,44 +1,22 @@
 /* Adicione as regras CSS para ocultar os ícones */
 .event-container {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.delete-icon,
-.edit-icon {
-  opacity: 0;
-  transition: opacity 0.3s;
-  margin-left: 5px; /* Adicione margem à esquerda */
-  z-index: 1; /* Garante que os ícones apareçam sobre o evento */
-}
-
-.event-container:hover .delete-icon,
-.event-container:hover .edit-icon {
-  opacity: 1;
-}
-
-.rbc-off-range-bg {
-  background-color: #34D3A3;
-  opacity: 34%;
-  border: 1px solid #0C2454;
-}
-
-.rbc-row-bg {
-  border-bottom: 1px solid #0C2454; /* Cor das linhas horizontais entre os dias */
-}
-
-.rbc-day-bg {
-  border-right: 1px solid #0C2454; /* Cor das linhas verticais entre os dias */
-}
-
-
-.rbc-row-bg:first-child {
-  border-left: 1px solid #0C2454; /* Adiciona uma linha à esquerda na primeira célula */
-}
-
-.rbc-header {
-  border-bottom: 1px solid #0C2454; /* Cor da linha entre o cabeçalho e o primeiro dia */
-}
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete-icon,
+  .edit-icon {
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-left: 5px; /* Adicione margem à esquerda */
+    z-index: 1; /* Garante que os ícones apareçam sobre o evento */
+  }
+  
+  .event-container:hover .delete-icon,
+  .event-container:hover .edit-icon {
+    opacity: 1;
+  }
+  

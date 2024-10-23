@@ -234,35 +234,29 @@ const Quickemessages = () => {
             <Title>{i18n.t("quickMessages.title")}</Title>
           </Grid>
           <Grid xs={12} sm={4} item>
-            <Grid spacing={9} container>
+            <Grid spacing={2} container>
               <Grid xs={6} sm={6} item>
                 <TextField
-                   variant="outlined"
-                  size="small"
                   fullWidth
-                  placeholder={i18n.t("contacts.searchPlaceholder")}
+                  placeholder={i18n.t("quickMessages.searchPlaceholder")}
                   type="search"
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
-                    style:{
-                      borderRadius:"15px"},
-                    endAdornment: (
-                      <InputAdornment position="end">
+                    startAdornment: (
+                      <InputAdornment position="start">
                         <SearchIcon style={{ color: "gray" }} />
                       </InputAdornment>
                     ),
                   }}
-                  style={{ width: "220px" }}
                 />
               </Grid>
               <Grid xs={6} sm={6} item>
                 <Button
                   fullWidth
                   variant="contained"
-                  color="primary"
                   onClick={handleOpenQuickMessageDialog}
-                  style={{color:"white",borderRadius:'8px'}}
+                  color="primary"
                 >
                   {i18n.t("quickMessages.buttons.add")}
                 </Button>
@@ -278,10 +272,17 @@ const Quickemessages = () => {
       >
         <Table size="small">
           <TableHead>
-            <TableRow style={{borderRadius: '10px',backgroundColor: '#0C2454'}}>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("quickMessages.table.shortcode")}</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("quickMessages.table.mediaName")}</TableCell>       
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("quickMessages.table.actions")}</TableCell>
+            <TableRow>
+              <TableCell align="center">
+                {i18n.t("quickMessages.table.shortcode")}
+              </TableCell>
+
+              <TableCell align="center">
+                {i18n.t("quickMessages.table.mediaName")}
+              </TableCell>        
+              <TableCell align="center">
+                {i18n.t("quickMessages.table.actions")}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

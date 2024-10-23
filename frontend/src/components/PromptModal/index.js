@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         flexWrap: "wrap",
     },
-    // embaixo é a parte que fica abaixo de "filas"
     multFieldLine: {
         display: "flex",
         "& > *:not(:last-child)": {
@@ -143,7 +142,6 @@ const PromptModal = ({ open, onClose, promptId }) => {
 
     return (
         <div className={classes.root}>
-            {/* essa caixa "dialog" é o proprio paper que abre quando clica em adicionar 1429 892*/}
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -168,23 +166,18 @@ const PromptModal = ({ open, onClose, promptId }) => {
                 >
                     {({ touched, errors, isSubmitting, values }) => (
                         <Form style={{ width: "100%" }}>
-                            {/* embaixo(no dialog content) está a área dos inputs */}
-                            <DialogContent dividers>  
-                            <div>
-
+                            <DialogContent dividers>
                                 <Field
-                                // NOME
-                                as={TextField}
-                                label={i18n.t("promptModal.form.name")}
-                                name="name"
-                                error={touched.name && Boolean(errors.name)}
-                                helperText={touched.name && errors.name}
-                                variant="outlined"
-                                margin="dense"
-                                fullWidth
+                                    as={TextField}
+                                    label={i18n.t("promptModal.form.name")}
+                                    name="name"
+                                    error={touched.name && Boolean(errors.name)}
+                                    helperText={touched.name && errors.name}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
                                 />
                                 <FormControl fullWidth margin="dense" variant="outlined">
-                                    {/* APIKEY */}
                                     <Field
                                         as={TextField}
                                         label={i18n.t("promptModal.form.apikey")}
@@ -204,22 +197,20 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                                 </InputAdornment>
                                             ),
                                         }}
-                                        />
-                                        <Field
-                                        // promptinput
-                                        as={TextField}
-                                        label={i18n.t("promptModal.form.prompt")}
-                                        name="prompt"
-                                        error={touched.prompt && Boolean(errors.prompt)}
-                                        helperText={touched.prompt && errors.prompt}
-                                        variant="outlined"
-                                        margin="dense"
-                                        fullWidth
-                                        rows={10}
-                                        multiline={true}
-                                        />
+                                    />
                                 </FormControl>
-                                {/* filas(embaixo) */}
+                                <Field
+                                    as={TextField}
+                                    label={i18n.t("promptModal.form.prompt")}
+                                    name="prompt"
+                                    error={touched.prompt && Boolean(errors.prompt)}
+                                    helperText={touched.prompt && errors.prompt}
+                                    variant="outlined"
+                                    margin="dense"
+                                    fullWidth
+                                    rows={10}
+                                    multiline={true}
+                                />
                                 <QueueSelectSingle />
                                 <div className={classes.multFieldLine}>
                                     <FormControl fullWidth margin="dense" variant="outlined">
@@ -231,8 +222,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                             value={selectedVoice}
                                             onChange={handleChangeVoice}
                                             multiple={false}
-                                            >
-                                            {/* TIPOS DE VOZ */}
+                                        >
                                             <MenuItem key={"texto"} value={"texto"}>
                                                 Texto
                                             </MenuItem>
@@ -284,18 +274,16 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         </Select>
                                     </FormControl>
                                     <Field
-                                    // CHAVE DA VOZ
-                                    as={TextField}
-                                    label={i18n.t("promptModal.form.voiceKey")}
-                                    name="voiceKey"
-                                    error={touched.voiceKey && Boolean(errors.voiceKey)}
-                                    helperText={touched.voiceKey && errors.voiceKey}
-                                    variant="outlined"
-                                    margin="dense"
-                                    fullWidth
+                                        as={TextField}
+                                        label={i18n.t("promptModal.form.voiceKey")}
+                                        name="voiceKey"
+                                        error={touched.voiceKey && Boolean(errors.voiceKey)}
+                                        helperText={touched.voiceKey && errors.voiceKey}
+                                        variant="outlined"
+                                        margin="dense"
+                                        fullWidth
                                     />
                                     <Field
-                                    //REGIAO DA VOZ
                                         as={TextField}
                                         label={i18n.t("promptModal.form.voiceRegion")}
                                         name="voiceRegion"
@@ -304,54 +292,49 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                         variant="outlined"
                                         margin="dense"
                                         fullWidth
-                                        />
+                                    />
                                 </div>
                                 
                                 <div className={classes.multFieldLine}>
                                     <Field
-                                    //TEMPERATURA
-                                    as={TextField}
-                                    label={i18n.t("promptModal.form.temperature")}
-                                    name="temperature"
-                                    error={touched.temperature && Boolean(errors.temperature)}
-                                    helperText={touched.temperature && errors.temperature}
-                                    variant="outlined"
-                                    margin="dense"
-                                    fullWidth
+                                        as={TextField}
+                                        label={i18n.t("promptModal.form.temperature")}
+                                        name="temperature"
+                                        error={touched.temperature && Boolean(errors.temperature)}
+                                        helperText={touched.temperature && errors.temperature}
+                                        variant="outlined"
+                                        margin="dense"
+                                        fullWidth
                                     />
                                     <Field
-                                    // MAXIMO DE TOKENS
-                                    as={TextField}
-                                    label={i18n.t("promptModal.form.max_tokens")}
-                                    name="maxTokens"
-                                    error={touched.maxTokens && Boolean(errors.maxTokens)}
-                                    helperText={touched.maxTokens && errors.maxTokens}
-                                    variant="outlined"
-                                    margin="dense"
-                                    fullWidth
+                                        as={TextField}
+                                        label={i18n.t("promptModal.form.max_tokens")}
+                                        name="maxTokens"
+                                        error={touched.maxTokens && Boolean(errors.maxTokens)}
+                                        helperText={touched.maxTokens && errors.maxTokens}
+                                        variant="outlined"
+                                        margin="dense"
+                                        fullWidth
                                     />
                                     <Field
-                                    //MAXIMO DE MENSAGENS POR HISTORICO
-                                    as={TextField}
-                                    label={i18n.t("promptModal.form.max_messages")}
-                                    name="maxMessages"
-                                    error={touched.maxMessages && Boolean(errors.maxMessages)}
-                                    helperText={touched.maxMessages && errors.maxMessages}
-                                    variant="outlined"
-                                    margin="dense"
-                                    fullWidth
+                                        as={TextField}
+                                        label={i18n.t("promptModal.form.max_messages")}
+                                        name="maxMessages"
+                                        error={touched.maxMessages && Boolean(errors.maxMessages)}
+                                        helperText={touched.maxMessages && errors.maxMessages}
+                                        variant="outlined"
+                                        margin="dense"
+                                        fullWidth
                                     />
                                 </div>
-                                </div>
-                                {/* essa div serve para deixar o prompt enorme ao lado */}
                             </DialogContent>
                             <DialogActions>
                                 <Button
                                     onClick={handleClose}
-                                    color="primary"
+                                    color="secondary"
                                     disabled={isSubmitting}
-                                    variant="text"
-                                    >
+                                    variant="outlined"
+                                >
                                     {i18n.t("promptModal.buttons.cancel")}
                                 </Button>
                                 <Button
@@ -360,7 +343,7 @@ const PromptModal = ({ open, onClose, promptId }) => {
                                     disabled={isSubmitting}
                                     variant="contained"
                                     className={classes.btnWrapper}
-                                    >
+                                >
                                     {promptId
                                         ? `${i18n.t("promptModal.buttons.okEdit")}`
                                         : `${i18n.t("promptModal.buttons.okAdd")}`}

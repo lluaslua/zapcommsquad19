@@ -273,24 +273,19 @@ const Campaigns = () => {
           <Grid xs={12} sm={4} item>
             <Grid spacing={2} container>
               <Grid xs={6} sm={6} item>
-          <TextField
-            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
-            color='primary'
-            variant="outlined"
-            type="search"
-            size="small"
-            value={searchParam}
-            onChange={handleSearch}
-            InputProps={{
-              style: {
-                borderRadius: '20px'
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon style={{ color: "gray"}}/>
-                </InputAdornment>
-              ),
-            }}
+                <TextField
+                  fullWidth
+                  placeholder={i18n.t("campaigns.searchPlaceholder")}
+                  type="search"
+                  value={searchParam}
+                  onChange={handleSearch}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon style={{ color: "gray" }} />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
               <Grid xs={6} sm={6} item>
@@ -299,7 +294,6 @@ const Campaigns = () => {
                   variant="contained"
                   onClick={handleOpenCampaignModal}
                   color="primary"
-                  style={{borderRadius:'8px'}}
                 >
                   {i18n.t("campaigns.buttons.add")}
                 </Button>
@@ -314,32 +308,31 @@ const Campaigns = () => {
         onScroll={handleScroll}
       >
         <Table size="small">
-          <TableHead style={{backgroundColor: '#0C2454'}}>
+          <TableHead>
             <TableRow>
-              <TableCell align="center" style={{color: '#FFFFFF', borderRadius: '5px 0px 0px 5px'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.name")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.status")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.contactList")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.whatsapp")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.scheduledAt")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.completedAt")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF'}}>
+              <TableCell align="center">
                 {i18n.t("campaigns.table.confirmation")}
               </TableCell>
-              <TableCell align="center" style={{color: '#FFFFFF', borderRadius: '0px 5px 5px 0px'}}>
-                {/*Para adicionar o texto de volta, insira "campaigns.table.actions" na função*/ }
-                {i18n.t()}
+              <TableCell align="center">
+                {i18n.t("campaigns.table.actions")}
               </TableCell>
             </TableRow>
           </TableHead>

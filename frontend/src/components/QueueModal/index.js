@@ -423,9 +423,8 @@ const QueueModal = ({ open, onClose, queueId }) => {
                   <DialogActions>
                     <Button
                       onClick={handleClose}
-                      color="secondary"
+                      color="primary"
                       disabled={isSubmitting}
-                      variant="outlined"
                     >
                       {i18n.t("queueModal.buttons.cancel")}
                     </Button>

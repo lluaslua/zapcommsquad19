@@ -26,7 +26,6 @@ import { i18n } from "../../translate/i18n";
 import { openApi } from "../../services/api";
 import toastError from "../../errors/toastError";
 import moment from "moment";
-
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -42,49 +41,11 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
 
-  root: {
-    paddingRight:"200px",
-		width: "100vw",
-		height: "100vh",
-		backgroundImage: "url(https://i.imgur.com/a3ZWHX4.png)",
-		backgroundColor: "#ffffff",
-		backgroundRepeat: "no-repeat",
-		backgroundSize: "60% 100%",
-		backgroundPosition: "left",
-		display: "grid",
-		alignItems: "center",
-		justifyContent: "right",
-		textAlign: "center",
-		transition: "background-size 0.3s ease-in-out",
-
-    [theme.breakpoints.down("1800")]: {
-      backgroundSize: "56% 100%",    
-    },
-    [theme.breakpoints.down("1600")]: {
-      backgroundSize: "52% 100%", 
-    },
-    [theme.breakpoints.down("1225")]: {
-      backgroundSize: "100% 100%",
-      backgroundImage: "url(https://i.imgur.com/vcu0yBs.png)",
-      paddingRight: "0px",
-      justifyContent:"center"
-    },
-	},
-  
   paper: {
-    width:"450px",
-    backgroundColor: "white",
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-		padding: "50px 30px",
-		borderRadius: "15px",
-    transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out",
-    [theme.breakpoints.down('1000')]: {
-    },
-    [theme.breakpoints.down('1600')]: {
-      margin:"0"
-    },
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -92,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -155,18 +116,18 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className={classes.root}> 
     <Container component="main" maxWidth="xs">
-      <CssBaseline /> 
-        <div className={classes.paper}>
+      <CssBaseline />
+      <div className={classes.paper}>
         <div>
           <center>
             <img
-              style={{ margin: "0 auto", width: "100%" }}
+              style={{ margin: "0 auto", width: "70%" }}
               src={logo}
               alt="Whats"
             />
           </center>
+        </div>
         {/*<Typography component="h1" variant="h5">
 					{i18n.t("signup.title")}
 				<</Typography>*/}
@@ -185,7 +146,7 @@ const SignUp = () => {
           {({ touched, errors, isSubmitting }) => (
             <Form className={classes.form}>
               <Grid container spacing={2}>
-                <Grid item xs={12} ism={6}> 
+                <Grid item xs={12}>
                   <Field
                     as={TextField}
                     autoComplete="name"
@@ -253,7 +214,7 @@ const SignUp = () => {
                     required
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                <Grid item xs={12}>
                   <InputLabel htmlFor="plan-selection">Plano</InputLabel>
                   <Field
                     as={Select}
@@ -272,7 +233,7 @@ const SignUp = () => {
                       </MenuItem>
                     ))}
                   </Field>
-                </Grid> */}
+                </Grid>
               </Grid>
               <Button
                 type="submit"
@@ -298,11 +259,9 @@ const SignUp = () => {
             </Form>
           )}
         </Formik>
-        </div>
       </div>
       <Box mt={5}>{/* <Copyright /> */}</Box>
     </Container>
-    </div>
   );
 };
 

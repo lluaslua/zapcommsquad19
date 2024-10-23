@@ -297,9 +297,9 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                                 )}
                                 <Button
                                     onClick={handleClose}
-                                    color="primary"
+                                    color="secondary"
                                     disabled={isSubmitting}
-                                    variant="text"
+                                    variant="outlined"
                                 >
                                     {i18n.t("quickMessages.buttons.cancel")}
                                 </Button>

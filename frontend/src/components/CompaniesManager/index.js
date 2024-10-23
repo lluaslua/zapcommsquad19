@@ -343,7 +343,7 @@ export function CompanyForm(props) {
                       style={{ marginTop: 7 }}
                       loading={loading}
                       onClick={() => onCancel()}
-                      variant="contained"
+                      color="primary"
                     >
                       Limpar
                     </ButtonWithSpinner>
@@ -396,6 +396,7 @@ export function CompanyForm(props) {
                       type="submit"
                       variant="contained"
                       color="primary"
+                      borderRadius="8px"
                     >
                       Salvar
                     </ButtonWithSpinner>
