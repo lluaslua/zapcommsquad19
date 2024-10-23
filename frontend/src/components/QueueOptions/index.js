@@ -146,7 +146,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
               </IconButton>
               <IconButton
                 variant="outlined"
-                color="grey" //padronização
+                color="secondary"
                 size="small"
                 className={classes.button}
                 onClick={() => handleDeleteOption(index)}
@@ -333,8 +333,8 @@ export function QueueOptions({ queueId }) {
           size="small"
           onClick={addOption}
           startIcon={<AddIcon />}
-          style={{ marginLeft: 25 }}
-          variant="contained" //padronização
+          style={{ marginLeft: 10 }}
+          variant="outlined"
         >
           Adicionar
         </Button>
