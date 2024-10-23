@@ -517,7 +517,9 @@ const messages = {
           number: "Número",
           body: "Mensagem",
           token: "Token cadastrado",
+
         },
+      
         mediaMessage: {
           number: "Número",
           body: "Nome do arquivo",
