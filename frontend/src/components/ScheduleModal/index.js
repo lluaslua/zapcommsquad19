@@ -345,9 +345,9 @@ const ScheduleModal = ({ open, onClose, scheduleId, contactId, cleanContact, rel
 								)}
 								<Button
 									onClick={handleClose}
-									color="secondary"
+									color="primary"
 									disabled={isSubmitting}
-									variant="outlined"
+									variant="text"
 								>
 									{i18n.t("scheduleModal.buttons.cancel")}
 								</Button>
