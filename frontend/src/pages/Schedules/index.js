@@ -293,7 +293,6 @@ const Schedules = () => {
             onClick={handleOpenScheduleModal}
             style={{ 
               color: "white", 
-              fontWeight: "bold", 
               fontFamily: "Nunito", 
               borderRadius: "8px"
             }}
