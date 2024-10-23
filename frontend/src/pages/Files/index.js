@@ -270,7 +270,7 @@ const FileLists = () => {
                     <TableBody>
                         <>
                             {files.map((fileList) => (
-                                <TableRow key={fileList.id}>
+                                <TableRow key={fileList.name}>
                                     <TableCell align="center">
                                         <Chip
                                             variant="default"
@@ -281,6 +281,10 @@ const FileLists = () => {
                                             label={fileList.name}
                                             size="small"
                                             />
+                                    </TableCell>
+                                    <TableCell>
+                                    </TableCell>
+                                    <TableCell>
                                     </TableCell>
                                     <TableCell align="center">
                                         <IconButton size="small" onClick={() => handleEditFileList(fileList)}>
