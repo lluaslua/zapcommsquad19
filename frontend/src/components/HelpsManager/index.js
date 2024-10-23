@@ -128,8 +128,7 @@ export function HelpManagerForm (props) {
                             />
                         </Grid>
                         <Grid sm={3} md={1} item>
-                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} 
-                            color="primary">
+                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} variant="contained">
                                 Limpar
                             </ButtonWithSpinner>
                         </Grid>
@@ -141,8 +140,7 @@ export function HelpManagerForm (props) {
                             </Grid>
                         ) : null}
                         <Grid sm={3} md={1} item>
-                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} type="submit" variant="contained" color="primary"
-                            borderRadius="8px">
+                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} type="submit" variant="contained" color="primary">
                                 Salvar
                             </ButtonWithSpinner>
                         </Grid>

@@ -25,28 +25,68 @@ import { toast } from 'react-toastify';
 import toastError from '../../errors/toastError';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useMediaQuery } from "@material-ui/core";
+import Component7 from "../../assets/cadeado.png";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  root: { //fundo da página
     width: "100vw",
     height: "100vh",
-    background: "black", //Cor de fundo
+    backgroundImage: "url(https://i.imgur.com/GxivTR6.png)",
+    backgroundColor: "white", //Cor de fundo
     backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
-    backgroundPosition: "center",
-    display: "flex",
-    flexDirection: "column",
+    backgroundSize: "58.5% 100%",
+    backgroundPosition: "right",
+    display: "grid",
     alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
+    justifyContent: "left",
+    textAlign: "left",
+    position: "relative",  
+
+    transition: "background-size 0.3s ease-in-out", //animação do fundo
+
+    [theme.breakpoints.down('1920')]: { //define onde a mudança ocorre
+      backgroundSize: "47% 100%", //altera o tamanho
+    },
+
+    [theme.breakpoints.down('1119')]: {
+      backgroundSize: "100% 100%", 
+      backgroundImage: "url(https://i.imgur.com/px0qtLU.png)",
+    },
   },
+
   paper: {
+    position: "absolute",
+    top: "45%",
+    marginLeft: "4.5%",
+    marginRight: "60%",
+    transform: "translateY(-50%)",
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center",
     padding: "55px 30px",
-    borderRadius: "12.5px",
+    borderRadius: "1.5em",
+
+    transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out", //animação as margens
+
+    [theme.breakpoints.down('1920')]: { //define onde a mudança ocorre
+      backgroundSize: "47% 100%", //altera o tamanho
+      marginLeft: "10.5%",
+      marginRight: "60%",
+    },
+
+    [theme.breakpoints.down('1331')]: {
+      marginLeft: "5%",
+      marginRight: "55%"
+    },
+
+    [theme.breakpoints.down('1119')]: {
+      marginRight: "5%",
+      marginLeft: "5%",
+    },
+
   },
   avatar: {
     margin: theme.spacing(1),
@@ -57,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
+    fontStyle: "Nunito",
+    fontWeight: "bold",
+    color: "white",
     margin: theme.spacing(3, 0, 2),
   },
   powered: {
@@ -169,14 +212,37 @@ const handleSendEmail = async (values) => {
         <div className={classes.paper}>
           <div>
             <img
-              style={{ margin: "0 auto", height: "80px", width: "100%" }}
-              src={logo}
+              style={{ margin: "3 auto", height: "100px", width: "100%" }}
+              src={Component7}
               alt="Whats"
             />
           </div>
           <Typography component="h1" variant="h5">
-            {i18n.t("Redefinir senha")}
+            <div 
+            style={{ 
+              margin: "5px", 
+              fontWeight: "bold", 
+              marginTop: "15px",
+              textAlign: "center",
+            }}
+            >
+            {i18n.t("Esqueceu a senha?")} 
+            </div>
           </Typography>
+
+          <Typography>
+            <div
+            style={{
+              textAlign: "center",
+              marginBottom: "20",
+            }}
+            component="p" variant="p"
+            >
+            {i18n.t("Digite seu email para que possamos enviar um")}
+            {i18n.t(" código de verificação")}
+            </div>
+          </Typography>
+
           <Formik
             initialValues={{
               email: "",
@@ -326,15 +392,16 @@ const handleSendEmail = async (values) => {
                     Enviar Email
                   </Button>
                 )}
-                <Grid container justifyContent="flex-end">
+                <Grid container justifyContent="center">
                   <Grid item>
+                    Lembrou a senha?
                     <Link
                       href="#"
                       variant="body2"
                       component={RouterLink}
-                      to="/signup"
+                      to="/Login"
                     >
-                      {i18n.t("Não tem uma conta? Cadastre-se!")}
+                      {i18n.t(" Retornar")}
                     </Link>
                   </Grid>
                 </Grid>

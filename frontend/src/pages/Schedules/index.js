@@ -27,6 +27,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 
 import "./Schedules.css"; // Importe o arquivo CSS
+import { colors } from "@material-ui/core";
 
 // Defina a função getUrlParam antes de usá-la
 function getUrlParam(paramName) {
@@ -260,17 +261,28 @@ const Schedules = () => {
         cleanContact={cleanContact}
       />
       <MainHeader>
-        <Title>{i18n.t("schedules.title")} ({schedules.length})</Title>
-        <MainHeaderButtonsWrapper>
+        <Title>
+          <div style={{ color: "#0C2C4C", fontWeight: "bold", fontFamily: "Nunito" }}>
+          {i18n.t("schedules.title")} ({schedules.length})
+          </div>
+        </Title>
+        <MainHeaderButtonsWrapper 
+        
+        >
           <TextField
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
+            variant="outlined"
+            size="small"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
+              style: {
+                borderRadius: '20px'
+              },
               startAdornment: (
                 <InputAdornment position="start">
-                  <SearchIcon style={{ color: "gray" }} />
+                  <SearchIcon style={{ color: "gray", margin: "3px", marginLeft: "3px" }} />
                 </InputAdornment>
               ),
             }}
@@ -279,12 +291,29 @@ const Schedules = () => {
             variant="contained"
             color="primary"
             onClick={handleOpenScheduleModal}
+            style={{ 
+              color: "white", 
+              fontFamily: "Nunito", 
+              borderRadius: "8px"
+            }}
           >
             {i18n.t("schedules.buttons.add")}
           </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
-      <Paper className={classes.mainPaper} variant="outlined" onScroll={handleScroll}>
+      <Paper 
+      className={classes.mainPaper} 
+      variant="outlined" 
+      onScroll={handleScroll}
+      style={{ 
+        color: "#0C2C54", 
+        fontSize: "17px",
+        fontFamily: "Nunito", 
+        fontWeight: "bolder", 
+        backgroundColor: "transparent", 
+        borderColor: "transparent" 
+      }}
+      >
         <Calendar
           messages={defaultMessages}
           formats={{
@@ -314,7 +343,14 @@ const Schedules = () => {
           }))}
           startAccessor="start"
           endAccessor="end"
-          style={{ height: 500 }}
+          style={{ height: 750, 
+            backgroundColor: "white", 
+            border: "solid",
+            borderWidth: "1px", 
+            borderColor: "#0C2C54",
+            padding: "15px",
+            borderRadius: "5px"
+          }}
         />
       </Paper>
     </MainContainer>

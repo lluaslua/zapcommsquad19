@@ -32,15 +32,17 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     backgroundColor: theme.palette.options,  //DARK MODE PLW DESIGN//
+    borderRadius: 4,
     width: "100%",
-    borderRadius: 8,
     backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
-      color: "white",
+      color: theme.palette.fontecor,
     },   //DARK MODE PLW DESIGN//
     "& .MuiTabs-flexContainer": {
       justifyContent: "center"
     }
+
+
   },
   paper: {
     padding: theme.spacing(2),
@@ -73,8 +75,6 @@ const useStyles = makeStyles((theme) => ({
   selectContainer: {
     width: "100%",
     textAlign: "left",
-    backgroundColor: "white",
-    borderRadius: "5px",
   },
 }));
 
@@ -378,16 +378,14 @@ export default function Options(props) {
                     <Title>Configurações Gerais</Title>
                 </Grid> */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer} id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="ratings-label">Avaliações</InputLabel>
             <Select
               labelId="ratings-label"
               value={userRating}
-              margin="dense"
               onChange={async (e) => {
                 handleChangeUserRating(e.target.value);
               }}
-              label="Avaliações"
             >
               <MenuItem value={"disabled"}>Desabilitadas</MenuItem>
               <MenuItem value={"enabled"}>Habilitadas</MenuItem>
@@ -398,19 +396,16 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="schedule-type-label">
               Gerenciamento de Expediente
             </InputLabel>
             <Select
               labelId="schedule-type-label"
               value={scheduleType}
-              margin="dense"
               onChange={async (e) => {
                 handleScheduleType(e.target.value);
               }}
-              label="Gerenciamento de Expediente"
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"queue"}>Fila</MenuItem>
@@ -422,19 +417,16 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth required>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="group-type-label">
               Ignorar Mensagens de Grupos
             </InputLabel>
             <Select
               labelId="group-type-label"
               value={CheckMsgIsGroup}
-              margin="dense"
               onChange={async (e) => {
                 handleGroupType(e.target.value);
               }}
-              label="Ignorar Mensagens de Grupos"
             >
               <MenuItem value={"disabled"}>Desativado</MenuItem>
               <MenuItem value={"enabled"}>Ativado</MenuItem>
@@ -445,19 +437,16 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="call-type-label">
               Aceitar Chamada
             </InputLabel>
             <Select
               labelId="call-type-label"
               value={callType}
-              margin="dense"
               onChange={async (e) => {
                 handleCallType(e.target.value);
               }}
-              label="Aceitar Chamada"
             >
               <MenuItem value={"disabled"}>Não Aceitar</MenuItem>
               <MenuItem value={"enabled"}>Aceitar</MenuItem>
@@ -468,19 +457,16 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="chatbot-type-label">
               Tipo Chatbot
             </InputLabel>
             <Select
               labelId="chatbot-type-label"
               value={chatbotType}
-              margin="dense"
               onChange={async (e) => {
                 handleChatbotType(e.target.value);
               }}
-              label="Tipo Chatbot"
             >
               <MenuItem value={"text"}>Texto</MenuItem>
 			 {/*<MenuItem value={"button"}>Botão</MenuItem>*/}
@@ -493,17 +479,14 @@ export default function Options(props) {
         </Grid>
 		{/* ENVIAR SAUDAÇÃO AO ACEITAR O TICKET */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
             <Select
               labelId="sendGreetingAccepted-label"
               value={SendGreetingAccepted}
-              margin="dense"
               onChange={async (e) => {
                 handleSendGreetingAccepted(e.target.value);
               }}
-              label="Enviar saudação ao aceitar o ticket"
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>
@@ -517,17 +500,14 @@ export default function Options(props) {
 		
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
             <Select
               labelId="sendMsgTransfTicket-label"
               value={SettingsTransfTicket}
-              margin="dense"
               onChange={async (e) => {
                 handleSettingsTransfTicket(e.target.value);
               }}
-              label="Enviar mensagem de transferencia de Fila/agente"
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>
@@ -540,17 +520,14 @@ export default function Options(props) {
 		
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
             <Select
               labelId="sendGreetingMessageOneQueues-label"
               value={sendGreetingMessageOneQueues}
-              margin="dense"
               onChange={async (e) => {
                 handleSendGreetingMessageOneQueues(e.target.value);
               }}
-              label="Enviar saudação quando houver somente 1 fila"
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>
@@ -571,7 +548,7 @@ export default function Options(props) {
           className={classes.tab}
           style={{
             marginBottom: 20,
-            marginTop: 20,
+            marginTop: 20
           }}
         >
           <Tab
@@ -710,7 +687,7 @@ export default function Options(props) {
         style={{ marginBottom: 10 }}>
         <Tabs
           indicatorColor="primary"
-          textColor="#primary"
+          textColor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
@@ -719,11 +696,11 @@ export default function Options(props) {
 
         </Tabs>
         <Grid xs={12} sm={12} md={12} item>
-          <FormControl className={classes.selectContainer}
-          id="outlined-basic" margin="dense" label="Outlined" variant="outlined" fullWidth>
+          <FormControl className={classes.selectContainer}>
             <TextField
               id="asaas"
               name="asaas"
+              margin="dense"
               label="Token Asaas"
               variant="outlined"
               value={asaasType}
