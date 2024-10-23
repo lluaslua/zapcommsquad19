@@ -147,6 +147,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               
               </Grid>
@@ -161,6 +164,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -174,6 +180,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               </Grid>
               <Grid item xs={12} justifyContent="center" className={classes.textRight}>
@@ -232,6 +241,7 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{ backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -245,6 +255,7 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -360,7 +371,7 @@ const MessagesAPI = () => {
       <Grid container spacing={2}>
 
       <Grid item xs={12} sm={6}>
-          <Typography className={classes.elementMargin} style={{ color: '#0C2454' }}> 
+          <Typography className={classes.elementMargin} style={{ color: '#0C2454'}}> 
             <b>Teste de Envio</b> 
           </Typography>
           {renderFormMessageText()}
