@@ -19,7 +19,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-
+import CustomTextField from "../../components/CustomTextField";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import MainContainer from "../../components/MainContainer";
@@ -220,7 +220,7 @@ return (
       <MainHeader>
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
-        <TextField
+        <CustomTextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
             variant="outlined"
