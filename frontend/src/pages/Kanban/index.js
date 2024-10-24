@@ -6,6 +6,8 @@ import Board from 'react-trello';
 import { toast } from "react-toastify";
 import { i18n } from "../../translate/i18n";
 import { useHistory } from 'react-router-dom';
+import { colors } from "@material-ui/core";
+import { BorderColor, BorderTop } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +22,10 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     fontWeight: "bold",
     borderRadius: "5px",
+  },
+  title: {
+    backgroundColor: "#0C2454",
+
   },
   
 }));
@@ -36,8 +42,8 @@ const Kanban = () => {
   const fetchTags = async () => {
     try {
       const response = await api.get("/tags/kanban");
-      const fetchedTags = response.data.lista || []; 
 
+      const fetchedTags = response.data.lista || []; 
       setTags(fetchedTags);
 
       // Fetch tickets after fetching tags
@@ -97,6 +103,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
                 <button 
+                  style={{ display: "flex", marginLeft: "auto" }}
                   className={classes.button} 
                   onClick={() => {
                     handleCardClick(ticket.uuid)
@@ -125,12 +132,14 @@ const Kanban = () => {
             label: "Ticket nº " + ticket.id.toString(),
             description: (
               <div>
-                <p>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
                   {ticket.contact.number}
-                  <br />
+                  <br/>
                   {ticket.lastMessage}
                 </p>
-                <button 
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
                   className={classes.button} 
                   onClick={() => {
                     
@@ -138,7 +147,9 @@ const Kanban = () => {
                   }}>
                     Ver Ticket
                 </button>
-              </div>
+                  <br style={{ display: "flex", marginLeft: "auto" }}/>
+                </div>
+                </div>
             ),
             title: ticket.contact.name,
             draggable: true,
@@ -179,7 +190,7 @@ const Kanban = () => {
       <Board 
 		data={file} 
 		onCardMoveAcrossLanes={handleCardMove}
-		style={{backgroundColor: 'rgba(252, 252, 252, 0.03)'}}
+		style={{backgroundColor: 'rgba(252, 252, 252, 0.03)',marginTop:"20px",marginColor:"#0C2454"}}
     />
     </div>
   );
