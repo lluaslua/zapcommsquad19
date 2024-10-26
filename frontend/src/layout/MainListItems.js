@@ -45,6 +45,7 @@ import { AllInclusive, AttachFile, BlurCircular, DeviceHubOutlined, Schedule } f
 import usePlans from "../hooks/usePlans";
 import Typography from "@material-ui/core/Typography";
 import useVersion from "../hooks/useVersion";
+import LoggedInLayout from "../layout/index.js"
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -298,7 +299,7 @@ const MainListItems = (props) => {
 
       <ListItemLink
         to="/tickets"
-        primary={i18n.t("Chamados")}
+        primary={i18n.t("mainDrawer.listItems.tickets")}
         icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}
       />
 	  
@@ -505,7 +506,7 @@ const MainListItems = (props) => {
                 <img style={{ width: "100%", padding: "10px" }} src={logo} alt="image" />            
               </Hidden> 
               */}
-              {/*<Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
+              {/* <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
                 {`6.0.0`}
 
               </Typography>*/}
