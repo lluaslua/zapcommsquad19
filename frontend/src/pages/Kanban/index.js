@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     backgroundColor: "#0C2454",
-
   },
   
 }));
@@ -83,9 +82,12 @@ const Kanban = () => {
     }
   };
 
-
   const popularCards = (jsonString) => {
     const filteredTickets = tickets.filter(ticket => ticket.tags.length === 0);
+    const emAndamentoTickets = tickets.filter(ticket => ticket.status === "em_andamento");
+    const finalizadoTickets = tickets.filter(ticket => ticket.status === "finalizado");
+    const impedidoTickets = tickets.filter(ticket => ticket.status === "impedido");
+    const aguardandoTickets = tickets.filter(ticket => ticket.status === "aguardando");
 
     const lanes = [
       {
@@ -96,22 +98,158 @@ const Kanban = () => {
           id: ticket.id.toString(),
           label: "Ticket nº " + ticket.id.toString(),
           description: (
-              <div>
-                <p>
+            <div>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
                   {ticket.contact.number}
-                  <br />
+                  <br/>
                   {ticket.lastMessage}
                 </p>
-                <button 
-                  style={{ display: "flex", marginLeft: "auto" }}
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
                   className={classes.button} 
                   onClick={() => {
+                    
                     handleCardClick(ticket.uuid)
                   }}>
                     Ver Ticket
                 </button>
-              </div>
-            ),
+                <br/>
+                </div>
+                </div>
+          ),
+          title: ticket.contact.name,
+          draggable: true,
+          href: "/tickets/" + ticket.uuid,
+        })),
+      },
+      {
+        id: "lane1",
+        title: i18n.t("Em andamento"),
+        label: emAndamentoTickets.length.toString(),
+        cards: emAndamentoTickets.map(ticket => ({
+          id: ticket.id.toString(),
+          label: "Ticket nº " + ticket.id.toString(),
+          description: (
+            <div>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
+                  {ticket.contact.number}
+                  <br/>
+                  {ticket.lastMessage}
+                </p>
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
+                  className={classes.button} 
+                  onClick={() => {
+                    
+                    handleCardClick(ticket.uuid)
+                  }}>
+                    Ver Ticket
+                </button>
+                <br style={{marginBottom:"5px"}}/>
+                </div>
+                </div>
+          ),
+          title: ticket.contact.name,
+          draggable: true,
+          href: "/tickets/" + ticket.uuid,
+        })),
+      },
+      {
+        id: "lane2",
+        title: i18n.t("Finalizado"),
+        label: finalizadoTickets.length.toString(),
+        cards: finalizadoTickets.map(ticket => ({
+          id: ticket.id.toString(),
+          label: "Ticket nº " + ticket.id.toString(),
+          description: (
+            <div>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
+                  {ticket.contact.number}
+                  <br/>
+                  {ticket.lastMessage}
+                </p>
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
+                  className={classes.button} 
+                  onClick={() => {
+                    
+                    handleCardClick(ticket.uuid)
+                  }}>
+                    Ver Ticket
+                </button>
+                <br style={{marginBottom:"5px"}}/>
+                </div>
+                </div>
+          ),
+          title: ticket.contact.name,
+          draggable: true,
+          href: "/tickets/" + ticket.uuid,
+        })),
+      },
+      {
+        id: "lane3",
+        title: i18n.t("Impedido"),
+        label: impedidoTickets.length.toString(),
+        cards: impedidoTickets.map(ticket => ({
+          id: ticket.id.toString(),
+          label: "Ticket nº " + ticket.id.toString(),
+          description: (
+            <div>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
+                  {ticket.contact.number}
+                  <br/>
+                  {ticket.lastMessage}
+                </p>
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
+                  className={classes.button} 
+                  onClick={() => {
+                    
+                    handleCardClick(ticket.uuid)
+                  }}>
+                    Ver Ticket
+                </button>
+                <br style={{marginBottom:"5px"}}/>
+                </div>
+                </div>
+          ),
+          title: ticket.contact.name,
+          draggable: true,
+          href: "/tickets/" + ticket.uuid,
+        })),
+      },
+      {
+        id: "lane4",
+        title: i18n.t("Aguardando"),
+        label: aguardandoTickets.length.toString(),
+        cards: aguardandoTickets.map(ticket => ({
+          id: ticket.id.toString(),
+          label: "Ticket nº " + ticket.id.toString(),
+          description: (
+            <div>
+                <div style={{backgroundColor: "#E3E3E3", borderRadius:"5px", margin: "auto" }}>     
+                <p style={{color: "#000000", margin:"5px", padding:"5px"}}>
+                  {ticket.contact.number}
+                  <br/>
+                  {ticket.lastMessage}
+                </p>
+                <button
+                  style={{ display: "flex", marginLeft: "auto", marginTop : "auto", marginRight: "10px"}}
+                  className={classes.button} 
+                  onClick={() => {
+                    
+                    handleCardClick(ticket.uuid)
+                  }}>
+                    Ver Ticket
+                </button>
+                <br style={{marginBottom:"5px"}}/>
+                </div>
+                </div>
+          ),
           title: ticket.contact.name,
           draggable: true,
           href: "/tickets/" + ticket.uuid,
@@ -147,7 +285,7 @@ const Kanban = () => {
                   }}>
                     Ver Ticket
                 </button>
-                  <br style={{ display: "flex", marginLeft: "auto" }}/>
+                <br style={{marginBottom:"5px"}}/>
                 </div>
                 </div>
             ),

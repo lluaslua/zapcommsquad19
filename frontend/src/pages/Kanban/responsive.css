@@ -11,3 +11,8 @@
     transform: translate(-50%, -50%);
   }
 }
+.react-trello-card {
+  background-color: #0C2454;
+  border-radius: 5px;
+  padding: 10px;
+}
