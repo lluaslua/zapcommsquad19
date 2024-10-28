@@ -220,7 +220,7 @@ return (
       <MainHeader>
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
-        <CustomTextField
+        <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
             variant="outlined"

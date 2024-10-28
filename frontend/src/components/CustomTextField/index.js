@@ -8,20 +8,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& label.Mui-focused': {
-            color: 'green',
+            color: '#0C2454',borderRadius: '60px'
           },
           '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
+            borderBottomColor: '#0C2454',borderRadius: '60px'
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'green',
+              borderColor: '#0C2454',borderRadius: '60px'
             },
             '&:hover fieldset': {
-              borderColor: 'green',
+              borderColor: '#0C2454',borderRadius: '60px'
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'green',
+              borderColor: '#0C2454',borderRadius: '60px'
             },
           },
         },
@@ -33,7 +33,7 @@ const theme = createTheme({
 function CustomTextField() {
   return (
     <ThemeProvider theme={theme}>
-      <TextField label="Custom TextField" variant="outlined" />
+      <TextField label='Pesquisar...' variant="outlined"/>
     </ThemeProvider>
   );
 }
