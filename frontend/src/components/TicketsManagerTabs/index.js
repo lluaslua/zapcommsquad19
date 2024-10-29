@@ -223,7 +223,7 @@ const TicketsManagerTabs = () => {
   };
 
   return (
-    <Paper elevation={0} variant="outlined" className={classes.ticketsWrapper}>
+    <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
       <NewTicketModal
         modalOpen={newTicketModalOpen}
         onClose={(ticket) => {
@@ -231,7 +231,7 @@ const TicketsManagerTabs = () => {
           handleCloseOrOpenTicket(ticket);
         }}
       />
-      <Paper elevation={0} square className={classes.tabsHeader}>
+      <Paper elevation={0} square className={classes.tabsHeader} style={{backgroundColor: '#E6EDF5'}}>
         <Tabs
           value={tab}
           onChange={handleChangeTab}
@@ -260,7 +260,7 @@ const TicketsManagerTabs = () => {
           />
         </Tabs>
       </Paper>
-      <Paper square elevation={0} className={classes.ticketOptionsBox}>
+      <Paper square elevation={0} className={classes.ticketOptionsBox} style={{backgroundColor: '#E6EDF5'}}>
         {tab === "search" ? (
           <div className={classes.serachInputWrapper}>
             <SearchIcon className={classes.searchIcon} />
