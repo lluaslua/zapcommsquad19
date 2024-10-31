@@ -366,10 +366,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
         color="primary"
       >
-        <Toolbar variant="dense" className={classes.toolbar}>
+        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
           <IconButton
             edge="start"
             variant="contained"
