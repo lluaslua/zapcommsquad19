@@ -50,6 +50,7 @@ import LoggedInLayout from "../layout/index.js";
 import UserModal from "../components/UserModal";
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import CloseIcon from '@material-ui/icons/Close';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -190,6 +191,15 @@ const MainListItems = (props) => {
   
   const [version, setVersion] = useState(false);
   
+  const handleProfileClick = (event) => {
+    event.stopPropagation();
+    setUserModalOpen(true);
+  };
+
+  const handleLogoutClick = (event) => {
+    event.stopPropagation();
+    handleLogout();
+  };
   
   const { getVersion } = useVersion();
 
@@ -320,44 +330,55 @@ const MainListItems = (props) => {
     <div onClick={drawerClose}>
       {!collapsed && (
         <>
-          <ListItem button onClick={handleMenu} className={classes.userProfile}>
-            <ListItemIcon>
-              <AccountCircle className={classes.accountIcon} />
-            </ListItemIcon>
-            <ListItemText 
-              primary={user?.name}
-              secondary={user?.profile}
-              secondaryTypographyProps={{ style: { color: '#FFFFFF' } }}/>
-            {menuOpen ? <CloseIcon /> : <KeyboardReturnIcon />}
-          </ListItem>
-          <Menu
-            anchorEl={anchorEl}
-            keepMounted
-            getContentAnchorEl={null}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-            open={menuOpen}
-            onClose={handleCloseMenu}>
-            <MenuItem onClick={handleOpenUserModal}>
-              {i18n.t("mainDrawer.appBar.user.profile")}
-            </MenuItem>
-            <MenuItem onClick={handleClickLogout}>
-              {i18n.t("mainDrawer.appBar.user.logout")}
-            </MenuItem>
-          </Menu>
+<ListItem className={classes.userProfile}>
+    <ListItemIcon onClick={() => setUserModalOpen(true)} style={{ cursor: 'pointer' }}>
+      <AccountCircle style={{color: "#FFFFFF", width: "40px", height: "40px"}} className={classes.accountIcon} />
+    </ListItemIcon>
+    <ListItemText
+      onClick={() => setUserModalOpen(true)}
+      primary={user?.profile}
+      secondary={user?.name}
+      primaryTypographyProps={{ 
+        style: { 
+          color: '#90C2FF', 
+          fontWeight: "300",
+          fontSize: "14px",
+        } 
+      }}
+      secondaryTypographyProps={{ 
+        style: { 
+          color: '#FFFFFF', 
+          fontWeight: "600",
+          fontSize: "14px",
+        } 
+      }}
+      style={{ 
+        cursor: 'pointer',
+        marginRight: '16px',
+        minWidth: 0,
+        flex: 1
+      }}
+    />
+    <ExitToAppIcon 
+      onClick={handleLogout}
+      style={{
+        color: "#FFFFFF", 
+        width: "25px", 
+        height: "25px", 
+        cursor: 'pointer',
+        flexShrink: 0
+      }}
+    />
+  </ListItem>
           <UserModal
             open={userModalOpen}
             onClose={() => setUserModalOpen(false)}
-            userId={user?.id}/>
+            userId={user?.id}
+          />
           <Divider />
         </>
       )}
+
       <Can
         role={user.profile}
         perform="dashboard:view"
