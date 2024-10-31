@@ -330,46 +330,64 @@ const MainListItems = (props) => {
     <div onClick={drawerClose}>
       {!collapsed && (
         <>
-<ListItem className={classes.userProfile}>
-    <ListItemIcon onClick={() => setUserModalOpen(true)} style={{ cursor: 'pointer' }}>
-      <AccountCircle style={{color: "#FFFFFF", width: "40px", height: "40px"}} className={classes.accountIcon} />
+<ListItem
+  className={classes.userProfile}
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px", 
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
+    <ListItemIcon
+      onClick={() => setUserModalOpen(true)}
+      style={{ cursor: "pointer" }}
+    >
+      <AccountCircle
+        style={{ color: "#FFFFFF", width: "40px", height: "40px" }}
+        className={classes.accountIcon}
+      />
     </ListItemIcon>
+
     <ListItemText
       onClick={() => setUserModalOpen(true)}
       primary={user?.profile}
       secondary={user?.name}
-      primaryTypographyProps={{ 
-        style: { 
-          color: '#90C2FF', 
+      primaryTypographyProps={{
+        style: {
+          color: "#90C2FF",
           fontWeight: "300",
           fontSize: "14px",
-        } 
+          marginLeft: "-10px",
+        },
       }}
-      secondaryTypographyProps={{ 
-        style: { 
-          color: '#FFFFFF', 
+      secondaryTypographyProps={{
+        style: {
+          color: "#FFFFFF",
           fontWeight: "600",
           fontSize: "14px",
-        } 
+          marginLeft: "-10px"
+        },
       }}
-      style={{ 
-        cursor: 'pointer',
-        marginRight: '16px',
-        minWidth: 0,
-        flex: 1
-      }}
-    />
-    <ExitToAppIcon 
-      onClick={handleLogout}
       style={{
-        color: "#FFFFFF", 
-        width: "25px", 
-        height: "25px", 
-        cursor: 'pointer',
-        flexShrink: 0
+        cursor: "pointer",
+        marginLeft: "10px",
       }}
     />
-  </ListItem>
+  </div>
+
+  <ExitToAppIcon
+    onClick={handleLogout}
+    style={{
+      color: "#FFFFFF",
+      width: "25px",
+      height: "25px",
+      cursor: "pointer",
+      marginLeft: "10px",
+    }}
+  />
+</ListItem>
           <UserModal
             open={userModalOpen}
             onClose={() => setUserModalOpen(false)}
