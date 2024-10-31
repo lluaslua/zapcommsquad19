@@ -116,12 +116,15 @@ const ToDoList = () => {
           value={task}
           onChange={handleTaskChange}
           variant="outlined"
+          style={{
+            backgroundColor: "white", borderRadius: '5px'
+          }}
         />
         <Button
           variant="contained"
           style={{
             backgroundColor: "#0C2C4C",
-            color: "black",
+            color: "white",
             borderRadius: "8px",
           }}
           onClick={handleAddTask}
