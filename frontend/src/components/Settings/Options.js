@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
-      color: theme.palette.fontecor,
+      color: "#FFFFFF",
     },   //DARK MODE PLW DESIGN//
     "& .MuiTabs-flexContainer": {
       justifyContent: "center"
@@ -501,7 +501,7 @@ export default function Options(props) {
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
+            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia</InputLabel>
             <Select
               as={Select}
               label="Enviar mensagem de transferencia de Fila/agente"
@@ -521,7 +521,7 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
+            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação de fila única</InputLabel>
             <Select
               as={Select}
               label="Enviar saudação quando houver somente 1 fila"
@@ -541,18 +541,20 @@ export default function Options(props) {
       </Grid>
       <Grid spacing={3} container>
         <Tabs
+          color = "#FFFFFF"
           indicatorColor="primary"
           textColor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
           style={{
+            color: "#FFFFFF",
             marginBottom: 20,
             marginTop: 20
           }}
         >
-          <Tab
-            label="INTEGRAÇÕES" />
+          <Tab 
+            style={{color: "#FFFFFF" }} label="INTEGRAÇÕES" />
 
         </Tabs>
 

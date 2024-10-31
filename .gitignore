@@ -1,0 +1,12 @@
+node_modules
+dist
+.env.test
+yarn.lock
+yarn-error.log
+docker-compose.yml
+
+/src/config/sentry.js
+
+# Ignore test-related files
+/coverage.data
+/coverage/
