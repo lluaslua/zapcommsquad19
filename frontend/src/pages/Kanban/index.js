@@ -117,9 +117,9 @@ const Kanban = () => {
               <div
                 style={{
                   backgroundColor: "#1FA3C0",
-                  width: "5px",
+                  width: "7px",
                   height: "70px",
-                  borderRadius: "5px 0 0 5px",
+                  borderRadius: "3px",
                   marginRight: "10px",
                 }}>
               </div>
@@ -199,9 +199,9 @@ const Kanban = () => {
               <div
                 style={{
                   backgroundColor: "#E5C418",
-                  width: "5px",
+                  width: "7px",
                   height: "70px",
-                  borderRadius: "5px 0 0 5px",
+                  borderRadius: "3px",
                   marginRight: "10px",
                 }}>
               </div>
@@ -281,9 +281,9 @@ const Kanban = () => {
               <div
                 style={{
                   backgroundColor: "#40633A",
-                  width: "5px",
+                  width: "7px",
                   height: "70px",
-                  borderRadius: "5px 0 0 5px",
+                  borderRadius: "3px",
                   marginRight: "10px",
                 }}>
               </div>
@@ -363,9 +363,9 @@ const Kanban = () => {
               <div
                 style={{
                   backgroundColor: "#B40E0E",
-                  width: "5px",
+                  width: "7px",
                   height: "70px",
-                  borderRadius: "5px 0 0 5px",
+                  borderRadius: "3px",
                   marginRight: "10px",
                 }}>
               </div>
@@ -445,9 +445,9 @@ const Kanban = () => {
               <div
                 style={{
                   backgroundColor: "#EE7D2C",
-                  width: "5px",
+                  width: "7px",
                   height: "70px",
-                  borderRadius: "5px 0 0 5px",
+                  borderRadius: "3px",
                   marginRight: "10px",
                 }}>
               </div>
@@ -534,9 +534,9 @@ const Kanban = () => {
                 <div
                   style={{
                     backgroundColor: tag.color ,
-                    width: "5px",
+                    width: "7px",
                     height: "70px",
-                    borderRadius: "5px 0 0 5px",
+                    borderRadius: "3px",
                     marginRight: "10px",
                   }}>
                 </div>
@@ -588,7 +588,7 @@ const Kanban = () => {
             draggable: true,
             href: "/tickets/" + ticket.uuid,
           })),
-          style: { backgroundColor: tag.color, color: "white" }
+          style: { color: "white" }
         };
       }),
     ];
