@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     border: 'none',
     backgroundColor: 'transparent',
+    overflowX: 'hidden',
   },
   buttonMargin: {
     marginTop: '30px',
@@ -262,7 +263,7 @@ const MessagesAPI = () => {
                 <input type="file" name="medias" id="medias" required onChange={(e) => setFile(e.target.files)} />
               </Grid>
               <Grid item xs={12} className={classes.textRight}>
-              <Grid container justifyContent="center">
+              <Grid container justifyContent="flex-end">
                 <Button
                   type="submit"
                   color="primary"
