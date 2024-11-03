@@ -3,6 +3,7 @@ public/*
 dist
 !public/.gitkeep
 .env.test
+docker-compose.yml
 
 yarn.lock
 yarn-error.log

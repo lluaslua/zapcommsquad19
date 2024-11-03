@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
+<<<<<<< Updated upstream
 		padding: "50px 30px",
 		borderRadius: "15px",
     transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out",
@@ -100,6 +101,23 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+=======
+		padding: "55px 30px",
+		borderRadius: "15px",
+    marginRight: "10%"
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+>>>>>>> Stashed changes
 }));
 
 const UserSchema = Yup.object().shape({
@@ -202,6 +220,109 @@ const SignUp = () => {
                   />
                 </Grid>
 
+<<<<<<< Updated upstream
+								<Grid item xs={12}>
+									<Field
+										as={TextField}
+										variant="outlined"
+										fullWidth
+										id="email"
+										label={i18n.t("signup.form.email")}
+										name="email"
+										error={touched.email && Boolean(errors.email)}
+										helperText={touched.email && errors.email}
+										autoComplete="email"
+										required
+									/>
+								</Grid>
+								
+							<Grid item xs={12}>
+								<Field
+									as={InputMask}
+									mask="(99) 99999-9999"
+									variant="outlined"
+									fullWidth
+									id="phone"
+									name="phone"
+									error={touched.phone && Boolean(errors.phone)}
+									helperText={touched.phone && errors.phone}
+									autoComplete="phone"
+									required
+								>
+									{({ field }) => (
+										<TextField
+											{...field}
+											variant="outlined"
+											fullWidth
+											label="Telefone com (DDD)"
+											inputProps={{ maxLength: 11 }} // Definindo o limite de caracteres
+										/>
+									)}
+								</Field>
+							</Grid>
+								<Grid item xs={12}>
+									<Field
+										as={TextField}
+										variant="outlined"
+										fullWidth
+										name="password"
+										error={touched.password && Boolean(errors.password)}
+										helperText={touched.password && errors.password}
+										label={i18n.t("signup.form.password")}
+										type="password"
+										id="password"
+										autoComplete="current-password"
+										required
+									/>
+								</Grid>
+								<Grid item xs={12}>
+									<InputLabel htmlFor="plan-selection">Plano</InputLabel>
+									<Field
+										as={Select}
+										variant="outlined"
+										fullWidth
+										id="plan-selection"
+										label="Plano"
+										name="planId"
+										required
+									>
+										{plans.map((plan, key) => (
+											<MenuItem key={key} value={plan.id}>
+												{plan.name} - Atendentes: {plan.users} - WhatsApp: {plan.connections} - Filas: {plan.queues} - R$ {plan.value}
+											</MenuItem>
+										))}
+									</Field>
+								</Grid>
+							</Grid>
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								color="primary"
+								className={classes.submit}
+							>
+								{i18n.t("signup.buttons.submit")}
+							</Button>
+							<Grid container justify="flex-end">
+								<Grid item>
+									<Link
+										href="#"
+										variant="body2"
+										component={RouterLink}
+										to="/login"
+									>
+										{i18n.t("signup.buttons.login")}
+									</Link>
+								</Grid>
+							</Grid>
+						</Form>
+					)}
+				</Formik>
+			</div>
+			<Box mt={5}>{/* <Copyright /> */}</Box>
+		</Container>
+	);
+=======
                 <Grid item xs={12}>
                   <Field
                     as={TextField}
@@ -256,7 +377,7 @@ const SignUp = () => {
                     required
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                {/*<Grid item xs={12}>
                   <InputLabel htmlFor="plan-selection">Plano</InputLabel>
                   <Field
                     as={Select}
@@ -275,7 +396,7 @@ const SignUp = () => {
                       </MenuItem>
                     ))}
                   </Field>
-                </Grid> */}
+                </Grid>*/}
               </Grid>
               <Button
                 type="submit"
@@ -307,6 +428,7 @@ const SignUp = () => {
     </Container>
     </div>
   );
+>>>>>>> Stashed changes
 };
 
 export default SignUp;
