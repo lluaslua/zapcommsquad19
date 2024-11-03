@@ -30,7 +30,7 @@ import moment from "moment";
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {"Copyright Â© "}
       <Link color="inherit" href="#">
         PLW
       </Link>{" "}
@@ -43,42 +43,51 @@ const Copyright = () => {
 const useStyles = makeStyles((theme) => ({
 
   root: {
+    paddingRight:"200px",
 		width: "100vw",
 		height: "100vh",
-		//background: "linear-gradient(to right, #682EE3 , #682EE3 , #682EE3)",
 		backgroundImage: "url(https://i.imgur.com/a3ZWHX4.png)",
 		backgroundColor: "#ffffff",
 		backgroundRepeat: "no-repeat",
-		backgroundSize: "58.6% 100%",
+		backgroundSize: "60% 100%",
 		backgroundPosition: "left",
 		display: "grid",
 		alignItems: "center",
 		justifyContent: "right",
-		textAlign: "right",
-    transition: "backgroundImage 0.3s ease-in-out right",
+		textAlign: "center",
+		transition: "background-size 0.3s ease-in-out",
 
-    [theme.breakpoints.down('1920')]: {
-        backgroundSize: '56% 100%',    
+    [theme.breakpoints.down("1800")]: {
+      backgroundSize: "56% 100%",    
     },
-    
-    [theme.breakpoints.down('1668')]: {
-        backgroundSize: '52% 100%', 
-        display:"grid"  
+    [theme.breakpoints.down("1600")]: {
+      backgroundSize: "52% 100%", 
     },
-
-    [theme.breakpoints.down("1120")]: {
-      backgroundSize:"100% 100%",
-      backgroundImage: "url(https://i.imgur.com/vcu0yBs.png)",  
+    [theme.breakpoints.down("1225")]: {
+      backgroundSize: "100% 100%",
+      backgroundImage: "url(https://i.imgur.com/vcu0yBs.png)",
+      paddingRight: "0px",
+      justifyContent: "center",
     },
 	},
-
+  
   paper: {
+    width:"450px",
     backgroundColor: "white",
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		padding: "55px 30px",
+		padding: "50px 30px",
 		borderRadius: "15px",
+    transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out",
+    [theme.breakpoints.down('1000')]: {
+    },
+    [theme.breakpoints.down('1600')]: {
+      margin:"0"
+    },
+    [theme.breakpoints.down("1225")]: {
+      margin: "0px"
+    },
   },
   avatar: {
     margin: theme.spacing(1),
@@ -86,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -156,7 +165,7 @@ const SignUp = () => {
         <div>
           <center>
             <img
-              style={{ margin: "0 auto", width: "70%" }}
+              style={{ margin: "0 auto", width: "100%" }}
               src={logo}
               alt="Whats"
             />
@@ -179,7 +188,7 @@ const SignUp = () => {
           {({ touched, errors, isSubmitting }) => (
             <Form className={classes.form}>
               <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} ism={6}> 
                   <Field
                     as={TextField}
                     autoComplete="name"
@@ -247,7 +256,7 @@ const SignUp = () => {
                     required
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   <InputLabel htmlFor="plan-selection">Plano</InputLabel>
                   <Field
                     as={Select}
@@ -266,7 +275,7 @@ const SignUp = () => {
                       </MenuItem>
                     ))}
                   </Field>
-                </Grid>
+                </Grid> */}
               </Grid>
               <Button
                 type="submit"
