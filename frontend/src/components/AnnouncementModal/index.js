@@ -296,16 +296,14 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
                     color="primary"
                     onClick={() => attachmentFile.current.click()}
                     disabled={isSubmitting}
-                    variant="outlined"
                   >
                     {i18n.t("announcements.dialog.buttons.attach")}
                   </Button>
                 )}
                 <Button
                   onClick={handleClose}
-                  color="secondary"
+                  color="primary"
                   disabled={isSubmitting}
-                  variant="outlined"
                 >
                   {i18n.t("announcements.dialog.buttons.cancel")}
                 </Button>
