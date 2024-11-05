@@ -51,7 +51,7 @@ const reducer = (state, action) => {
       });
     }
 
-    return [...state, ...-Announcements];
+    return [...state, ...newAnnouncements];
   }
 
   if (action.type === "UPDATE_ANNOUNCEMENTS") {
@@ -227,7 +227,7 @@ const Announcements = () => {
   };
 
   return (
-    <MainContainer style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
+    <MainContainer >
       <ConfirmationModal
         title={
           deletingAnnouncement &&
@@ -269,7 +269,7 @@ const Announcements = () => {
                   InputProps={{
                     style:{borderRadius:"15px"},
                     endAdornment: (
-                      <InputAdornment position="end" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
+                      <InputAdornment position="end">
                         <SearchIcon style={{ color: "gray"}} />
                       </InputAdornment>
                     ),
