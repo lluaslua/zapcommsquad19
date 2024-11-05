@@ -33,6 +33,7 @@ import ConfirmationModal from "../ConfirmationModal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    fontFamily: 'Nunito, Arial, sans-serif', 
     display: "flex",
     flexWrap: "wrap",
   },
@@ -44,10 +45,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   btnWrapper: {
+    fontFamily: 'Nunito, Arial, sans-serif', 
     position: "relative",
   },
 
   buttonProgress: {
+    fontFamily: 'Nunito, Arial, sans-serif', 
     color: green[500],
     position: "absolute",
     top: "50%",
@@ -56,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -12,
   },
   formControl: {
+    fontFamily: 'Nunito, Arial, sans-serif', 
     margin: theme.spacing(1),
     minWidth: 120,
   },
@@ -165,7 +169,7 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
 
   return (
     <div className={classes.root}>
-      <ConfirmationModal
+      <ConfirmationModal style={{fontFamily: 'Nunito, Arial, sans-serif' }}
         title={i18n.t("announcements.confirmationModal.deleteTitle")}
         open={confirmationOpen}
         onClose={() => setConfirmationOpen(false)}
@@ -180,7 +184,7 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
         fullWidth
         scroll="paper"
       >
-        <DialogTitle id="form-dialog-title">
+        <DialogTitle id="form-dialog-title" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
           {announcementId
             ? `${i18n.t("announcements.dialog.edit")}`
             : `${i18n.t("announcements.dialog.add")}`}
@@ -235,7 +239,7 @@ const AnnouncementModal = ({ open, onClose, announcementId, reload }) => {
                     />
                   </Grid>
                   <Grid xs={12} item>
-                    <FormControl variant="outlined" margin="dense" fullWidth>
+                    <FormControl variant="outlined" margin="dense" fullWidth style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                       <InputLabel id="status-selection-label">
                         {i18n.t("announcements.dialog.form.status")}
                       </InputLabel>
