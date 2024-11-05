@@ -51,7 +51,7 @@ const reducer = (state, action) => {
       });
     }
 
-    return [...state, ...newAnnouncements];
+    return [...state, ...-Announcements];
   }
 
   if (action.type === "UPDATE_ANNOUNCEMENTS") {
