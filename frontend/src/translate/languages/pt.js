@@ -517,7 +517,9 @@ const messages = {
           number: "Número",
           body: "Mensagem",
           token: "Token cadastrado",
+
         },
+      
         mediaMessage: {
           number: "Número",
           body: "Nome do arquivo",
@@ -751,7 +753,7 @@ const messages = {
         },
       },
       campaignsConfig: {
-        title: "Configurações de Campanhas",
+        title: "Configurações",
       },
       queues: {
         title: "Filas & Chatbot",
