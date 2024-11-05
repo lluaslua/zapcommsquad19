@@ -224,25 +224,27 @@ const TicketsManagerTabs = () => {
 
   return (
     <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
-      <TextField
-            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
-            color='primary'
-            variant="outlined"
-            type="search"
-            size="small"
-            value={searchParam}
-            onChange={handleSearch}
-            InputProps={{
-              style: {
-                borderRadius: '20px'
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon style={{ color: "gray"}}/>
-                </InputAdornment>
-              ),
-            }}
-          />
+      <div value='search' onClick={handleChangeTab}>
+        <TextField
+              placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+              color='primary'
+              variant="outlined"
+              type="search"
+              size="small"
+              value={searchParam}
+              onChange={handleSearch}
+              InputProps={{
+                style: {
+                  borderRadius: '20px'
+                },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon style={{ color: "gray"}}/>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
       <NewTicketModal
         modalOpen={newTicketModalOpen}
         onClose={(ticket) => {
