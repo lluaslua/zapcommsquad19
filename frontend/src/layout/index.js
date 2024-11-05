@@ -33,6 +33,7 @@ import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
 
 import logo from "../assets/logo.png";
+import logoclara from "../assets/logoclara.png";
 import { SocketContext } from "../context/Socket/SocketContext";
 import ChatPopover from "../pages/Chat/ChatPopover";
 
@@ -47,9 +48,9 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    height: "100vh",
+    height: "100dvh",
     [theme.breakpoints.down("sm")]: {
-      height: "calc(100vh - 56px)",
+      height: "calc(100dvh - 56px)",
     },
     backgroundColor: theme.palette.fancyBackground,
     '& .MuiButton-outlinedPrimary': {
@@ -110,6 +111,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   drawerPaper: {
+    background: "#0C2C54",
+    color : "#FFFFFF",
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
@@ -160,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
-  NotificationsPopOver: {
+  NotificationsPopOver: {   
     // color: theme.barraSuperior.secondary.main,
   },
   logo: {
@@ -345,9 +348,9 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} className={classes.logo} alt="logo" />
+          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <ChevronLeftIcon />
+            <MenuIcon style={{color : "#FFFFFF"}} />
           </IconButton>
         </div>
         <Divider />
@@ -363,10 +366,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
         color="primary"
       >
-        <Toolbar variant="dense" className={classes.toolbar}>
+        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
           <IconButton
             edge="start"
             variant="contained"
@@ -377,17 +380,17 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               drawerOpen && classes.menuButtonHidden
             )}
           >
-            <MenuIcon />
+            <MenuIcon style={{color : "#FFFFFF"}} />
           </IconButton>
 
-          <Typography
+          {/*<Typography
             component="h2"
             variant="h6"
             color="inherit"
             noWrap
             className={classes.title}
           >
-            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( */}
+            {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( 
             {greaterThenSm && user?.profile === "admin" && user?.company?.dueDate ? (
               <>
                 Olá <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>! (Ativo até {dateToClient(user?.company?.dueDate)})
@@ -397,30 +400,30 @@ const LoggedInLayout = ({ children, themeToggle }) => {
                 Olá  <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>!
               </>
             )}
-          </Typography>
+          </Typography>*/}
 
-          <IconButton edge="start" onClick={toggleColorMode}>
+          {/*<IconButton edge="start" onClick={toggleColorMode}>
             {theme.mode === 'dark' ? <Brightness7Icon style={{ color: "white" }} /> : <Brightness4Icon style={{ color: "white" }} />}
-          </IconButton>
+          </IconButton>*/}
 
-          <NotificationsVolume
+          {/*<NotificationsVolume
             setVolume={setVolume}
             volume={volume}
-          />
+          />*/}
 
-          <IconButton
+          {/*<IconButton
             onClick={handleRefreshPage}
             aria-label={i18n.t("mainDrawer.appBar.refresh")}
             color="inherit"
           >
             <CachedIcon style={{ color: "white" }} />
-          </IconButton>
+          </IconButton>*/}
 
-          {user.id && <NotificationsPopOver volume={volume} />}
+          {/*{user.id && <NotificationsPopOver volume={volume} />}*/}
 
-          <AnnouncementsPopover />
+          {/*<AnnouncementsPopover />*/}
 
-          <ChatPopover />
+          {/*<ChatPopover />*/}
 
           <div>
             <IconButton
@@ -429,7 +432,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-              style={{ color: "white" }}
+              style={{color : "#34D3A3"}}
             >
               <AccountCircle />
             </IconButton>

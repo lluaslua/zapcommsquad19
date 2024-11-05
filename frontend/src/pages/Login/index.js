@@ -15,6 +15,7 @@ import { i18n } from "../../translate/i18n";
 import { nomeEmpresa } from "../../../package.json";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import logo from "../../assets/logo.png";
+import bgimage from "../../assets/bgimage.png";
 
 
 const Copyright = () => {
@@ -35,24 +36,61 @@ const useStyles = makeStyles(theme => ({
 		width: "100vw",
 		height: "100vh",
 		//background: "linear-gradient(to right, #682EE3 , #682EE3 , #682EE3)",
-		//backgroundImage: "url(https://i.imgur.com/CGby9tN.png)",
-		backgroundColor: theme.palette.primary.main,
+		backgroundImage: "url(https://i.imgur.com/Ck8YpM7.png)",
+		backgroundColor: "#ffffff",
 		backgroundRepeat: "no-repeat",
-		backgroundSize: "100% 100%",
-		backgroundPosition: "center",
+		backgroundSize: "60.5% 100%",
+		backgroundPosition: "left",
 		display: "flex",
-		flexDirection: "column",
+		justifyContent: "flex-end",
 		alignItems: "center",
-		justifyContent: "center",
-		textAlign: "center",
+		justifyContent: "right",
+		textAlign: "right",
+
+		transition: "background-size 0.3s ease-in-out",
+
+		[theme.breakpoints.down('1920')]: {
+			backgroundSize: "56% 100%", 
+		},
+
+		[theme.breakpoints.down('1668')]: {
+			backgroundSize: "52% 100%", 
+			display: "grid",
+		},
+
+		[theme.breakpoints.down('1120')]: {
+			backgroundSize: "100% 100%", 
+			backgroundImage: "url(https://i.imgur.com/dh9j2GN.png)",
+		  },
+
 	},
+
 	paper: {
+		margin: "5%",
+		marginRight: "0%",
 		backgroundColor: theme.palette.login,
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
 		padding: "55px 30px",
 		borderRadius: "12.5px",
+
+		transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out",
+
+		[theme.breakpoints.down('1505')]: {
+			marginRight: "2.5%",
+		  },
+
+		[theme.breakpoints.down('1331')]: {
+		  marginRight: "0%",
+		  marginLeft: "20%",
+		},
+	
+		[theme.breakpoints.down('1119')]: {
+		  marginLeft: "0%",
+	
+		},
+
 	},
 	avatar: {
 		margin: theme.spacing(1),  
@@ -88,12 +126,25 @@ const Login = () => {
 
 	
 	return (
-		<div className={classes.root}>
-		<Container component="main" maxWidth="xs">
+		<div
+		style={{ display: "flex", justifyContent: "flex-end"}}
+		className={classes.root}
+		>
+		<Container 
+		component="main" 
+		maxWidth="sm"
+		style={{ 
+			margin: "5%",
+			
+
+		}}
+		>
 			<CssBaseline/>
 			<div className={classes.paper}>
-				<div>
-					<img style={{ margin: "0 auto", width: "70%" }} src={logo} alt="Whats" />
+				<div
+				style={{ textAlign: "center" }}
+				>
+					<img style={{ margin: "0 auto", width: "90%" }} src={logo} alt="Whats" />
 				</div>
 				{/*<Typography component="h1" variant="h5">
 					{i18n.t("login.title")}
@@ -126,13 +177,13 @@ const Login = () => {
 						autoComplete="current-password"
 					/>
 					
-					{/* <Grid container justify="flex-end">
+					<Grid container justify="flex-end">
 					  <Grid item xs={6} style={{ textAlign: "right" }}>
 						<Link component={RouterLink} to="/forgetpsw" variant="body2">
 						  Esqueceu sua senha?
 						</Link>
 					  </Grid>
-					</Grid>*/}
+					</Grid>
 					
 					<Button
 						type="submit"
@@ -140,25 +191,32 @@ const Login = () => {
 						variant="contained"
 						color="primary"
 						className={classes.submit}
+						borderRadius="30"
+						style={{ fontWeight: "bold", fontStyle: "Nunito", color: "white" }}
 					>
-						{i18n.t("login.buttons.submit")}
+						
+						{i18n.t("Entrar")}
 					</Button>
 					{ <Grid container>
 						<Grid item>
+							<div
+							style={{FontFace: "Nunito"}}
+							>
+								Caso não tenha uma conta. 
+							</div>
 							<Link
 								href="#"
 								variant="body2"
 								component={RouterLink}
 								to="/signup"
 							>
-								{i18n.t("login.buttons.register")}
+								Registre-se, agora mesmo!
 							</Link>
 						</Grid>
 					</Grid> }
 				</form>
 			
 			</div>
-			<Box mt={8}><Copyright /></Box>
 		</Container>
 		</div>
 	);

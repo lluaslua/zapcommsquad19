@@ -6,7 +6,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
-import { Badge, Collapse, List } from "@material-ui/core";
+import { Badge, Collapse, List, Menu, MenuItem } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -28,6 +28,7 @@ import AnnouncementIcon from "@material-ui/icons/Announcement";
 import ForumIcon from "@material-ui/icons/Forum";
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import RotateRight from "@material-ui/icons/RotateRight";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import { i18n } from "../translate/i18n";
 import { WhatsAppsContext } from "../context/WhatsApp/WhatsAppsContext";
 import { AuthContext } from "../context/Auth/AuthContext";
@@ -45,6 +46,11 @@ import { AllInclusive, AttachFile, BlurCircular, DeviceHubOutlined, Schedule } f
 import usePlans from "../hooks/usePlans";
 import Typography from "@material-ui/core/Typography";
 import useVersion from "../hooks/useVersion";
+import LoggedInLayout from "../layout/index.js";
+import UserModal from "../components/UserModal";
+import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
+import CloseIcon from '@material-ui/icons/Close';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -52,6 +58,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-15px",
     marginBottom: "-10px",
   },
+  userProfile: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    alignItems: 'center',
+    color: "#FFFFFF",
+  },
+  accountIcon: {
+    color: "#34D3A3",
+    marginRight: theme.spacing(1),
+  }
 }));
 
 
@@ -142,11 +158,30 @@ const MainListItems = (props) => {
   const [showCampaigns, setShowCampaigns] = useState(false);
   const [showKanban, setShowKanban] = useState(false);
   const [showOpenAi, setShowOpenAi] = useState(false);
-  const [showIntegrations, setShowIntegrations] = useState(false); const history = useHistory();
+  const [showIntegrations, setShowIntegrations] = useState(false);
+  const history = useHistory();
   const [showSchedules, setShowSchedules] = useState(false);
   const [showInternalChat, setShowInternalChat] = useState(false);
   const [showExternalApi, setShowExternalApi] = useState(false);
 
+  const [userModalOpen, setUserModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+    setMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+    setMenuOpen(false);
+  };
+
+  const handleOpenUserModal = () => {
+    setUserModalOpen(true);
+    handleCloseMenu();
+  };
 
   const [invisible, setInvisible] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
@@ -156,6 +191,15 @@ const MainListItems = (props) => {
   
   const [version, setVersion] = useState(false);
   
+  const handleProfileClick = (event) => {
+    event.stopPropagation();
+    setUserModalOpen(true);
+  };
+
+  const handleLogoutClick = (event) => {
+    event.stopPropagation();
+    handleLogout();
+  };
   
   const { getVersion } = useVersion();
 
@@ -284,6 +328,75 @@ const MainListItems = (props) => {
 
   return (
     <div onClick={drawerClose}>
+      {!collapsed && (
+        <>
+<ListItem
+  className={classes.userProfile}
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px", 
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
+    <ListItemIcon
+      onClick={() => setUserModalOpen(true)}
+      style={{ cursor: "pointer" }}
+    >
+      <AccountCircle
+        style={{ color: "#FFFFFF", width: "40px", height: "40px" }}
+        className={classes.accountIcon}
+      />
+    </ListItemIcon>
+
+    <ListItemText
+      onClick={() => setUserModalOpen(true)}
+      primary={user?.profile}
+      secondary={user?.name}
+      primaryTypographyProps={{
+        style: {
+          color: "#90C2FF",
+          fontWeight: "300",
+          fontSize: "14px",
+          marginLeft: "-10px",
+        },
+      }}
+      secondaryTypographyProps={{
+        style: {
+          color: "#FFFFFF",
+          fontWeight: "600",
+          fontSize: "14px",
+          marginLeft: "-10px"
+        },
+      }}
+      style={{
+        cursor: "pointer",
+        marginLeft: "10px",
+      }}
+    />
+  </div>
+
+  <ExitToAppIcon
+    onClick={handleLogout}
+    style={{
+      color: "#FFFFFF",
+      width: "25px",
+      height: "25px",
+      cursor: "pointer",
+      marginLeft: "10px",
+    }}
+  />
+</ListItem>
+          <UserModal
+            open={userModalOpen}
+            onClose={() => setUserModalOpen(false)}
+            userId={user?.id}
+          />
+          <Divider />
+        </>
+      )}
+
       <Can
         role={user.profile}
         perform="dashboard:view"
@@ -291,71 +404,60 @@ const MainListItems = (props) => {
           <ListItemLink
             to="/"
             primary="Dashboard"
-            icon={<DashboardOutlinedIcon />}
-          />
-        )}
-      />
+            icon={<DashboardOutlinedIcon style={{color : "#34D3A3"}} />}/>
+        )}/>
 
       <ListItemLink
         to="/tickets"
         primary={i18n.t("mainDrawer.listItems.tickets")}
-        icon={<WhatsAppIcon />}
-      />
+        icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}/>
 	  
 	{showKanban && (  
 	  <ListItemLink
         to="/kanban"
         primary={i18n.t("Kanban")}
-        icon={<TableChartIcon />}
-      />
+        icon={<TableChartIcon style={{color : "#34D3A3"}} />}/>
 	  )}
 
 
       <ListItemLink
         to="/quick-messages"
         primary={i18n.t("mainDrawer.listItems.quickMessages")}
-        icon={<FlashOnIcon />}
-      />
+        icon={<FlashOnIcon style={{color : "#34D3A3"}} />}/>
 	  
 	  <ListItemLink
         to="/todolist"
         primary={i18n.t("Tarefas")}
-        icon={<BorderColorIcon />}
-      />
+        icon={<BorderColorIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/contacts"
         primary={i18n.t("mainDrawer.listItems.contacts")}
-        icon={<ContactPhoneOutlinedIcon />}
-      />
+        icon={<ContactPhoneOutlinedIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/schedules"
         primary={i18n.t("mainDrawer.listItems.schedules")}
-        icon={<EventIcon />}
-      />
+        icon={<EventIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/tags"
         primary={i18n.t("mainDrawer.listItems.tags")}
-        icon={<LocalOfferIcon />}
-      />
+        icon={<LocalOfferIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/chats"
         primary={i18n.t("mainDrawer.listItems.chats")}
         icon={
-          <Badge color="secondary" variant="dot" invisible={invisible}>
+          <Badge color="secondary" variant="dot" invisible={invisible} style={{color : "#34D3A3"}}>
             <ForumIcon />
           </Badge>
-        }
-      />
+        }/>
 
       <ListItemLink
         to="/helps"
         primary={i18n.t("mainDrawer.listItems.helps")}
-        icon={<HelpOutlineIcon />}
-      />
+        icon={<HelpOutlineIcon style={{color : "#34D3A3"}} />}/>
 
       <Can
         role={user.profile}
@@ -383,7 +485,7 @@ const MainListItems = (props) => {
                   onClick={() => setOpenCampaignSubmenu((prev) => !prev)}
                 >
                   <ListItemIcon>
-                    <EventAvailableIcon />
+                    <EventAvailableIcon style={{color:"#34D3A3"}} />
                   </ListItemIcon>
                   <ListItemText
                     primary={i18n.t("mainDrawer.listItems.campaigns")}
@@ -403,7 +505,7 @@ const MainListItems = (props) => {
                   <List component="div" disablePadding>
                     <ListItem onClick={() => history.push("/campaigns")} button>
                       <ListItemIcon>
-                        <ListIcon />
+                        <ListIcon style={{color:"#34D3A3"}}/>
                       </ListItemIcon>
                       <ListItemText primary="Listagem" />
                     </ListItem>
@@ -412,7 +514,7 @@ const MainListItems = (props) => {
                       button
                     >
                       <ListItemIcon>
-                        <PeopleIcon />
+                        <PeopleIcon style={{color:"#34D3A3"}}/>
                       </ListItemIcon>
                       <ListItemText primary="Listas de Contatos" />
                     </ListItem>
@@ -421,7 +523,7 @@ const MainListItems = (props) => {
                       button
                     >
                       <ListItemIcon>
-                        <SettingsOutlinedIcon />
+                        <SettingsOutlinedIcon style={{color:"#34D3A3"}}/>
                       </ListItemIcon>
                       <ListItemText primary="Configurações" />
                     </ListItem>
@@ -433,14 +535,14 @@ const MainListItems = (props) => {
               <ListItemLink
                 to="/announcements"
                 primary={i18n.t("mainDrawer.listItems.annoucements")}
-                icon={<AnnouncementIcon />}
+                icon={<AnnouncementIcon style={{color : "#34D3A3"}} />}
               />
             )}
             {showOpenAi && (
               <ListItemLink
                 to="/prompts"
                 primary={i18n.t("mainDrawer.listItems.prompts")}
-                icon={<AllInclusive />}
+                icon={<AllInclusive style={{color : "#34D3A3"}} />}
               />
             )}
 
@@ -448,7 +550,7 @@ const MainListItems = (props) => {
               <ListItemLink
                 to="/queue-integration"
                 primary={i18n.t("mainDrawer.listItems.queueIntegration")}
-                icon={<DeviceHubOutlined />}
+                icon={<DeviceHubOutlined style={{color : "#34D3A3"}} />}
               />
             )}
             <ListItemLink
@@ -456,44 +558,44 @@ const MainListItems = (props) => {
               primary={i18n.t("mainDrawer.listItems.connections")}
               icon={
                 <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-                  <SyncAltIcon />
+                  <SyncAltIcon style={{color:"#34D3A3"}} />
                 </Badge>
               }
             />
             <ListItemLink
               to="/files"
               primary={i18n.t("mainDrawer.listItems.files")}
-              icon={<AttachFile />}
+              icon={<AttachFile style={{color : "#34D3A3"}} />}
             />
             <ListItemLink
               to="/queues"
               primary={i18n.t("mainDrawer.listItems.queues")}
-              icon={<AccountTreeOutlinedIcon />}
+              icon={<AccountTreeOutlinedIcon style={{color : "#34D3A3"}} />}
             />
             <ListItemLink
               to="/users"
               primary={i18n.t("mainDrawer.listItems.users")}
-              icon={<PeopleAltOutlinedIcon />}
+              icon={<PeopleAltOutlinedIcon style={{color : "#34D3A3"}} />}
             />
             {showExternalApi && (
               <>
                 <ListItemLink
                   to="/messages-api"
                   primary={i18n.t("mainDrawer.listItems.messagesAPI")}
-                  icon={<CodeRoundedIcon />}
+                  icon={<CodeRoundedIcon style={{color : "#34D3A3"}} />}
                 />
               </>
             )}
-            <ListItemLink
+            {/*<ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}
-              icon={<LocalAtmIcon />}
-            />
+              icon={<LocalAtmIcon style={{color : "#34D3A3"}} />}
+            />*/}
 
             <ListItemLink
               to="/settings"
               primary={i18n.t("mainDrawer.listItems.settings")}
-              icon={<SettingsOutlinedIcon />}
+              icon={<SettingsOutlinedIcon style={{color : "#34D3A3"}} />}
             />
 			
 			
@@ -505,10 +607,10 @@ const MainListItems = (props) => {
                 <img style={{ width: "100%", padding: "10px" }} src={logo} alt="image" />            
               </Hidden> 
               */}
-              <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
+              {/* <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
                 {`6.0.0`}
 
-              </Typography>
+              </Typography>*/}
             </React.Fragment>
             }
 			

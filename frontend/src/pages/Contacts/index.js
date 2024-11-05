@@ -269,36 +269,41 @@ const Contacts = () => {
         <Title>{i18n.t("contacts.title")}</Title>
         <MainHeaderButtonsWrapper>
           <TextField
+            variant="outlined"
+            size="small"
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
+              style:{borderRadius:"15px"},
+              endAdornment: (
+                <InputAdornment position="end">
                   <SearchIcon style={{ color: "gray" }} />
                 </InputAdornment>
               ),
             }}
           />
           <Button
+            style={{color:"white", borderRadius:"8px"}}
             variant="contained"
             color="primary"
             onClick={(e) => setConfirmOpen(true)}
           >
-            {i18n.t("contacts.buttons.import")}
+            {i18n.t("importar")}
           </Button>
           <Button
+            style={{color:"white", borderRadius:"8px"}}
             variant="contained"
             color="primary"
             onClick={handleOpenContactModal}
           >
-            {i18n.t("contacts.buttons.add")}
+            {i18n.t("adicionar")}
           </Button>
 
          <CSVLink style={{ textDecoration:'none'}} separator=";" filename={'contatos.csv'} data={contacts.map((contact) => ({ name: contact.name, number: contact.number, email: contact.email }))}>
-          <Button	variant="contained" color="primary"> 
-          EXPORTAR CONTATOS 
+          <Button	variant="contained" color="primary" style={{color:"white", borderRadius:"8px"}}> 
+          EXPORTAR
           </Button>
           </CSVLink>		  
 
@@ -311,17 +316,19 @@ const Contacts = () => {
       >
         <Table size="small">
           <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox" />
-              <TableCell>{i18n.t("contacts.table.name")}</TableCell>
-              <TableCell align="center">
-                {i18n.t("contacts.table.whatsapp")}
+            <TableRow  style={{ backgroundColor: "#0C2454"}}>
+              {<TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"8px", borderBottomLeftRadius:"8px" }}></TableCell> /*não remover a tablecell vazia pois da erro no espaçaçamento */}
+              <TableCell align="left" style={{ color: "white", backgroundColor: "#0C2454"}}>
+                {i18n.t("Nome")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("contacts.table.email")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+                {i18n.t("Número")}
               </TableCell>
-              <TableCell align="center">
-                {i18n.t("contacts.table.actions")}
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+                {i18n.t("Email")}
+              </TableCell>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"8px", borderBottomRightRadius:"8px"}}>
+                {i18n.t("Ações")}
               </TableCell>
             </TableRow>
           </TableHead>

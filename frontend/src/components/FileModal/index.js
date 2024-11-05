@@ -298,8 +298,10 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                                 ))}
                                             <div className={classes.extraAttr}>
                                                 <Button
-                                                    style={{ flex: 1, marginTop: 8 }}
-                                                    variant="outlined"
+                                                    style={{ flex: 1, marginTop: 8,
+                                                    borderRadius: "8px"
+                                                    }}
+                                                    variant="contained" //para o botão ficar totalmente preenchido.
                                                     color="primary"
                                                     onClick={() => {push({ name: "", path: ""});
                                                     setSelectedFileNames([...selectedFileNames, ""]);
@@ -312,15 +314,16 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                     )}
                                 </FieldArray>
                             </DialogContent>
-                            <DialogActions>
+                            <DialogActions> 
+                                {/* botao cancelar */}
                                 <Button
                                     onClick={handleClose}
-                                    color="secondary"
+                                    color="primary" //botão CANCELAR na cor primary para a padronização.
                                     disabled={isSubmitting}
-                                    variant="outlined"
                                 >
                                     {i18n.t("fileModal.buttons.cancel")}
                                 </Button>
+                                {/* botao de salvar */}
                                 <Button
                                     type="submit"
                                     color="primary"

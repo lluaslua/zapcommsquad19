@@ -10,31 +10,34 @@ import IconButton from '@material-ui/core/IconButton';
 import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    margin: '2rem'
+    alignItems: 'flex-start', // Alinhar os itens à esquerda
+    margin: '2rem',
   },
   inputContainer: {
     display: 'flex',
     width: '100%',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
   },
   input: {
     flexGrow: 1,
-    marginRight: '1rem'
+    marginRight: '1rem',
   },
   listContainer: {
     width: '100%',
-    height: '100%',
-    marginTop: '1rem',
-    backgroundColor: '#f5f5f5',
+    height: '80%',
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: 'white',
     borderRadius: '5px',
   },
   list: {
+
     marginBottom: '5px'
   },
   checkbox: {
@@ -66,21 +69,18 @@ const ToDoList = () => {
 
   const handleAddTask = () => {
     if (!task.trim()) {
-      // Impede que o usuário crie uma tarefa sem texto
-      return;
+      return; // Impede que o usuário crie uma tarefa sem texto
     }
 
     const now = new Date();
     if (editIndex >= 0) {
-      // Editar tarefa existente
       const newTasks = [...tasks];
-      newTasks[editIndex] = {text: task, updatedAt: now, createdAt: newTasks[editIndex].createdAt};
+      newTasks[editIndex] = { text: task, updatedAt: now, createdAt: newTasks[editIndex].createdAt };
       setTasks(newTasks);
       setTask('');
       setEditIndex(-1);
     } else {
-      // Adicionar nova tarefa
-      setTasks([...tasks, {text: task, createdAt: now, updatedAt: now}]);
+      setTasks([...tasks, { text: task, createdAt: now, updatedAt: now }]);
       setTask('');
     }
   };
@@ -98,6 +98,13 @@ const ToDoList = () => {
 
   return (
     <div className={classes.root}>
+      <Typography
+        variant="h4"
+        style={{ color: '#0C2454', fontWeight: 500, textAlign: 'left' }} //rever o semibold após mudança de fonte!
+        className={classes.elementMargin}
+      >
+        TAREFAS
+      </Typography>
       <div className={classes.inputContainer}>
         <TextField
           className={classes.input}
@@ -105,8 +112,19 @@ const ToDoList = () => {
           value={task}
           onChange={handleTaskChange}
           variant="outlined"
+          style={{
+            backgroundColor: "white", borderRadius: '5px'
+          }}
         />
-        <Button variant="contained" color="primary" onClick={handleAddTask}>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#0C2C4C",
+            color: "white",
+            borderRadius: "8px",
+          }}
+          onClick={handleAddTask}
+        >
           {editIndex >= 0 ? 'Salvar' : 'Adicionar'}
         </Button>
       </div>
@@ -135,6 +153,5 @@ const ToDoList = () => {
     </div>
   );
 };
-
 
 export default ToDoList;
