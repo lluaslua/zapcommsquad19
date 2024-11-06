@@ -287,7 +287,8 @@ const FileLists = () => {
                                             />
                                     </TableCell>
                                     <TableCell>
-                                    </TableCell>
+                                    </TableCell> 
+                                    
                                     <TableCell>
                                     </TableCell>
                                     <TableCell align="center">
