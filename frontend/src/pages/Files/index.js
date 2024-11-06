@@ -241,6 +241,7 @@ const FileLists = () => {
                     <Button
                         variant="contained"
                         color="primary"
+                        borderRadius="8px"
                         onClick={handleOpenFileListModal}
                     >
                         {i18n.t("files.buttons.add")}
@@ -259,6 +260,8 @@ const FileLists = () => {
                             backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
                         </TableCell>
                         <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}</TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
                         <TableCell align="center" style={{
                 backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queues.table.actions")}
                         </TableCell>
@@ -271,11 +274,12 @@ const FileLists = () => {
                         <>
                             {files.map((fileList) => (
                                 <TableRow key={fileList.name}>
+                                    <TableCell align="center" style={{backgroundColor: 'white'}}></TableCell>
                                     <TableCell align="center">
                                         <Chip
                                             variant="default"
                                             style={{
-                                                bachgroundColor: "#FFFFFF",
+                                                backgroundColor: "#FFFFFF",
                                                 color:"black",
                                             }}
                                             label={fileList.name}
@@ -300,6 +304,7 @@ const FileLists = () => {
                                             <DeleteOutlineIcon />
                                         </IconButton>
                                     </TableCell>
+                                    <TableCell></TableCell>
                                 </TableRow>
                             ))}
                             {loading && <TableRowSkeleton columns={4} />}
