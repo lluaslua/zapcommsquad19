@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.options,  //DARK MODE PLW DESIGN//
     borderRadius: 4,
     width: "100%",
+    marginLeft: "10px", //alinhamento com o restante dos componentes
+    marginRight: "10px", //alinhamento com o restante dos componentes
     backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
       color: "#FFFFFF",
@@ -50,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: 12,
     width: "100%",
+  },
+  formControl: {
+    backgroundColor: "#fff",  
   },
   cardAvatar: {
     fontSize: "55px",
@@ -390,8 +395,12 @@ export default function Options(props) {
               as={Select}
               label="Avaliações"
               labelId="ratings-label"
-              name="Avaliações"
+              name="ratings"
+              value={userRating}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleChangeUserRating(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desabilitadas</MenuItem>
               <MenuItem value={"enabled"}>Habilitadas</MenuItem>
@@ -409,7 +418,11 @@ export default function Options(props) {
               label="Gerenciamento de Expediente"
               labelId="schedule-type-label"
               name="Gerenciamento de Expediente"
+              value={scheduleType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleScheduleType(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"queue"}>Fila</MenuItem>
@@ -428,7 +441,11 @@ export default function Options(props) {
               label="Ignorar Mensagens de Grupos"
               labelId="group-type-label"
               name="Ignorar Mensagens de Grupos"
+              value={CheckMsgIsGroup}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleGroupType(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desativado</MenuItem>
               <MenuItem value={"enabled"}>Ativado</MenuItem>
@@ -447,7 +464,11 @@ export default function Options(props) {
               label="Aceitar Chamada"
               labelId="call-type-label"
               name="Aceitar Chamada"
+              value={callType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleCallType(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Não Aceitar</MenuItem>
               <MenuItem value={"enabled"}>Aceitar</MenuItem>
@@ -466,7 +487,11 @@ export default function Options(props) {
               label="Tipo Chatbot"
               labelId="chatbot-type-label"
               name="Tipo Chatbot"
+              value={chatbotType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleChatbotType(e.target.value);
+              }}
             >
               <MenuItem value={"text"}>Texto</MenuItem>
 			 {/*<MenuItem value={"button"}>Botão</MenuItem>*/}
@@ -487,6 +512,10 @@ export default function Options(props) {
               labelId="sendGreetingAccepted-label"
               name="Enviar saudação ao aceitar o ticket"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={SendGreetingAccepted}
+              onChange={async (e) => {
+                handleSendGreetingAccepted(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>
@@ -501,13 +530,17 @@ export default function Options(props) {
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia</InputLabel>
+            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
             <Select
               as={Select}
               label="Enviar mensagem de transferencia de Fila/agente"
               labelId="sendMsgTransfTicket-label"
               name="Enviar mensagem de transferencia de Fila/agente"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={SettingsTransfTicket}
+              onChange={async (e) => {
+                handleSettingsTransfTicket(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>
@@ -521,13 +554,17 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação de fila única</InputLabel>
+            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
             <Select
               as={Select}
               label="Enviar saudação quando houver somente 1 fila"
               labelId="sendGreetingMessageOneQueues-label"
               name="Enviar saudação quando houver somente 1 fila"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={sendGreetingMessageOneQueues}
+              onChange={async (e) => {
+                handleSendGreetingMessageOneQueues(e.target.value);
+              }}
             >
               <MenuItem value={"disabled"}>Desabilitado</MenuItem>
               <MenuItem value={"enabled"}>Habilitado</MenuItem>

@@ -134,7 +134,7 @@ export function HelpManagerForm (props) {
                         </Grid>
                         { record.id !== undefined ? (
                             <Grid sm={3} md={1} item>
-                                <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onDelete(record)} variant="contained" color="secondary">
+                                <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onDelete(record)}  color="primary">
                                     Excluir
                                 </ButtonWithSpinner>
                             </Grid>
