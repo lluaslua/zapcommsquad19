@@ -10,14 +10,14 @@ import Tab from "@material-ui/core/Tab";
 import Badge from "@material-ui/core/Badge";
 import MoveToInboxIcon from "@material-ui/icons/MoveToInbox";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-
+import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
 import NewTicketModal from "../NewTicketModal";
 import TicketsList from "../TicketsListCustom";
 import TabPanel from "../TabPanel";
-
+import TextField from "@material-ui/core/TextField";
 import { i18n } from "../../translate/i18n";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { Can } from "../Can";
@@ -224,6 +224,27 @@ const TicketsManagerTabs = () => {
 
   return (
     <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
+      <div value='search' onClick={handleChangeTab}>
+        <TextField
+              placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+              color='primary'
+              variant="outlined"
+              type="search"
+              size="small"
+              value={searchParam}
+              onChange={handleSearch}
+              InputProps={{
+                style: {
+                  borderRadius: '20px'
+                },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon style={{ color: "gray"}}/>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
       <NewTicketModal
         modalOpen={newTicketModalOpen}
         onClose={(ticket) => {

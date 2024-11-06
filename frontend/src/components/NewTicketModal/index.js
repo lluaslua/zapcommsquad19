@@ -385,9 +385,9 @@ const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
         <DialogActions>
           <Button
             onClick={handleClose}
-            color="secondary"
+            color="primary"
             disabled={loading}
-            variant="outlined"
+            variant="text"
           >
             {i18n.t("newTicketModal.buttons.cancel")}
           </Button>
