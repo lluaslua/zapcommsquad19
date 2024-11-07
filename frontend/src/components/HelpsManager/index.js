@@ -128,13 +128,13 @@ export function HelpManagerForm (props) {
                             />
                         </Grid>
                         <Grid sm={3} md={1} item>
-                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} variant="contained">
+                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} color="primary">
                                 Limpar
                             </ButtonWithSpinner>
                         </Grid>
                         { record.id !== undefined ? (
                             <Grid sm={3} md={1} item>
-                                <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onDelete(record)} variant="contained" color="secondary">
+                                <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onDelete(record)}  color="primary">
                                     Excluir
                                 </ButtonWithSpinner>
                             </Grid>

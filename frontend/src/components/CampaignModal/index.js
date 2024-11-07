@@ -734,9 +734,9 @@ const CampaignModal = ({
                 )}
                 <Button
                   onClick={handleClose}
-                  color="secondary"
+                  color="primary"
                   disabled={isSubmitting}
-                  variant="outlined"
+                  variant="text"
                 >
                   {i18n.t("campaigns.dialog.buttons.close")}
                 </Button>

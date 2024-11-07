@@ -21,9 +21,8 @@ const ConfirmationModal = ({ title, children, open, onClose, onConfirm }) => {
 			</DialogContent>
 			<DialogActions>
 				<Button
-					variant="contained"
 					onClick={() => onClose(false)}
-					color="default"
+					color="primary" //padronização
 				>
 					{i18n.t("confirmationModal.buttons.cancel")}
 				</Button>
@@ -33,7 +32,7 @@ const ConfirmationModal = ({ title, children, open, onClose, onConfirm }) => {
 						onClose(false);
 						onConfirm();
 					}}
-					color="secondary"
+					color="primary" //padronização
 				>
 					{i18n.t("confirmationModal.buttons.confirm")}
 				</Button>

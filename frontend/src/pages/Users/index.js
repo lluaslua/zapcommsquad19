@@ -243,17 +243,17 @@ const Users = () => {
         <Table size="small">
           <TableHead>
             <TableRow style={{ backgroundColor: "#0C2454"}}>
-			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"  }}>
+			        <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", fontFamily: 'Nunito, Arial, sans-serif'}}>
                 {i18n.t("users.table.id")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>{i18n.t("users.table.name")}</TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif'}}>{i18n.t("users.table.name")}</TableCell>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif'}}>
                 {i18n.t("users.table.email")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif'}}>
                 {i18n.t("users.table.profile")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("users.table.actions")}
               </TableCell>
             </TableRow>
@@ -263,9 +263,9 @@ const Users = () => {
               {users.map((user) => (
                 <TableRow key={user.id}>
 				  <TableCell align="center">{user.id}</TableCell>
-                  <TableCell align="center">{user.name}</TableCell>
-                  <TableCell align="center">{user.email}</TableCell>
-                  <TableCell align="center">{user.profile}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{user.name}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{user.email}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{user.profile}</TableCell>
                   <TableCell align="center">
                     <IconButton
                       size="small"

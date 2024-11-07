@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Title from "../../components/Title";
 import TicketsManager from "../../components/TicketsManagerTabs/";
 import Ticket from "../../components/Ticket/";
 import logo from "../../assets/logo.png"; //PLW DESIGN LOGO//
@@ -51,10 +51,11 @@ const TicketsCustom = () => {
 
 	return (
 		<div className={classes.chatContainer}>
+			<Title>Chamados</Title>
 			<div className={classes.chatPapper}>
-				<Grid container spacing={0}>
+				<Grid container spacing={4}>
 					<Grid item xs={4} className={classes.contactsWrapper}>
-						<TicketsManager />
+						<TicketsManager/>
 					</Grid>
 					<Grid item xs={8} className={classes.messagesWrapper}>
 						{ticketId ? (

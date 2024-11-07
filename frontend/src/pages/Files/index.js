@@ -36,6 +36,7 @@ import ConfirmationModal from "../../components/ConfirmationModal";
 import toastError from "../../errors/toastError";
 import { SocketContext } from "../../context/Socket/SocketContext";
 import { AuthContext } from "../../context/Auth/AuthContext";
+import { Chip } from "@material-ui/core";
 
 const reducer = (state, action) => {
     if (action.type === "LOAD_FILES") {
@@ -220,12 +221,18 @@ const FileLists = () => {
                 <MainHeaderButtonsWrapper>
                     <TextField
                         placeholder={i18n.t("contacts.searchPlaceholder")}
+                        color="primary"
+                        variant="outlined"
                         type="search"
+                        size="small"
                         value={searchParam}
                         onChange={handleSearch}
                         InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
+                            style: {
+                                borderRadius: "20px"
+                            },
+                            endAdornment: (
+                                <InputAdornment position="end">
                                     <SearchIcon style={{ color: "gray" }} />
                                 </InputAdornment>
                             ),
@@ -234,6 +241,7 @@ const FileLists = () => {
                     <Button
                         variant="contained"
                         color="primary"
+                        borderRadius="8px"
                         onClick={handleOpenFileListModal}
                     >
                         {i18n.t("files.buttons.add")}
@@ -248,24 +256,44 @@ const FileLists = () => {
                 <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center">{i18n.t("files.table.name")}</TableCell>
-                            <TableCell align="center">
-                                {i18n.t("files.table.actions")}
-                            </TableCell>
+                        <TableCell padding="checkbox" style={{
+                            backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+                        </TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}</TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
+                        <TableCell align="center" style={{
+                backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queues.table.actions")}
+                        </TableCell>
+                        <TableCell style={{
+                backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}>
+                        </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         <>
                             {files.map((fileList) => (
-                                <TableRow key={fileList.id}>
+                                <TableRow key={fileList.name}>
+                                    <TableCell align="center" style={{backgroundColor: 'white'}}></TableCell>
                                     <TableCell align="center">
-                                        {fileList.name}
+                                        <Chip
+                                            variant="default"
+                                            style={{
+                                                backgroundColor: "#FFFFFF",
+                                                color:"black",
+                                            }}
+                                            label={fileList.name}
+                                            size="small"
+                                            />
+                                    </TableCell>
+                                    <TableCell>
+                                    </TableCell> 
+                                    <TableCell>
                                     </TableCell>
                                     <TableCell align="center">
                                         <IconButton size="small" onClick={() => handleEditFileList(fileList)}>
                                             <EditIcon />
                                         </IconButton>
-
                                         <IconButton
                                             size="small"
                                             onClick={(e) => {
@@ -276,6 +304,7 @@ const FileLists = () => {
                                             <DeleteOutlineIcon />
                                         </IconButton>
                                     </TableCell>
+                                    <TableCell></TableCell>
                                 </TableRow>
                             ))}
                             {loading && <TableRowSkeleton columns={4} />}

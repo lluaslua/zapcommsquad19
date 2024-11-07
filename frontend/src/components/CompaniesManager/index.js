@@ -251,7 +251,6 @@ export function CompanyForm(props) {
                     labelId="plan-selection-label"
                     name="planId"
                     margin="dense"
-                    required
                     className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     {plans.map((plan, key) => (
@@ -318,11 +317,10 @@ export function CompanyForm(props) {
                   <InputLabel htmlFor="recorrencia-selection">
                     Recorrência
                   </InputLabel>
-                  <Field
+                  <Select
                     as={Select}
                     label="Recorrência"
                     labelId="recorrencia-selection-label"
-                    id="recurrence"
                     name="recurrence"
                     margin="dense"
                     className={`${classes.fullWidth} ${classes.textfield}`}
@@ -332,7 +330,7 @@ export function CompanyForm(props) {
                     {/*<MenuItem value="TRIMESTRAL">Trimestral</MenuItem>*/}
                     {/*<MenuItem value="SEMESTRAL">Semestral</MenuItem>*/}
                     {/*<MenuItem value="ANUAL">Anual</MenuItem>*/}
-                  </Field>
+                    </Select>
                 </FormControl>
               </Grid>
               <Grid xs={12} item>
@@ -343,7 +341,7 @@ export function CompanyForm(props) {
                       style={{ marginTop: 7 }}
                       loading={loading}
                       onClick={() => onCancel()}
-                      variant="contained"
+                      color="primary"
                     >
                       Limpar
                     </ButtonWithSpinner>
@@ -356,8 +354,7 @@ export function CompanyForm(props) {
                           className={classes.fullWidth}
                           loading={loading}
                           onClick={() => onDelete(record)}
-                          variant="contained"
-                          color="secondary"
+                          color="primary" //padronização
                         >
                           Excluir
                         </ButtonWithSpinner>

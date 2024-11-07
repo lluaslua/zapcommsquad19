@@ -19,7 +19,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
-
+import CustomTextField from "../../components/CustomTextField";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
 import MainContainer from "../../components/MainContainer";
@@ -263,7 +263,8 @@ return (
               <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
               <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
               <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("tags.table.actions")}</TableCell>
+              {/*Adicionar {i18n.t("tags.table.actions")} para inserir o texto de volta*/ }
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
