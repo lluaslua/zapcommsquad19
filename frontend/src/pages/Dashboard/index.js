@@ -54,6 +54,19 @@ import { isEmpty } from "lodash";
 import moment from "moment";
 import { ChartsDate } from "./ChartsDate";
 
+
+import { 
+  BarChart, 
+  Bar,
+  LineChart,
+  Line,
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer 
+} from 'recharts';
+
 import group41 from "../../assets/Group 41.png"
 import group42 from "../../assets/Group 42.png"
 import group43 from "../../assets/Group 43.png"
@@ -135,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     flexDirection: "column",
     height: "180px",
-    width: "180px",
+    width: "210px",
     borderRadius: "20px",
     //backgroundColor: "palette",
     //backgroundColor: theme.palette.primary.main,
@@ -208,7 +221,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
-    height: "100%",
+    height: "160px",
+    width: "430px",
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
@@ -218,7 +232,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
-    height: "100%",
+    height: "160px",
+    width: "430px",
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
@@ -232,185 +247,145 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = () => {
-  const classes = useStyles();
-  const [counters, setCounters] = useState({});
-  const [attendants, setAttendants] = useState([]);
-  const [period, setPeriod] = useState(0);
-  const [filterType, setFilterType] = useState(1);
-  const [dateFrom, setDateFrom] = useState(moment("1", "D").format("YYYY-MM-DD"));
-  const [dateTo, setDateTo] = useState(moment().format("YYYY-MM-DD"));
-  const [loading, setLoading] = useState(false);
-  const { find } = useDashboard();
-
-  let newDate = new Date();
-  let date = newDate.getDate();
-  let month = newDate.getMonth() + 1;
-  let year = newDate.getFullYear();
-  let now = `${year}-${month < 10 ? `0${month}` : `${month}`}-${date < 10 ? `0${date}` : `${date}`}`;
-
-  const [showFilter, setShowFilter] = useState(false);
-  const [queueTicket, setQueueTicket] = useState(false);
-
-  const { user } = useContext(AuthContext);
-  var userQueueIds = [];
-
-  if (user.queues && user.queues.length > 0) {
-    userQueueIds = user.queues.map((q) => q.id);
-  }
-
-  useEffect(() => {
-    async function firstLoad() {
-      await fetchData();
-    }
-    setTimeout(() => {
-      firstLoad();
-    }, 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const classes = useStyles();
+    const [counters, setCounters] = useState({});
+    const [attendants, setAttendants] = useState([]);
+    const [period, setPeriod] = useState(0);
+    const [filterType, setFilterType] = useState(1);
+    const [dateFrom, setDateFrom] = useState(moment("1", "D").format("YYYY-MM-DD"));
+    const [dateTo, setDateTo] = useState(moment().format("YYYY-MM-DD"));
+    const [loading, setLoading] = useState(false);
+    const { find } = useDashboard();
   
-    async function handleChangePeriod(value) {
-    setPeriod(value);
-  }
-
-  async function handleChangeFilterType(value) {
-    setFilterType(value);
-    if (value === 1) {
-      setPeriod(0);
-    } else {
-      setDateFrom("");
-      setDateTo("");
+    const [showFilter, setShowFilter] = useState(false);
+    const [queueTicket, setQueueTicket] = useState(false);
+  
+    const { user } = useContext(AuthContext);
+    var userQueueIds = [];
+  
+    if (user.queues && user.queues.length > 0) {
+      userQueueIds = user.queues.map((q) => q.id);
     }
-  }
-
-  async function fetchData() {
-    setLoading(true);
-
-    let params = {};
-
-    if (period > 0) {
-      params = {
-        days: period,
-      };
-    }
-
-    if (!isEmpty(dateFrom) && moment(dateFrom).isValid()) {
-      params = {
-        ...params,
-        date_from: moment(dateFrom).format("YYYY-MM-DD"),
-      };
-    }
-
-    if (!isEmpty(dateTo) && moment(dateTo).isValid()) {
-      params = {
-        ...params,
-        date_to: moment(dateTo).format("YYYY-MM-DD"),
-      };
-    }
-
-    if (Object.keys(params).length === 0) {
-      toast.error("Parametrize o filtro");
-      setLoading(false);
-      return;
-    }
-
-    const data = await find(params);
-
-    setCounters(data.counters);
-    if (isArray(data.attendants)) {
-      setAttendants(data.attendants);
-    } else {
-      setAttendants([]);
-    }
-
-    setLoading(false);
-  }
-
-  function formatTime(minutes) {
-    return moment()
-      .startOf("day")
-      .add(minutes, "minutes")
-      .format("HH[h] mm[m]");
-  }
-
-  const GetUsers = () => {
-    let count;
-    let userOnline = 0;
-    attendants.forEach(user => {
-      if (user.online === true) {
-        userOnline = userOnline + 1
+    
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    let now = `${year}-${month < 10 ? `0${month}` : `${month}`}-${date < 10 ? `0${date}` : `${date}`}`;
+  
+    useEffect(() => {
+      async function firstLoad() {
+        await fetchData();
       }
-    })
-    count = userOnline === 0 ? 0 : userOnline;
-    return count;
-  };
-  
-    const GetContacts = (all) => {
-    let props = {};
-    if (all) {
-      props = {};
+      setTimeout(() => {
+        firstLoad();
+      }, 1000);
+    }, []);
+    
+      async function handleChangePeriod(value) {
+      setPeriod(value);
     }
-    const { count } = useContacts(props);
-    return count;
-  };
   
-    function renderFilters() {
-    if (filterType === 1) {
-      return (
-        <>
-          <Grid item xs={12} sm={6} md={4}>
-            <TextField
-              label="Data Inicial"
-              type="date"
-              value={dateFrom}
-              onChange={(e) => setDateFrom(e.target.value)}
-              className={classes.fullWidth}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <TextField
-              label="Data Final"
-              type="date"
-              value={dateTo}
-              onChange={(e) => setDateTo(e.target.value)}
-              className={classes.fullWidth}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Grid>
-        </>
-      );
-    } else {
-      return (
-        <Grid item xs={12} sm={6} md={4}>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="period-selector-label">Período</InputLabel>
-            <Select
-              labelId="period-selector-label"
-              id="period-selector"
-              value={period}
-              onChange={(e) => handleChangePeriod(e.target.value)}
-            >
-              <MenuItem value={0}>Nenhum selecionado</MenuItem>
-              <MenuItem value={3}>Últimos 3 dias</MenuItem>
-              <MenuItem value={7}>Últimos 7 dias</MenuItem>
-              <MenuItem value={15}>Últimos 15 dias</MenuItem>
-              <MenuItem value={30}>Últimos 30 dias</MenuItem>
-              <MenuItem value={60}>Últimos 60 dias</MenuItem>
-              <MenuItem value={90}>Últimos 90 dias</MenuItem>
-            </Select>
-            <FormHelperText>Selecione o período desejado</FormHelperText>
-          </FormControl>
-        </Grid>
-      );
+    async function handleChangeFilterType(value) {
+      setFilterType(value);
+      if (value === 1) {
+        setPeriod(0);
+      } else {
+        setDateFrom("");
+        setDateTo("");
+      }
     }
-  }
+  
+    async function fetchData() {
+      setLoading(true);
+  
+      let params = {};
+  
+      if (period > 0) {
+        params = {
+          days: period,
+        };
+      }
+  
+      if (!isEmpty(dateFrom) && moment(dateFrom).isValid()) {
+        params = {
+          ...params,
+          date_from: moment(dateFrom).format("YYYY-MM-DD"),
+        };
+      }
+  
+      if (!isEmpty(dateTo) && moment(dateTo).isValid()) {
+        params = {
+          ...params,
+          date_to: moment(dateTo).format("YYYY-MM-DD"),
+        };
+      }
+  
+      if (Object.keys(params).length === 0) {
+        toast.error("Parametrize o filtro");
+        setLoading(false);
+        return;
+      }
+  
+      const data = await find(params);
+  
+      setCounters(data.counters);
+      if (isArray(data.attendants)) {
+        setAttendants(data.attendants);
+      } else {
+        setAttendants([]);
+      }
+  
+      setLoading(false);
+    }
+  
+    function formatTime(minutes) {
+      return moment()
+        .startOf("day")
+        .add(minutes, "minutes")
+        .format("HH[h] mm[m]");
+    }
+  
+    const GetUsers = () => {
+      let count;
+      let userOnline = 0;
+      attendants.forEach(user => {
+        if (user.online === true) {
+          userOnline = userOnline + 1
+        }
+      })
+      count = userOnline === 0 ? 0 : userOnline;
+      return count;
+    };
+    
+      const GetContacts = (all) => {
+      let props = {};
+      if (all) {
+        props = {};
+      }
+      const { count } = useContacts(props);
+      return count;
+    };
+
+    const dailyData = [
+      { name: 'D', value: 35 },
+      { name: 'S', value: 28 },
+      { name: 'T', value: 25 },
+      { name: 'Q', value: 20 },
+      { name: 'Q', value: 30 },
+      { name: 'S', value: 35 },
+      { name: 'S', value: 28 }
+    ];
 
   return (
     <div>
+      <div>
+        <h1
+        style={{ fontFamily: 'Nunito', fontWeight: 'bold', color: '#0C2C4C', marginTop: '-1%', marginLeft: '7%' }}
+        >
+          Dashboard
+        </h1>
+      </div>
       <Container maxWidth="lg" className={classes.container}>
         <Grid 
         container spacing={3} 
@@ -420,6 +395,9 @@ const Dashboard = () => {
           border: "solid, 1px", 
           borderRadius: "5px",
           borderColor: "#0C2454",
+          gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
+          width: '77%', // ajuste a largura
+          marginLeft: '-10%', // desloca o grid para a esquerda
         }}
         >
 		
@@ -427,7 +405,7 @@ const Dashboard = () => {
           {/* EM ATENDIMENTO */}
           <Grid item md={1.5}
             style={{ 
-              display: "-ms-grid", 
+              display: "flex", 
               textAlign: "center", 
               justifyContent: "center",
 
@@ -437,7 +415,7 @@ const Dashboard = () => {
               className={classes.card1}
               style={{ 
                 overflow: "hidden",
-                display: "-ms-grid", 
+                display: "flex", 
                 textAlign: "center", 
                 justifyContent: "center",
               }}
@@ -445,7 +423,7 @@ const Dashboard = () => {
             >
               <Grid 
               style={{ 
-                display: "-ms-grid", 
+                display: "flex", 
                 textAlign: "center", 
                 justifyContent: "center",
 
@@ -455,7 +433,7 @@ const Dashboard = () => {
                   <div>
                   <img
                     style={{ height: "56px", width: "56px" }}
-                    src={group41}
+                    src={group42}
                     alt="em_aberto"
                   />
                   </div>
@@ -482,23 +460,49 @@ const Dashboard = () => {
           </Grid>
 
           {/* AGUARDANDO */}
-          <Grid item md={1.5}>
+          <Grid item md={1.5}
+            style={{ 
+              display: "flex", 
+              textAlign: "center", 
+              justifyContent: "center",
+
+            }}
+          >
             <Paper
-              className={classes.card2}
-              style={{ overflow: "hidden" }}
-              elevation={6}
+              className={classes.card1}
+              style={{ 
+                overflow: "hidden",
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+              }}
+              elevation={4}
             >
-              <Grid container spacing={3}>
-              <Grid item xs={4}>
+              <Grid 
+              style={{ 
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+
+              }}
+              >
+                <Grid item xs={8}>
                   <div>
                   <img
-                    style={{ height: "56px", width: "100%" }}
-                    src={group42}
-                    alt="aguardando"
+                    style={{ height: "56px", width: "56px" }}
+                    src={group43}
+                    alt="em_aberto"
                   />
                   </div>
-                </Grid>
-                <Grid item xs={8}>
+                  <Grid item>
+                    <Typography
+                      component="h1"
+                      variant="h4"
+                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
+                    >
+                      {counters.supportHappening}
+                    </Typography>
+                  </Grid>
                   <Typography
                     component="h3"
                     variant="h6"
@@ -507,15 +511,6 @@ const Dashboard = () => {
                   >
                     Aguardando
                   </Typography>
-                  <Grid item>
-                    <Typography
-                      component="h1"
-                      variant="h4"
-                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
-                    >
-                      {counters.supportPending}
-                    </Typography>
-                  </Grid>
                 </Grid>
               </Grid>
             </Paper>
@@ -564,23 +559,49 @@ const Dashboard = () => {
 </Grid>*/}
 
           {/* FINALIZADOS */}
-          <Grid item md={1.5}>
+          <Grid item md={1.5}
+            style={{ 
+              display: "flex", 
+              textAlign: "center", 
+              justifyContent: "center",
+
+            }}
+          >
             <Paper
-              className={classes.card3}
-              style={{ overflow: "hidden" }}
-              elevation={6}
+              className={classes.card1}
+              style={{ 
+                overflow: "hidden",
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+              }}
+              elevation={4}
             >
-              <Grid container spacing={3}>
-              <Grid item xs={4}>
+              <Grid 
+              style={{ 
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+
+              }}
+              >
+                <Grid item xs={8}>
                   <div>
                   <img
-                    style={{ height: "56px", width: "100%" }}
-                    src={group43}
-                    alt="finalizados"
+                    style={{ height: "56px", width: "56px" }}
+                    src={group41}
+                    alt="em_aberto"
                   />
                   </div>
-                </Grid>
-                <Grid item xs={8}>
+                  <Grid item>
+                    <Typography
+                      component="h1"
+                      variant="h4"
+                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
+                    >
+                      {counters.supportHappening}
+                    </Typography>
+                  </Grid>
                   <Typography
                     component="h3"
                     variant="h6"
@@ -589,38 +610,55 @@ const Dashboard = () => {
                   >
                     Finalizados
                   </Typography>
-                  <Grid item>
-                    <Typography
-                      component="h1"
-                      variant="h4"
-                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
-                    >
-                      {counters.supportFinished}
-                    </Typography>
-                  </Grid>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
 
           {/* NOVOS CONTATOS */}
-          <Grid item md={1.5}>
+          <Grid item md={1.5}
+            style={{ 
+              display: "flex", 
+              textAlign: "center", 
+              justifyContent: "center",
+
+            }}
+          >
             <Paper
-              className={classes.card4}
-              style={{ overflow: "hidden" }}
-              elevation={6}
+              className={classes.card1}
+              style={{ 
+                overflow: "hidden",
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+              }}
+              elevation={4}
             >
-              <Grid container spacing={3}>
-              <Grid item xs={4}>
+              <Grid 
+              style={{ 
+                display: "flex", 
+                textAlign: "center", 
+                justifyContent: "center",
+
+              }}
+              >
+                <Grid item xs={8}>
                   <div>
                   <img
-                    style={{ height: "56px", width: "100%" }}
+                    style={{ height: "56px", width: "56px" }}
                     src={group44}
-                    alt="novos_contatos"
+                    alt="em_aberto"
                   />
                   </div>
-                </Grid>
-                <Grid item xs={8}>
+                  <Grid item>
+                    <Typography
+                      component="h1"
+                      variant="h4"
+                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
+                    >
+                      {counters.supportHappening}
+                    </Typography>
+                  </Grid>
                   <Typography
                     component="h3"
                     variant="h6"
@@ -629,15 +667,6 @@ const Dashboard = () => {
                   >
                     Novos Contatos
                   </Typography>
-                  <Grid item>
-                    <Typography
-                      component="h1"
-                      variant="h4"
-                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
-                    >
-                      {GetContacts(true)}
-                    </Typography>
-                  </Grid>
                 </Grid>
               </Grid>
             </Paper>
@@ -652,6 +681,11 @@ const Dashboard = () => {
           border: "solid, 1px", 
           borderRadius: "5px",
           borderColor: "#0C2454",
+          gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
+          width: '40%', // ajuste a largura
+          marginLeft: '70%', // desloca o grid para a esquerda
+          marginTop: '-16.79%',
+          justifyContent: "center",
         }}
         >
           
@@ -659,7 +693,7 @@ const Dashboard = () => {
           <Grid item md={1.5}>
             <Paper
               className={classes.card8}
-              style={{ overflow: "hidden" }}
+              style={{ overflow: "hidden", borderRadius: '20px' }}
               elevation={6}
             >
               <Grid container spacing={3}>
@@ -668,35 +702,42 @@ const Dashboard = () => {
                     component="h3"
                     variant="h6"
                     paragraph
+                    style={{ fontFamily: 'Nunito' }}
                   >
-                    T.M. de Conversa
+                    Tempo Médio de Conversa
                   </Typography>
                   <Grid item>
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{ fontFamily: 'Nunito', fontWeight: 'bolder', position: 'relative', left: '50px' }}
                     >
                       {formatTime(counters.avgSupportTime)}
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <AccessAlarmIcon
-                    style={{
-                      fontSize: 100,
-                      color: "#FFFFFF",
-                    }}
-                  />
+                <Grid item xs={4} style={{ position: 'relative', top: '45px', right: '40px' }}>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={dailyData}>
+                      <Line 
+                        type="monotone" 
+                        dataKey="value" 
+                        stroke="#34D3A3" 
+                        strokeWidth={2}
+                        dot={false}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
 
           {/* T.M. DE ESPERA */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item md={1.5}>
             <Paper
               className={classes.card9}
-              style={{ overflow: "hidden" }}
+              style={{ overflow: "hidden", borderRadius: '20px' }}
               elevation={6}
             >
               <Grid container spacing={3}>
@@ -705,25 +746,32 @@ const Dashboard = () => {
                     component="h3"
                     variant="h6"
                     paragraph
+                    style={{ fontFamily: 'Nunito' }}
                   >
-                    T.M. de Espera
+                    Tempo Médio de Espera
                   </Typography>
                   <Grid item>
                     <Typography
                       component="h1"
                       variant="h4"
+                      style={{ fontFamily: 'Nunito', fontWeight: 'bolder', position: 'relative', left: '50px' }}
                     >
                       {formatTime(counters.avgWaitTime)}
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <TimerIcon
-                    style={{
-                      fontSize: 100,
-                      color: "#FFFFFF",
-                    }}
-                  />
+                <Grid item xs={4} style={{ position: 'relative', top: '45px', right: '40px' }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={dailyData}>
+                        <Line 
+                          type="monotone" 
+                          dataKey="value" 
+                          stroke="#34D3A3" 
+                          strokeWidth={2}
+                          dot={false}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
                 </Grid>
               </Grid>
             </Paper>
@@ -739,6 +787,9 @@ const Dashboard = () => {
             border: "solid, 1px", 
             borderRadius: "5px",
             borderColor: "#0C2454",
+            width: '77%', // ajuste a largura
+            marginLeft: '-10%',
+            marginTop: '-8%',
           }}
           >
           {/* TOTAL DE ATENDIMENTOS POR USUARIO */}
@@ -747,6 +798,7 @@ const Dashboard = () => {
               <ChatsUser />
             </Paper>
           </Grid>
+        </Grid>
 
         <Grid 
           container spacing={3} 
@@ -756,6 +808,9 @@ const Dashboard = () => {
             border: "solid, 1px", 
             borderRadius: "5px",
             borderColor: "#0C2454",
+            width: '40%', // ajuste a largura
+            marginLeft: '70%', // desloca o grid para a esquerda
+            marginTop: '-27.5%',
           }}
           >
 
@@ -768,7 +823,7 @@ const Dashboard = () => {
 
         </Grid>
 
-        </Grid>
+        
       </Container >
     </div >
   );

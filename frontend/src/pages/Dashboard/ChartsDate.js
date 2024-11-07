@@ -30,6 +30,7 @@ ChartJS.register(
 
 export const options = {
     responsive: true,
+    barThickness: 25,
     plugins: {
         legend: {
             position: 'top',
@@ -41,7 +42,7 @@ export const options = {
             position: 'left',
         },
         datalabels: {
-            display: true,
+            display: false,
             anchor: 'start',
             offset: -30,
             align: "start",
@@ -78,7 +79,10 @@ export const ChartsDate = () => {
                 data: ticketsData?.data.length > 0 && ticketsData?.data.map((item, index) => {
                     return item.total
                 }),
-                backgroundColor: '#2DDD7F',
+                backgroundColor: 'rgba(45, 221, 127)', // Cor com transparência
+                borderRadius: 200, // Define o borderRadius para arredondar as bordas
+                borderSkipped: false, // Impede que as bordas arredondadas sejam ignoradas em qualquer lado da barra
+
             },
         ],
     };
@@ -94,11 +98,17 @@ export const ChartsDate = () => {
 
     return (
         <>
-            <Typography component="h2" variant="h6" color="primary" gutterBottom>
+            <Typography component="h2" variant="h6" color="primary" gutterBottom style={{ fontFamily: 'Nunito' }} >
                 Total ({ticketsData?.count})
             </Typography>
 
-            <Stack direction={'row'} spacing={2} alignItems={'center'} sx={{ my: 2, }} >
+            <Stack 
+                direction={'row'} 
+                spacing={2} 
+                alignItems={'center'} 
+                sx={{ my: 2, }} 
+                style={{ marginLeft: '20%', marginTop: '-11%', fontFamily: 'Nunito' }}
+            >
 
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={brLocale}>
                     <DatePicker
@@ -106,7 +116,7 @@ export const ChartsDate = () => {
                         onChange={(newValue) => { setInitialDate(newValue) }}
                         label="Inicio"
                         renderInput={(params) => <TextField fullWidth {...params} sx={{ width: '20ch' }} />}
-
+                        style={{ fontFamily: 'Nunito' }}
                     />
                 </LocalizationProvider>
 
@@ -116,10 +126,11 @@ export const ChartsDate = () => {
                         onChange={(newValue) => { setFinalDate(newValue) }}
                         label="Fim"
                         renderInput={(params) => <TextField fullWidth {...params} sx={{ width: '20ch' }} />}
+                        style={{ fontFamily: 'Nunito' }}
                     />
                 </LocalizationProvider>
 
-                <Button className="buttonHover" onClick={handleGetTicketsInformation} variant='contained' >Filtrar</Button>
+                <Button className="buttonHover" onClick={handleGetTicketsInformation} variant='contained' style={{ fontFamily: 'Nunito' }} >Filtrar</Button>
 
             </Stack>
             <Bar options={options} data={dataCharts} style={{ maxWidth: '100%', maxHeight: '280px', }} />
