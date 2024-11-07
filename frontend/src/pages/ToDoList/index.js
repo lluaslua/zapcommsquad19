@@ -7,47 +7,74 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
+import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Title from "../../components/Title";
 import EditIcon from '@material-ui/icons/Edit';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start', // Alinhar os itens à esquerda
-    margin: '2rem',
+    alignItems: 'flex-start',
+    margin: '2rem'
   },
   inputContainer: {
     display: 'flex',
     width: '100%',
+    marginTop: "1rem",
     marginBottom: '1rem',
+    backgroundColor:"white",
+    height: '60px',
+
   },
   input: {
     flexGrow: 1,
     marginRight: '1rem',
+    height: '60px',    
+    backgroundColor: 'white', 
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: 'white',  
+      '& fieldset': {
+        border: 'none',
+      },
+    },
   },
   listContainer: {
     width: '100%',
-    height: '80%',
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: 'white',
+    height: '100%',
+    marginTop: '1rem',
+    backgroundColor: '#E6EDF5',
     borderRadius: '5px',
-  },
-  list: {
-    marginBottom: '5px',
   },
   listItem: {
-    marginBottom: '16px',
-    padding: '16px',
+    borderRadius: '5px', 
+    padding: '10px', 
+    marginBottom: '10px',
     backgroundColor: '#fff',
-    borderRadius: '5px',
+    height: '40px',
   },
-  elementMargin: {
-    padding: theme.spacing(2),
+  checkbox: {
+    color: '#0C2C4C', 
+    '&.Mui-checked': {
+      color: '#0C2C4C',
+    },
+    '&.Mui-checked:hover': {
+      backgroundColor: 'rgba(12, 44, 76, 0.08)',
+    },
+    '&:hover': {
+      backgroundColor: 'rgba(12, 44, 76, 0.1)',
+    },
+    '&:active': {
+      backgroundColor: '#0C2C4C',
+      color: '#fff',
+    },
   },
-}));
+  completedText: {
+    color: 'gray',
+  },
+});
 
 const ToDoList = () => {
   const classes = useStyles();
@@ -72,19 +99,21 @@ const ToDoList = () => {
   };
 
   const handleAddTask = () => {
-    if (!task.trim()) {
-      return; // Impede que o usuário crie uma tarefa sem texto
-    }
+    if (!task.trim()) return;
 
     const now = new Date();
     if (editIndex >= 0) {
       const newTasks = [...tasks];
-      newTasks[editIndex] = { text: task, updatedAt: now, createdAt: newTasks[editIndex].createdAt };
+      newTasks[editIndex] = {
+        ...newTasks[editIndex],
+        text: task,
+        updatedAt: now,
+      };
       setTasks(newTasks);
       setTask('');
       setEditIndex(-1);
     } else {
-      setTasks([...tasks, { text: task, createdAt: now, updatedAt: now }]);
+      setTasks([...tasks, { text: task, completed: false, createdAt: now, updatedAt: now }]);
       setTask('');
     }
   };
@@ -95,20 +124,32 @@ const ToDoList = () => {
   };
 
   const handleDeleteTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
+    const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
+  };
+
+  const toggleTaskCompletion = (index) => {
+    const updatedTasks = tasks.map((task, i) => 
+      i === index ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
   };
 
   return (
     <div className={classes.root}>
-      <Typography
-        variant="h4"
-        style={{ color: '#0C2454', fontWeight: 500, textAlign: 'left' }} //rever o semibold após mudança de fonte!
-        className={classes.elementMargin}
-      >
-        TAREFAS
-      </Typography>
+      <Title>
+  <div 
+    style={{
+      color: "#0C2C4C", 
+      fontWeight: "bold", 
+      fontFamily: "Nunito", 
+      fontSize: "24px", 
+      lineHeight: "18px", 
+    }}
+  >
+    Tarefas ({tasks.length})
+  </div>
+</Title>
       <div className={classes.inputContainer}>
         <TextField
           className={classes.input}
@@ -116,29 +157,26 @@ const ToDoList = () => {
           value={task}
           onChange={handleTaskChange}
           variant="outlined"
-          style={{
-            backgroundColor: "white", borderRadius: '5px'
-          }}
         />
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "#0C2C4C",
-            color: "white",
-            borderRadius: "8px",
-          }}
-          onClick={handleAddTask}
-        >
+        <Button variant="contained" color="primary" onClick={handleAddTask}>
           {editIndex >= 0 ? 'Salvar' : 'Adicionar'}
         </Button>
       </div>
       <div className={classes.listContainer}>
-        <List>
+        <List disablePadding component="div">
           {tasks.map((task, index) => (
-            <ListItem key={index} className={classes.list}>
+            <ListItem key={index} className={classes.listItem}>
+              <Checkbox
+                className={classes.checkbox}
+                size="small"
+                edge="start"
+                checked={task.completed}
+                onChange={() => toggleTaskCompletion(index)}
+              />
               <ListItemText
                 primary={task.text}
-                secondary={task.updatedAt ? task.updatedAt.toLocaleString() : 'Nunca atualizado'}
+                secondary={task.updatedAt.toLocaleString()}
+                className={task.completed ? classes.completedText : ''}
               />
               <ListItemSecondaryAction>
                 <IconButton onClick={() => handleEditTask(index)}>
