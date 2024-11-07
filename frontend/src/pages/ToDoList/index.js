@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   checkbox: {
     color: '#0C2C4C',
   },
-});
+}));
 
 const ToDoList = () => {
   const classes = useStyles();
