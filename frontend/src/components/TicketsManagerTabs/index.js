@@ -195,6 +195,10 @@ const TicketsManagerTabs = () => {
     setTab(newValue);
   };
 
+  const handleTextTab = () => {
+    setTab('search');
+  }
+
   const handleChangeTabOpen = (e, newValue) => {
     setTabOpen(newValue);
   };
@@ -224,7 +228,7 @@ const TicketsManagerTabs = () => {
 
   return (
     <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
-      <div value='search' onClick={handleChangeTab}>
+      <div onClick={handleTextTab}>
         <TextField
               placeholder={i18n.t("queueIntegration.searchPlaceholder")}
               color='primary'
@@ -271,12 +275,6 @@ const TicketsManagerTabs = () => {
             value={"closed"}
             icon={<CheckBoxIcon />}
             label={i18n.t("tickets.tabs.closed.title")}
-            classes={{ root: classes.tab }}
-          />
-          <Tab
-            value={"search"}
-            icon={<SearchIcon />}
-            label={i18n.t("tickets.tabs.search.title")}
             classes={{ root: classes.tab }}
           />
         </Tabs>
