@@ -13,7 +13,6 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-
 import NewTicketModal from "../NewTicketModal";
 import TicketsList from "../TicketsListCustom";
 import TabPanel from "../TabPanel";
@@ -228,7 +227,30 @@ const TicketsManagerTabs = () => {
 
   return (
     <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
-      <div onClick={handleTextTab}>
+      <div style={{display:'flex'}}>
+        <Tabs
+          value={tab}
+          onChange={handleChangeTab}
+          variant="fullWidth"
+          indicatorColor="primary"
+          textColor="primary"
+          aria-label="icon label tabs example"
+        >
+          <Tab
+            value={"open"}
+            icon={<MoveToInboxIcon />}
+            label={i18n.t("tickets.tabs.open.title")}
+            classes={{ root: classes.tab }}
+            style={{minWidth:'2px'}}
+          />
+          <Tab
+            value={"closed"}
+            icon={<CheckBoxIcon />}
+            label={i18n.t("tickets.tabs.closed.title")}
+            classes={{ root: classes.tab }}
+            style={{minWidth:'2px'}}
+          />
+        </Tabs>
         <TextField
               placeholder={i18n.t("queueIntegration.searchPlaceholder")}
               color='primary'
@@ -236,6 +258,7 @@ const TicketsManagerTabs = () => {
               type="search"
               size="small"
               value={searchParam}
+              onClick={handleTextTab}
               onChange={handleSearch}
               InputProps={{
                 style: {
@@ -257,27 +280,6 @@ const TicketsManagerTabs = () => {
         }}
       />
       <Paper elevation={0} square className={classes.tabsHeader} style={{backgroundColor: '#E6EDF5'}}>
-        <Tabs
-          value={tab}
-          onChange={handleChangeTab}
-          variant="fullWidth"
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="icon label tabs example"
-        >
-          <Tab
-            value={"open"}
-            icon={<MoveToInboxIcon />}
-            label={i18n.t("tickets.tabs.open.title")}
-            classes={{ root: classes.tab }}
-          />
-          <Tab
-            value={"closed"}
-            icon={<CheckBoxIcon />}
-            label={i18n.t("tickets.tabs.closed.title")}
-            classes={{ root: classes.tab }}
-          />
-        </Tabs>
       </Paper>
       <Paper square elevation={0} className={classes.ticketOptionsBox} style={{backgroundColor: '#E6EDF5'}}>
         {tab === "search" ? (
