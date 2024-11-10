@@ -258,7 +258,7 @@ const TicketsManagerTabs = () => {
               type="search"
               size="small"
               value={searchParam}
-              onClick={handleTextTab}
+              /*onClick={handleTextTab}*/
               onChange={handleSearch}
               InputProps={{
                 style: {
@@ -302,7 +302,41 @@ const TicketsManagerTabs = () => {
             >
               {i18n.t("ticketsManager.buttons.newTicket")}
             </Button>
-            <Can
+            <Tabs
+          value={tabOpen}
+          onChange={handleChangeTabOpen}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+        >
+          <Tab
+          style={{minWidth:'5px'}}
+            label={
+              <Badge
+                className={classes.badge}
+                badgeContent={openCount}
+                color="primary"
+              >
+                {i18n.t("ticketsList.assignedHeader")}
+              </Badge>
+            }
+            value={"open"}
+          />
+          <Tab
+          style={{minWidth:'5px'}}
+            label={
+              <Badge
+                className={classes.badge}
+                badgeContent={pendingCount}
+                color="secondary"
+              >
+                {i18n.t("ticketsList.pendingHeader")}
+              </Badge>
+            }
+            value={"pending"}
+          />
+        </Tabs>
+            {/*<Can
               role={user.profile}
               perform="tickets-manager:showall"
               yes={() => (
@@ -322,7 +356,7 @@ const TicketsManagerTabs = () => {
                   }
                 />
               )}
-            />
+            />*/}
           </>
         )}
         <TicketsQueueSelect
@@ -333,38 +367,6 @@ const TicketsManagerTabs = () => {
         />
       </Paper>
       <TabPanel value={tab} name="open" className={classes.ticketsWrapper}>
-        <Tabs
-          value={tabOpen}
-          onChange={handleChangeTabOpen}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-        >
-          <Tab
-            label={
-              <Badge
-                className={classes.badge}
-                badgeContent={openCount}
-                color="primary"
-              >
-                {i18n.t("ticketsList.assignedHeader")}
-              </Badge>
-            }
-            value={"open"}
-          />
-          <Tab
-            label={
-              <Badge
-                className={classes.badge}
-                badgeContent={pendingCount}
-                color="secondary"
-              >
-                {i18n.t("ticketsList.pendingHeader")}
-              </Badge>
-            }
-            value={"pending"}
-          />
-        </Tabs>
         <Paper className={classes.ticketsWrapper}>
           <TicketsList
             status="open"
