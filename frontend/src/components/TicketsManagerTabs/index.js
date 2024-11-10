@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
 	tab: {
 		minWidth: 120,
 		width: 120,
+    textTransform:'none'
 	},
 
 	internalTab: {
@@ -311,6 +312,7 @@ const TicketsManagerTabs = () => {
         >
           <Tab
           style={{minWidth:'5px'}}
+          classes={{ root: classes.tab }}
             label={
               <Badge
                 className={classes.badge}
@@ -324,6 +326,7 @@ const TicketsManagerTabs = () => {
           />
           <Tab
           style={{minWidth:'5px'}}
+          classes={{ root: classes.tab }}
             label={
               <Badge
                 className={classes.badge}
