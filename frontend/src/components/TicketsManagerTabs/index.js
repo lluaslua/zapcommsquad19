@@ -259,7 +259,7 @@ const TicketsManagerTabs = () => {
               type="search"
               size="small"
               value={searchParam}
-              /*onClick={handleTextTab}*/
+              //onClick={handleTextTab}
               onChange={handleSearch}
               InputProps={{
                 style: {
@@ -371,8 +371,11 @@ const TicketsManagerTabs = () => {
       </Paper>
       <TabPanel value={tab} name="open" className={classes.ticketsWrapper}>
         <Paper className={classes.ticketsWrapper}>
+        <TagsFilter onFiltered={handleSelectedTags} />
+        <UsersFilter onFiltered={handleSelectedUsers} />
           <TicketsList
             status="open"
+            searchParam={searchParam}
             showAll={showAllTickets}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setOpenCount(val)}
@@ -380,6 +383,7 @@ const TicketsManagerTabs = () => {
           />
           <TicketsList
             status="pending"
+            searchParam={searchParam}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setPendingCount(val)}
             style={applyPanelStyle("pending")}
