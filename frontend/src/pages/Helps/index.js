@@ -14,7 +14,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 const useStyles = makeStyles(theme => ({
   sidebarContainer: {
     width: '28%',
-    Height: '100vh', // Altura máxima para preencher até a base da tela
+    // Height: '100vh', // Altura máxima para preencher até a base da tela
+    maxHeight: "100vh",
     //  overflow: "hidden",
     // overflowY: 'auto',  // Ativa a rolagem se o conteúdo ultrapassar o limite
     // backgroundColor: '#EFF3F6',
@@ -32,15 +33,17 @@ const useStyles = makeStyles(theme => ({
   },
   titleList: {
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 200px)',  // Ajusta a altura para permitir rolagem
+    maxHeight: '100vh',  // Ajusta a altura para permitir rolagem
     padding: theme.spacing(1),
     flex: 1,
-    overflow: "hidden"
+    height: "calc(69vh + 1px)",
+    backgroundColor: "#EFF3F6"
   },
   titleItem: {
     fontSize: '1.9rem',
     fontWeight: '800',
     paddingBottom: "15px",
+    paddingTop: "18px",
     borderRadius: theme.spacing(1),
     color: '#0c2340',
     textDecoration: 'none',
@@ -50,6 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
   mainPaperContainer: {
     overflowY: 'auto',
+    fontFamily: "Nunito, Arial, sans-serif",
    
   },
   mainPaper: {
@@ -57,16 +61,17 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     display: "flex",
     flexDirection: "row",
+    height: "94vh",
     // gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
     // gap: theme.spacing(3),
     //  padding: theme.spacing(2),
-    marginBottom: theme.spacing(3),
+    // marginBottom: theme.spacing(3),
     flex: "2",
   },
   helpPaper: {
     position: 'relative',
     width: '100%',
-    minHeight: '340px',
+    // maxHeight: '100vh',
     // padding: theme.spacing(2),
     boxShadow: theme.shadows[3],
     borderRadius: theme.spacing(1),
@@ -240,7 +245,7 @@ const Helps = () => {
 
   return (
     <div style={{
-      height: "100%",
+      // height: "100%",
       margin: "auto",
       display: "flex",
       width: "90%",
@@ -252,7 +257,7 @@ const Helps = () => {
         <Typography style={{fontWeight: "bold", fontSize: "1.875rem", paddingBottom: "0px"}} variant="text">{i18n.t("helps.title")}</Typography>
         <MainHeaderButtonsWrapper></MainHeaderButtonsWrapper>
       </MainHeader>
-      <div >
+      <div style={{backgroundColor: "#EFF3F6"}} >
       <Typography style={{fontWeight: "bold", fontSize: "1.5rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
       <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingBottom: "10px", }} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
         <TextField
@@ -271,22 +276,21 @@ const Helps = () => {
               ),
             }}
             />
-        <div className={classes.titleList}>
-       {records.map((record) => (
-         <nav key={record.id} style={{ display: "block" }}>
-              <div style={{ borderRadius: "10px", padding: "11px"}}>
-                <Typography
-                 
-                  variant="text"
-                  className={classes.videoTitle}
-                  onClick={() => setActiveContentId(record.id)} // Atualiza o conteúdo ativo ao clicar
-                  >
-                  <a href="#" style={{ color: "#0c2340", textDecoration: "none" }}>{record.title}</a>
-                </Typography>
-              </div>
-            </nav>
-          ))}
       </div>
+      <div className={classes.titleList}>
+      {records.map((record) => (
+        <nav key={record.id} style={{ display: "block" }}>
+            <div style={{ borderRadius: "10px", padding: "11px", width: "100%", cursor: "pointer"}}>
+              <Typography
+                variant="text"
+                className={classes.videoTitle}
+                onClick={() => setActiveContentId(record.id)  } // Atualiza o conteúdo ativo ao clicar
+                >
+                <a href="#" style={{ color: "#0c2340", textDecoration: "none" }}>{record.title}</a>
+              </Typography>
+            </div>
+          </nav>
+        ))}
       </div>
       </aside>
       <div className={classes.mainPaper}>
