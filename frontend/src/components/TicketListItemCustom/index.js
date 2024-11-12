@@ -362,7 +362,7 @@ const useStyles = makeStyles((theme) => ({
     <React.Fragment key={ticket.id}>
       <TicketMessagesDialog
         open={openTicketMessageDialog}
-        
+
         handleClose={() => setOpenTicketMessageDialog(false)}
         ticketId={ticket.id}
       ></TicketMessagesDialog>
@@ -378,7 +378,7 @@ const useStyles = makeStyles((theme) => ({
         })}
       >
         <Tooltip arrow placement="right" title={ticket.queue?.name?.toUpperCase() || "SEM FILA"} >
-          <span style={{ backgroundColor: ticket.queue?.color || "#7C7C7C" }} className={classes.ticketQueueColor}></span>
+          <span style={{ backgroundColor: ticket.queue?.color || "transparent" }} className={classes.ticketQueueColor}></span>
         </Tooltip>
         <ListItemAvatar> 
           {ticket.status !== "pending" ?
