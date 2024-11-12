@@ -74,7 +74,7 @@ const useStyles = makeStyles({
   completedText: {
     color: 'gray',
   },
-});
+}));
 
 const ToDoList = () => {
   const classes = useStyles();
