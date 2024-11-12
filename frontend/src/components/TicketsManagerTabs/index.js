@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
 		borderRadius:0,
+    backgroundColor:'#E6EDF5'
 	},
 
 	tabsHeader: {
@@ -284,7 +285,7 @@ const TicketsManagerTabs = () => {
       </Paper>
       <Paper square elevation={0} className={classes.ticketOptionsBox} style={{backgroundColor: '#E6EDF5'}}>
         {tab === "search" ? (
-          <div className={classes.serachInputWrapper}>
+          {/*<div className={classes.serachInputWrapper}>
             <SearchIcon className={classes.searchIcon} />
             <InputBase
               className={classes.searchInput}
@@ -293,7 +294,7 @@ const TicketsManagerTabs = () => {
               type="search"
               onChange={handleSearch}
             />
-          </div>
+          </div>*/}
         ) : (
           <>
             <Button
@@ -371,12 +372,14 @@ const TicketsManagerTabs = () => {
       </Paper>
       <TabPanel value={tab} name="open" className={classes.ticketsWrapper}>
         <Paper className={classes.ticketsWrapper}>
-        <TagsFilter onFiltered={handleSelectedTags} />
+        <TagsFilter onFiltered={handleSelectedTags}/>
         <UsersFilter onFiltered={handleSelectedUsers} />
           <TicketsList
             status="open"
             searchParam={searchParam}
             showAll={showAllTickets}
+            tags={selectedTags}
+            users={selectedUsers}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setOpenCount(val)}
             style={applyPanelStyle("open")}
@@ -384,6 +387,8 @@ const TicketsManagerTabs = () => {
           <TicketsList
             status="pending"
             searchParam={searchParam}
+            tags={selectedTags}
+            users={selectedUsers}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setPendingCount(val)}
             style={applyPanelStyle("pending")}
@@ -391,8 +396,13 @@ const TicketsManagerTabs = () => {
         </Paper>
       </TabPanel>
       <TabPanel value={tab} name="closed" className={classes.ticketsWrapper}>
+        <TagsFilter onFiltered={handleSelectedTags} />
+        <UsersFilter onFiltered={handleSelectedUsers} />
         <TicketsList
           status="closed"
+          searchParam={searchParam}
+          tags={selectedTags}
+          users={selectedUsers}
           showAll={true}
           selectedQueueIds={selectedQueueIds}
         />
