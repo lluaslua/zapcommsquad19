@@ -300,7 +300,7 @@ const Announcements = () => {
         <Table size="small">
           <TableHead >
             <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"}}>
                 {i18n.t("Anexado")}
               </TableCell>
               <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>

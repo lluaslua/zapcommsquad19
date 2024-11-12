@@ -71,6 +71,7 @@ import group41 from "../../assets/Group 41.png"
 import group42 from "../../assets/Group 42.png"
 import group43 from "../../assets/Group 43.png"
 import group44 from "../../assets/Group 44.png"
+import { Title } from "chart.js";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -400,8 +401,7 @@ const Dashboard = () => {
           marginLeft: '-10%', // desloca o grid para a esquerda
         }}
         >
-		
-
+          
           {/* EM ATENDIMENTO */}
           <Grid item md={1.5}
             style={{ 
@@ -500,7 +500,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {counters.supportHappening}
+                      {counters.supportPending}
                     </Typography>
                   </Grid>
                   <Typography
@@ -599,7 +599,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {counters.supportHappening}
+                      {counters.supportFinished}
                     </Typography>
                   </Grid>
                   <Typography
@@ -656,7 +656,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {counters.supportHappening}
+                      {GetContacts(true)}
                     </Typography>
                   </Grid>
                   <Typography

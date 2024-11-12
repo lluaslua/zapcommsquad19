@@ -52,10 +52,10 @@ const App = () => {
             palette: {
                 type: mode,
 
-                primary: { main: mode === "light" ? "#0C2454" : "#FFFFFF" },
+                primary: { main: mode === "light" ? "#0C2C54" : "#FFFFFF" },
                 textPrimary: mode === "light" ? "#682EE3" : "#FFFFFF",
 
-                primary: { main: mode === "light" ? "#0C2454" : "#FFFFFF" },
+                primary: { main: mode === "light" ? "#0C2C54" : "#FFFFFF" },
                 textPrimary: mode === "light" ? "#682EE3" : "#FFFFFF",
 
                 borderPrimary: mode === "light" ? "#682EE3" : "#FFFFFF",

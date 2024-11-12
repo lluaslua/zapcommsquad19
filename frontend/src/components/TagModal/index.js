@@ -234,9 +234,9 @@ const TagModal = ({ open, onClose, tagId, reload }) => {
 							<DialogActions>
 								<Button
 									onClick={handleClose}
-									color="secondary"
+									color="primary"
 									disabled={isSubmitting}
-									variant="outlined"
+									variant="text"
 								>
 									{i18n.t("tagModal.buttons.cancel")}
 								</Button>
