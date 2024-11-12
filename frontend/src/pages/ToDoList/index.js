@@ -73,6 +73,7 @@ const useStyles = makeStyles({
   },
   completedText: {
     color: 'gray',
+    textDecoration: "line-through",
   },
 });
 
