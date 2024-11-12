@@ -178,7 +178,7 @@ const ToDoList = () => {
                 secondary={task.updatedAt.toLocaleString()}
                 className={task.completed ? classes.completedText : ''}
               />
-              <ListItemText primary={task.text} secondary={task.updatedAt.toLocaleString()} />
+              
               <ListItemSecondaryAction>
                 <IconButton onClick={() => handleEditTask(index)}>
                   <EditIcon />
