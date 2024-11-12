@@ -257,9 +257,10 @@ const TicketsManagerTabs = () => {
               placeholder={i18n.t("queueIntegration.searchPlaceholder")}
               color='primary'
               variant="outlined"
+              inputRef={searchInputRef}
               type="search"
               size="small"
-              value={searchParam}
+              //value={searchParam}
               //onClick={handleTextTab}
               onChange={handleSearch}
               InputProps={{
