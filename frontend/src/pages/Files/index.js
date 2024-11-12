@@ -229,7 +229,8 @@ const FileLists = () => {
                         onChange={handleSearch}
                         InputProps={{
                             style: {
-                                borderRadius: "20px"
+                                borderRadius: "20px",
+                                fontFamily: "Nunito, sans-serif",
                             },
                             endAdornment: (
                                 <InputAdornment position="end">
@@ -239,6 +240,7 @@ const FileLists = () => {
                         }}
                     />
                     <Button
+                        style={{ fontFamily: "Nunito, sans-serif", }}
                         variant="contained"
                         color="primary"
                         borderRadius="8px"
@@ -252,18 +254,19 @@ const FileLists = () => {
                 className={classes.mainPaper}
                 variant="outlined"
                 onScroll={handleScroll}
+                style={{ fontFamily: "Nunito, sans-serif", }}
             >
                 <Table size="small">
                     <TableHead>
                         <TableRow>
                         <TableCell padding="checkbox" style={{
-                            backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+                            backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px', }}>
                         </TableCell>
-                        <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}</TableCell>
+                        <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queueIntegration.table.name")}</TableCell>
                         <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
                         <TableCell align="center" style={{backgroundColor: '#0C2454'}}></TableCell>
                         <TableCell align="center" style={{
-                backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queues.table.actions")}
+                backgroundColor: '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.actions")}
                         </TableCell>
                         <TableCell style={{
                 backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}>
@@ -281,6 +284,7 @@ const FileLists = () => {
                                             style={{
                                                 backgroundColor: "#FFFFFF",
                                                 color:"black",
+                                                fontFamily: "Nunito, sans-serif",
                                             }}
                                             label={fileList.name}
                                             size="small"

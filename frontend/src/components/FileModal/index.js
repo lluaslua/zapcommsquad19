@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: "flex",
         flexWrap: "wrap",
-        gap: 4
+        gap: 4,
     },
     multFieldLine: {
         display: "flex",
@@ -299,7 +299,7 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                             <div className={classes.extraAttr}>
                                                 <Button
                                                     style={{ flex: 1, marginTop: 8,
-                                                    borderRadius: "8px"
+                                                    borderRadius: "8px", fontFamily: "Nunito, sans-serif",
                                                     }}
                                                     variant="contained" //para o botão ficar totalmente preenchido.
                                                     color="primary"
@@ -317,6 +317,7 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                             <DialogActions> 
                                 {/* botao cancelar */}
                                 <Button
+                                    style={{ fontFamily: "Nunito, sans-serif", }}
                                     onClick={handleClose}
                                     color="primary" //botão CANCELAR na cor primary para a padronização.
                                     disabled={isSubmitting}
@@ -325,6 +326,7 @@ const FilesModal = ({ open, onClose, fileListId, reload }) => {
                                 </Button>
                                 {/* botao de salvar */}
                                 <Button
+                                    style={{ fontFamily: "Nunito, sans-serif", }}
                                     type="submit"
                                     color="primary"
                                     disabled={isSubmitting}
