@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     color: 'gray',
     textDecoration: "line-through",
   },
-}));
+});
 
 const ToDoList = () => {
   const classes = useStyles();
