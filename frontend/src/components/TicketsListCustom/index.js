@@ -305,6 +305,7 @@ const TicketsListCustom = (props) => {
         elevation={0}
         className={classes.ticketsList}
         onScroll={handleScroll}
+        style={{backgroundColor:'#E6EDF5'}}
       >
         <List style={{ paddingTop: 0 }}>
           {ticketsList.length === 0 && !loading ? (
