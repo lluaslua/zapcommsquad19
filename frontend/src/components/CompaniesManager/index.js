@@ -32,6 +32,9 @@ import { useDate } from "../../hooks/useDate";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
+  body: {
+    fontFamily: "Nunito, sans-serif",
+  },
   root: {
     width: "100%",
     backgroundColor: "#D0DEED",
@@ -56,9 +59,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     borderRadius: "5px",
     padding: "1px",
+    
   },
   textRight: {
     textAlign: "right",
+    fontFamily: "Nunito, sans-serif",
   },
   row: {
     paddingTop: theme.spacing(2),
@@ -243,8 +248,9 @@ export function CompanyForm(props) {
               </Grid>
               <Grid xs={12} sm={6} md={2} item>
                 <FormControl margin="dense" variant="outlined" fullWidth>
-                  <InputLabel htmlFor="plan-selection">Plano</InputLabel>
+                  <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} htmlFor="plan-selection">Plano</InputLabel>
                   <Field
+                    style={{ fontFamily: "Nunito, sans-serif", }}
                     as={Select}
                     id="plan-selection"
                     label="Plano"
@@ -254,7 +260,7 @@ export function CompanyForm(props) {
                     className={`${classes.fullWidth} ${classes.textfield}`}
                   >
                     {plans.map((plan, key) => (
-                      <MenuItem key={key} value={plan.id}>
+                      <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} key={key} value={plan.id}>
                         {plan.name}
                       </MenuItem>
                     ))}
@@ -263,8 +269,9 @@ export function CompanyForm(props) {
               </Grid>
               <Grid xs={12} sm={6} md={2} item>
                 <FormControl margin="dense" variant="outlined" fullWidth>
-                  <InputLabel htmlFor="status-selection">Status</InputLabel>
+                  <InputLabel  style={{ fontFamily: "Nunito, sans-serif", }} htmlFor="status-selection">Status</InputLabel>
                   <Field
+                    style={{ fontFamily: "Nunito, sans-serif", }}
                     as={Select}
                     id="status-selection"
                     label="Status"
@@ -273,15 +280,16 @@ export function CompanyForm(props) {
                     margin="dense"
                     className={`${classes.fullWidth} ${classes.textfield}`}
                   >
-                    <MenuItem value={true}>Sim</MenuItem>
-                    <MenuItem value={false}>Não</MenuItem>
+                    <MenuItem style={{ fontFamily: "Nunito, sans-serif", }}  value={true}>Sim</MenuItem>
+                    <MenuItem style={{ fontFamily: "Nunito, sans-serif", }}  value={false}>Não</MenuItem>
                   </Field>
                 </FormControl>
               </Grid>
               <Grid xs={12} sm={6} md={2} item>
                 <FormControl margin="dense" variant="outlined" fullWidth>
-                  <InputLabel htmlFor="status-selection">Campanhas</InputLabel>
+                  <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} htmlFor="status-selection">Campanhas</InputLabel>
                   <Field
+                    style={{ fontFamily: "Nunito, sans-serif", }}
                     as={Select}
                     id="campaigns-selection"
                     label="Campanhas"
@@ -290,14 +298,15 @@ export function CompanyForm(props) {
                     margin="dense"
                     className={`${classes.fullWidth} ${classes.textfield}`}
                   >
-                    <MenuItem value={true}>Habilitadas</MenuItem>
-                    <MenuItem value={false}>Desabilitadas</MenuItem>
+                    <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={true}>Habilitadas</MenuItem>
+                    <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={false}>Desabilitadas</MenuItem>
                   </Field>
                 </FormControl>
               </Grid>
               <Grid xs={12} sm={6} md={2} item>
                 <FormControl variant="outlined" fullWidth>
                   <Field
+                    style={{ fontFamily: "Nunito, sans-serif", }}
                     as={TextField}
                     label="Data de Vencimento"
                     type="date"
@@ -314,10 +323,11 @@ export function CompanyForm(props) {
               </Grid>
               <Grid xs={12} sm={6} md={2} item>
                 <FormControl margin="dense" variant="outlined" fullWidth>
-                  <InputLabel htmlFor="recorrencia-selection">
+                  <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} htmlFor="recorrencia-selection">
                     Recorrência
                   </InputLabel>
                   <Select
+                    style={{ fontFamily: "Nunito, sans-serif", }}
                     as={Select}
                     label="Recorrência"
                     labelId="recorrencia-selection-label"
@@ -325,7 +335,7 @@ export function CompanyForm(props) {
                     margin="dense"
                     className={`${classes.fullWidth} ${classes.textfield}`}
                   >
-                    <MenuItem value="MENSAL">Mensal</MenuItem>
+                    <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value="MENSAL">Mensal</MenuItem>
                     {/*<MenuItem value="BIMESTRAL">Bimestral</MenuItem>*/}
                     {/*<MenuItem value="TRIMESTRAL">Trimestral</MenuItem>*/}
                     {/*<MenuItem value="SEMESTRAL">Semestral</MenuItem>*/}
@@ -342,6 +352,7 @@ export function CompanyForm(props) {
                       loading={loading}
                       onClick={() => onCancel()}
                       color="primary"
+
                     >
                       Limpar
                     </ButtonWithSpinner>
@@ -403,6 +414,7 @@ export function CompanyForm(props) {
           </Form>
         )}
       </Formik>
+      
     </>
   );
 }
