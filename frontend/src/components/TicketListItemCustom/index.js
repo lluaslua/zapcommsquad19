@@ -367,7 +367,7 @@ const useStyles = makeStyles((theme) => ({
         ticketId={ticket.id}
       ></TicketMessagesDialog>
       <ListItem dense button
-      style={{backgroundColor:'white',borderRadius:'10px',marginBottom:'8px'}}
+      style={{backgroundColor:'white',borderRadius:'10px',marginTop:'8px',border:'1px solid #0C2C54'}}
         onClick={(e) => {
           if (ticket.status === "pending") return;
           handleSelectTicket(ticket);
