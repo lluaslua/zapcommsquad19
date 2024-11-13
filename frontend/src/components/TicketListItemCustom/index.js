@@ -384,7 +384,7 @@ const useStyles = makeStyles((theme) => ({
           {ticket.status !== "pending" ?
             <Avatar
               style={{
-                marginTop: "-20px",
+                marginTop: "-9px",
                 marginLeft: "-3px",
                 width: "55px",
                 height: "55px",
