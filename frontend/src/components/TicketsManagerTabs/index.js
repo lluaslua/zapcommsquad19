@@ -265,7 +265,8 @@ const TicketsManagerTabs = () => {
               onChange={handleSearch}
               InputProps={{
                 style: {
-                  borderRadius: '20px'
+                  borderRadius: '20px',
+                  marginTop: '12px'
                 },
                 endAdornment: (
                   <InputAdornment position="end">
