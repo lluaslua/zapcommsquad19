@@ -22,65 +22,65 @@ import useHelps from "../../hooks/useHelps";
 
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		width: '100%'
-	},
+    root: {
+        width: '100%'
+    },
     mainPaper: {
         backgroundColor: "#e6edf5",
-		width: '100%',
-		flex: 1,
-		padding: theme.spacing(2)
+        width: '100%',
+        flex: 1,
+        padding: theme.spacing(2)
     },
-	fullWidth: {
-		width: '100%'
-	},
+    fullWidth: {
+        width: '100%'
+    },
     tableContainer: {
         backgroundColor: "#D0DEED",
-		width: '100%',
-		overflowX: "scroll",
-		...theme.scrollbarStyles
+        width: '100%',
+        overflowX: "scroll",
+        ...theme.scrollbarStyles
     },
     textfield: {
         width: "100%",
         backgroundColor: "white",
         borderRadius: "5px",
         padding: "1px",
-      },
+    },
     textRight: {
         textAlign: 'right'
     },
     row: {
-		paddingTop: theme.spacing(2),
-		paddingBottom: theme.spacing(2)
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2)
     },
     control: {
-		paddingRight: theme.spacing(1),
-		paddingLeft: theme.spacing(1)
-	},
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(1)
+    },
     buttonContainer: {
         textAlign: 'right',
-		padding: theme.spacing(1)
-	},
+        padding: theme.spacing(1)
+    },
     selectField: {
         backgroundColor: "#ffffff", 
         borderRadius: "4px",
         padding: "10px",
-      },
+    },
 }));
 
 export function HelpManagerForm (props) {
     const { onSubmit, onDelete, onCancel, initialValue, loading } = props;
-    const classes = useStyles()
+    const classes = useStyles();
 
     const [record, setRecord] = useState(initialValue);
 
     useEffect(() => {
-        setRecord(initialValue)
-    }, [initialValue])
+        setRecord(initialValue);
+    }, [initialValue]);
 
     const handleSubmit = async(data) => {
-        onSubmit(data)
-    }
+        onSubmit(data);
+    };
 
     return (
         <Formik
@@ -89,15 +89,16 @@ export function HelpManagerForm (props) {
             initialValues={record}
             onSubmit={(values, { resetForm }) =>
                 setTimeout(() => {
-                    handleSubmit(values)
-                    resetForm()
+                    handleSubmit(values);
+                    resetForm();
                 }, 500)
             }
         >
             {(values) => (
                 <Form className={classes.fullWidth}>
-                    <Grid spacing={2} justifyContent="flex-end" container>
-                        <Grid xs={12} sm={6} md={3} item>
+                    <Grid container spacing={2}>
+                        {/* Linha para Título e Código do Vídeo */}
+                        <Grid item xs={12} sm={6} md={6}>
                             <Field
                                 as={TextField}
                                 label="Título"
@@ -107,7 +108,7 @@ export function HelpManagerForm (props) {
                                 margin="dense"
                             />
                         </Grid>
-                        <Grid xs={12} sm={6} md={3} item>
+                        <Grid item xs={12} sm={6} md={6}>
                             <Field
                                 as={TextField}
                                 label="Código do Vídeo"
@@ -117,29 +118,35 @@ export function HelpManagerForm (props) {
                                 margin="dense"
                             />
                         </Grid>
-                        <Grid xs={12} sm={12} md={6} item>
+
+                        {/* Linha para Descrição */}
+                        <Grid item xs={12}>
                             <Field
                                 as={TextField}
                                 label="Descrição"
                                 name="description"
                                 variant="outlined"
+                                multiline
+                                rows={8}  // Define o número de linhas visíveis
                                 className={`${classes.fullWidth} ${classes.textfield}`}
                                 margin="dense"
                             />
                         </Grid>
-                        <Grid sm={3} md={1} item>
-                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} variant="contained">
+
+                        {/* Botões */}
+                        <Grid item sm={3} md={1}>
+                            <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onCancel()} color="primary">
                                 Limpar
                             </ButtonWithSpinner>
                         </Grid>
                         { record.id !== undefined ? (
-                            <Grid sm={3} md={1} item>
+                            <Grid item sm={3} md={1}>
                                 <ButtonWithSpinner className={classes.fullWidth} loading={loading} onClick={() => onDelete(record)} variant="contained" color="secondary">
                                     Excluir
                                 </ButtonWithSpinner>
                             </Grid>
-                        ) : null}
-                        <Grid sm={3} md={1} item>
+                        ) : null }
+                        <Grid item sm={3} md={1}>
                             <ButtonWithSpinner className={classes.fullWidth} loading={loading} type="submit" variant="contained" color="primary">
                                 Salvar
                             </ButtonWithSpinner>
@@ -148,12 +155,12 @@ export function HelpManagerForm (props) {
                 </Form>
             )}
         </Formik>
-    )
+    );
 }
 
 export function HelpsManagerGrid (props) {
-    const { records, onSelect } = props
-    const classes = useStyles()
+    const { records, onSelect } = props;
+    const classes = useStyles();
 
     return (
         <Paper className={classes.tableContainer}>
@@ -170,7 +177,7 @@ export function HelpsManagerGrid (props) {
                 {records.map((row) => (
                     <TableRow key={row.id}>
                         <TableCell align="center" style={{width: '1%'}}>
-                            <IconButton onClick={() => onSelect(row)} aria-label="delete">
+                            <IconButton onClick={() => onSelect(row)} aria-label="edit">
                                 <EditIcon />
                             </IconButton>
                         </TableCell>
@@ -182,82 +189,82 @@ export function HelpsManagerGrid (props) {
                 </TableBody>
             </Table>
         </Paper>
-    )
+    );
 }
 
 export default function HelpsManager () {
-    const classes = useStyles()
-    const { list, save, update, remove } = useHelps()
+    const classes = useStyles();
+    const { list, save, update, remove } = useHelps();
     
-    const [showConfirmDialog, setShowConfirmDialog] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [records, setRecords] = useState([])
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [records, setRecords] = useState([]);
     const [record, setRecord] = useState({
         title: '',
         description: '',
         video: ''
-    })
+    });
 
     useEffect(() => {
         async function fetchData () {
-            await loadHelps()
+            await loadHelps();
         }
-        fetchData()
+        fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     const loadHelps = async () => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const helpList = await list()
-            setRecords(helpList)
+            const helpList = await list();
+            setRecords(helpList);
         } catch (e) {
-            toast.error('Não foi possível carregar a lista de registros')
+            toast.error('Não foi possível carregar a lista de registros');
         }
-        setLoading(false)
-    }
+        setLoading(false);
+    };
 
     const handleSubmit = async (data) => {
-        setLoading(true)
+        setLoading(true);
         try {
             if (data.id !== undefined) {
-                await update(data)
+                await update(data);
             } else {
-                await save(data)
+                await save(data);
             }
-            await loadHelps()
-            handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            await loadHelps();
+            handleCancel();
+            toast.success('Operação realizada com sucesso!');
         } catch (e) {
-            toast.error('Não foi possível realizar a operação. Verifique se já existe uma helpo com o mesmo nome ou se os campos foram preenchidos corretamente')
+            toast.error('Não foi possível realizar a operação. Verifique se já existe uma ajuda com o mesmo nome ou se os campos foram preenchidos corretamente');
         }
-        setLoading(false)
-    }
+        setLoading(false);
+    };
 
     const handleDelete = async () => {
-        setLoading(true)
+        setLoading(true);
         try {
-            await remove(record.id)
-            await loadHelps()
-            handleCancel()
-            toast.success('Operação realizada com sucesso!')
+            await remove(record.id);
+            await loadHelps();
+            handleCancel();
+            toast.success('Operação realizada com sucesso!');
         } catch (e) {
-            toast.error('Não foi possível realizar a operação')
+            toast.error('Não foi possível realizar a operação');
         }
-        setLoading(false)
-    }
+        setLoading(false);
+    };
 
     const handleOpenDeleteDialog = () => {
-        setShowConfirmDialog(true)
-    }
+        setShowConfirmDialog(true);
+    };
 
     const handleCancel = () => {
         setRecord({
             title: '',
             description: '',
             video: ''
-        })
-    }
+        });
+    };
 
     const handleSelect = (data) => {
         setRecord({
@@ -265,13 +272,13 @@ export default function HelpsManager () {
             title: data.title || '',
             description: data.description || '',
             video: data.video || ''
-        })
-    }
+        });
+    };
 
     return (
         <Paper className={classes.mainPaper} elevation={0}>
-            <Grid spacing={2} container>
-                <Grid xs={12} item>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
                     <HelpManagerForm 
                         initialValue={record} 
                         onDelete={handleOpenDeleteDialog} 
@@ -280,7 +287,7 @@ export default function HelpsManager () {
                         loading={loading}
                     />
                 </Grid>
-                <Grid xs={12} item>
+                <Grid item xs={12}>
                     <HelpsManagerGrid 
                         records={records}
                         onSelect={handleSelect}
@@ -296,5 +303,5 @@ export default function HelpsManager () {
                 Deseja realmente excluir esse registro?
             </ConfirmationModal>
         </Paper>
-    )
+    );
 }

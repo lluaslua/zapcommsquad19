@@ -239,7 +239,7 @@ const Connections = () => {
 					<Button
 						size="small"
 						variant="outlined"
-						style={{color: "white"}}
+						style={{color: "red", fontFamily: "Nunito"}}
 						color="secondary"
 						onClick={() => {
 							handleOpenConfirmationModal("disconnect", whatsApp.id);

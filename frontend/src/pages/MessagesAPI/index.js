@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-
+import Title from "../../components/Title";
 import { i18n } from "../../translate/i18n";
 import { Button, CircularProgress, Grid, TextField, Typography } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
@@ -22,10 +22,15 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     border: 'none',
     backgroundColor: 'transparent',
+    overflowX: 'hidden',
   },
   buttonMargin: {
     marginTop: '30px',
   },  
+  subtitle: {
+    color: '#0C2454',
+    fontSize: '16px',
+  },
   mainHeader: {
     marginTop: theme.spacing(1),
   },
@@ -147,6 +152,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               
               </Grid>
@@ -161,6 +169,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -174,6 +185,9 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{
+                    backgroundColor:"white"
+                  }}
                 />
               </Grid>
               <Grid item xs={12} justifyContent="center" className={classes.textRight}>
@@ -232,6 +246,7 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{ backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -245,13 +260,14 @@ const MessagesAPI = () => {
                   fullWidth
                   className={classes.textField}
                   required
+                  style= {{backgroundColor: "white"}}
                 />
               </Grid>
               <Grid item xs={12}>
                 <input type="file" name="medias" id="medias" required onChange={(e) => setFile(e.target.files)} />
               </Grid>
               <Grid item xs={12} className={classes.textRight}>
-              <Grid container justifyContent="center">
+              <Grid container justifyContent="flex-end">
                 <Button
                   type="submit"
                   color="primary"
@@ -280,15 +296,26 @@ const MessagesAPI = () => {
   return (
     <Paper
       className={classes.mainPaper}
-      style={{marginLeft: "5px"}}
+      style={{marginLeft: "5px", overflowY: "hidden"}}
       // className={classes.elementMargin}
       variant="outlined"
       color="0C2454"
     >
-      <Typography variant="h3" style={{ color: '#0C2454' }} className={classes.elementMargin}>
-        API
-      </Typography>
-      <Typography variant="h6" style={{ color: '#0C2454' }} className={classes.elementMargin}>
+      <Title>
+  <div 
+    style={{
+      color: "#0C2C4C", 
+      fontWeight: "bold", 
+      fontFamily: "Nunito", 
+      fontSize: "24px", 
+      lineHeight: "18px", 
+      marginLeft: "50px",
+    }}
+  >
+    API
+  </div>
+</Title>
+      <Typography variant="h6" style={{ color: '#0C2454'}} className={`${classes.elementMargin} ${classes.title}`}>
         Métodos de envio
       </Typography>
       <Typography component="div" style={{ color: '#0C2454' }}>
@@ -360,7 +387,7 @@ const MessagesAPI = () => {
       <Grid container spacing={2}>
 
       <Grid item xs={12} sm={6}>
-          <Typography className={classes.elementMargin} style={{ color: '#0C2454' }}> 
+          <Typography className={classes.elementMargin} style={{ color: '#0C2454'}}> 
             <b>Teste de Envio</b> 
           </Typography>
           {renderFormMessageText()}

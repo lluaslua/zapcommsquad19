@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    fontFamily: "Nunito, sans-serif",
   },
   fixedHeightPaper: {
     padding: theme.spacing(2),
@@ -34,9 +35,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.options,  //DARK MODE PLW DESIGN//
     borderRadius: 4,
     width: "100%",
+    marginLeft: "10px", //alinhamento com o restante dos componentes
+    marginRight: "10px", //alinhamento com o restante dos componentes
     backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
-      color: theme.palette.fontecor,
+      color: "#FFFFFF",
     },   //DARK MODE PLW DESIGN//
     "& .MuiTabs-flexContainer": {
       justifyContent: "center"
@@ -50,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: 12,
     width: "100%",
+  },
+  formControl: {
+    backgroundColor: "#fff",  
   },
   cardAvatar: {
     fontSize: "55px",
@@ -68,6 +74,12 @@ const useStyles = makeStyles((theme) => ({
   },
   alignRight: {
     textAlign: "right",
+  },
+  textfield: {
+    width: "100%",
+    backgroundColor: "white",
+    borderRadius: "5px",
+    padding: "1px",
   },
   fullWidth: {
     width: "100%",
@@ -378,17 +390,22 @@ export default function Options(props) {
                     <Title>Configurações Gerais</Title>
                 </Grid> */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="ratings-label">Avaliações</InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="ratings-label">Avaliações</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Avaliações"
               labelId="ratings-label"
+              name="ratings"
               value={userRating}
+              className={`${classes.fullWidth} ${classes.textfield}`}
               onChange={async (e) => {
                 handleChangeUserRating(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitadas</MenuItem>
-              <MenuItem value={"enabled"}>Habilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }}  value={"disabled"}>Desabilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitadas</MenuItem>
             </Select>
             <FormHelperText>
               {loadingUserRating && "Atualizando..."}
@@ -396,20 +413,23 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="schedule-type-label">
-              Gerenciamento de Expediente
-            </InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="schedule-type-label">Gerenciamento de Expediente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Gerenciamento de Expediente"
               labelId="schedule-type-label"
+              name="Gerenciamento de Expediente"
               value={scheduleType}
+              className={`${classes.fullWidth} ${classes.textfield}`}
               onChange={async (e) => {
                 handleScheduleType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"queue"}>Fila</MenuItem>
-              <MenuItem value={"company"}>Empresa</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"queue"}>Fila</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"company"}>Empresa</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -417,19 +437,22 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="group-type-label">
-              Ignorar Mensagens de Grupos
-            </InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="group-type-label">Ignorar Mensagens de Grupos</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Ignorar Mensagens de Grupos"
               labelId="group-type-label"
+              name="Ignorar Mensagens de Grupos"
               value={CheckMsgIsGroup}
+              className={`${classes.fullWidth} ${classes.textfield}`}
               onChange={async (e) => {
                 handleGroupType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desativado</MenuItem>
-              <MenuItem value={"enabled"}>Ativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Ativado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -437,19 +460,23 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="call-type-label">
-              Aceitar Chamada
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="call-type-label">Aceitar Chamada
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Aceitar Chamada"
               labelId="call-type-label"
+              name="Aceitar Chamada"
               value={callType}
+              className={`${classes.fullWidth} ${classes.textfield}`}
               onChange={async (e) => {
                 handleCallType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Não Aceitar</MenuItem>
-              <MenuItem value={"enabled"}>Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Não Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Aceitar</MenuItem>
             </Select>
             <FormHelperText>
               {loadingCallType && "Atualizando..."}
@@ -457,18 +484,22 @@ export default function Options(props) {
           </FormControl>
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="chatbot-type-label">
-              Tipo Chatbot
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="chatbot-type-label">Tipo Chatbot
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Tipo Chatbot"
               labelId="chatbot-type-label"
+              name="Tipo Chatbot"
               value={chatbotType}
+              className={`${classes.fullWidth} ${classes.textfield}`}
               onChange={async (e) => {
                 handleChatbotType(e.target.value);
               }}
             >
-              <MenuItem value={"text"}>Texto</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"text"}>Texto</MenuItem>
 			 {/*<MenuItem value={"button"}>Botão</MenuItem>*/}
              {/*<MenuItem value={"list"}>Lista</MenuItem>*/}
             </Select>
@@ -479,17 +510,22 @@ export default function Options(props) {
         </Grid>
 		{/* ENVIAR SAUDAÇÃO AO ACEITAR O TICKET */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Enviar saudação ao aceitar o ticket"
               labelId="sendGreetingAccepted-label"
+              name="Enviar saudação ao aceitar o ticket"
+              className={`${classes.fullWidth} ${classes.textfield}`}
               value={SendGreetingAccepted}
               onChange={async (e) => {
                 handleSendGreetingAccepted(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingAccepted && "Atualizando..."}
@@ -500,17 +536,22 @@ export default function Options(props) {
 		
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Enviar mensagem de transferencia de Fila/agente"
               labelId="sendMsgTransfTicket-label"
+              name="Enviar mensagem de transferencia de Fila/agente"
+              className={`${classes.fullWidth} ${classes.textfield}`}
               value={SettingsTransfTicket}
               onChange={async (e) => {
                 handleSettingsTransfTicket(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSettingsTransfTicket && "Atualizando..."}
@@ -520,17 +561,22 @@ export default function Options(props) {
 		
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
-          <FormControl className={classes.selectContainer}>
-            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
+        <FormControl margin="dense" variant="outlined" fullWidth>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
+              as={Select}
+              label="Enviar saudação quando houver somente 1 fila"
               labelId="sendGreetingMessageOneQueues-label"
+              name="Enviar saudação quando houver somente 1 fila"
+              className={`${classes.fullWidth} ${classes.textfield}`}
               value={sendGreetingMessageOneQueues}
               onChange={async (e) => {
                 handleSendGreetingMessageOneQueues(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingMessageOneQueues && "Atualizando..."}
@@ -541,18 +587,20 @@ export default function Options(props) {
       </Grid>
       <Grid spacing={3} container>
         <Tabs
+          color = "#FFFFFF"
           indicatorColor="primary"
           textColor="primary"
           scrollButtons="on"
           variant="scrollable"
           className={classes.tab}
           style={{
+            color: "#FFFFFF",
             marginBottom: 20,
             marginTop: 20
           }}
         >
-          <Tab
-            label="INTEGRAÇÕES" />
+          <Tab 
+            style={{color: "#FFFFFF" }} label="INTEGRAÇÕES" />
 
         </Tabs>
 
@@ -696,17 +744,14 @@ export default function Options(props) {
 
         </Tabs>
         <Grid xs={12} sm={12} md={12} item>
-          <FormControl className={classes.selectContainer}>
+        <FormControl margin="dense" variant="outlined" fullWidth>
             <TextField
               id="asaas"
               name="asaas"
               margin="dense"
               label="Token Asaas"
               variant="outlined"
-              value={asaasType}
-              onChange={async (e) => {
-                handleChangeAsaas(e.target.value);
-              }}
+              className={`${classes.fullWidth} ${classes.textfield}`}
             >
             </TextField>
             <FormHelperText>

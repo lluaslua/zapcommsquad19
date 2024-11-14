@@ -184,6 +184,7 @@ const Queues = () => {
         <Title>{i18n.t("queues.title")}</Title>
         <MainHeaderButtonsWrapper>
           <Button
+            style={{ fontFamily: "Nunito, sans-serif", }}
             variant="contained"
             color="primary"
             onClick={handleOpenQueueModal}
@@ -196,24 +197,16 @@ const Queues = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-			   <TableCell align="center">
-                {i18n.t("queues.table.id")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.name")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.color")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.orderQueue")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.greeting")}
-              </TableCell>
-              <TableCell align="center">
-                {i18n.t("queues.table.actions")}
-              </TableCell>
+            <TableCell padding="checkbox" style={{backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+            </TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.id")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.name")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.color")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.orderQueue")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.greeting")}</TableCell>
+            <TableCell align="center" style={{backgroundColor:  '#0C2454', color:'white', fontFamily: "Nunito, sans-serif",}}>{i18n.t("queues.table.actions")}</TableCell>
+            <TableCell style={{backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}>
+            </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

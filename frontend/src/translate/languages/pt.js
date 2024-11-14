@@ -441,7 +441,7 @@ const messages = {
         listItems: {
           dashboard: "Dashboard",
           connections: "Conexões",
-          tickets: "Atendimentos",
+          tickets: "Chamados",
           quickMessages: "Respostas Rápidas",
           contacts: "Contatos",
           queues: "Filas & Chatbot",
@@ -517,7 +517,9 @@ const messages = {
           number: "Número",
           body: "Mensagem",
           token: "Token cadastrado",
+
         },
+      
         mediaMessage: {
           number: "Número",
           body: "Nome do arquivo",
@@ -751,7 +753,7 @@ const messages = {
         },
       },
       campaignsConfig: {
-        title: "Configurações de Campanhas",
+        title: "Configurações",
       },
       queues: {
         title: "Filas & Chatbot",
@@ -835,7 +837,7 @@ const messages = {
           actions: "Ações",
         },
         buttons: {
-          add: "+ Adicionar",
+          add: "Adicionar",
 		  deleteAll: "Deletar Todas",
         },
         toasts: {

@@ -224,8 +224,8 @@ const QueueModal = ({ open, onClose, queueId }) => {
           onChange={(_, v) => setTab(v)}
           aria-label="disabled tabs example"
         >
-          <Tab label="Dados da Fila" />
-          {schedulesEnabled && <Tab label="Horários de Atendimento" />}
+          <Tab label="Dados da Fila" style={{ fontFamily: "Nunito, sans-serif", }}/>
+          {schedulesEnabled && <Tab label="Horários de Atendimento" style={{ fontFamily: "Nunito, sans-serif", }} />}
         </Tabs>
         {tab === 0 && (
           <Paper>
@@ -376,7 +376,7 @@ const QueueModal = ({ open, onClose, queueId }) => {
                         </Select>
                       </FormControl>
                     </div>
-                    <div style={{ marginTop: 5 }}>
+                    <div style={{ marginTop: 5, fontFamily: "Nunito, sans-serif",}}>
                       <Field
                         as={TextField}
                         label={i18n.t("queueModal.form.greetingMessage")}
@@ -422,14 +422,15 @@ const QueueModal = ({ open, onClose, queueId }) => {
                   </DialogContent>
                   <DialogActions>
                     <Button
+                      style={{ fontFamily: "Nunito, sans-serif", }}
                       onClick={handleClose}
-                      color="secondary"
+                      color="primary"
                       disabled={isSubmitting}
-                      variant="outlined"
                     >
                       {i18n.t("queueModal.buttons.cancel")}
                     </Button>
                     <Button
+                      style={{ fontFamily: "Nunito, sans-serif", }}
                       type="submit"
                       color="primary"
                       disabled={isSubmitting}

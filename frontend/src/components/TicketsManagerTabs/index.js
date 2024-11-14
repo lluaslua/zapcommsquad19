@@ -10,14 +10,13 @@ import Tab from "@material-ui/core/Tab";
 import Badge from "@material-ui/core/Badge";
 import MoveToInboxIcon from "@material-ui/icons/MoveToInbox";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-
+import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-
 import NewTicketModal from "../NewTicketModal";
 import TicketsList from "../TicketsListCustom";
 import TabPanel from "../TabPanel";
-
+import TextField from "@material-ui/core/TextField";
 import { i18n } from "../../translate/i18n";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { Can } from "../Can";
@@ -36,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 		borderTopRightRadius: 0,
 		borderBottomRightRadius: 0,
 		borderRadius:0,
+    backgroundColor:'#E6EDF5'
 	},
 
 	tabsHeader: {
@@ -57,6 +57,7 @@ const useStyles = makeStyles(theme => ({
 	tab: {
 		minWidth: 120,
 		width: 120,
+    textTransform:'none'
 	},
 
 	internalTab: {
@@ -195,6 +196,10 @@ const TicketsManagerTabs = () => {
     setTab(newValue);
   };
 
+  const handleTextTab = () => {
+    setTab('search');
+  }
+
   const handleChangeTabOpen = (e, newValue) => {
     setTabOpen(newValue);
   };
@@ -223,15 +228,8 @@ const TicketsManagerTabs = () => {
   };
 
   return (
-    <Paper elevation={0} variant="outlined" className={classes.ticketsWrapper}>
-      <NewTicketModal
-        modalOpen={newTicketModalOpen}
-        onClose={(ticket) => {
-          
-          handleCloseOrOpenTicket(ticket);
-        }}
-      />
-      <Paper elevation={0} square className={classes.tabsHeader}>
+    <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
+      <div style={{display:'flex'}}>
         <Tabs
           value={tab}
           onChange={handleChangeTab}
@@ -245,24 +243,51 @@ const TicketsManagerTabs = () => {
             icon={<MoveToInboxIcon />}
             label={i18n.t("tickets.tabs.open.title")}
             classes={{ root: classes.tab }}
+            style={{minWidth:'2px'}}
           />
           <Tab
             value={"closed"}
             icon={<CheckBoxIcon />}
             label={i18n.t("tickets.tabs.closed.title")}
             classes={{ root: classes.tab }}
-          />
-          <Tab
-            value={"search"}
-            icon={<SearchIcon />}
-            label={i18n.t("tickets.tabs.search.title")}
-            classes={{ root: classes.tab }}
+            style={{minWidth:'2px'}}
           />
         </Tabs>
+        <TextField
+              placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+              color='primary'
+              variant="outlined"
+              inputRef={searchInputRef}
+              type="search"
+              size="small"
+              //value={searchParam}
+              //onClick={handleTextTab}
+              onChange={handleSearch}
+              InputProps={{
+                style: {
+                  borderRadius: '20px',
+                  marginTop: '12px'
+                },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon style={{ color: "gray"}}/>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
+      <NewTicketModal
+        modalOpen={newTicketModalOpen}
+        onClose={(ticket) => {
+          
+          handleCloseOrOpenTicket(ticket);
+        }}
+      />
+      <Paper elevation={0} square className={classes.tabsHeader} style={{backgroundColor: '#E6EDF5'}}>
       </Paper>
-      <Paper square elevation={0} className={classes.ticketOptionsBox}>
+      <Paper square elevation={0} className={classes.ticketOptionsBox} style={{backgroundColor: '#E6EDF5'}}>
         {tab === "search" ? (
-          <div className={classes.serachInputWrapper}>
+          {/*<div className={classes.serachInputWrapper}>
             <SearchIcon className={classes.searchIcon} />
             <InputBase
               className={classes.searchInput}
@@ -271,7 +296,7 @@ const TicketsManagerTabs = () => {
               type="search"
               onChange={handleSearch}
             />
-          </div>
+          </div>*/}
         ) : (
           <>
             <Button
@@ -281,7 +306,43 @@ const TicketsManagerTabs = () => {
             >
               {i18n.t("ticketsManager.buttons.newTicket")}
             </Button>
-            <Can
+            <Tabs
+          value={tabOpen}
+          onChange={handleChangeTabOpen}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="fullWidth"
+        >
+          <Tab
+          style={{minWidth:'5px'}}
+          classes={{ root: classes.tab }}
+            label={
+              <Badge
+                className={classes.badge}
+                badgeContent={openCount}
+                color="primary"
+              >
+                {i18n.t("ticketsList.assignedHeader")}
+              </Badge>
+            }
+            value={"open"}
+          />
+          <Tab
+          style={{minWidth:'5px'}}
+          classes={{ root: classes.tab }}
+            label={
+              <Badge
+                className={classes.badge}
+                badgeContent={pendingCount}
+                color="secondary"
+              >
+                {i18n.t("ticketsList.pendingHeader")}
+              </Badge>
+            }
+            value={"pending"}
+          />
+        </Tabs>
+            {/*<Can
               role={user.profile}
               perform="tickets-manager:showall"
               yes={() => (
@@ -301,7 +362,7 @@ const TicketsManagerTabs = () => {
                   }
                 />
               )}
-            />
+            />*/}
           </>
         )}
         <TicketsQueueSelect
@@ -312,48 +373,24 @@ const TicketsManagerTabs = () => {
         />
       </Paper>
       <TabPanel value={tab} name="open" className={classes.ticketsWrapper}>
-        <Tabs
-          value={tabOpen}
-          onChange={handleChangeTabOpen}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-        >
-          <Tab
-            label={
-              <Badge
-                className={classes.badge}
-                badgeContent={openCount}
-                color="primary"
-              >
-                {i18n.t("ticketsList.assignedHeader")}
-              </Badge>
-            }
-            value={"open"}
-          />
-          <Tab
-            label={
-              <Badge
-                className={classes.badge}
-                badgeContent={pendingCount}
-                color="secondary"
-              >
-                {i18n.t("ticketsList.pendingHeader")}
-              </Badge>
-            }
-            value={"pending"}
-          />
-        </Tabs>
         <Paper className={classes.ticketsWrapper}>
+        <TagsFilter onFiltered={handleSelectedTags}/>
+        <UsersFilter onFiltered={handleSelectedUsers} />
           <TicketsList
             status="open"
+            searchParam={searchParam}
             showAll={showAllTickets}
+            tags={selectedTags}
+            users={selectedUsers}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setOpenCount(val)}
             style={applyPanelStyle("open")}
           />
           <TicketsList
             status="pending"
+            searchParam={searchParam}
+            tags={selectedTags}
+            users={selectedUsers}
             selectedQueueIds={selectedQueueIds}
             updateCount={(val) => setPendingCount(val)}
             style={applyPanelStyle("pending")}
@@ -361,8 +398,13 @@ const TicketsManagerTabs = () => {
         </Paper>
       </TabPanel>
       <TabPanel value={tab} name="closed" className={classes.ticketsWrapper}>
+        <TagsFilter onFiltered={handleSelectedTags} />
+        <UsersFilter onFiltered={handleSelectedUsers} />
         <TicketsList
           status="closed"
+          searchParam={searchParam}
+          tags={selectedTags}
+          users={selectedUsers}
           showAll={true}
           selectedQueueIds={selectedQueueIds}
         />
