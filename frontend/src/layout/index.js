@@ -48,20 +48,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    height: "100dvh",
-    [theme.breakpoints.down("sm")]: {
-      height: "calc(100dvh - 56px)",
-    },
+    height: "100vh",
     backgroundColor: theme.palette.fancyBackground,
-    '& .MuiButton-outlinedPrimary': {
-      color: theme.mode === 'light' ? '#FFF' : '#FFF',
-	  //backgroundColor: theme.mode === 'light' ? '#682ee2' : '#682ee2',
-	backgroundColor: theme.mode === 'light' ? theme.palette.primary.main : '#1c1c1c',
-      //border: theme.mode === 'light' ? '1px solid rgba(0 124 102)' : '1px solid rgba(255, 255, 255, 0.5)',
-    },
-    '& .MuiTab-textColorPrimary.Mui-selected': {
-      color: theme.mode === 'light' ? 'Primary' : '#FFF',
-    }
   },
   avatar: {
     width: "100%",
@@ -112,70 +100,47 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     background: "#0C2C54",
-    color : "#FFFFFF",
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
+    color: "#FFFFFF",
+    width: drawerWidth, // Aplica a largura expandida
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    },
-    ...theme.scrollbarStylesSoft
+    overflowX: "hidden",
+    ...theme.scrollbarStylesSoft,
   },
   drawerPaperClose: {
+    width: theme.spacing(9), // Define a largura reduzida
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9),
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    }
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   appBarSpacer: {
-    minHeight: "48px",
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: "none",
   },
   content: {
     flex: 1,
     overflow: "auto",
-
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column"
-  },
-  containerWithScroll: {
-    flex: 1,
-    padding: theme.spacing(1),
-    overflowY: "scroll",
-    ...theme.scrollbarStyles,
-  },
-  NotificationsPopOver: {   
-    // color: theme.barraSuperior.secondary.main,
-  },
-  logo: {
-    width: "80%",
-    height: "auto",
-    maxWidth: 180,
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      height: "80%",
-      maxWidth: 180,
-    },
-    logo: theme.logo
   },
 }));
 
@@ -288,6 +253,58 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       clearInterval(interval);
     };
   }, [socketManager]);
+
+  const LoggedInLayout = ({ children }) => {
+    const classes = useStyles();
+    const [drawerOpen, setDrawerOpen] = useState(true);
+  
+    return (
+      <div className={classes.root}>
+        <Drawer
+          variant="permanent" // Mantém o Drawer sempre presente
+          classes={{
+            paper: clsx(classes.drawerPaper, !drawerOpen && classes.drawerPaperClose),
+          }}
+          open={drawerOpen}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
+              <MenuIcon style={{ color: "#FFFFFF" }} />
+            </IconButton>
+          </div>
+          <Divider />
+          <List className={classes.containerWithScroll}>
+            <MainListItems drawerClose={() => setDrawerOpen(false)} collapsed={!drawerOpen} />
+          </List>
+          <Divider />
+        </Drawer>
+        <AppBar
+          position="absolute"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: drawerOpen,
+          })}
+        >
+          <Toolbar variant="dense" className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              aria-label="open drawer"
+              onClick={() => setDrawerOpen(!drawerOpen)}
+              className={clsx(classes.menuButton, drawerOpen && classes.menuButtonHidden)}
+            >
+              <MenuIcon style={{ color: "#FFFFFF" }} />
+            </IconButton>
+            <Typography variant="h6" color="inherit" noWrap className={classes.title}>
+              Sua Aplicação
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          {children ? children : null}
+        </main>
+      </div>
+    );
+  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
