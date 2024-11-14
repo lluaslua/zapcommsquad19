@@ -292,11 +292,14 @@ const ContactListItems = () => {
               <Grid xs={12} sm={6} item>
                 <TextField
                   fullWidth
+                  size="small"
+                  variant="outlined"
                   placeholder={i18n.t("contactListItems.searchPlaceholder")}
                   type="search"
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
+                    style:{borderRadius:"20px"},
                     startAdornment: (
                       <InputAdornment position="start">
                         <SearchIcon style={{ color: "gray" }} />
@@ -310,6 +313,7 @@ const ContactListItems = () => {
                   fullWidth
                   variant="contained"
                   color="primary"
+                  style={{borderRadius: "8px"}}
                   onClick={goToContactLists}
                 >
                   {i18n.t("contactListItems.buttons.lists")}
@@ -317,6 +321,7 @@ const ContactListItems = () => {
               </Grid>
               <Grid xs={4} sm={2} item>
                 <Button
+                style={{borderRadius: "8px"}}
                   fullWidth
                   variant="contained"
                   color="primary"
@@ -330,6 +335,7 @@ const ContactListItems = () => {
               </Grid>
               <Grid xs={4} sm={2} item>
                 <Button
+                style={{borderRadius: "8px"}}
                   fullWidth
                   variant="contained"
                   color="primary"
@@ -363,17 +369,17 @@ const ContactListItems = () => {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell align="center" style={{ width: "0%" }}>
+              <TableCell align="center" style={{ width: "0%", color: "white", backgroundColor: "#0C2454", borderTopLeftRadius: "5px", borderBottomLeftRadius: "5px" }}>
                 #
               </TableCell>
-              <TableCell>{i18n.t("contactListItems.table.name")}</TableCell>
-              <TableCell align="center">
+              <TableCell style={{ color: "white", backgroundColor: "#0C2454" }}>{i18n.t("contactListItems.table.name")}</TableCell>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
                 {i18n.t("contactListItems.table.number")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
                 {i18n.t("contactListItems.table.email")}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius: "5px", borderBottomRightRadius: "5px" }}>
                 {i18n.t("contactListItems.table.actions")}
               </TableCell>
             </TableRow>
