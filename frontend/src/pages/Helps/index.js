@@ -19,20 +19,25 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     padding: theme.spacing(2),
     boxSizing: "border-box",
+
   },
   searchInput: {
-    width: '96%',
+    width: '100%', // ou ajuste a largura desejada
+    maxWidth: '90%', // largura máxima para limitar no contêiner
     borderRadius: 8,
+    margin: '0 auto', // centraliza horizontalmente no contêiner
     marginBottom: theme.spacing(2),
     backgroundColor: 'white',
     padding: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'center',
   },
   titleList: {
     overflowY: 'auto',
     maxHeight: '100vh',
     padding: theme.spacing(1),
     flex: 1,
-    height: "calc(69vh + 1px)",
+    height: "calc(62vh + 7px)",
     backgroundColor: "#EFF3F6",
     "&::-webkit-scrollbar": {
       width: "7px",
@@ -102,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   videoThumbnail: {
-    width: '70%',
+    width: '60%',
     objectFit: 'cover',
     borderRadius: `${theme.spacing(1)}px ${theme.spacing(1)}px 0 0`,
   },
@@ -118,6 +123,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     paddingBottom: "250px",
     textAlign: "center",
+    whiteSpace: 'pre-line',
   },
   videoModal: {
     display: 'flex',
@@ -238,12 +244,16 @@ const Helps = () => {
     }}> 
       <aside className={classes.sidebarContainer} style={{width: "28%", display: "block", justifyContent: "center", maxHeight: "200px"}}>
         <MainHeader style={{display: "flex", flexDirection: "column"}}>
-          <Typography style={{fontWeight: "bold", fontSize: "1.875rem", paddingBottom: "0px"}} variant="text">{i18n.t("helps.title")}</Typography>
+          <Typography style={{fontWeight: "bold", fontSize: "1.875rem", paddingBottom: "60px"}} variant="text">{i18n.t("helps.title")}</Typography>
           <MainHeaderButtonsWrapper></MainHeaderButtonsWrapper>
         </MainHeader>
-        <div style={{backgroundColor: "#EFF3F6"}}>
+        <div style={{backgroundColor: "#EFF3F6",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          borderTopLeftRadius: "20px", borderTopRightRadius: "20px"}}>
           <Typography style={{fontWeight: "bold", fontSize: "1.5rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
-          <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
+          <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "center", paddingLeft: "1rem", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
           <TextField
             variant="standard"
             className={classes.searchInput}
