@@ -30,7 +30,7 @@ import moment from "moment";
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {"Copyright Â© "}
       <Link color="inherit" href="#">
         PLW
       </Link>{" "}
@@ -85,6 +85,24 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('1600')]: {
       margin:"0"
     },
+    [theme.breakpoints.down("1225")]: {
+      margin: "0px"
+    },
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+		padding: "55px 30px",
+		borderRadius: "15px",
+    marginRight: "10%"
   },
   avatar: {
     margin: theme.spacing(1),
@@ -198,7 +216,6 @@ const SignUp = () => {
                     label="Nome da Empresa"
                   />
                 </Grid>
-
                 <Grid item xs={12}>
                   <Field
                     as={TextField}

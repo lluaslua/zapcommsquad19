@@ -42,6 +42,7 @@ ChartJS.register(
 
 export const options = {
     responsive: true,
+    barThickness: 25,
     plugins: {
         legend: {
             position: 'top',
@@ -53,7 +54,7 @@ export const options = {
             position: 'left',
         },
         datalabels: {
-            display: true,
+            display: false,
             anchor: 'start',
             offset: -30,
             align: "start",
@@ -63,14 +64,12 @@ export const options = {
             font: {
                 size: 20,
                 weight: "bold"
-
             },
         }
     },
 };
 
 export const ChatsUser = () => {
-    // const classes = useStyles();
     const [initialDate, setInitialDate] = useState(new Date());
     const [finalDate, setFinalDate] = useState(new Date());
     const [ticketsData, setTicketsData] = useState({ data: [] });
@@ -82,22 +81,19 @@ export const ChatsUser = () => {
     }, []);
 
     const dataCharts = {
-
         labels: ticketsData && ticketsData?.data.length > 0 && ticketsData?.data.map((item) => item.nome),
         datasets: [
             {
-                data: ticketsData?.data.length > 0 && ticketsData?.data.map((item, index) => {
-                    return item.quantidade
-                }),
-                backgroundColor: '#2DDD7F',
+                data: ticketsData?.data.length > 0 && ticketsData?.data.map((item) => item.quantidade),
+                backgroundColor: '#1C1064', // Cor com transparência
+                borderRadius: 200, // Define o borderRadius para arredondar as bordas
+                borderSkipped: false, // Impede que as bordas arredondadas sejam ignoradas em qualquer lado da barra
             },
-
         ],
     };
 
     const handleGetTicketsInformation = async () => {
         try {
-
             const { data } = await api.get(`/dashboard/ticketsUsers?initialDate=${format(initialDate, 'yyyy-MM-dd')}&finalDate=${format(finalDate, 'yyyy-MM-dd')}&companyId=${companyId}`);
             setTicketsData(data);
         } catch (error) {
@@ -107,19 +103,24 @@ export const ChatsUser = () => {
 
     return (
         <>
-            <Typography component="h2" variant="h6" color="primary" gutterBottom>
+            <Typography component="h2" variant="h6" color="primary" gutterBottom style={{ fontFamily: 'Nunito' }} >
                 Total de Conversas por Usuários
             </Typography>
 
-            <Stack direction={'row'} spacing={2} alignItems={'center'} sx={{ my: 2, }} >
-
+            <Stack 
+                direction={'row'} 
+                spacing={2} 
+                alignItems={'center'} 
+                sx={{ my: 2, }} 
+                style={{ marginLeft: '40%', marginTop: '-5%', fontFamily: 'Nunito' }}
+            >
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={brLocale}>
                     <DatePicker
                         value={initialDate}
                         onChange={(newValue) => { setInitialDate(newValue) }}
                         label="Inicio"
                         renderInput={(params) => <TextField fullWidth {...params} sx={{ width: '20ch' }} />}
-
+                        style={{ fontFamily: 'Nunito' }}
                     />
                 </LocalizationProvider>
 
@@ -129,13 +130,13 @@ export const ChatsUser = () => {
                         onChange={(newValue) => { setFinalDate(newValue) }}
                         label="Fim"
                         renderInput={(params) => <TextField fullWidth {...params} sx={{ width: '20ch' }} />}
+                        style={{ fontFamily: 'Nunito' }}
                     />
                 </LocalizationProvider>
 
-                <Button className="buttonHover" onClick={handleGetTicketsInformation} variant='contained'>Filtrar</Button>
-
+                <Button className="buttonHover" onClick={handleGetTicketsInformation} variant='contained' style={{ fontFamily: 'Nunito' }} >Filtrar</Button>
             </Stack>
-            <Bar options={options} data={dataCharts} style={{ maxWidth: '100%', maxHeight: '280px', }} />
+            <Bar options={options} data={dataCharts} style={{ maxWidth: '100%', maxHeight: '380px', backgroundColor: 'transparent' }} />
         </>
     );
-}
+};

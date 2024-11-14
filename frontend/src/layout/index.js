@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
+      width: "20%"
     },
     ...theme.scrollbarStylesSoft
   },
@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9),
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
+      width: "20%"
     }
   },
   appBarSpacer: {
