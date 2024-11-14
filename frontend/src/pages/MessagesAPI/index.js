@@ -296,7 +296,7 @@ const MessagesAPI = () => {
   return (
     <Paper
       className={classes.mainPaper}
-      style={{marginLeft: "5px"}}
+      style={{marginLeft: "5px", overflowY: "hidden"}}
       // className={classes.elementMargin}
       variant="outlined"
       color="0C2454"
