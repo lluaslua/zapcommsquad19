@@ -38,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:"transparent",
     border: "none"
   },
+  tablePaper:{
+    backgroundColor: "#fff",
+    border: "0.1px solid #c8c8c8",
+    borderRadius: "5px", 
+    padding: theme.spacing(0.6),
+    boxShadow: theme.shadows[3],
+  },
   formControl: {
     backgroundColor: "#fff",  
   },
@@ -56,12 +63,12 @@ const useStyles = makeStyles((theme) => ({
   tableHeader: {
     backgroundColor: '#0C2454', 
     color: 'white',
-    borderRadius: '5px 5px 0 0', // Para arredondar os cantos superiores
+    borderRadius: '5px 5px 0 0',
     textAlign: "center",
   },
   tableRow: {
     backgroundColor: 'white',
-    textAlign: 'center', // Centralizando o conteúdo da célula
+    textAlign: 'center',
   },
 }));
 
@@ -145,9 +152,19 @@ const CampaignsConfig = () => {
       <MainHeader>
         <Grid style={{ width: "99.6%" }} container>
           <Grid xs={12} item>
-          <Typography variant="h4" style={{ color: '#0C2454', fontWeight: 500 }} className={classes.elementMargin}>
-          CONFIGURAÇÕES
-        </Typography>
+          <Title>
+  <div 
+    style={{
+      color: "#0C2C4C", 
+      fontWeight: "bold", 
+      fontFamily: "Nunito", 
+      fontSize: "24px", 
+      lineHeight: "18px", 
+    }}
+  >
+    CONFIGURAÇÕES
+  </div>
+</Title>
           </Grid>
         </Grid>
       </MainHeader>
@@ -270,7 +287,7 @@ const CampaignsConfig = () => {
               <Button
                 onClick={() => setShowVariablesForm(!showVariablesForm)}
                 color="primary"
-                style={{ marginRight: 10, borderRadius: '8px', border: '1px solid #0C2454', marginTop: "50px"}}
+                style={{ marginRight: 10, borderRadius: '8px', backgroundColor:"#0C2454", color:"white", marginTop: "50px"}}
               >
                 Adicionar Variável
               </Button>
@@ -330,7 +347,7 @@ const CampaignsConfig = () => {
             )}
             {settings.variables.length > 0 && (
               <Grid xs={12} className={classes.textRight} item>
-                
+               <Paper className={classes.tablePaper} elevation={3}>
                 <Table size="small">
                   <TableHead>
                     <TableRow className={classes.tableHeader}>
@@ -364,7 +381,7 @@ const CampaignsConfig = () => {
                       ))}
                   </TableBody>
                 </Table>
-                
+               </Paper>
               </Grid>
             )}
           </Grid>

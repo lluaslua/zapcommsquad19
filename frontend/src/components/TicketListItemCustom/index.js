@@ -367,6 +367,7 @@ const useStyles = makeStyles((theme) => ({
         ticketId={ticket.id}
       ></TicketMessagesDialog>
       <ListItem dense button
+      style={{backgroundColor:'white',borderRadius:'10px',marginTop:'8px',border:'1px solid #0C2C54'}}
         onClick={(e) => {
           if (ticket.status === "pending") return;
           handleSelectTicket(ticket);
@@ -377,17 +378,17 @@ const useStyles = makeStyles((theme) => ({
         })}
       >
         <Tooltip arrow placement="right" title={ticket.queue?.name?.toUpperCase() || "SEM FILA"} >
-          <span style={{ backgroundColor: ticket.queue?.color || "#7C7C7C" }} className={classes.ticketQueueColor}></span>
+          <span style={{ backgroundColor: ticket.queue?.color || "transparent" }} className={classes.ticketQueueColor}></span>
         </Tooltip>
-        <ListItemAvatar>
+        <ListItemAvatar> 
           {ticket.status !== "pending" ?
             <Avatar
               style={{
-                marginTop: "-20px",
+                marginTop: "-9px",
                 marginLeft: "-3px",
                 width: "55px",
                 height: "55px",
-                borderRadius: "10%",
+                borderRadius: "100%",
               }}
               src={ticket?.contact?.profilePicUrl}
             />
