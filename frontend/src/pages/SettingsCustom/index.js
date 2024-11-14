@@ -168,11 +168,11 @@ const SettingsCustom = () => {
           onChange={handleTabChange}
           className={classes.tab}
         >
-          <Tab label="Opções"  value={"options"} />
+          <Tab label="Opções"  value={"options"} style={{ fontFamily: "Nunito, sans-serif", }} />
           {/*schedulesEnabled && <Tab label="Horários" value={"schedules"} />*/}
-          {isSuper() ? <Tab label="Empresas" value={"companies"} /> : null}
+          {isSuper() ? <Tab label="Empresas" style={{ fontFamily: "Nunito, sans-serif", }} value={"companies"} /> : null}
           {/*isSuper() ? <Tab label="Planos" value={"plans"} /> : null*/}
-          {isSuper() ? <Tab label="Ajuda" value={"helps"} /> : null}
+          {isSuper() ? <Tab label="Ajuda" style={{ fontFamily: "Nunito, sans-serif", }} value={"helps"} /> : null}
         </Tabs>
         <Paper className={classes.paper} elevation={0}>
           <TabPanel

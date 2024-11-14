@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    fontFamily: "Nunito, sans-serif",
   },
   fixedHeightPaper: {
     padding: theme.spacing(2),
@@ -390,8 +391,9 @@ export default function Options(props) {
                 </Grid> */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="ratings-label">Avaliações</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="ratings-label">Avaliações</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Avaliações"
               labelId="ratings-label"
@@ -402,8 +404,8 @@ export default function Options(props) {
                 handleChangeUserRating(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitadas</MenuItem>
-              <MenuItem value={"enabled"}>Habilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }}  value={"disabled"}>Desabilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitadas</MenuItem>
             </Select>
             <FormHelperText>
               {loadingUserRating && "Atualizando..."}
@@ -412,8 +414,9 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="schedule-type-label">Gerenciamento de Expediente</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="schedule-type-label">Gerenciamento de Expediente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Gerenciamento de Expediente"
               labelId="schedule-type-label"
@@ -424,9 +427,9 @@ export default function Options(props) {
                 handleScheduleType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"queue"}>Fila</MenuItem>
-              <MenuItem value={"company"}>Empresa</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"queue"}>Fila</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"company"}>Empresa</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -435,8 +438,9 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="group-type-label">Ignorar Mensagens de Grupos</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="group-type-label">Ignorar Mensagens de Grupos</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Ignorar Mensagens de Grupos"
               labelId="group-type-label"
@@ -447,8 +451,8 @@ export default function Options(props) {
                 handleGroupType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desativado</MenuItem>
-              <MenuItem value={"enabled"}>Ativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Ativado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -457,9 +461,10 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="call-type-label">Aceitar Chamada
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="call-type-label">Aceitar Chamada
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Aceitar Chamada"
               labelId="call-type-label"
@@ -470,8 +475,8 @@ export default function Options(props) {
                 handleCallType(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Não Aceitar</MenuItem>
-              <MenuItem value={"enabled"}>Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Não Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Aceitar</MenuItem>
             </Select>
             <FormHelperText>
               {loadingCallType && "Atualizando..."}
@@ -480,9 +485,10 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="chatbot-type-label">Tipo Chatbot
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="chatbot-type-label">Tipo Chatbot
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Tipo Chatbot"
               labelId="chatbot-type-label"
@@ -493,7 +499,7 @@ export default function Options(props) {
                 handleChatbotType(e.target.value);
               }}
             >
-              <MenuItem value={"text"}>Texto</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"text"}>Texto</MenuItem>
 			 {/*<MenuItem value={"button"}>Botão</MenuItem>*/}
              {/*<MenuItem value={"list"}>Lista</MenuItem>*/}
             </Select>
@@ -505,8 +511,9 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO AO ACEITAR O TICKET */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar saudação ao aceitar o ticket"
               labelId="sendGreetingAccepted-label"
@@ -517,8 +524,8 @@ export default function Options(props) {
                 handleSendGreetingAccepted(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingAccepted && "Atualizando..."}
@@ -530,8 +537,9 @@ export default function Options(props) {
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar mensagem de transferencia de Fila/agente"
               labelId="sendMsgTransfTicket-label"
@@ -542,8 +550,8 @@ export default function Options(props) {
                 handleSettingsTransfTicket(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSettingsTransfTicket && "Atualizando..."}
@@ -554,8 +562,9 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar saudação quando houver somente 1 fila"
               labelId="sendGreetingMessageOneQueues-label"
@@ -566,8 +575,8 @@ export default function Options(props) {
                 handleSendGreetingMessageOneQueues(e.target.value);
               }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingMessageOneQueues && "Atualizando..."}
