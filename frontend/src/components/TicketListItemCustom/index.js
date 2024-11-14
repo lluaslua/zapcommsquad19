@@ -399,7 +399,7 @@ const useStyles = makeStyles((theme) => ({
                 marginLeft: "0px",
                 width: "50px",
                 height: "50px",
-                borderRadius: "10%",
+                borderRadius: "100%",
               }}
               src={ticket?.contact?.profilePicUrl}
             />

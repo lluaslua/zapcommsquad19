@@ -77,29 +77,6 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		padding: "50px 30px",
-		borderRadius: "15px",
-    transition: "margin-left 0.3s ease-in-out, margin-right 0.6s ease-in-out",
-    [theme.breakpoints.down('1000')]: {
-    },
-    [theme.breakpoints.down('1600')]: {
-      margin:"0"
-    },
-    [theme.breakpoints.down("1225")]: {
-      margin: "0px"
-    },
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
 		padding: "55px 30px",
 		borderRadius: "15px",
     marginRight: "10%"
@@ -110,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -216,6 +193,7 @@ const SignUp = () => {
                     label="Nome da Empresa"
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <Field
                     as={TextField}
@@ -270,7 +248,7 @@ const SignUp = () => {
                     required
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                {/*<Grid item xs={12}>
                   <InputLabel htmlFor="plan-selection">Plano</InputLabel>
                   <Field
                     as={Select}
@@ -289,7 +267,7 @@ const SignUp = () => {
                       </MenuItem>
                     ))}
                   </Field>
-                </Grid> */}
+                </Grid>*/}
               </Grid>
               <Button
                 type="submit"
