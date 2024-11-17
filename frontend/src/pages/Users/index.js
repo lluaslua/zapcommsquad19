@@ -217,7 +217,7 @@ const Users = () => {
             value={searchParam}
             onChange={handleSearch}
             InputProps={{
-              style:{borderRadius:"15px"},
+              style:{borderRadius:"20px"},
               endAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon style={{ color: "gray" }} />
