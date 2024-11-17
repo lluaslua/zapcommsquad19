@@ -97,6 +97,21 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+		padding: "55px 30px",
+		borderRadius: "15px",
+    marginRight: "10%"
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 const UserSchema = Yup.object().shape({
@@ -198,7 +213,6 @@ const SignUp = () => {
                     label="Nome da Empresa"
                   />
                 </Grid>
-
                 <Grid item xs={12}>
                   <Field
                     as={TextField}

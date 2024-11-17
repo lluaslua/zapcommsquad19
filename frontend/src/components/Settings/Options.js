@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    fontFamily: "Nunito, sans-serif",
   },
   fixedHeightPaper: {
     padding: theme.spacing(2),
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.options,  //DARK MODE PLW DESIGN//
     borderRadius: 4,
     width: "100%",
+    marginLeft: "10px", //alinhamento com o restante dos componentes
+    marginRight: "10px", //alinhamento com o restante dos componentes
     backgroundColor: "#0C2454",
     "& .MuiTab-wrapper": {
       color: "#FFFFFF",
@@ -50,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: 12,
     width: "100%",
+  },
+  formControl: {
+    backgroundColor: "#fff",  
   },
   cardAvatar: {
     fontSize: "55px",
@@ -385,16 +391,21 @@ export default function Options(props) {
                 </Grid> */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="ratings-label">Avaliações</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="ratings-label">Avaliações</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Avaliações"
               labelId="ratings-label"
-              name="Avaliações"
+              name="ratings"
+              value={userRating}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleChangeUserRating(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desabilitadas</MenuItem>
-              <MenuItem value={"enabled"}>Habilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }}  value={"disabled"}>Desabilitadas</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitadas</MenuItem>
             </Select>
             <FormHelperText>
               {loadingUserRating && "Atualizando..."}
@@ -403,17 +414,22 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="schedule-type-label">Gerenciamento de Expediente</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="schedule-type-label">Gerenciamento de Expediente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Gerenciamento de Expediente"
               labelId="schedule-type-label"
               name="Gerenciamento de Expediente"
+              value={scheduleType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleScheduleType(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"queue"}>Fila</MenuItem>
-              <MenuItem value={"company"}>Empresa</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"queue"}>Fila</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"company"}>Empresa</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -422,16 +438,21 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="group-type-label">Ignorar Mensagens de Grupos</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="group-type-label">Ignorar Mensagens de Grupos</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Ignorar Mensagens de Grupos"
               labelId="group-type-label"
               name="Ignorar Mensagens de Grupos"
+              value={CheckMsgIsGroup}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleGroupType(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desativado</MenuItem>
-              <MenuItem value={"enabled"}>Ativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desativado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Ativado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingScheduleType && "Atualizando..."}
@@ -440,17 +461,22 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="call-type-label">Aceitar Chamada
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="call-type-label">Aceitar Chamada
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Aceitar Chamada"
               labelId="call-type-label"
               name="Aceitar Chamada"
+              value={callType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleCallType(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Não Aceitar</MenuItem>
-              <MenuItem value={"enabled"}>Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Não Aceitar</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Aceitar</MenuItem>
             </Select>
             <FormHelperText>
               {loadingCallType && "Atualizando..."}
@@ -459,16 +485,21 @@ export default function Options(props) {
         </Grid>
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="chatbot-type-label">Tipo Chatbot
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="chatbot-type-label">Tipo Chatbot
             </InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Tipo Chatbot"
               labelId="chatbot-type-label"
               name="Tipo Chatbot"
+              value={chatbotType}
               className={`${classes.fullWidth} ${classes.textfield}`}
+              onChange={async (e) => {
+                handleChatbotType(e.target.value);
+              }}
             >
-              <MenuItem value={"text"}>Texto</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"text"}>Texto</MenuItem>
 			 {/*<MenuItem value={"button"}>Botão</MenuItem>*/}
              {/*<MenuItem value={"list"}>Lista</MenuItem>*/}
             </Select>
@@ -480,16 +511,21 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO AO ACEITAR O TICKET */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingAccepted-label">Enviar saudação ao aceitar o ticket</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar saudação ao aceitar o ticket"
               labelId="sendGreetingAccepted-label"
               name="Enviar saudação ao aceitar o ticket"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={SendGreetingAccepted}
+              onChange={async (e) => {
+                handleSendGreetingAccepted(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingAccepted && "Atualizando..."}
@@ -501,16 +537,21 @@ export default function Options(props) {
 		{/* ENVIAR MENSAGEM DE TRANSFERENCIA DE SETOR/ATENDENTE */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendMsgTransfTicket-label">Enviar mensagem de transferencia</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendMsgTransfTicket-label">Enviar mensagem de transferencia de Fila/agente</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar mensagem de transferencia de Fila/agente"
               labelId="sendMsgTransfTicket-label"
               name="Enviar mensagem de transferencia de Fila/agente"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={SettingsTransfTicket}
+              onChange={async (e) => {
+                handleSettingsTransfTicket(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSettingsTransfTicket && "Atualizando..."}
@@ -521,16 +562,21 @@ export default function Options(props) {
 		{/* ENVIAR SAUDAÇÃO QUANDO HOUVER SOMENTE 1 FILA */}
         <Grid xs={12} sm={6} md={4} item>
         <FormControl margin="dense" variant="outlined" fullWidth>
-            <InputLabel id="sendGreetingMessageOneQueues-label">Enviar saudação de fila única</InputLabel>
+            <InputLabel style={{ fontFamily: "Nunito, sans-serif", }} id="sendGreetingMessageOneQueues-label">Enviar saudação quando houver somente 1 fila</InputLabel>
             <Select
+              style={{ fontFamily: "Nunito, sans-serif", }}
               as={Select}
               label="Enviar saudação quando houver somente 1 fila"
               labelId="sendGreetingMessageOneQueues-label"
               name="Enviar saudação quando houver somente 1 fila"
               className={`${classes.fullWidth} ${classes.textfield}`}
+              value={sendGreetingMessageOneQueues}
+              onChange={async (e) => {
+                handleSendGreetingMessageOneQueues(e.target.value);
+              }}
             >
-              <MenuItem value={"disabled"}>Desabilitado</MenuItem>
-              <MenuItem value={"enabled"}>Habilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"disabled"}>Desabilitado</MenuItem>
+              <MenuItem style={{ fontFamily: "Nunito, sans-serif", }} value={"enabled"}>Habilitado</MenuItem>
             </Select>
             <FormHelperText>
               {loadingSendGreetingMessageOneQueues && "Atualizando..."}

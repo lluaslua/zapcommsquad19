@@ -278,7 +278,7 @@ const Announcements = () => {
               </Grid>
               <Grid xs={6} sm={6} item>
                 <Button
-                  style={{color:"white", borderRadius:"8px"}}
+                  style={{color:"white", borderRadius:"8px",fontFamily: 'Nunito, Arial, sans-serif'}}
                   fullWidth
                   variant="contained"
                   onClick={handleOpenAnnouncementModal}
@@ -300,19 +300,19 @@ const Announcements = () => {
         <Table size="small">
           <TableHead >
             <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", fontFamily: 'Nunito, Arial, sans-serif'}}>
                 {i18n.t("Anexado")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Prioridade")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Arquivo")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif'}}>
                 {i18n.t("Status")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Ações")}
               </TableCell>
             </TableRow>
@@ -322,16 +322,16 @@ const Announcements = () => {
               {announcements.map((announcement) => (
                 <TableRow key={announcement.id}>
                   <TableCell align="center">{announcement.title}</TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                     {translatePriority(announcement.priority)}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                     {announcement.mediaName ?? i18n.t("quickMessages.noAttachment")}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                     {announcement.status ? i18n.t("announcements.active") : i18n.t("announcements.inactive")}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                     <IconButton
                       size="small"
                       onClick={() => handleEditAnnouncement(announcement)}
