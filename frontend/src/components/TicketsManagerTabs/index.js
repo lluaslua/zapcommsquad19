@@ -228,8 +228,15 @@ const TicketsManagerTabs = () => {
   };
 
   return (
-    <Paper elevation={0} variant="default" className={classes.ticketsWrapper} style={{backgroundColor:'#E6EDF5'}}>
-      <div style={{display:'flex'}}>
+    <Paper elevation={0} variant="outlined" className={classes.ticketsWrapper}>
+      <NewTicketModal
+        modalOpen={newTicketModalOpen}
+        onClose={(ticket) => {
+          
+          handleCloseOrOpenTicket(ticket);
+        }}
+      />
+      <Paper elevation={0} square className={classes.tabsHeader}>
         <Tabs
           value={tab}
           onChange={handleChangeTab}
