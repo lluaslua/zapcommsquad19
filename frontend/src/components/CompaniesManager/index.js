@@ -351,7 +351,8 @@ export function CompanyForm(props) {
                       style={{ marginTop: 7 }}
                       loading={loading}
                       onClick={() => onCancel()}
-                      variant="contained"
+                      color="primary"
+
                     >
                       Limpar
                     </ButtonWithSpinner>

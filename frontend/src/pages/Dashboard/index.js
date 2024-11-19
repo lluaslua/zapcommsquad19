@@ -71,7 +71,6 @@ import group41 from "../../assets/Group 41.png"
 import group42 from "../../assets/Group 42.png"
 import group43 from "../../assets/Group 43.png"
 import group44 from "../../assets/Group 44.png"
-import { Title } from "chart.js";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -245,69 +244,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     flexDirection: "column",
   },
-
-  hoje: {
-    backgroundColor: "White",
-    borderColor: "#0C2454",
-    border: "solid, 1px", 
-    borderRadius: "5px",
-    marginLeft: '-10%', // desloca o grid para a esquerda
-    justifyContent: "flex-end",
-    [theme.breakpoints.down("1730")]: {
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      borderColor: "rgba(0, 0, 0, 0)",
-      border: 'none',
-      marginLeft: '0px',
-      position: 'relative',
-      right: '-12.5%'
-    },
-    [theme.breakpoints.down("1520")]: {
-      justifyContent: 'center'
-    },
-  },
-
-  tempomedio: {
-    backgroundColor: "White",
-    borderColor: "#0C2454",
-    border: "solid, 1px", 
-    borderRadius: "5px",
-    marginLeft: '70%', // desloca o grid para a esquerda
-    marginTop: '-22.70%',
-    justifyContent: "center",
-    [theme.breakpoints.down("1730")]: {
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      borderColor: "rgba(0, 0, 0, 0)",
-      border: 'none',
-      marginTop: '0%',
-      marginLeft: '30%',
-    },
-    [theme.breakpoints.down("1520")]: {
-      marginTop: '225px'
-    },
-    [theme.breakpoints.down("841")]: {
-      marginTop: '585px'
-    },
-  },
-
-  graficog: {
-    width: '77%', // ajuste a largura
-    marginLeft: '-10%',
-    marginTop: '-5%',
-    [theme.breakpoints.down("1730")]: {
-      marginLeft: '12.5%',
-      marginTop: '20px',
-    },
-  },
-
-  graficop: {
-    width: '40%', // ajuste a largura
-    marginLeft: '70%', // desloca o grid para a esquerda
-    marginTop: '-27.5%',
-    [theme.breakpoints.down("1730")]: {
-      marginLeft: '31%',
-      marginTop: '20px',
-    },
-  },
 }));
 
 const Dashboard = () => {
@@ -320,13 +256,6 @@ const Dashboard = () => {
     const [dateTo, setDateTo] = useState(moment().format("YYYY-MM-DD"));
     const [loading, setLoading] = useState(false);
     const { find } = useDashboard();
-    const today = new Date();
-
-    const formattedDate = today.toLocaleDateString('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    });
   
     const [showFilter, setShowFilter] = useState(false);
     const [queueTicket, setQueueTicket] = useState(false);
@@ -459,44 +388,19 @@ const Dashboard = () => {
       </div>
       <Container maxWidth="lg" className={classes.container}>
         <Grid 
-        className={classes.hoje}
         container spacing={3} 
+        justifyContent="flex-end"
         style={{ 
+          backgroundColor: "white", 
+          border: "solid, 1px", 
+          borderRadius: "5px",
+          borderColor: "#0C2454",
           gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
           width: '77%', // ajuste a largura
-          height: '280px',
-          paddingTop: '50px',
+          marginLeft: '-10%', // desloca o grid para a esquerda
         }}
         >
-          <Grid
-          style={{
-            position: 'relative',
-            top: '-50px',
-            left: '10px'
-          }}
-          >
-            <Typography
-            style={{
-              fontFamily: 'Nunito',
-              fontWeight: 'bold',
-              fontSize: '24px',
-              color: '#0C2C54'
-            }}
-            >
-              Hoje:
-            </Typography>
-
-            <Typography
-              style={{
-                fontFamily: 'Nunito',
-                fontWeight: 'bolder',
-                fontSize: '12px',
-                color: '#0C2C54'
-              }}
-            >
-              {formattedDate}
-            </Typography>
-          </Grid>
+		
 
           {/* EM ATENDIMENTO */}
           <Grid item md={1.5}
@@ -504,7 +408,7 @@ const Dashboard = () => {
               display: "flex", 
               textAlign: "center", 
               justifyContent: "center",
-              marginLeft: '-70px',
+
             }}
           >
             <Paper
@@ -596,7 +500,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {counters.supportPending}
+                      {counters.supportHappening}
                     </Typography>
                   </Grid>
                   <Typography
@@ -695,7 +599,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {counters.supportFinished}
+                      {counters.supportHappening}
                     </Typography>
                   </Grid>
                   <Typography
@@ -752,7 +656,7 @@ const Dashboard = () => {
                       variant="h4"
                       style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
                     >
-                      {GetContacts(true)}
+                      {counters.supportHappening}
                     </Typography>
                   </Grid>
                   <Typography
@@ -772,10 +676,16 @@ const Dashboard = () => {
         <Grid 
         container spacing={3} 
         justifyContent="flex-end"
-        className={classes.tempomedio}
         style={{ 
+          backgroundColor: "white", 
+          border: "solid, 1px", 
+          borderRadius: "5px",
+          borderColor: "#0C2454",
           gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
           width: '40%', // ajuste a largura
+          marginLeft: '70%', // desloca o grid para a esquerda
+          marginTop: '-16.79%',
+          justifyContent: "center",
         }}
         >
           
@@ -872,13 +782,14 @@ const Dashboard = () => {
         <Grid 
           container spacing={3} 
           justifyContent="flex-end"
-          className={classes.graficog}
           style={{ 
             backgroundColor: "white", 
             border: "solid, 1px", 
             borderRadius: "5px",
             borderColor: "#0C2454",
-            
+            width: '77%', // ajuste a largura
+            marginLeft: '-10%',
+            marginTop: '-8%',
           }}
           >
           {/* TOTAL DE ATENDIMENTOS POR USUARIO */}
@@ -892,13 +803,14 @@ const Dashboard = () => {
         <Grid 
           container spacing={3} 
           justifyContent="flex-end"
-          className={classes.graficop}
           style={{ 
             backgroundColor: "white", 
             border: "solid, 1px", 
             borderRadius: "5px",
             borderColor: "#0C2454",
-            
+            width: '40%', // ajuste a largura
+            marginLeft: '70%', // desloca o grid para a esquerda
+            marginTop: '-27.5%',
           }}
           >
 
