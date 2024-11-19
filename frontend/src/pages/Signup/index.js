@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -213,6 +213,7 @@ const SignUp = () => {
                     label="Nome da Empresa"
                   />
                 </Grid>
+
                 <Grid item xs={12}>
                   <Field
                     as={TextField}
@@ -267,7 +268,7 @@ const SignUp = () => {
                     required
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                {/*<Grid item xs={12}>
                   <InputLabel htmlFor="plan-selection">Plano</InputLabel>
                   <Field
                     as={Select}
@@ -286,7 +287,7 @@ const SignUp = () => {
                       </MenuItem>
                     ))}
                   </Field>
-                </Grid> */}
+                </Grid>*/}
               </Grid>
               <Button
                 type="submit"
