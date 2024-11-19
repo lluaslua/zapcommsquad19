@@ -7,7 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
 import { Badge, Collapse, List, Menu, MenuItem } from "@material-ui/core";
-import { Badge, Collapse, List, Menu, MenuItem } from "@material-ui/core";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SyncAltIcon from "@material-ui/icons/SyncAlt";
@@ -29,7 +28,6 @@ import AnnouncementIcon from "@material-ui/icons/Announcement";
 import ForumIcon from "@material-ui/icons/Forum";
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import RotateRight from "@material-ui/icons/RotateRight";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { i18n } from "../translate/i18n";
 import { WhatsAppsContext } from "../context/WhatsApp/WhatsAppsContext";
@@ -53,11 +51,6 @@ import UserModal from "../components/UserModal";
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import CloseIcon from '@material-ui/icons/Close';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import LoggedInLayout from "../layout/index.js";
-import UserModal from "../components/UserModal";
-import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
-import CloseIcon from '@material-ui/icons/Close';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   ListSubheader: {
@@ -65,16 +58,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-15px",
     marginBottom: "-10px",
   },
-  userProfile: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    alignItems: 'center',
-    color: "#FFFFFF",
-  },
-  accountIcon: {
-    color: "#34D3A3",
-    marginRight: theme.spacing(1),
-  }
   userProfile: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -177,30 +160,10 @@ const MainListItems = (props) => {
   const [showOpenAi, setShowOpenAi] = useState(false);
   const [showIntegrations, setShowIntegrations] = useState(false);
   const history = useHistory();
-  const [showIntegrations, setShowIntegrations] = useState(false);
-  const history = useHistory();
   const [showSchedules, setShowSchedules] = useState(false);
   const [showInternalChat, setShowInternalChat] = useState(false);
   const [showExternalApi, setShowExternalApi] = useState(false);
 
-  const [userModalOpen, setUserModalOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-    setMenuOpen(true);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-    setMenuOpen(false);
-  };
-
-  const handleOpenUserModal = () => {
-    setUserModalOpen(true);
-    handleCloseMenu();
-  };
   const [userModalOpen, setUserModalOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -228,15 +191,6 @@ const MainListItems = (props) => {
   
   const [version, setVersion] = useState(false);
   
-  const handleProfileClick = (event) => {
-    event.stopPropagation();
-    setUserModalOpen(true);
-  };
-
-  const handleLogoutClick = (event) => {
-    event.stopPropagation();
-    handleLogout();
-  };
   const handleProfileClick = (event) => {
     event.stopPropagation();
     setUserModalOpen(true);
@@ -443,75 +397,6 @@ const MainListItems = (props) => {
         </>
       )}
 
-      {!collapsed && (
-        <>
-<ListItem
-  className={classes.userProfile}
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "12px", 
-  }}
->
-  <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
-    <ListItemIcon
-      onClick={() => setUserModalOpen(true)}
-      style={{ cursor: "pointer" }}
-    >
-      <AccountCircle
-        style={{ color: "#FFFFFF", width: "40px", height: "40px" }}
-        className={classes.accountIcon}
-      />
-    </ListItemIcon>
-
-    <ListItemText
-      onClick={() => setUserModalOpen(true)}
-      primary={user?.profile}
-      secondary={user?.name}
-      primaryTypographyProps={{
-        style: {
-          color: "#90C2FF",
-          fontWeight: "300",
-          fontSize: "14px",
-          marginLeft: "-10px",
-        },
-      }}
-      secondaryTypographyProps={{
-        style: {
-          color: "#FFFFFF",
-          fontWeight: "600",
-          fontSize: "14px",
-          marginLeft: "-10px"
-        },
-      }}
-      style={{
-        cursor: "pointer",
-        marginLeft: "10px",
-      }}
-    />
-  </div>
-
-  <ExitToAppIcon
-    onClick={handleLogout}
-    style={{
-      color: "#FFFFFF",
-      width: "25px",
-      height: "25px",
-      cursor: "pointer",
-      marginLeft: "10px",
-    }}
-  />
-</ListItem>
-          <UserModal
-            open={userModalOpen}
-            onClose={() => setUserModalOpen(false)}
-            userId={user?.id}
-          />
-          <Divider />
-        </>
-      )}
-
       <Can
         role={user.profile}
         perform="dashboard:view"
@@ -521,19 +406,16 @@ const MainListItems = (props) => {
             primary="Dashboard"
             icon={<DashboardOutlinedIcon style={{color : "#34D3A3"}} />}/>
         )}/>
-            icon={<DashboardOutlinedIcon style={{color : "#34D3A3"}} />}/>
-        )}/>
 
       <ListItemLink
         to="/tickets"
-        primary={i18n.t("mainDrawer.listItems.tickets")}
-        icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}/>
-	  
+        primary={i18n.t("Chamados")}
+        icon={<WhatsAppIcon style={{color : "#34D3A3"}} />}
+      />
 	{showKanban && (  
 	  <ListItemLink
         to="/kanban"
         primary={i18n.t("Kanban")}
-        icon={<TableChartIcon style={{color : "#34D3A3"}} />}/>
         icon={<TableChartIcon style={{color : "#34D3A3"}} />}/>
 	  )}
 
@@ -542,30 +424,25 @@ const MainListItems = (props) => {
         to="/quick-messages"
         primary={i18n.t("mainDrawer.listItems.quickMessages")}
         icon={<FlashOnIcon style={{color : "#34D3A3"}} />}/>
-        icon={<FlashOnIcon style={{color : "#34D3A3"}} />}/>
 	  
 	  <ListItemLink
         to="/todolist"
         primary={i18n.t("Tarefas")}
-        icon={<BorderColorIcon style={{color : "#34D3A3"}} />}/>
         icon={<BorderColorIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/contacts"
         primary={i18n.t("mainDrawer.listItems.contacts")}
         icon={<ContactPhoneOutlinedIcon style={{color : "#34D3A3"}} />}/>
-        icon={<ContactPhoneOutlinedIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/schedules"
         primary={i18n.t("mainDrawer.listItems.schedules")}
         icon={<EventIcon style={{color : "#34D3A3"}} />}/>
-        icon={<EventIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
         to="/tags"
         primary={i18n.t("mainDrawer.listItems.tags")}
-        icon={<LocalOfferIcon style={{color : "#34D3A3"}} />}/>
         icon={<LocalOfferIcon style={{color : "#34D3A3"}} />}/>
 
       <ListItemLink
@@ -576,12 +453,10 @@ const MainListItems = (props) => {
             <ForumIcon />
           </Badge>
         }/>
-        }/>
 
       <ListItemLink
         to="/helps"
         primary={i18n.t("mainDrawer.listItems.helps")}
-        icon={<HelpOutlineIcon style={{color : "#34D3A3"}} />}/>
         icon={<HelpOutlineIcon style={{color : "#34D3A3"}} />}/>
 
       <Can
@@ -731,8 +606,8 @@ const MainListItems = (props) => {
               <Hidden only={['sm', 'xs']}>
                 <img style={{ width: "100%", padding: "10px" }} src={logo} alt="image" />            
               </Hidden> 
-              */}
-              {/* <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
+              
+              <Typography style={{ fontSize: "12px", padding: "10px", textAlign: "right", fontWeight: "bold" }}>
                 {`6.0.0`}
 
               </Typography>*/}
