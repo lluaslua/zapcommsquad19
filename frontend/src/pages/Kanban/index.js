@@ -12,8 +12,15 @@ import { BorderColor, BorderTop } from "@material-ui/icons";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    alignItems: "center",
+    flexDirection: "column",
     padding: theme.spacing(1),
+    height: '100dvh',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(0.5),
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(1.5),
+    },
   },
   button: {
     background: "#0C2C54",
@@ -23,10 +30,15 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     borderRadius: "5px",
   },
-  title: {
-    backgroundColor: "#0C2454",
-  },
-  
+  pageTitle: {
+    color: "#0C2454",
+    padding: "-40 20px",
+    margin: "0 0 20px 0",
+    fontFamily: "Nunito, sans-serif",
+    fontSize: "24px",
+    fontWeight: "600",
+    transform: "translateY(0)",
+  }
 }));
 
 const Kanban = () => {
@@ -653,24 +665,25 @@ const Kanban = () => {
     );
   };
 
-    return (
-      <div className={classes.root}>
-        <Board
-          data={file}
-          onCardMoveAcrossLanes={handleCardMove}
-          style={{
-            backgroundColor: '#E3E7ED',
-            marginTop: "20px",
-            marginColor: "#0C2454",
-            padding: "10px",
-            borderRadius: "10px",
-          }}
-          components={{
-            LaneHeader: CustomLaneHeader,
-          }}
-        />
+  return (
+    <div className={classes.root}>
+      <div className={classes.pageTitle} style={{ marginTop: 0 }}>
+        Kanban
       </div>
-    );
-  };
-  
-  export default Kanban;
+      <Board
+        data={file}
+        onCardMoveAcrossLanes={handleCardMove}
+        style={{
+          backgroundColor: '#E3E7ED',
+          padding: "10px",
+          borderRadius: "10px",
+        }}
+        components={{
+          LaneHeader: CustomLaneHeader,
+        }}
+      />
+    </div>
+  );
+};
+
+export default Kanban;

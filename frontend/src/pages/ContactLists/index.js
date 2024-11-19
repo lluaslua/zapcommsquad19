@@ -219,12 +219,12 @@ const ContactLists = () => {
       />
       <MainHeader>
         <Grid style={{ width: "99.6%" }} container>
-          <Grid xs={12} sm={8} item>
+          <Grid xs={12} sm={4} item>
             <Title>{i18n.t("contactLists.title")}</Title>
           </Grid>
-          <Grid xs={12} sm={4} item>
-            <Grid spacing={2} container>
-              <Grid xs={7} sm={6} item>
+          <Grid xs={12} sm={8} item>
+            <Grid style={{paddingTop:"36px"}} wrap="nowrap"  alignItems="center" justifyContent="flex-end" container>
+              <Grid style={{paddingLeft:"52px", paddingRight:"20px"}}item>
                 <TextField
                   variant="outlined"
                   size="small"
@@ -234,18 +234,19 @@ const ContactLists = () => {
                   value={searchParam}
                   onChange={handleSearch}
                   InputProps={{
-                    style:{borderRadius:"20px"},
+                    style:{borderRadius:"15px"},
                     endAdornment: (
                       <InputAdornment position="end">
-                        <SearchIcon style={{ color: "gray" }} />
+                        <SearchIcon style={{ color: "gray",fontFamily: 'Nunito, Arial, sans-serif' }} />
                       </InputAdornment>
                     ),
                   }}
+                  style={{ width: "220px" }}
                 />
               </Grid>
-              <Grid xs={5} sm={6} item>
+              <Grid item>
                 <Button
-                  style={{color:"white", borderRadius:"8px"}}
+                  style={{color:"white", borderRadius:"8px",fontFamily: 'Nunito, Arial, sans-serif'}}
                   fullWidth
                   variant="contained"
                   color="primary"
@@ -266,13 +267,13 @@ const ContactLists = () => {
         <Table size="small">
           <TableHead>
             <TableRow style={{ color: "white", backgroundColor: "#0C2454"}}>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px",fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("contactLists.table.name")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454",fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("contactLists.table.contacts")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px" }}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"10px", borderBottomRightRadius:"10px",fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("contactLists.table.actions")}
               </TableCell>
             </TableRow>

@@ -230,12 +230,12 @@ const Quickemessages = () => {
       />
       <MainHeader>
         <Grid style={{ width: "99.6%" }} container>
-          <Grid xs={12} sm={8} item>
+          <Grid xs={12} sm={4} item>
             <Title>{i18n.t("quickMessages.title")}</Title>
           </Grid>
-          <Grid xs={12} sm={4} item>
-            <Grid spacing={9} container>
-              <Grid xs={6} sm={6} item>
+          <Grid xs={12} sm={8} item>
+            <Grid style={{paddingTop:"36px"}} wrap="nowrap"  alignItems="center" justifyContent="flex-end" container>
+              <Grid item style={{paddingLeft:"52px", paddingRight:"20px"}}>
                 <TextField
                    variant="outlined"
                   size="small"
@@ -246,7 +246,7 @@ const Quickemessages = () => {
                   onChange={handleSearch}
                   InputProps={{
                     style:{
-                      borderRadius:"15px"},
+                      borderRadius:"15px", fontFamily: 'Nunito, Arial, sans-serif' },
                     endAdornment: (
                       <InputAdornment position="end">
                         <SearchIcon style={{ color: "gray" }} />
@@ -256,13 +256,13 @@ const Quickemessages = () => {
                   style={{ width: "220px" }}
                 />
               </Grid>
-              <Grid xs={6} sm={6} item>
+              <Grid item>
                 <Button
                   fullWidth
                   variant="contained"
                   color="primary"
                   onClick={handleOpenQuickMessageDialog}
-                  style={{color:"white",borderRadius:'8px'}}
+                  style={{color:"white",borderRadius:'8px', fontFamily: 'Nunito, Arial, sans-serif' }}
                 >
                   {i18n.t("quickMessages.buttons.add")}
                 </Button>
@@ -279,9 +279,9 @@ const Quickemessages = () => {
         <Table size="small">
           <TableHead>
             <TableRow style={{borderRadius: '10px',backgroundColor: '#0C2454'}}>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("quickMessages.table.shortcode")}</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("quickMessages.table.mediaName")}</TableCell>       
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}>{i18n.t("quickMessages.table.actions")}</TableCell>
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px', fontFamily: 'Nunito, Arial, sans-serif'}}>{i18n.t("quickMessages.table.shortcode")}</TableCell>
+              <TableCell align="center"style={{color: '#FFFFFF', fontFamily: 'Nunito, Arial, sans-serif'}}>{i18n.t("quickMessages.table.mediaName")}</TableCell>       
+              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px', fontFamily: 'Nunito, Arial, sans-serif'}}>{i18n.t("quickMessages.table.actions")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
