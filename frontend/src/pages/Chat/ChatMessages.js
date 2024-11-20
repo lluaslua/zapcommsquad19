@@ -57,13 +57,15 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px",
     position: "relative",
     backgroundColor: "#0C2C4C",
-    maxWidth: 300,
+    maxWidth: 400,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
     border: "1px solid rgba(0, 0, 0, 0.12)",
     fontSize: "1rem",
     color: "white",
     fontWeight: "300px",
+    wordBreak: "break-word", // Corrigido
+    overflowWrap: "break-word",
   },
   boxRight: {
     padding: "10px 10px 5px",
@@ -71,12 +73,14 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     backgroundColor: "#34D3A3", //DARK MODE PLW DESIGN//
     textAlign: "right",
-    maxWidth: 300,
+    maxWidth: 400,
     borderRadius: 10,
     borderBottomRightRadius: 0,
     border: "1px solid rgba(0, 0, 0, 0.12)",
     fontSize: "1rem",
     color: "white",
+    wordBreak: "break-word", // Corrigido
+    overflowWrap: "break-word",
   },
   contato: {
     backgroundColor: "#0C2C4C",
@@ -145,25 +149,31 @@ export default function ChatMessages({
             if (item.senderId === user.id) {
               return (
                 <Box key={key} className={classes.boxRight}>
-                  <Typography variant="subtitle2">
+                  {/* <Typography variant="subtitle2">
   
+                  </Typography> */}
+                  <Typography style={{maxWidth: "380px", wordwrap: "break-word"}}>
+                   {item.message}
                   </Typography>
-                  {item.message}
-                  <Typography variant="caption" display="block">
+             
+                  {/* <Typography variant="caption" display="block">
 
-                  </Typography>
+                  </Typography> */}
                 </Box>
               );
             } else {
               return (
                 <Box key={key} className={classes.boxLeft}>
-                  <Typography variant="subtitle2">
+                  {/* <Typography variant="subtitle2">
 
+                  </Typography> */}
+                  <Typography style={{maxWidth: "380px", wordwrap: "break-word"}}>
+                    {item.message}
                   </Typography>
-                  {item.message}
-                  <Typography variant="caption" display="block">
+                  
+                  {/* <Typography variant="caption" display="block">
  
-                  </Typography>
+                  </Typography> */}
                 </Box>
               );
             }
