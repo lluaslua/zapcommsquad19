@@ -290,7 +290,6 @@ const QuickMessageDialog = ({ open, onClose, quickemessageId, reload }) => {
                                         color="primary"
                                         onClick={() => attachmentFile.current.click()}
                                         disabled={isSubmitting}
-                                        variant="outlined"
                                     >
                                         {i18n.t("quickMessages.buttons.attach")}
                                     </Button>
