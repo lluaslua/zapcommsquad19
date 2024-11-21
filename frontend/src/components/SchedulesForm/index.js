@@ -88,13 +88,13 @@ function SchedulesForm(props) {
                             >
                             {({ field }) => (
                               <NumberFormat
-                                label="Hora de Inicial"
+                                label="Horário Inicial"
                                 {...field}
                                 variant="outlined"
                                 margin="dense"
                                 customInput={TextField}
                                 format="##:##"
-                                style={{ marginRight: "3.2%", width: "30%" }}
+                                style={{ marginRight: "3.2%", width: "30%"}}
                               />
                             )}
                           </FastField>
@@ -103,7 +103,7 @@ function SchedulesForm(props) {
                             >
                             {({ field }) => (
                               <NumberFormat
-                                label="Hora de Final"
+                                label="Horário Final"
                                 {...field}
                                 variant="outlined"
                                 margin="dense"
@@ -121,8 +121,9 @@ function SchedulesForm(props) {
               </Grid>
             )}
           ></FieldArray>
-          <div style={{ textAlign: "center", marginTop: "2%" }} className={classes.buttonContainer}>
+          <div style={{ textAlign: "right", marginTop: "2%"}} className={classes.buttonContainer}>
             <ButtonWithSpinner
+              style={{ fontFamily: "Nunito, sans-serif", }}
               loading={loading}
               type="submit"
               color="primary"

@@ -228,9 +228,8 @@ const ModalUsers = ({ open, onClose, userId, companyId }) => {
               <DialogActions>
                 <Button
                   onClick={handleClose}
-                  color="secondary"
+                  color="primary" //padronização
                   disabled={isSubmitting}
-                  variant="outlined"
                 >
                   {i18n.t("userModal.buttons.cancel")}
                 </Button>

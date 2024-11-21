@@ -294,9 +294,8 @@ const UserModal = ({ open, onClose, userId }) => {
 							<DialogActions>
 								<Button
 									onClick={handleClose}
-									color="secondary"
+									color="primary"
 									disabled={isSubmitting}
-									variant="outlined"
 								>
 									{i18n.t("userModal.buttons.cancel")}
 								</Button>

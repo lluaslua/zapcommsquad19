@@ -317,17 +317,17 @@ const Contacts = () => {
         <Table size="small">
           <TableHead>
             <TableRow  style={{ backgroundColor: "#0C2454"}}>
-              {<TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"8px", borderBottomLeftRadius:"8px" }}></TableCell> /*não remover a tablecell vazia pois da erro no espaçaçamento */}
-              <TableCell align="left" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              {<TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopLeftRadius:"8px", borderBottomLeftRadius:"8px", fontFamily: 'Nunito, Arial, sans-serif'  }}></TableCell> /*não remover a tablecell vazia pois da erro no espaçaçamento */}
+              <TableCell align="left" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Nome")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Número")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Email")}
               </TableCell>
-              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"8px", borderBottomRightRadius:"8px"}}>
+              <TableCell align="center" style={{ color: "white", backgroundColor: "#0C2454", borderTopRightRadius:"8px", borderBottomRightRadius:"8px", fontFamily: 'Nunito, Arial, sans-serif' }}>
                 {i18n.t("Ações")}
               </TableCell>
             </TableRow>
@@ -339,10 +339,10 @@ const Contacts = () => {
                   <TableCell style={{ paddingRight: 0 }}>
                     {<Avatar src={contact.profilePicUrl} />}
                   </TableCell>
-                  <TableCell>{contact.name}</TableCell>
-                  <TableCell align="center">{contact.number}</TableCell>
-                  <TableCell align="center">{contact.email}</TableCell>
-                  <TableCell align="center">
+                  <TableCell style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{contact.name}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{contact.number}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>{contact.email}</TableCell>
+                  <TableCell align="center" style={{fontFamily: 'Nunito, Arial, sans-serif' }}>
                     <IconButton
                       size="small"
                       onClick={() => {

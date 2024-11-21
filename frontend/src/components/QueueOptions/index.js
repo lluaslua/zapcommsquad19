@@ -132,6 +132,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
             size="small"
             className={classes.input}
             placeholder="Título da opção"
+            style={{ fontFamily: "Nunito, sans-serif", }}
           />
           {option.edition && (
             <>
@@ -160,7 +161,7 @@ export function QueueOptionStepper({ queueId, options, updateOptions }) {
     }
     return (
       <>
-        <Typography>
+        <Typography style={{ fontFamily: "Nunito, sans-serif", }}>
           {option.title !== "" ? option.title : "Título não definido"}
           <IconButton
             variant="outlined"
@@ -326,14 +327,14 @@ export function QueueOptions({ queueId }) {
   return (
     <div className={classes.root}>
       <br />
-      <Typography>
+      <Typography style={{ fontFamily: "Nunito, sans-serif", }}>
         Opções
         <Button
           color="primary"
           size="small"
           onClick={addOption}
           startIcon={<AddIcon />}
-          style={{ marginLeft: 25 }}
+          style={{ marginLeft: 25,  fontFamily: "Nunito, sans-serif", }}
           variant="contained" //padronização
         >
           Adicionar
