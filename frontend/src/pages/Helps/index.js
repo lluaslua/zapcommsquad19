@@ -238,7 +238,7 @@ const Helps = () => {
         activeContentId === record.id && (
           <section key={key} className="content-item active" style={{width: "100%", justifyContent: "center"}}>
             <Typography style={{margin: "auto"}} variant="h4" className={classes.titleItem}>{record.title}</Typography>
-            <Typography style={{fontSize: "1.8vh"}} variant="text" className={classes.videoDescription}>{record.description}</Typography>
+            <Typography style={{fontSize: "1rem"}} variant="text" className={classes.videoDescription}>{record.description}</Typography>
             <div style={{display: "flex", justifyContent: "center", alignContent: "center", marginTop: "30px"}}>
               <img
                 src={`https://img.youtube.com/vi/${getYouTubeVideoId(record.video)}/mqdefault.jpg`}
