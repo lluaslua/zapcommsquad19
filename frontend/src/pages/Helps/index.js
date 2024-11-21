@@ -273,8 +273,8 @@ const Helps = () => {
           flexDirection: "column",
           alignItems: "center",
           borderTopLeftRadius: "20px", borderTopRightRadius: "20px"}}>
-          <Typography style={{fontWeight: "bold", fontSize: "3vh", display: "block", textAlign: "left", paddingLeft: "1rem", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
-          <Typography style={{fontWeight: "500px", fontSize: "1.8vh", display: "block", textAlign: "center", paddingLeft: "1rem", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
+          <Typography style={{fontWeight: "bold", fontSize: "1.5rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
+          <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "center", paddingLeft: "1rem", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
           <TextField
             variant="standard"
             className={classes.searchInput}
