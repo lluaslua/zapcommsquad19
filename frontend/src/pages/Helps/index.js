@@ -109,7 +109,7 @@ const useStyles = makeStyles(theme => ({
   videoThumbnail: {
     width: '60%',
     objectFit: 'cover',
-    borderRadius: `${theme.spacing(1)}px ${theme.spacing(1)}px 0 0`,
+    borderRadius: '15px',
   },
   videoTitle: {
     marginTop: theme.spacing(1),
