@@ -141,6 +141,26 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
 }));
+const getYouTubeVideoId = (url) => {
+  try {
+    const urlObj = new URL(url);
+    if (urlObj.hostname === "youtu.be") {
+      // Caso seja um link encurtado, retorna o path após "/"
+      return urlObj.pathname.slice(1);
+    } else if (urlObj.hostname.includes("youtube.com")) {
+      // Caso seja um link típico do YouTube, retorna o parâmetro "v"
+      return urlObj.searchParams.get("v");
+    }
+    return null; // Retorna null se não for um link válido do YouTube
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    return null;
+  }
+};
+
+// Exemplos de uso:
+console.log(getYouTubeVideoId("https://www.youtube.com/watch?v=dQw4w9WgXcQ")); // "dQw4w9WgXcQ"
+console.log(getYouTubeVideoId("https://youtu.be/dQw4w9WgXcQ")); // "dQw4w9WgXcQ"
 
 const Helps = () => {
   const classes = useStyles();
@@ -221,10 +241,11 @@ const Helps = () => {
             <Typography style={{fontSize: "1.8vh"}} variant="text" className={classes.videoDescription}>{record.description}</Typography>
             <div style={{display: "flex", justifyContent: "center", alignContent: "center", marginTop: "30px"}}>
               <img
-                src={`https://img.youtube.com/vi/${record.video}/mqdefault.jpg`}
+                src={`https://img.youtube.com/vi/${getYouTubeVideoId(record.video)}/mqdefault.jpg`}
                 alt="Thumbnail"
                 className={classes.videoThumbnail}
-                onClick={() => openVideoModal(record.video)}
+                onClick={() => openVideoModal(getYouTubeVideoId(record.video)
+                )}
                 style={{margin: "auto"}}
               /> 
             </div>
