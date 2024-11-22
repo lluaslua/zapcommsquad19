@@ -90,6 +90,18 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
+  "@media (max-width: 600px)": {
+    mainPaper: {
+      padding: theme.spacing(0.5),
+    },
+    tableCell: {
+      fontSize: "0.8rem",
+    },
+    button: {
+      fontSize: "0.75rem",
+      padding: theme.spacing(0.5),
+    },
+  },
 }));
 
 const Tags = () => {
