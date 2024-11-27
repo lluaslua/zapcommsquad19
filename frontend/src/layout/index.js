@@ -33,7 +33,6 @@ import toastError from "../errors/toastError";
 import AnnouncementsPopover from "../components/AnnouncementsPopover";
 
 import logo from "../assets/logo.png";
-import logoclara from "../assets/logoclara.png";
 import { SocketContext } from "../context/Socket/SocketContext";
 import ChatPopover from "../pages/Chat/ChatPopover";
 
@@ -46,26 +45,6 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    height: "100dvh",
-    [theme.breakpoints.down("sm")]: {
-      height: "calc(100dvh - 56px)",
-    },
-    backgroundColor: theme.palette.fancyBackground,
-    '& .MuiButton-outlinedPrimary': {
-      color: theme.mode === 'light' ? '#FFF' : '#FFF',
-	  //backgroundColor: theme.mode === 'light' ? '#682ee2' : '#682ee2',
-	backgroundColor: theme.mode === 'light' ? theme.palette.primary.main : '#1c1c1c',
-      //border: theme.mode === 'light' ? '1px solid rgba(0 124 102)' : '1px solid rgba(255, 255, 255, 0.5)',
-    },
-    '& .MuiTab-textColorPrimary.Mui-selected': {
-      color: theme.mode === 'light' ? 'Primary' : '#FFF',
-    }
-  },
-  avatar: {
-    width: "100%",
-  },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
     color: theme.palette.dark.main,
@@ -105,25 +84,38 @@ const useStyles = makeStyles((theme) => ({
   menuButtonHidden: {
     display: "none",
   },
-  title: {
-    flexGrow: 1,
-    fontSize: 14,
-    color: "white",
-  },
+
   drawerPaper: {
-    background: "#0C2C54",
-    color : "#FFFFFF",
+    background: "#0C2C54", // Fundo azul desejado
+    color: "#FFFFFF",
     position: "relative",
-    whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
+      width: "70%",
     },
-    ...theme.scrollbarStylesSoft
+    overflow: "hidden", // Impede vazamentos
+    boxShadow: "none", // Remove sombras desnecessárias
+  },
+  
+  drawerPaperClose: {
+    background: "#0C2C54", // Mantém o fundo consistente
+    color: "#FFFFFF", // Cor do texto
+    overflow: "hidden",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7), // Largura reduzida para estado fechado
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(9),
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: 0, // Esconde completamente em dispositivos menores
+    },
   },
   drawerPaperClose: {
     overflowX: "hidden",
@@ -131,14 +123,17 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    width: theme.spacing(7), // Largura reduzida para desktops
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9),
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    }
+      width: 0, // Esconde completamente em telas pequenas
+    },
+    background: "transparent", // Remove o fundo azul no estado fechado
+    boxShadow: "none", // Remove sombras no estado fechado
   },
+  
   appBarSpacer: {
     minHeight: "48px",
   },
@@ -163,16 +158,16 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
-  NotificationsPopOver: {   
+  NotificationsPopOver: {
     // color: theme.barraSuperior.secondary.main,
   },
   logo: {
-    width: "80%",
+    width: "0%",
     height: "auto",
     maxWidth: 180,
     [theme.breakpoints.down("sm")]: {
       width: "auto",
-      height: "80%",
+      height: "0%",
       maxWidth: 180,
     },
     logo: theme.logo
@@ -336,21 +331,27 @@ const LoggedInLayout = ({ children, themeToggle }) => {
 
   return (
     <div className={classes.root}>
-      <Drawer
-        variant={drawerVariant}
-        className={drawerOpen ? classes.drawerPaper : classes.drawerPaperClose}
-        classes={{
-          paper: clsx(
-            classes.drawerPaper,
-            !drawerOpen && classes.drawerPaperClose
-          ),
-        }}
-        open={drawerOpen}
-      >
+<Drawer
+  variant={drawerVariant}
+  open={drawerOpen}
+  onClose={() => setDrawerOpen(false)}
+  classes={{
+    paper: clsx(
+      classes.drawerPaper,
+      !drawerOpen && classes.drawerPaperClose
+    ),
+  }}
+  PaperProps={{
+    style: {
+      backgroundColor: drawerOpen ? "#0C2C54" : "transparent", // Fundo azul só aparece quando o Drawer está aberto
+      transition: "background-color 0.3s ease", // Suaviza a transição do fundo
+    },
+  }}
+>
         <div className={classes.toolbarIcon}>
-          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
+          <img src={logo} className={classes.logo} alt="logo" />
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <MenuIcon style={{color : "#FFFFFF"}} />
+            <ChevronLeftIcon />
           </IconButton>
         </div>
         <Divider />
@@ -366,10 +367,10 @@ const LoggedInLayout = ({ children, themeToggle }) => {
       />
       <AppBar
         position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
+        className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
         color="primary"
       >
-        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
+        <Toolbar variant="dense" className={classes.toolbar}>
           <IconButton
             edge="start"
             variant="contained"
@@ -380,17 +381,17 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               drawerOpen && classes.menuButtonHidden
             )}
           >
-            <MenuIcon style={{color : "#FFFFFF"}} />
+            <MenuIcon />
           </IconButton>
 
-          {/*<Typography
+          <Typography
             component="h2"
             variant="h6"
             color="inherit"
             noWrap
             className={classes.title}
           >
-            {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( 
+            {/* {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( */}
             {greaterThenSm && user?.profile === "admin" && user?.company?.dueDate ? (
               <>
                 Olá <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>! (Ativo até {dateToClient(user?.company?.dueDate)})
@@ -400,30 +401,30 @@ const LoggedInLayout = ({ children, themeToggle }) => {
                 Olá  <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>!
               </>
             )}
-          </Typography>*/}
+          </Typography>
 
-          {/*<IconButton edge="start" onClick={toggleColorMode}>
+          <IconButton edge="start" onClick={toggleColorMode}>
             {theme.mode === 'dark' ? <Brightness7Icon style={{ color: "white" }} /> : <Brightness4Icon style={{ color: "white" }} />}
-          </IconButton>*/}
+          </IconButton>
 
-          {/*<NotificationsVolume
+          <NotificationsVolume
             setVolume={setVolume}
             volume={volume}
-          />*/}
+          />
 
-          {/*<IconButton
+          <IconButton
             onClick={handleRefreshPage}
             aria-label={i18n.t("mainDrawer.appBar.refresh")}
             color="inherit"
           >
             <CachedIcon style={{ color: "white" }} />
-          </IconButton>*/}
+          </IconButton>
 
-          {/*{user.id && <NotificationsPopOver volume={volume} />}*/}
+          {user.id && <NotificationsPopOver volume={volume} />}
 
-          {/*<AnnouncementsPopover />*/}
+          <AnnouncementsPopover />
 
-          {/*<ChatPopover />*/}
+          <ChatPopover />
 
           <div>
             <IconButton
@@ -432,7 +433,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
               aria-haspopup="true"
               onClick={handleMenu}
               variant="contained"
-              style={{color : "#34D3A3"}}
+              style={{ color: "white" }}
             >
               <AccountCircle />
             </IconButton>
