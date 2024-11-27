@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   Avatar,
   Button,
+  Grid,
   IconButton,
   InputAdornment,
   Paper,
@@ -245,8 +246,14 @@ const QueueIntegration = () => {
         integrationId={selectedIntegration && selectedIntegration.id}
       />
       <MainHeader>
+        <Grid container style={{width: '100%'}}>
+        <Grid xs={12} sm={8} item>
         <Title>{i18n.t("queueIntegration.title")} ({queueIntegration.length})</Title>
+        </Grid>
+        <Grid xs={12} sm={4} item>
         <MainHeaderButtonsWrapper>
+        <Grid spacing={2} container>
+        <Grid item xs={7} sm={6} /*md={12}*/>
           <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
@@ -266,6 +273,8 @@ const QueueIntegration = () => {
               ),
             }}
           />
+          </Grid>
+          <Grid item xs={8} sm={4}/* md={8}*/>
           <Button
             variant="contained"
             color="primary"
@@ -274,7 +283,11 @@ const QueueIntegration = () => {
           >
             {i18n.t("queueIntegration.buttons.add")}
           </Button>
+          </Grid>
+          </Grid>
         </MainHeaderButtonsWrapper>
+        </Grid>
+        </Grid>
       </MainHeader>
       <Paper
         className={classes.mainPaper}
