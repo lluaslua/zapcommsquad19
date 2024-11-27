@@ -232,6 +232,8 @@ return (
       <MainHeader>
         <Title>{i18n.t("tags.title")}</Title>
         <MainHeaderButtonsWrapper>
+        <Grid container spacing={2}>
+        <Grid item xs={7} sm={6} md={7}>
         <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
@@ -251,6 +253,8 @@ return (
               ),
             }}
           />
+          </Grid>
+          <Grid item xs={12} sm={4} md={3}>
           <Button
             variant="contained"
             color="primary"
@@ -259,6 +263,8 @@ return (
           >
             {i18n.t("tags.buttons.add")}
           </Button>
+          </Grid>
+          </Grid>
         </MainHeaderButtonsWrapper>
       </MainHeader>
       <Paper
@@ -269,7 +275,7 @@ return (
           borderRadius: '5px'
         }}
       >
-        <div style={{ overflowX: "auto" }}>
+        {/*<div style={{ overflowX: "auto" }}>*/}
         <Table size="small">
           <TableHead>
             <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
@@ -322,7 +328,7 @@ return (
             </>
           </TableBody>
         </Table>
-        </div>
+        {/*</div>*/}
       </Paper>
     </MainContainer>
   );
