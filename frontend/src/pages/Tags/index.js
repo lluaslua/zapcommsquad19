@@ -26,7 +26,7 @@ import MainContainer from "../../components/MainContainer";
 import MainHeader from "../../components/MainHeader";
 import MainHeaderButtonsWrapper from "../../components/MainHeaderButtonsWrapper";
 import Title from "../../components/Title";
-
+import Grid from "@material-ui/core/Grid";
 import api from "../../services/api";
 import { i18n } from "../../translate/i18n";
 import TableRowSkeleton from "../../components/TableRowSkeleton";
@@ -258,7 +258,7 @@ return (
             style={{borderRadius:'8px'}}
           >
             {i18n.t("tags.buttons.add")}
-          </Button>		  
+          </Button>
         </MainHeaderButtonsWrapper>
       </MainHeader>
       <Paper
@@ -269,6 +269,7 @@ return (
           borderRadius: '5px'
         }}
       >
+        <div style={{ overflowX: "auto" }}>
         <Table size="small">
           <TableHead>
             <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
@@ -321,6 +322,7 @@ return (
             </>
           </TableBody>
         </Table>
+        </div>
       </Paper>
     </MainContainer>
   );
