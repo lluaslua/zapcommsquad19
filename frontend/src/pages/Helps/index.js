@@ -12,14 +12,22 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 const useStyles = makeStyles(theme => ({
+  divprincipal: {
+    margin: "auto",
+      display: "flex",
+      width: "90%",
+      fontFamily: "Nunito, Arial, sans-serif",
+      gap: "1.2rem",
+  },
   sidebarContainer: {
     width: '28%',
-    maxHeight: "100vh",
+    // maxHeight: "100vh",
+    
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
     boxSizing: "border-box",
-    flexShrink: "0"
+    flexShrink: "0",
 
   },
   searchInput: {
@@ -40,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flex: 1,
     flexShrink: "0",
-    height: "calc(62vh + 7px)",
+    height: "calc(100vh - 365px)",
     backgroundColor: "#EFF3F6",
     "&::-webkit-scrollbar": {
       width: "7px",
@@ -263,13 +271,7 @@ const Helps = () => {
   );
 
   return (
-    <div style={{
-      margin: "auto",
-      display: "flex",
-      width: "90%",
-      fontFamily: "Nunito, Arial, sans-serif",
-      gap: "1.2rem"
-    }}> 
+    <div className={classes.divprincipal}>  
       <aside className={classes.sidebarContainer} style={{maxWidth: "400px", minWidth:"375px", display: "block", justifyContent: "center", maxHeight: "200px"}}>
         <MainHeader style={{display: "flex", flexDirection: "column"}}>
           <Typography style={{fontWeight: "bold", fontSize: "1.875rem", paddingBottom: "60px"}} variant="text">{i18n.t("helps.title")}</Typography>
