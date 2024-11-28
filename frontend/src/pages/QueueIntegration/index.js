@@ -247,46 +247,46 @@ const QueueIntegration = () => {
       />
       <MainHeader>
         <Grid container style={{width: '100%'}}>
-        <Grid xs={12} sm={8} item>
-        <Title>{i18n.t("queueIntegration.title")} ({queueIntegration.length})</Title>
-        </Grid>
-        <Grid xs={12} sm={4} item>
-        <MainHeaderButtonsWrapper>
-        <Grid spacing={2} container>
-        <Grid item xs={7} sm={6} /*md={12}*/>
-          <TextField
-            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
-            color='primary'
-            variant="outlined"
-            type="search"
-            size="small"
-            value={searchParam}
-            onChange={handleSearch}
-            InputProps={{
-              style: {
-                borderRadius: '20px'
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon style={{ color: "gray"}}/>
-                </InputAdornment>
-              ),
-            }}
-          />
+          <Grid xs={12} sm={4} md={7} item>
+            <Title>{i18n.t("queueIntegration.title")} ({queueIntegration.length})</Title>
           </Grid>
-          <Grid item xs={8} sm={4}/* md={8}*/>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleOpenUserModal}
-            style={{borderRadius:'8px'}}
-          >
-            {i18n.t("queueIntegration.buttons.add")}
-          </Button>
+          <Grid xs={12} sm={4} item>
+            <MainHeaderButtonsWrapper>
+              <Grid spacing={2} container>
+                <Grid item xs={7} sm={12} md={6}>
+                  <TextField
+                    placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+                    color='primary'
+                    variant="outlined"
+                    type="search"
+                    size="small"
+                    value={searchParam}
+                    onChange={handleSearch}
+                    InputProps={{
+                      style: {
+                        borderRadius: '20px'
+                      },
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SearchIcon style={{ color: "gray"}}/>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={8} sm={4} md={6}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleOpenUserModal}
+                    style={{borderRadius:'8px'}}
+                  >
+                    {i18n.t("queueIntegration.buttons.add")}
+                  </Button>
+                </Grid>
+              </Grid>
+            </MainHeaderButtonsWrapper>
           </Grid>
-          </Grid>
-        </MainHeaderButtonsWrapper>
-        </Grid>
         </Grid>
       </MainHeader>
       <Paper
@@ -294,61 +294,63 @@ const QueueIntegration = () => {
         variant="outlined"
         onScroll={handleScroll}
       >
-        <Table size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox" style={{
-                backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
-              </TableCell>
-              <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.id")}</TableCell>
-              <TableCell align="center" style={{
-                backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}
-              </TableCell>
-              <TableCell style={{
-                backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <>
-              {queueIntegration.map((integration) => (
-                <TableRow key={integration.id}>
-                  <TableCell >
-                    {integration.type === "dialogflow" && (<Avatar 
-                      src={dialogflow} className={classes.avatar} />)}
-                    {integration.type === "n8n" && (<Avatar
-                      src={n8n} className={classes.avatar} />)}
-                    {integration.type === "webhook" && (<Avatar
-                      src={webhooks} className={classes.avatar} />)}
-                    {integration.type === "typebot" && (<Avatar
-                      src={typebot} className={classes.avatar} />)}
-                  </TableCell>
+        <div style={{ overflowX: "auto" }}>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell padding="checkbox" style={{
+                  backgroundColor: '#0C2454', color:'white', borderRadius: '5px 0px 0px 5px'}}>
+                </TableCell>
+                <TableCell align="center" style={{backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.id")}</TableCell>
+                <TableCell align="center" style={{
+                  backgroundColor: '#0C2454', color:'white'}}>{i18n.t("queueIntegration.table.name")}
+                </TableCell>
+                <TableCell style={{
+                  backgroundColor: '#0C2454', color:'white', borderRadius: '0px 5px 5px 0px'}}></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <>
+                {queueIntegration.map((integration) => (
+                  <TableRow key={integration.id}>
+                    <TableCell >
+                      {integration.type === "dialogflow" && (<Avatar 
+                        src={dialogflow} className={classes.avatar} />)}
+                      {integration.type === "n8n" && (<Avatar
+                        src={n8n} className={classes.avatar} />)}
+                      {integration.type === "webhook" && (<Avatar
+                        src={webhooks} className={classes.avatar} />)}
+                      {integration.type === "typebot" && (<Avatar
+                        src={typebot} className={classes.avatar} />)}
+                    </TableCell>
 
-                  <TableCell align="center">{integration.id}</TableCell>
-                  <TableCell align="center">{integration.name}</TableCell>
-                  <TableCell align="center">
-                    <IconButton
-                      size="small"
-                      onClick={() => handleEditIntegration(integration)}
-                    >
-                      <Edit color="tertiary" />
-                    </IconButton>
+                    <TableCell align="center">{integration.id}</TableCell>
+                    <TableCell align="center">{integration.name}</TableCell>
+                    <TableCell align="center">
+                      <IconButton
+                        size="small"
+                        onClick={() => handleEditIntegration(integration)}
+                      >
+                        <Edit color="tertiary" />
+                      </IconButton>
 
-                    <IconButton
-                      size="small"
-                      onClick={(e) => {
-                        setConfirmModalOpen(true);
-                        setDeletingUser(integration);
-                      }}
-                    >
-                      <DeleteOutline color="tertiary" />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-              {loading && <TableRowSkeleton columns={7} />}
-            </>
-          </TableBody>
-        </Table>
+                      <IconButton
+                        size="small"
+                        onClick={(e) => {
+                          setConfirmModalOpen(true);
+                          setDeletingUser(integration);
+                        }}
+                      >
+                        <DeleteOutline color="tertiary" />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {loading && <TableRowSkeleton columns={7} />}
+              </>
+            </TableBody>
+          </Table>
+        </div>
       </Paper>
     </MainContainer>
   );
