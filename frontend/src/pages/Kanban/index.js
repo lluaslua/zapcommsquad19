@@ -125,7 +125,8 @@ const Kanban = () => {
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 justifyContent: "space-between",
                 maxWidth: "100%",
-              }}>
+              }}
+              className={`${classes.responsiveCard}`}>
               <div
                 style={{
                   backgroundColor: "#1FA3C0",
@@ -135,7 +136,7 @@ const Kanban = () => {
                   marginRight: "10px",
                 }}>
               </div>
-              <div style={{ flex: 1, maxWidth: "70%" }}>
+              <div style={{ flex: 1, maxWidth: "70%" }} className={`${classes.responsiveCardContent}`}>
                 <p
                   style={{
                     color: "#000000",
@@ -161,7 +162,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "flex-end" }} className={`${classes.responsiveCardActions}`}>
                 <button
                   style={{
                     backgroundColor: "#0C2C54",
@@ -207,7 +208,8 @@ const Kanban = () => {
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 justifyContent: "space-between",
                 maxWidth: "100%",
-              }}>
+              }}
+              className={`${classes.responsiveCard}`}>
               <div
                 style={{
                   backgroundColor: "#E5C418",
@@ -217,7 +219,7 @@ const Kanban = () => {
                   marginRight: "10px",
                 }}>
               </div>
-              <div style={{ flex: 1, maxWidth: "70%" }}>
+              <div style={{ flex: 1, maxWidth: "70%" }} className={`${classes.responsiveCardContent}`}>
                 <p
                   style={{
                     color: "#000000",
@@ -243,7 +245,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "flex-end" }} className={`${classes.responsiveCardActions}`}>
                 <button
                   style={{
                     backgroundColor: "#0C2C54",
@@ -289,7 +291,8 @@ const Kanban = () => {
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 justifyContent: "space-between",
                 maxWidth: "100%",
-              }}>
+              }}
+              className={`${classes.responsiveCard}`}>
               <div
                 style={{
                   backgroundColor: "#40633A",
@@ -299,7 +302,7 @@ const Kanban = () => {
                   marginRight: "10px",
                 }}>
               </div>
-              <div style={{ flex: 1, maxWidth: "70%" }}>
+              <div style={{ flex: 1, maxWidth: "70%" }} className={`${classes.responsiveCardContent}`}>
                 <p
                   style={{
                     color: "#000000",
@@ -325,7 +328,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "flex-end" }} className={`${classes.responsiveCardActions}`}>
                 <button
                   style={{
                     backgroundColor: "#0C2C54",
@@ -371,7 +374,8 @@ const Kanban = () => {
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 justifyContent: "space-between",
                 maxWidth: "100%",
-              }}>
+              }}
+              className={`${classes.responsiveCard}`}>
               <div
                 style={{
                   backgroundColor: "#B40E0E",
@@ -381,7 +385,7 @@ const Kanban = () => {
                   marginRight: "10px",
                 }}>
               </div>
-              <div style={{ flex: 1, maxWidth: "70%" }}>
+              <div style={{ flex: 1, maxWidth: "70%" }} className={`${classes.responsiveCardContent}`}>
                 <p
                   style={{
                     color: "#000000",
@@ -407,7 +411,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "flex-end" }} className={`${classes.responsiveCardActions}`}>
                 <button
                   style={{
                     backgroundColor: "#0C2C54",
@@ -453,7 +457,8 @@ const Kanban = () => {
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 justifyContent: "space-between",
                 maxWidth: "100%",
-              }}>
+              }}
+              className={`${classes.responsiveCard}`}>
               <div
                 style={{
                   backgroundColor: "#EE7D2C",
@@ -463,7 +468,7 @@ const Kanban = () => {
                   marginRight: "10px",
                 }}>
               </div>
-              <div style={{ flex: 1, maxWidth: "70%" }}>
+              <div style={{ flex: 1, maxWidth: "70%" }} className={`${classes.responsiveCardContent}`}>
                 <p
                   style={{
                     color: "#000000",
@@ -489,7 +494,7 @@ const Kanban = () => {
                   {ticket.lastMessage}
                 </p>
               </div>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <div style={{ display: "flex", alignItems: "flex-end" }} className={`${classes.responsiveCardActions}`}>
                 <button
                   style={{
                     backgroundColor: "#0C2C54",
@@ -666,7 +671,7 @@ const Kanban = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${classes.mobileScrollContainer}`}>
       <div className={classes.pageTitle} style={{ marginTop: 0 }}>
         Kanban
       </div>
@@ -677,6 +682,7 @@ const Kanban = () => {
           backgroundColor: '#E3E7ED',
           padding: "10px",
           borderRadius: "10px",
+          overflowX: 'auto',
         }}
         components={{
           LaneHeader: CustomLaneHeader,
