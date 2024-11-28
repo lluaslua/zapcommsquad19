@@ -100,6 +100,30 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "scroll",
     ...theme.scrollbarStyles,
   },
+
+  posicionamento1: {
+    [theme.breakpoints.down("841")]: {
+      position: "relative",
+      marginTop: "-50px",
+      width: "210px"
+    },
+  },
+  posicionamento2: {
+    [theme.breakpoints.down("841")]: {
+      position: "relative",
+      marginTop: "80px",
+      marginLeft: "-385px",
+      width: "160px",
+    },
+  },
+  posicionamento3: {
+    [theme.breakpoints.down("841")]: {
+      position: "relative",
+      marginTop: "80px",
+      marginLeft: "10px",
+      width: "200px",
+    },
+  },
 }));
 
 const Schedules = () => {
@@ -262,7 +286,7 @@ const Schedules = () => {
       />
       <MainHeader>
         <Title>
-          <div style={{ color: "#0C2C4C", fontWeight: "bold", fontFamily: "Nunito" }}>
+          <div className={classes.posicionamento1} style={{ color: "#0C2C4C", fontWeight: "bold", fontFamily: "Nunito" }}>
           {i18n.t("schedules.title")} ({schedules.length})
           </div>
         </Title>
@@ -270,6 +294,7 @@ const Schedules = () => {
         
         >
           <TextField
+            className={classes.posicionamento2}
             placeholder={i18n.t("contacts.searchPlaceholder")}
             type="search"
             variant="outlined"
@@ -288,6 +313,7 @@ const Schedules = () => {
             }}
           />
           <Button
+            className={classes.posicionamento3}
             variant="contained"
             color="primary"
             onClick={handleOpenScheduleModal}

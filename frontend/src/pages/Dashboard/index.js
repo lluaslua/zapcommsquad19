@@ -162,11 +162,12 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "left",
     },
     [theme.breakpoints.down("1000")]: {
-      width: "125px",
+      width: "170px",
       height: "200px",
       display: "flex",
       textAlign: "center",
       justifyContent: "center",
+      marginRight: "-8px",
     },
     [theme.breakpoints.down("841")]: {
       width: "130px",
@@ -194,11 +195,13 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "left",
     },
     [theme.breakpoints.down("1000")]: {
-      width: "125px",
+      width: "170px",
       height: "200px",
       display: "flex",
       textAlign: "center",
       justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
     },
     [theme.breakpoints.down("841")]: {
       width: "130px",
@@ -226,11 +229,13 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "left",
     },
     [theme.breakpoints.down("1000")]: {
-      width: "125px",
+      width: "170px",
       height: "200px",
       display: "flex",
       textAlign: "center",
       justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
     },
     [theme.breakpoints.down("841")]: {
       width: "130px",
@@ -258,11 +263,13 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "left",
     },
     [theme.breakpoints.down("1000")]: {
-      width: "125px",
+      width: "170px",
       height: "200px",
       display: "flex",
       textAlign: "center",
       justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
     },
     [theme.breakpoints.down("841")]: {
       width: "130px",
@@ -374,12 +381,19 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       marginTop: "-50px",
     },
+    [theme.breakpoints.down("1000")]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      marginLeft: "-50px",
+      width: "90%"
+    },
     [theme.breakpoints.down("841")]: {
       backgroundColor: "rgba(0, 0, 0, 0)",
       borderColor: "rgba(0, 0, 0, 0)",
       margin: "0px",
       padding: "0px",
       marginLeft: "-20px",
+      width: "70%"
     },
   },
 
@@ -400,11 +414,19 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("1520")]: {
       marginTop: '-280px'
     },
+    [theme.breakpoints.down("1000")]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      marginTop: '40px',
+      marginLeft: "57%",
+      marginBottom: "-300px"
+    },
     [theme.breakpoints.down("841")]: {
       backgroundColor: "rgba(0, 0, 0, 0)",
       borderColor: "rgba(0, 0, 0, 0)",
       marginTop: '200px',
-      marginLeft: "130px"
+      marginLeft: "165px",
+      marginBottom: ""
     },
   },
 
@@ -413,6 +435,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("1520")]: {
       marginTop: '-60px',
       marginLeft: "40px"
+    },
+    [theme.breakpoints.down("1000")]: {
+      marginTop: "-10px",
+    },
+    [theme.breakpoints.down("841")]: {
+      marginTop: '20px',
+      marginBottom: "-50px",
     },
   },
 
@@ -471,6 +500,11 @@ const useStyles = makeStyles((theme) => ({
       width: '61%',
       marginLeft: '1%',
     },
+    [theme.breakpoints.down("1000")]: {
+      width: '87%',
+      marginLeft: '7%',
+      marginTop: "300px",
+    },
     [theme.breakpoints.down("841")]: {
       display: "none"
     },
@@ -479,7 +513,7 @@ const useStyles = makeStyles((theme) => ({
   graficop: {
     width: '40%', // ajuste a largura
     marginLeft: '70%', // desloca o grid para a esquerda
-    marginTop: '-25.8%',
+    marginTop: '-26.5%',
     [theme.breakpoints.down("1730")]: {
       width: '35%',
       marginLeft: "65%",
@@ -488,6 +522,11 @@ const useStyles = makeStyles((theme) => ({
       width: "35%",
       marginLeft: "65%",
       marginTop: "-305px"
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: '45%',
+      marginLeft: '5%',
+      marginTop: "-800px",
     },
     [theme.breakpoints.down("841")]: {
       display: "none"
