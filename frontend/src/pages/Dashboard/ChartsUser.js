@@ -104,7 +104,7 @@ export const ChatsUser = () => {
     return (
         <>
             <Typography component="h2" variant="h6" color="primary" gutterBottom style={{ fontFamily: 'Nunito' }} >
-                Total de Conversas por Usuários
+                Conversas por Usuários
             </Typography>
 
             <Stack 
@@ -112,7 +112,7 @@ export const ChatsUser = () => {
                 spacing={2} 
                 alignItems={'center'} 
                 sx={{ my: 2, }} 
-                style={{ marginLeft: '40%', marginTop: '-5%', fontFamily: 'Nunito' }}
+                style={{ marginLeft: '40%', marginTop: '-7%', fontFamily: 'Nunito' }}
             >
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={brLocale}>
                     <DatePicker
