@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card1: {
     padding: theme.spacing(2),
-    display: "block",
+    display: "flex",
     overflow: "auto",
     flexDirection: "column",
     height: "180px",
@@ -155,37 +155,128 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "150px",
+      height: "180px",
+      textAlign: "left",
+      justifyContent: "left",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "170px",
+      height: "200px",
+      display: "flex",
+      textAlign: "center",
+      justifyContent: "center",
+      marginRight: "-8px",
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "130px",
+      marginBottom: "-15px",
+      marginLeft: "-20px",
+      marginRight: "0px",
+    },
   },
   card2: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
-    height: "100%",
+    height: "180px",
+    width: "210px",
+    borderRadius: "20px",
     //backgroundColor: "palette",
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "150px",
+      height: "180px",
+      textAlign: "left",
+      justifyContent: "left",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "170px",
+      height: "200px",
+      display: "flex",
+      textAlign: "center",
+      justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "130px",
+      marginBottom: "-15px",
+      marginLeft: "-20px",
+      marginRight: "-110px",
+    },
   },
   card3: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
-    height: "100%",
-  //backgroundColor: theme.palette.primary.main,
+    height: "180px",
+    width: "210px",
+    borderRadius: "20px",
+    //backgroundColor: "palette",
+    //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "150px",
+      height: "180px",
+      textAlign: "left",
+      justifyContent: "left",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "170px",
+      height: "200px",
+      display: "flex",
+      textAlign: "center",
+      justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "130px",
+      marginBottom: "-15px",
+      marginLeft: "-20px",
+      marginRight: "0px",
+    },
   },
   card4: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
-    height: "100%",
+    height: "180px",
+    width: "210px",
+    borderRadius: "20px",
+    //backgroundColor: "palette",
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "150px",
+      height: "180px",
+      textAlign: "left",
+      justifyContent: "left",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "170px",
+      height: "200px",
+      display: "flex",
+      textAlign: "center",
+      justifyContent: "center",
+      marginRight: "-8px",
+      marginLeft: "-8px",
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "130px",
+      marginBottom: "-15px",
+      marginLeft: "-20px",
+      marginRight: "-110px",
+    },
   },
   card5: {
     padding: theme.spacing(2),
@@ -227,6 +318,17 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "370px",
+      height: "160px",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "330px"
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "280px",
+      marginLeft: "-55px"
+    },
   },
   card9: {
     padding: theme.spacing(2),
@@ -238,6 +340,17 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: theme.palette.primary.main,
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.boxticket.main : theme.palette.primary.main,
     color: "#eee",
+    [theme.breakpoints.down("1730")]: {
+      width: "370px",
+      height: "160px",
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: "330px"
+    },
+    [theme.breakpoints.down("841")]: {
+      width: "280px",
+      marginLeft: "-55px"
+    },
   },
   fixedHeightPaper2: {
     padding: theme.spacing(2),
@@ -247,6 +360,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   hoje: {
+    width: '77%',
+    height: '280px',
     backgroundColor: "White",
     borderColor: "#0C2454",
     border: "solid, 1px", 
@@ -254,19 +369,36 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-10%', // desloca o grid para a esquerda
     justifyContent: "flex-end",
     [theme.breakpoints.down("1730")]: {
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      borderColor: "rgba(0, 0, 0, 0)",
-      border: 'none',
-      marginLeft: '0px',
+      textAlign: "left",
+      justifyContent: "left",
+      width: '61%',
+      height: '280px',
       position: 'relative',
-      right: '-12.5%'
+      right: '-11%',
+      paddingLeft: "8px",
     },
     [theme.breakpoints.down("1520")]: {
-      justifyContent: 'center'
+      justifyContent: 'center',
+      marginTop: "-50px",
+    },
+    [theme.breakpoints.down("1000")]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      marginLeft: "-50px",
+      width: "90%"
+    },
+    [theme.breakpoints.down("841")]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      margin: "0px",
+      padding: "0px",
+      marginLeft: "-20px",
+      width: "70%"
     },
   },
 
   tempomedio: {
+    width: '40%',
     backgroundColor: "White",
     borderColor: "#0C2454",
     border: "solid, 1px", 
@@ -275,17 +407,83 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-22.70%',
     justifyContent: "center",
     [theme.breakpoints.down("1730")]: {
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      borderColor: "rgba(0, 0, 0, 0)",
-      border: 'none',
-      marginTop: '0%',
-      marginLeft: '30%',
+      marginLeft: "65%",
+      width: '35%',
+      marginTop: '-280px',
     },
     [theme.breakpoints.down("1520")]: {
-      marginTop: '225px'
+      marginTop: '-280px'
+    },
+    [theme.breakpoints.down("1000")]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      marginTop: '40px',
+      marginLeft: "57%",
+      marginBottom: "-300px"
     },
     [theme.breakpoints.down("841")]: {
-      marginTop: '585px'
+      backgroundColor: "rgba(0, 0, 0, 0)",
+      borderColor: "rgba(0, 0, 0, 0)",
+      marginTop: '200px',
+      marginLeft: "165px",
+      marginBottom: ""
+    },
+  },
+
+  titulo: {
+    marginTop: '-1%', marginLeft: '7%',
+    [theme.breakpoints.down("1520")]: {
+      marginTop: '-60px',
+      marginLeft: "40px"
+    },
+    [theme.breakpoints.down("1000")]: {
+      marginTop: "-10px",
+    },
+    [theme.breakpoints.down("841")]: {
+      marginTop: '20px',
+      marginBottom: "-50px",
+    },
+  },
+
+  espacamento1: {
+    [theme.breakpoints.down("1520")]: {
+      marginLeft: "-20px", marginRight: "-20px"
+    },
+  },
+
+  espacamento2: {
+    [theme.breakpoints.down("1520")]: {
+      marginLeft: "-13px",
+      marginRight: "-13px",
+    },
+  },
+
+  espacamento3: {
+    [theme.breakpoints.down("1520")]: {
+      marginLeft: "-13px",
+      marginRight: "-13px",
+    },
+    [theme.breakpoints.down("841")]: {
+      marginLeft: "-18px",
+    },
+  },
+
+  espacamento4: {
+    [theme.breakpoints.down("1520")]: {
+      marginLeft: "-30px",
+    },
+    [theme.breakpoints.down("841")]: {
+      marginLeft: "-50px",
+    },
+  },
+
+  espacamento5: {
+    position: 'relative', 
+    top: '45px', 
+    right: '40px',
+    [theme.breakpoints.down("841")]: {
+      right: '20px',
+      marginRight: "-20px"
     },
   },
 
@@ -294,18 +492,44 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-10%',
     marginTop: '-5%',
     [theme.breakpoints.down("1730")]: {
-      marginLeft: '12.5%',
-      marginTop: '20px',
+      width: '61%',
+      marginLeft: '1%',
+      marginTop: '-70px',
+    },
+    [theme.breakpoints.down("1520")]: {
+      width: '61%',
+      marginLeft: '1%',
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: '87%',
+      marginLeft: '7%',
+      marginTop: "300px",
+    },
+    [theme.breakpoints.down("841")]: {
+      display: "none"
     },
   },
 
   graficop: {
     width: '40%', // ajuste a largura
     marginLeft: '70%', // desloca o grid para a esquerda
-    marginTop: '-27.5%',
+    marginTop: '-26.5%',
     [theme.breakpoints.down("1730")]: {
-      marginLeft: '31%',
-      marginTop: '20px',
+      width: '35%',
+      marginLeft: "65%",
+    },
+    [theme.breakpoints.down("1520")]: {
+      width: "35%",
+      marginLeft: "65%",
+      marginTop: "-305px"
+    },
+    [theme.breakpoints.down("1000")]: {
+      width: '45%',
+      marginLeft: '5%',
+      marginTop: "-800px",
+    },
+    [theme.breakpoints.down("841")]: {
+      display: "none"
     },
   },
 }));
@@ -450,9 +674,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div>
+      <div className={classes.titulo}>
         <h1
-        style={{ fontFamily: 'Nunito', fontWeight: 'bold', color: '#0C2C4C', marginTop: '-1%', marginLeft: '7%' }}
+        style={{ fontFamily: 'Nunito', fontWeight: 'bold', color: '#0C2C4C' }}
         >
           Dashboard
         </h1>
@@ -463,8 +687,6 @@ const Dashboard = () => {
         container spacing={3} 
         style={{ 
           gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
-          width: '77%', // ajuste a largura
-          height: '280px',
           paddingTop: '50px',
         }}
         >
@@ -543,10 +765,11 @@ const Dashboard = () => {
                     </Typography>
                   </Grid>
                   <Typography
+                    className={classes.espacamento1}
                     component="h3"
                     variant="h6"
                     paragraph
-                    style={{ fontSize: "16px", fontFamily: "Nunito" }}
+                    style={{ fontSize: "16px", fontFamily: "Nunito", marginLeft: "-20px", marginRight: "-20px" }}
                   >
                     Em Conversa
                   </Typography>
@@ -565,7 +788,7 @@ const Dashboard = () => {
             }}
           >
             <Paper
-              className={classes.card1}
+              className={classes.card2}
               style={{ 
                 overflow: "hidden",
                 display: "flex", 
@@ -594,16 +817,17 @@ const Dashboard = () => {
                     <Typography
                       component="h1"
                       variant="h4"
-                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder"}}
+                      style={{ fontSize: "40px", fontFamily: "Nunito", fontWeight: "bolder" }}
                     >
                       {counters.supportPending}
                     </Typography>
                   </Grid>
                   <Typography
+                    className={classes.espacamento2}
                     component="h3"
                     variant="h6"
                     paragraph
-                    style={{ fontSize: "16px", fontFamily: "Nunito" }}
+                    style={{ fontSize: "16px", fontFamily: "Nunito"}}
                   >
                     Aguardando
                   </Typography>
@@ -664,7 +888,7 @@ const Dashboard = () => {
             }}
           >
             <Paper
-              className={classes.card1}
+              className={classes.card3}
               style={{ 
                 overflow: "hidden",
                 display: "flex", 
@@ -699,10 +923,11 @@ const Dashboard = () => {
                     </Typography>
                   </Grid>
                   <Typography
+                    className={classes.espacamento2}
                     component="h3"
                     variant="h6"
                     paragraph
-                    style={{ fontSize: "16px", fontFamily: "Nunito" }}
+                    style={{ fontSize: "16px", fontFamily: "Nunito"}}
                   >
                     Finalizados
                   </Typography>
@@ -721,7 +946,7 @@ const Dashboard = () => {
             }}
           >
             <Paper
-              className={classes.card1}
+              className={classes.card4}
               style={{ 
                 overflow: "hidden",
                 display: "flex", 
@@ -756,6 +981,7 @@ const Dashboard = () => {
                     </Typography>
                   </Grid>
                   <Typography
+                    className={classes.espacamento1}
                     component="h3"
                     variant="h6"
                     paragraph
@@ -775,7 +1001,6 @@ const Dashboard = () => {
         className={classes.tempomedio}
         style={{ 
           gridTemplateColumns: 'repeat(3, 1fr)', // ajuste conforme o número de colunas desejado
-          width: '40%', // ajuste a largura
         }}
         >
           
@@ -798,6 +1023,7 @@ const Dashboard = () => {
                   </Typography>
                   <Grid item>
                     <Typography
+                      className={classes.espacamento4}
                       component="h1"
                       variant="h4"
                       style={{ fontFamily: 'Nunito', fontWeight: 'bolder', position: 'relative', left: '50px' }}
@@ -806,7 +1032,10 @@ const Dashboard = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid item xs={4} style={{ position: 'relative', top: '45px', right: '40px' }}>
+                <Grid 
+                  className={classes.espacamento5}
+                  item xs={4} 
+                  style={{}}>
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={dailyData}>
                       <Line 
@@ -842,6 +1071,7 @@ const Dashboard = () => {
                   </Typography>
                   <Grid item>
                     <Typography
+                      className={classes.espacamento4}
                       component="h1"
                       variant="h4"
                       style={{ fontFamily: 'Nunito', fontWeight: 'bolder', position: 'relative', left: '50px' }}
@@ -850,7 +1080,10 @@ const Dashboard = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid item xs={4} style={{ position: 'relative', top: '45px', right: '40px' }}>
+                <Grid 
+                  className={classes.espacamento5}
+                  item xs={4} 
+                  style={{}}>
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={dailyData}>
                         <Line 

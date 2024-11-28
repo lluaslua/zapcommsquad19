@@ -107,7 +107,7 @@ export const ChartsDate = () => {
                 spacing={2} 
                 alignItems={'center'} 
                 sx={{ my: 2, }} 
-                style={{ marginLeft: '20%', marginTop: '-11%', fontFamily: 'Nunito' }}
+                style={{ marginLeft: '25%', marginTop: '-14%', fontFamily: 'Nunito' }}
             >
 
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={brLocale}>
