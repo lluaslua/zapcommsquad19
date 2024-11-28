@@ -246,14 +246,14 @@ const QueueIntegration = () => {
         integrationId={selectedIntegration && selectedIntegration.id}
       />
       <MainHeader>
-        <Grid container style={{width: '100%'}}>
-          <Grid xs={12} sm={4} md={7} item>
+        <Grid container style={{width: '99.6%'}}>
+          <Grid xs={7} sm={7} md={7} item>
             <Title>{i18n.t("queueIntegration.title")} ({queueIntegration.length})</Title>
           </Grid>
-          <Grid xs={12} sm={4} item>
+          <Grid xs={12} sm={11} md={5} item>
             <MainHeaderButtonsWrapper>
               <Grid spacing={2} container>
-                <Grid item xs={7} sm={12} md={6}>
+                <Grid item xs={7} sm={8} md={6}>
                   <TextField
                     placeholder={i18n.t("queueIntegration.searchPlaceholder")}
                     color='primary'
@@ -274,7 +274,7 @@ const QueueIntegration = () => {
                     }}
                   />
                 </Grid>
-                <Grid item xs={8} sm={4} md={6}>
+                <Grid item xs={4} sm={4} md={6}>
                   <Button
                     variant="contained"
                     color="primary"
