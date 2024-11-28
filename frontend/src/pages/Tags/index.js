@@ -26,7 +26,7 @@ import MainContainer from "../../components/MainContainer";
 import MainHeader from "../../components/MainHeader";
 import MainHeaderButtonsWrapper from "../../components/MainHeaderButtonsWrapper";
 import Title from "../../components/Title";
-
+import Grid from "@material-ui/core/Grid";
 import api from "../../services/api";
 import { i18n } from "../../translate/i18n";
 import TableRowSkeleton from "../../components/TableRowSkeleton";
@@ -89,6 +89,18 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     overflowY: "scroll",
     ...theme.scrollbarStyles,
+  },
+  "@media (max-width: 600px)": {
+    mainPaper: {
+      padding: theme.spacing(0.5),
+    },
+    tableCell: {
+      fontSize: "0.8rem",
+    },
+    button: {
+      fontSize: "0.75rem",
+      padding: theme.spacing(0.5),
+    },
   },
 }));
 
@@ -218,8 +230,14 @@ return (
         tagId={selectedTag && selectedTag.id}
       />
       <MainHeader>
-        <Title>{i18n.t("tags.title")}</Title>
+        <Grid style={{width: '99.6%'}} container>
+        <Grid xs={12} sm={8} md={3} item>
+          <Title>{i18n.t("tags.title")}</Title>
+        </Grid>
         <MainHeaderButtonsWrapper>
+        <Grid xs={12} sm={12} md={9} item>
+        <Grid container spacing={2}>
+        <Grid item xs={6} sm={8} md={10}>
         <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
@@ -239,6 +257,8 @@ return (
               ),
             }}
           />
+          </Grid>
+          <Grid item xs={4} sm={4} md={1}>
           <Button
             variant="contained"
             color="primary"
@@ -246,8 +266,12 @@ return (
             style={{borderRadius:'8px'}}
           >
             {i18n.t("tags.buttons.add")}
-          </Button>		  
+          </Button>
+          </Grid>
+          </Grid>
+          </Grid>
         </MainHeaderButtonsWrapper>
+        </Grid>
       </MainHeader>
       <Paper
         className={classes.mainPaper}
@@ -257,58 +281,60 @@ return (
           borderRadius: '5px'
         }}
       >
-        <Table size="small">
-          <TableHead>
-            <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
-              <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
-              <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
-              {/*Adicionar {i18n.t("tags.table.actions")} para inserir o texto de volta*/ }
-              <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <>
-              {tags.map((tag) => (
-                <TableRow key={tag.id}>
-                  <TableCell align="center">
+        <div style={{ overflowX: "auto" }}>
+          <Table size="small">
+            <TableHead>
+              <TableRow style={{borderRadius: '5px',backgroundColor: '#0C2454'}}>
+                <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '5px 0px 0px 5px'}}>{i18n.t("tags.table.name")}</TableCell>
+                <TableCell align='justify'style={{color: '#FFFFFF'}}>Cores</TableCell>
+                <TableCell align="center"style={{color: '#FFFFFF',}}>{i18n.t("tags.table.tickets")}</TableCell>
+                {/*Adicionar {i18n.t("tags.table.actions")} para inserir o texto de volta*/ }
+                <TableCell align="center"style={{color: '#FFFFFF',borderRadius: '0px 5px 5px 0px'}}></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <>
+                {tags.map((tag) => (
+                  <TableRow key={tag.id}>
+                    <TableCell align="center">
+                      <Chip
+                        variant="default"
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          color: "black",
+                        }}
+                        label={tag.name}
+                        size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
                     <Chip
-                      variant="default"
-                      style={{
-                        backgroundColor: '#FFFFFF',
-                        color: "black",
-                      }}
-                      label={tag.name}
-                      size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                  <Chip
-                    style={{backgroundColor: tag.color,borderRadius:'100%',height: '25px'}}
-                    />
-                  </TableCell>
-                  <TableCell align="center">{tag.ticketsCount}</TableCell>
-                  <TableCell align="center">
-                    <IconButton size="small" onClick={() => handleEditTag(tag)}>
-                      <EditIcon />
-                    </IconButton>
+                      style={{backgroundColor: tag.color,borderRadius:'100%',height: '25px'}}
+                      />
+                    </TableCell>
+                    <TableCell align="center">{tag.ticketsCount}</TableCell>
+                    <TableCell align="center">
+                      <IconButton size="small" onClick={() => handleEditTag(tag)}>
+                        <EditIcon />
+                      </IconButton>
 
-                    <IconButton
-                      size="small"
-                      onClick={(e) => {
-                        setConfirmModalOpen(true);
-                        setDeletingTag(tag);
-                      }}
-                    >
-                      <DeleteOutlineIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-              {loading && <TableRowSkeleton columns={4} />}
-            </>
-          </TableBody>
-        </Table>
+                      <IconButton
+                        size="small"
+                        onClick={(e) => {
+                          setConfirmModalOpen(true);
+                          setDeletingTag(tag);
+                        }}
+                      >
+                        <DeleteOutlineIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {loading && <TableRowSkeleton columns={4} />}
+              </>
+            </TableBody>
+          </Table>
+        </div>
       </Paper>
     </MainContainer>
   );
