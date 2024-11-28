@@ -7,6 +7,8 @@ import Title from "../../components/Title";
 import { i18n } from "../../translate/i18n";
 import useHelps from "../../hooks/useHelps";
 
+
+
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -14,10 +16,16 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 const useStyles = makeStyles(theme => ({
   divprincipal: {
     margin: "auto",
-      display: "flex",
-      width: "90%",
-      fontFamily: "Nunito, Arial, sans-serif",
-      gap: "1.2rem",
+    display: "flex",
+    width: "90%",
+    fontFamily: "Nunito, Arial, sans-serif",
+    gap: "1.2rem",
+    [theme.breakpoints.down("440")]: {
+      width: "100%",
+      flexDirection: "column",
+      gap: "600px"
+    },
+
   },
   sidebarContainer: {
     width: '28%',
@@ -28,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     boxSizing: "border-box",
     flexShrink: "0",
+    [theme.breakpoints.down("440")]: {
+      width: "100%"
+    },
 
   },
   searchInput: {
@@ -50,6 +61,9 @@ const useStyles = makeStyles(theme => ({
     flexShrink: "0",
     height: "calc(100vh - 365px)",
     backgroundColor: "#EFF3F6",
+    [theme.breakpoints.down("440")]: {
+     height: "40vh"
+    },
     "&::-webkit-scrollbar": {
       width: "7px",
     },
@@ -79,6 +93,9 @@ const useStyles = makeStyles(theme => ({
   },
   mainPaperContainer: {
     overflowY: 'auto',
+    [theme.breakpoints.down("440")]: {
+      width: "90%",
+    },
     fontFamily: "Nunito, Arial, sans-serif",
     "&::-webkit-scrollbar": {
       width: "8px",
@@ -98,6 +115,12 @@ const useStyles = makeStyles(theme => ({
     height: "94vh",
     flex: "2",
     flexShrink: "0",
+    [theme.breakpoints.down("440")]: {
+      width: "90%",
+      display: "flex",
+      height: "auto",
+      margin: "auto"
+    },
   },
   helpPaper: {
     position: 'relative',
@@ -124,6 +147,18 @@ const useStyles = makeStyles(theme => ({
     width: '60%',
     objectFit: 'cover',
     borderRadius: '15px',
+    minWidth: "502px",
+    [theme.breakpoints.down("440")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.down("1050")]: {
+      width: "90%",
+      minWidth: "340px",
+    },
+    [theme.breakpoints.down("440")]: {
+      width: "90%",
+      minWidth: "100px"
+    },
   },
   videoTitle: {
     marginTop: theme.spacing(1),
