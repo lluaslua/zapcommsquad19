@@ -12,13 +12,22 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 const useStyles = makeStyles(theme => ({
+  divprincipal: {
+    margin: "auto",
+      display: "flex",
+      width: "90%",
+      fontFamily: "Nunito, Arial, sans-serif",
+      gap: "1.2rem",
+  },
   sidebarContainer: {
     width: '28%',
-    maxHeight: "100vh",
+    // maxHeight: "100vh",
+    
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
     boxSizing: "border-box",
+    flexShrink: "0",
 
   },
   searchInput: {
@@ -31,13 +40,15 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     display: 'flex',
     justifyContent: 'center',
+    flexShrink: "0",
   },
   titleList: {
     overflowY: 'auto',
     maxHeight: '100vh',
     padding: theme.spacing(1),
     flex: 1,
-    height: "calc(62vh + 7px)",
+    flexShrink: "0",
+    height: "calc(100vh - 365px)",
     backgroundColor: "#EFF3F6",
     "&::-webkit-scrollbar": {
       width: "7px",
@@ -61,6 +72,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: theme.spacing(1),
     color: '#0c2340',
     textDecoration: 'none',
+    flexShrink: "0",
   },
   links: {
     backgroundColor: "black"
@@ -85,6 +97,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     height: "94vh",
     flex: "2",
+    flexShrink: "0",
   },
   helpPaper: {
     position: 'relative',
@@ -97,6 +110,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     maxWidth: '340px',
     flex: "2",
+    flexShrink: "0",
   },
   paperHover: {
     transition: 'transform 0.3s, box-shadow 0.3s',
@@ -118,6 +132,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1rem",
     fontWeight: "520",
     color: "black"
+    
   },
   videoDescription: {
     overflow: 'hidden',
@@ -256,25 +271,22 @@ const Helps = () => {
   );
 
   return (
-    <div style={{
-      margin: "auto",
-      display: "flex",
-      width: "90%",
-      fontFamily: "Nunito, Arial, sans-serif",
-      gap: "1.2rem"
-    }}> 
-      <aside className={classes.sidebarContainer} style={{width: "28%", display: "block", justifyContent: "center", maxHeight: "200px"}}>
+    <div className={classes.divprincipal}>  
+      <aside className={classes.sidebarContainer} style={{maxWidth: "400px", minWidth:"375px", display: "block", justifyContent: "center", maxHeight: "200px"}}>
         <MainHeader style={{display: "flex", flexDirection: "column"}}>
           <Typography style={{fontWeight: "bold", fontSize: "1.875rem", paddingBottom: "60px"}} variant="text">{i18n.t("helps.title")}</Typography>
           <MainHeaderButtonsWrapper></MainHeaderButtonsWrapper>
         </MainHeader>
         <div style={{backgroundColor: "#EFF3F6",
+          padding: "10px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          borderTopLeftRadius: "20px", borderTopRightRadius: "20px"}}>
-          <Typography style={{fontWeight: "bold", fontSize: "1.5rem", display: "block", textAlign: "left", paddingLeft: "1rem", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
-          <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "center", paddingLeft: "1rem", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
+          borderTopLeftRadius: "20px", 
+          borderTopRightRadius: "20px"
+          }}>
+          <Typography style={{fontWeight: "bold", fontSize: "1.5rem", display: "block", textAlign: "left", paddingTop: "18px"}} variant="text">Pesquise a sua pergunta</Typography>
+          <Typography style={{fontWeight: "500px", fontSize: "1rem", display: "block", textAlign: "center", paddingBottom: "10px"}} variant="text">Caso não encontre, pode pesquisar na barra abaixo:</Typography>
           <TextField
             variant="standard"
             className={classes.searchInput}

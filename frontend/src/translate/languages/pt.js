@@ -799,7 +799,7 @@ const messages = {
         },
       },
       helps: {
-        title: "Central de Ajuda",
+        title: "Central de Ajudas",
       },
       schedules: {
         title: "Agendamentos",
