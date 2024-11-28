@@ -230,13 +230,14 @@ return (
         tagId={selectedTag && selectedTag.id}
       />
       <MainHeader>
-        <Grid style={{width: '100%'}} container>
-        <Grid xs={12} sm={8} md={6} item>
+        <Grid style={{width: '99.6%'}} container>
+        <Grid xs={12} sm={8} md={3} item>
           <Title>{i18n.t("tags.title")}</Title>
         </Grid>
         <MainHeaderButtonsWrapper>
+        <Grid xs={12} sm={12} md={9} item>
         <Grid container spacing={2}>
-        <Grid item xs={7} sm={6} md={7}>
+        <Grid item xs={6} sm={8} md={10}>
         <TextField
             placeholder={i18n.t("queueIntegration.searchPlaceholder")}
             color='primary'
@@ -257,7 +258,7 @@ return (
             }}
           />
           </Grid>
-          <Grid item xs={12} sm={4} md={1}>
+          <Grid item xs={4} sm={4} md={1}>
           <Button
             variant="contained"
             color="primary"
@@ -266,6 +267,7 @@ return (
           >
             {i18n.t("tags.buttons.add")}
           </Button>
+          </Grid>
           </Grid>
           </Grid>
         </MainHeaderButtonsWrapper>
