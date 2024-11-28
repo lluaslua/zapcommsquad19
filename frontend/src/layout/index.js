@@ -63,31 +63,8 @@ const useStyles = makeStyles((theme) => ({
       color: theme.mode === 'light' ? 'Primary' : '#FFF',
     }
   },
-  avatar: {
-    width: "100%",
-  },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-    color: theme.palette.dark.main,
-    background: theme.palette.barraSuperior,
-  },
-  toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 8px",
-    minHeight: "48px",
-    [theme.breakpoints.down("sm")]: {
-      height: "48px"
-    }
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
+
+  
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
@@ -111,33 +88,36 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   drawerPaper: {
-    background: "#0C2C54",
-    color : "#FFFFFF",
+    background: "transparent", // Fundo transparente
+    color: "#FFFFFF",
     position: "relative",
-    whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.down("sm")]: {
-      width: "20%"
+      width: "70%",
     },
-    ...theme.scrollbarStylesSoft
+    overflow: "hidden", // Impede vazamentos
+    boxShadow: "none", // Remove sombras desnecessárias
   },
+
   drawerPaperClose: {
     overflowX: "hidden",
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    width: theme.spacing(7), // Largura reduzida para desktops
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9),
     },
     [theme.breakpoints.down("sm")]: {
-      width: "20%"
-    }
+      width: 0, // Esconde completamente em telas pequenas
+    },
+    background: "transparent", // Remove o fundo azul no estado fechado
+    boxShadow: "none", // Remove sombras no estado fechado
   },
   appBarSpacer: {
     minHeight: "48px",
@@ -166,17 +146,7 @@ const useStyles = makeStyles((theme) => ({
   NotificationsPopOver: {   
     // color: theme.barraSuperior.secondary.main,
   },
-  logo: {
-    width: "80%",
-    height: "auto",
-    maxWidth: 180,
-    [theme.breakpoints.down("sm")]: {
-      width: "auto",
-      height: "80%",
-      maxWidth: 180,
-    },
-    logo: theme.logo
-  },
+
 }));
 
 const LoggedInLayout = ({ children, themeToggle }) => {
@@ -186,149 +156,13 @@ const LoggedInLayout = ({ children, themeToggle }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { handleLogout, loading } = useContext(AuthContext);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [drawerVariant, setDrawerVariant] = useState("permanent");
-  // const [dueDate, setDueDate] = useState("");
-  const { user } = useContext(AuthContext);
 
   const theme = useTheme();
-  const { colorMode } = useContext(ColorModeContext);
-  const greaterThenSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detecta se está em celular
 
-  const [volume, setVolume] = useState(localStorage.getItem("volume") || 1);
-
-  const { dateToClient } = useDate();
-
-
-  //################### CODIGOS DE TESTE #########################################
-  // useEffect(() => {
-  //   navigator.getBattery().then((battery) => {
-  //     console.log(`Battery Charging: ${battery.charging}`);
-  //     console.log(`Battery Level: ${battery.level * 100}%`);
-  //     console.log(`Charging Time: ${battery.chargingTime}`);
-  //     console.log(`Discharging Time: ${battery.dischargingTime}`);
-  //   })
-  // }, []);
-
-  // useEffect(() => {
-  //   const geoLocation = navigator.geolocation
-
-  //   geoLocation.getCurrentPosition((position) => {
-  //     let lat = position.coords.latitude;
-  //     let long = position.coords.longitude;
-
-  //     console.log('latitude: ', lat)
-  //     console.log('longitude: ', long)
-  //   })
-  // }, []);
-
-  // useEffect(() => {
-  //   const nucleos = window.navigator.hardwareConcurrency;
-
-  //   console.log('Nucleos: ', nucleos)
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log('userAgent', navigator.userAgent)
-  //   if (
-  //     navigator.userAgent.match(/Android/i)
-  //     || navigator.userAgent.match(/webOS/i)
-  //     || navigator.userAgent.match(/iPhone/i)
-  //     || navigator.userAgent.match(/iPad/i)
-  //     || navigator.userAgent.match(/iPod/i)
-  //     || navigator.userAgent.match(/BlackBerry/i)
-  //     || navigator.userAgent.match(/Windows Phone/i)
-  //   ) {
-  //     console.log('é mobile ', true) //celular
-  //   }
-  //   else {
-  //     console.log('não é mobile: ', false) //nao é celular
-  //   }
-  // }, []);
-  //##############################################################################
-
-  const socketManager = useContext(SocketContext);
-
-  useEffect(() => {
-    if (document.body.offsetWidth > 1200) {
-      setDrawerOpen(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (document.body.offsetWidth < 600) {
-      setDrawerVariant("temporary");
-    } else {
-      setDrawerVariant("permanent");
-    }
-  }, [drawerOpen]);
-
-  useEffect(() => {
-    const companyId = localStorage.getItem("companyId");
-    const userId = localStorage.getItem("userId");
-
-    const socket = socketManager.getSocket(companyId);
-
-    socket.on(`company-${companyId}-auth`, (data) => {
-      if (data.user.id === +userId) {
-        toastError("Sua conta foi acessada em outro computador.");
-        setTimeout(() => {
-          localStorage.clear();
-          window.location.reload();
-        }, 1000);
-      }
-    });
-
-    socket.emit("userStatus");
-    const interval = setInterval(() => {
-      socket.emit("userStatus");
-    }, 1000 * 60 * 5);
-
-    return () => {
-      socket.disconnect();
-      clearInterval(interval);
-    };
-  }, [socketManager]);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-    setMenuOpen(true);
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen); // Alterna entre abrir e fechar a sidebar
   };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-    setMenuOpen(false);
-  };
-
-  const handleOpenUserModal = () => {
-    setUserModalOpen(true);
-    handleCloseMenu();
-  };
-
-  const handleClickLogout = () => {
-    handleCloseMenu();
-    handleLogout();
-  };
-
-  const drawerClose = () => {
-    if (document.body.offsetWidth < 600) {
-      setDrawerOpen(false);
-    }
-  };
-
-  const handleRefreshPage = () => {
-    window.location.reload(false);
-  }
-
-  const handleMenuItemClick = () => {
-    const { innerWidth: width } = window;
-    if (width <= 600) {
-      setDrawerOpen(false);
-    }
-  };
-
-  const toggleColorMode = () => {
-    colorMode.toggleColorMode();
-  }
 
   if (loading) {
     return <BackdropLoading />;
@@ -336,8 +170,9 @@ const LoggedInLayout = ({ children, themeToggle }) => {
 
   return (
     <div className={classes.root}>
+      {/* Drawer (Sidebar) */}
       <Drawer
-        variant={drawerVariant}
+        variant={isMobile ? "temporary" : "permanent"} // Temporário em mobile, permanente em desktop
         className={drawerOpen ? classes.drawerPaper : classes.drawerPaperClose}
         classes={{
           paper: clsx(
@@ -345,125 +180,59 @@ const LoggedInLayout = ({ children, themeToggle }) => {
             !drawerOpen && classes.drawerPaperClose
           ),
         }}
-        open={drawerOpen}
+        open={drawerOpen} // Controlado pelo estado drawerOpen
+        onClose={toggleDrawer} // Fecha o Drawer ao clicar fora (em mobile)
+        PaperProps={{
+          style: {
+            background: "#0C2C54",
+            overflow: "hidden",
+          },
+        }}
       >
         <div className={classes.toolbarIcon}>
-          {/*<img src={logoclara} className={classes.logo} alt="logo" />*/}
-          <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-            <MenuIcon style={{color : "#FFFFFF"}} />
+          <IconButton onClick={toggleDrawer}>
+            <MenuIcon style={{ color: "#FFFFFF" }} />
           </IconButton>
         </div>
         <Divider />
         <List className={classes.containerWithScroll}>
-          <MainListItems drawerClose={drawerClose} collapsed={!drawerOpen} />
+          <MainListItems drawerClose={toggleDrawer} collapsed={!drawerOpen} />
         </List>
         <Divider />
       </Drawer>
-      <UserModal
-        open={userModalOpen}
-        onClose={() => setUserModalOpen(false)}
-        userId={user?.id}
-      />
-      <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, drawerOpen && classes.appBarShift && classes.menuButtonHidden)}
-        color="primary"
-      >
-        <Toolbar variant="dense" className={classes.toolbar && classes.menuButtonHidden}>
-          <IconButton
-            edge="start"
-            variant="contained"
-            aria-label="open drawer"
-            onClick={() => setDrawerOpen(!drawerOpen)}
-            className={clsx(
-              classes.menuButton,
-              drawerOpen && classes.menuButtonHidden
-            )}
+
+      {/* AppBar - apenas em dispositivos móveis */}
+      {isMobile && (
+        <AppBar
+          position="absolute"
+          className={clsx(
+            classes.appBar,
+            drawerOpen && classes.appBarShift && classes.menuButtonHidden
+          )}
+          color="primary"
+        >
+          <Toolbar
+            variant="dense"
+            className={classes.toolbar && classes.menuButtonHidden}
           >
-            <MenuIcon style={{color : "#FFFFFF"}} />
-          </IconButton>
-
-          {/*<Typography
-            component="h2"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            {greaterThenSm && user?.profile === "admin" && getDateAndDifDays(user?.company?.dueDate).difData < 7 ? ( 
-            {greaterThenSm && user?.profile === "admin" && user?.company?.dueDate ? (
-              <>
-                Olá <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>! (Ativo até {dateToClient(user?.company?.dueDate)})
-              </>
-            ) : (
-              <>
-                Olá  <b>{user.name}</b>, Bem vindo a <b>{user?.company?.name}</b>!
-              </>
-            )}
-          </Typography>*/}
-
-          {/*<IconButton edge="start" onClick={toggleColorMode}>
-            {theme.mode === 'dark' ? <Brightness7Icon style={{ color: "white" }} /> : <Brightness4Icon style={{ color: "white" }} />}
-          </IconButton>*/}
-
-          {/*<NotificationsVolume
-            setVolume={setVolume}
-            volume={volume}
-          />*/}
-
-          {/*<IconButton
-            onClick={handleRefreshPage}
-            aria-label={i18n.t("mainDrawer.appBar.refresh")}
-            color="inherit"
-          >
-            <CachedIcon style={{ color: "white" }} />
-          </IconButton>*/}
-
-          {/*{user.id && <NotificationsPopOver volume={volume} />}*/}
-
-          {/*<AnnouncementsPopover />*/}
-
-          {/*<ChatPopover />*/}
-
-          <div>
             <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
+              edge="start"
               variant="contained"
-              style={{color : "#34D3A3"}}
+              aria-label="open drawer"
+              onClick={toggleDrawer} // Abre o Drawer ao clicar no botão
+              className={clsx(
+                classes.menuButton,
+                drawerOpen && classes.menuButtonHidden
+              )}
             >
-              <AccountCircle />
+              <MenuIcon style={{ color: "#FFFFFF" }} />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              getContentAnchorEl={null}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={menuOpen}
-              onClose={handleCloseMenu}
-            >
-              <MenuItem onClick={handleOpenUserModal}>
-                {i18n.t("mainDrawer.appBar.user.profile")}
-              </MenuItem>
-              <MenuItem onClick={handleClickLogout}>
-                {i18n.t("mainDrawer.appBar.user.logout")}
-              </MenuItem>
-            </Menu>
-          </div>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      )}
+
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-
         {children ? children : null}
       </main>
     </div>
