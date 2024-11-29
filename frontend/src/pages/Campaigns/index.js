@@ -267,33 +267,33 @@ const Campaigns = () => {
       />
       <MainHeader>
         <Grid style={{ width: "99.6%" }} container>
-          <Grid xs={12} sm={8} item>
+          <Grid xs={7} sm={7} md={7} item>
             <Title>{i18n.t("campaigns.title")}</Title>
           </Grid>
-          <Grid xs={12} sm={4} item>
+          <Grid xs={12} sm={11} md={5} item>
             <Grid spacing={2} container>
-              <Grid xs={6} sm={6} item>
-          <TextField
-            placeholder={i18n.t("queueIntegration.searchPlaceholder")}
-            color='primary'
-            variant="outlined"
-            type="search"
-            size="small"
-            value={searchParam}
-            onChange={handleSearch}
-            InputProps={{
-              style: {
-                borderRadius: '20px'
-              },
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon style={{ color: "gray"}}/>
-                </InputAdornment>
-              ),
-            }}
+              <Grid xs={7} sm={8} md={6} item>
+                <TextField
+                  placeholder={i18n.t("queueIntegration.searchPlaceholder")}
+                  color='primary'
+                  variant="outlined"
+                  type="search"
+                  size="small"
+                  value={searchParam}
+                  onChange={handleSearch}
+                  InputProps={{
+                    style: {
+                      borderRadius: '20px'
+                    },
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon style={{ color: "gray"}}/>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
-              <Grid xs={6} sm={6} item>
+              <Grid xs={4} sm={4} md={4} item>
                 <Button
                   fullWidth
                   variant="contained"
