@@ -19,6 +19,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Grid from "@material-ui/core/Grid";
 
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditIcon from "@material-ui/icons/Edit";
@@ -89,6 +90,11 @@ const useStyles = makeStyles((theme) => ({
         overflowY: "scroll",
         ...theme.scrollbarStyles,
     },
+    avatar: {
+        width: "140px",
+        height: "40px",
+        borderRadius: 4
+      },
 }));
 
 const FileLists = () => {
@@ -217,38 +223,52 @@ const FileLists = () => {
                 fileListId={selectedFileList && selectedFileList.id}
             />
             <MainHeader>
-                <Title>{i18n.t("files.title")} ({files.length})</Title>
-                <MainHeaderButtonsWrapper>
-                    <TextField
-                        placeholder={i18n.t("contacts.searchPlaceholder")}
-                        color="primary"
-                        variant="outlined"
-                        type="search"
-                        size="small"
-                        value={searchParam}
-                        onChange={handleSearch}
-                        InputProps={{
-                            style: {
-                                borderRadius: "20px",
-                                fontFamily: "Nunito, sans-serif",
-                            },
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <SearchIcon style={{ color: "gray" }} />
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <Button
-                        style={{ fontFamily: "Nunito, sans-serif", }}
-                        variant="contained"
-                        color="primary"
-                        borderRadius="8px"
-                        onClick={handleOpenFileListModal}
-                    >
-                        {i18n.t("files.buttons.add")}
-                    </Button>
-                </MainHeaderButtonsWrapper>
+                <Grid container style={{width: '99.6%'}}>
+                    <Grid xs={7} sm={7} md={7} item>
+                        <Title>{i18n.t("files.title")} ({files.length})</Title>
+                    </Grid>
+                    <Grid xs={12} sm={11} md={5} item>
+                        <MainHeaderButtonsWrapper>
+                            <Grid spacing={2} container>
+                                <Grid item xs={7} sm={8} md={6}>
+                                    <TextField
+                                        placeholder={i18n.t("contacts.searchPlaceholder")}
+                                        color="primary"
+                                        variant="outlined"
+                                        type="search"
+                                        size="small"
+                                        value={searchParam}
+                                        onChange={handleSearch}
+                                        InputProps={{
+                                            style: {
+                                                borderRadius: "20px",
+                                                fontFamily: "Nunito, sans-serif",
+                                            },
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <SearchIcon style={{ color: "gray" }} />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs={4} sm={4} md={6}>
+                                    <Button
+                                        style={{ fontFamily: "Nunito, sans-serif",
+                                        marginLeft: "90px",
+                                         }}
+                                        variant="contained"
+                                        color="primary"
+                                        borderRadius="8px"
+                                        onClick={handleOpenFileListModal}
+                                    >
+                                        {i18n.t("files.buttons.add")}
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </MainHeaderButtonsWrapper>
+                    </Grid>
+                </Grid>
             </MainHeader>
             <Paper
                 className={classes.mainPaper}
@@ -321,3 +341,5 @@ const FileLists = () => {
 };
 
 export default FileLists;
+                
+ 
