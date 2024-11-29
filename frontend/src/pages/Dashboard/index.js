@@ -380,6 +380,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("1520")]: {
       justifyContent: 'center',
       marginTop: "-50px",
+      height: '260px',
     },
     [theme.breakpoints.down("1000")]: {
       backgroundColor: "rgba(0, 0, 0, 0)",
@@ -431,9 +432,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   titulo: {
-    marginTop: '-1%', marginLeft: '7%',
+    marginTop: '-65px', marginLeft: '7%',
     [theme.breakpoints.down("1520")]: {
-      marginTop: '-60px',
+      marginTop: '-70px',
       marginLeft: "40px"
     },
     [theme.breakpoints.down("1000")]: {
