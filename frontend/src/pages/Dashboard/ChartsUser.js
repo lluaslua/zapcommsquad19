@@ -112,7 +112,7 @@ export const ChatsUser = () => {
                 spacing={2} 
                 alignItems={'center'} 
                 sx={{ my: 2, }} 
-                style={{ marginLeft: '40%', marginTop: '-7%', fontFamily: 'Nunito' }}
+                style={{ marginLeft: '40%', marginTop: '-4%', fontFamily: 'Nunito' }}
             >
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={brLocale}>
                     <DatePicker
